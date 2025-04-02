@@ -15,35 +15,37 @@
 				"usesNonExemptEncryption": false
 			},
 			"splash": {
-				"image": "./assets/splash.png",
-				"resizeMode": "cover",
 				"backgroundColor": "#ffffff",
+				"image": "./assets/splash.png",
 				"dark": {
-					"backgroundColor": "#000000",
-					"resizeMode": "cover",
-					"image": "./assets/splash-dark.png"
+					"image": "./assets/splash-dark.png",
+					"backgroundColor": "#04151A"
 				}
 			}
 		},
 		"android": {
-			"adaptiveIcon": {
-				"foregroundImage": "./assets/adaptive-icon.png",
-				"backgroundColor": "#ffffff"
-			},
 			"splash": {
-				"image": "./assets/splash.png",
-				"resizeMode": "cover",
 				"backgroundColor": "#ffffff",
+				"image": "./assets/splash.png",
 				"dark": {
-					"backgroundColor": "#000000",
-					"resizeMode": "cover",
-					"image": "./assets/splash-dark.png"
-				}
-			}
+					"image": "./assets/splash-dark.png",
+					"backgroundColor": "#04151A"
+				},
+				"imageWidth": 200
+			},
+			"package": "com.abrahamgalue.paredesverdesapp"
 		},
 		"experiments": {
 			"typedRoutes": true
 		},
-		"plugins": ["expo-router", "expo-secure-store"]
+		"plugins": ["expo-router", "expo-secure-store"],
+		"extra": {
+			"router": {
+				"origin": false
+			},
+			"eas": {
+				"projectId": "90c378ab-072c-4471-9914-e780671624d0"
+			}
+		}
 	}
 }
