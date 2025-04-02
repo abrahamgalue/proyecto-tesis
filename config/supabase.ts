@@ -12,8 +12,8 @@ export const supabase = createClient(supabaseUrl, supabaseKey, {
 		storage: AsyncStorage,
 		autoRefreshToken: true,
 		persistSession: true,
-		detectSessionInUrl: false,
-	},
+		detectSessionInUrl: false
+	}
 })
 
 AppState.addEventListener('change', (state) => {

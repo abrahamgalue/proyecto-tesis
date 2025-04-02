@@ -4,7 +4,7 @@ import { colors } from '@/constants/colors'
 import { useColorScheme } from '@/lib/useColorScheme'
 
 export const unstable_settings = {
-	initialRouteName: '(root)',
+	initialRouteName: '(root)'
 }
 
 export default function AppLayout() {
@@ -24,13 +24,13 @@ export default function AppLayout() {
 						backgroundColor:
 							colorScheme === 'dark'
 								? colors.dark.background
-								: colors.light.background,
+								: colors.light.background
 					},
 					headerTintColor:
 						colorScheme === 'dark'
 							? colors.dark.foreground
 							: colors.light.foreground,
-					gestureEnabled: true,
+					gestureEnabled: true
 				}}
 			/>
 			<Stack.Screen
@@ -43,13 +43,13 @@ export default function AppLayout() {
 						backgroundColor:
 							colorScheme === 'dark'
 								? colors.dark.background
-								: colors.light.background,
+								: colors.light.background
 					},
 					headerTintColor:
 						colorScheme === 'dark'
 							? colors.dark.foreground
 							: colors.light.foreground,
-					gestureEnabled: true,
+					gestureEnabled: true
 				}}
 			/>
 		</Stack>

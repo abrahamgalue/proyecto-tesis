@@ -1,4 +1,18 @@
+// https://docs.expo.dev/guides/using-eslint/
 module.exports = {
-	root: true,
-	extends: ["universe/native"],
-};
+	env: {
+		browser: true,
+		node: true
+	},
+	extends: ['expo', 'prettier'],
+	plugins: ['prettier'],
+	rules: {
+		'prettier/prettier': [
+			'error',
+			{
+				endOfLine: 'auto'
+			}
+		],
+		'react-hooks/exhaustive-deps': 'off'
+	}
+}

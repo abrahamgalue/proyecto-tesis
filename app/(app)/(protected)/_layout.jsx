@@ -16,7 +16,7 @@ export default function ProtectedLayout() {
 					backgroundColor:
 						colorScheme === 'dark'
 							? colors.dark.background
-							: colors.light.background,
+							: colors.light.background
 				},
 				headerTintColor:
 					colorScheme === 'dark'
@@ -26,12 +26,12 @@ export default function ProtectedLayout() {
 					backgroundColor:
 						colorScheme === 'dark'
 							? colors.dark.background
-							: colors.light.background,
+							: colors.light.background
 				},
 				tabBarActiveTintColor:
 					colorScheme === 'dark'
 						? colors.dark.tabBarTintIcon
-						: colors.light.tabBarTintIcon,
+						: colors.light.tabBarTintIcon
 			}}
 		>
 			<Tabs.Screen
@@ -40,7 +40,7 @@ export default function ProtectedLayout() {
 					title: 'Inicio',
 					tabBarIcon: ({ color }) => (
 						<IconSymbol size={28} name='house.fill' color={color} />
-					),
+					)
 				}}
 			/>
 			<Tabs.Screen
@@ -49,7 +49,7 @@ export default function ProtectedLayout() {
 					title: 'Configuración',
 					tabBarIcon: ({ color }) => (
 						<IconSymbol size={28} name='settings' color={color} />
-					),
+					)
 				}}
 			/>
 		</Tabs>

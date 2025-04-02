@@ -17,7 +17,7 @@ const formSchema = z.object({
 	password: z
 		.string()
 		.min(6, 'Por favor, introduzca al menos 6 caracteres.')
-		.max(64, 'Introduzca menos de 64 caracteres.'),
+		.max(64, 'Introduzca menos de 64 caracteres.')
 })
 
 export default function SignIn() {
@@ -27,8 +27,8 @@ export default function SignIn() {
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			email: '',
-			password: '',
-		},
+			password: ''
+		}
 	})
 
 	async function onSubmit(data) {

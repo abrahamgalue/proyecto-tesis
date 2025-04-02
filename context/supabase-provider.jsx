@@ -10,7 +10,7 @@ export const SupabaseContext = createContext({
 	session: null,
 	initialized: false,
 	signInWithPassword: async () => {},
-	signOut: async () => {},
+	signOut: async () => {}
 })
 
 export const useSupabase = () => useContext(SupabaseContext)
@@ -25,7 +25,7 @@ export const SupabaseProvider = ({ children }) => {
 	const signInWithPassword = async (email, password) => {
 		const { error } = await supabase.auth.signInWithPassword({
 			email,
-			password,
+			password
 		})
 		if (error) {
 			throw error
@@ -80,7 +80,7 @@ export const SupabaseProvider = ({ children }) => {
 				session,
 				initialized,
 				signInWithPassword,
-				signOut,
+				signOut
 			}}
 		>
 			{children}
