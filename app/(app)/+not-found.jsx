@@ -1,12 +1,14 @@
-import { View } from 'react-native'
-
-import { H1, Muted } from '@/components/ui/typography'
+import { View, Text } from 'react-native'
 
 export default function NotFound() {
 	return (
 		<View className='flex flex-1 items-center justify-center bg-background p-4 gap-y-4'>
-			<H1 className='text-center'>404</H1>
-			<Muted className='text-center'>This page could not be found.</Muted>
+			<Text className='text-center web:scroll-m-20 text-4xl text-foreground font-extrabold tracking-tight lg:text-5xl web:select-text'>
+				404
+			</Text>
+			<Text className='text-center text-sm text-muted-foreground web:select-text'>
+				This page could not be found.
+			</Text>
 		</View>
 	)
 }

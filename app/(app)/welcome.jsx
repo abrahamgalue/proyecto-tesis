@@ -1,12 +1,9 @@
 import { useRouter } from 'expo-router'
 import React from 'react'
-import { View } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 
 import { Image } from '@/components/image'
 import { SafeAreaView } from '@/components/safe-area-view'
-import { Button } from '@/components/ui/button'
-import { Text } from '@/components/ui/text'
-import { H1, Muted } from '@/components/ui/typography'
 
 export default function WelcomeScreen() {
 	const router = useRouter()
@@ -18,22 +15,23 @@ export default function WelcomeScreen() {
 					source={require('@/assets/icon.png')}
 					className='w-16 h-16 rounded-xl'
 				/>
-				<H1 className='text-center'>Bienvenido a Expo Supabase Starter</H1>
-				<Muted className='text-center'>
+				<Text className='text-center web:scroll-m-20 text-4xl text-foreground font-extrabold tracking-tight lg:text-5xl web:select-text'>
+					Bienvenido a Expo Supabase Starter
+				</Text>
+				<Text className='text-center text-sm text-muted-foreground web:select-text'>
 					Un proyecto de inicio integral para desarrollar aplicaciones React
 					Native y Expo con Supabase como backend.
-				</Muted>
+				</Text>
 			</View>
 			<View className='flex flex-col gap-y-4 web:m-4'>
-				<Button
-					size='default'
-					variant='default'
+				<Pressable
+					className='bg-blue-600'
 					onPress={() => {
 						router.push('/sign-in')
 					}}
 				>
 					<Text>Iniciar sesión</Text>
-				</Button>
+				</Pressable>
 			</View>
 		</SafeAreaView>
 	)
