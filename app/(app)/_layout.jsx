@@ -18,7 +18,7 @@ export default function AppLayout() {
 				name='sign-in'
 				options={{
 					presentation: 'modal',
-					headerShown: true,
+					headerShown: false,
 					headerTitle: 'Iniciar sesión',
 					headerStyle: {
 						backgroundColor:

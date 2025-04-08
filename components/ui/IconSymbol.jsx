@@ -3,7 +3,9 @@ import React from 'react'
 
 const MAPPING = {
 	'house.fill': 'home',
-	settings: 'settings'
+	settings: 'settings',
+	visibility: 'visibility',
+	'visibility-off': 'visibility-off'
 }
 
 /**
@@ -11,13 +13,14 @@ const MAPPING = {
  *
  * Icon `name`s are based on SFSymbols and require manual mapping to MaterialIcons.
  */
-export function IconSymbol({ name, size = 24, color, style }) {
+export function IconSymbol({ name, size = 24, color, style, className }) {
 	return (
 		<MaterialIcons
 			color={color}
 			size={size}
 			name={MAPPING[name]}
 			style={style}
+			className={className}
 		/>
 	)
 }
