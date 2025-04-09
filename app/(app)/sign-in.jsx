@@ -106,7 +106,7 @@ export default function SignIn() {
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
-								secureTextEntry={showPass}
+								secureTextEntry={!showPass}
 								value={value}
 							/>
 							<Pressable
@@ -119,7 +119,7 @@ export default function SignIn() {
 											? colors.dark.accent
 											: colors.light.accent
 									}
-									name={showPass ? 'visibility' : 'visibility-off'}
+									name={!showPass ? 'visibility' : 'visibility-off'}
 								/>
 							</Pressable>
 						</View>
