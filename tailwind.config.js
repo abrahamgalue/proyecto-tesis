@@ -1,5 +1,4 @@
 module.exports = {
-	// NOTE: Update this to include the paths to all of your component files.
 	content: [
 		'./app/**/*.{js,jsx,ts,tsx}',
 		'./components/**/*.{js,jsx,ts,tsx}',
@@ -43,8 +42,19 @@ module.exports = {
 					DEFAULT: 'var(--card)',
 					foreground: 'var(--card-foreground)'
 				},
-				fromGradient: 'var(--from-gradient)',
-				toGradient: 'var(--to-gradient)'
+				'from-gradient': 'var(--from-gradient)',
+				'to-gradient': 'var(--to-gradient)',
+				'base-icons': 'var(--base-icons)',
+				'activity-indicator': 'var(--activity-indicator)',
+				'control-gradient1': 'var(--control-gradient1)',
+				'control-gradient2': 'var(--control-gradient2)',
+				'control-gradient3': 'var(--control-gradient3)',
+				'control-gradient4': 'var(--control-gradient4)',
+				'weather-gradient1': 'var(--weather-gradient1)',
+				'weather-gradient2': 'var(--weather-gradient2)',
+				'weather-gradient3': 'var(--weather-gradient3)',
+				'weather-gradient4': 'var(--weather-gradient4)',
+				'tab-bar-tint-icon': 'var(--tab-bar-tint-icon)'
 			}
 		}
 	},

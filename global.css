@@ -4,30 +4,42 @@
 
 @layer base {
 	:root {
-		--background: #ffffff;
-		--foreground: #070708;
-		--card: #ffffff;
-		--card-foreground: #070708;
-		--popover: #ffffff;
-		--popover-foreground: #070708;
-		--primary: 	#18181b;
-		--primary-foreground: #fafafa;
-		--secondary: #f4f4f5;
-		--secondary-foreground: 	#18181b;
-		--muted: #f4f4f5;
-		--muted-foreground: #71717a;
-		--accent: #6da5c0;
 		--accent-foreground: 	#18181b;
-		--destructive: #dc2828;
-		--destructive-foreground: #fafafa;
+		--accent: #6da5c0;
+		--background: #ffffff;
 		--border: #6da5c0;
+		--card-foreground: #070708;
+		--card: #ffffff;
+		--destructive-foreground: #fafafa;
+		--destructive: #dc2828;
+		--foreground: #070708;
 		--input: transparent;
+		--muted-foreground: #71717a;
+		--muted: #f4f4f5;
+		--popover-foreground: #070708;
+		--popover: #ffffff;
+		--primary-foreground: #fafafa;
+		--primary: 	#18181b;
 		--ring: 	#18181b;
-    --from-gradient: #082D33;
-    --to-gradient: #04151A;
+		--secondary-foreground: 	#18181b;
+		--secondary: #f4f4f5;
+    --activity-indicator: #00171e;
+    --base-icons: #2c2c2c; 
+    --from-gradient: #fff;
+    --to-gradient: #fff;
+		--control-gradient1: rgba(51,77,90,0.1);
+		--control-gradient2: rgba(63,96,112,0.1);
+		--control-gradient3: rgba(80,121,141,0.1);
+		--control-gradient4: rgba(109,165,192,0.1);
+		--weather-gradient1: rgba(51,77,90,0.3);
+		--weather-gradient2: rgba(63,96,112,0.3);
+		--weather-gradient3: rgba(80,121,141,0.3);
+		--weather-gradient4: rgba(109,165,192,0.3);
+		--tab-bar-tint-icon: #6da5c0;
 	}
-
+  
 	.dark:root {
+    --activity-indicator: #00171e;
 		--background: #082D33;
 		--foreground: #fafafa;
 		--card: #09090b;
@@ -49,5 +61,15 @@
 		--ring: #d4d4d8;
     --from-gradient: #082D33;
     --to-gradient: #04151A;
+    --base-icons: #a1a1aa;
+		--control-gradient1: rgba(51,77,90,0.1);
+		--control-gradient2: rgba(63,96,112,0.1);
+		--control-gradient3: rgba(80,121,141,0.1);
+		--control-gradient4: rgba(109,165,192,0.1);
+		--weather-gradient1: rgba(51,77,90,0.3);
+		--weather-gradient2: rgba(63,96,112,0.3);
+		--weather-gradient3: rgba(80,121,141,0.3);
+		--weather-gradient4: rgba(109,165,192,0.3);
+		--tab-bar-tint-icon: #6da5c0;
 	}
 }
