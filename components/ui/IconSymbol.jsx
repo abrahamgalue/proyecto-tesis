@@ -1,24 +1,22 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-import React from 'react'
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
-const MAPPING = {
-	'house.fill': 'home',
-	settings: 'settings',
-	visibility: 'visibility',
-	'visibility-off': 'visibility-off'
-}
+export function IconSymbol({
+	name,
+	size = 24,
+	color,
+	style,
+	className,
+	family = 'MaterialIcons'
+}) {
+	const IconComponent =
+		family === 'MaterialCommunityIcons' ? MaterialCommunityIcons : MaterialIcons
 
-/**
- * An icon component that uses native SFSymbols on iOS, and MaterialIcons on Android and web. This ensures a consistent look across platforms, and optimal resource usage.
- *
- * Icon `name`s are based on SFSymbols and require manual mapping to MaterialIcons.
- */
-export function IconSymbol({ name, size = 24, color, style, className }) {
 	return (
-		<MaterialIcons
+		<IconComponent
 			color={color}
 			size={size}
-			name={MAPPING[name]}
+			name={name}
 			style={style}
 			className={className}
 		/>
