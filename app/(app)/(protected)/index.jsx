@@ -10,6 +10,7 @@ import {
 } from '@/constants/colors'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { Image } from '@/components/image'
+import DigitalClock from '@/components/ui/DigitalClock'
 
 const ForecastDay = ({ day, icon, temp, detail }) => {
 	const { colorScheme } = useColorScheme()
@@ -139,9 +140,7 @@ export default function App() {
 									<Text className='text-foreground text-lg mb-3'>
 										Lunes | Nov 15
 									</Text>
-									<Text className='text-foreground text-3xl font-bold'>
-										13:26
-									</Text>
+									<DigitalClock />
 								</View>
 							</View>
 							<View className='flex-row justify-center gap-2 items-end mb-5'>
