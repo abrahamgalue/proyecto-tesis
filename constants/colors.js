@@ -1,4 +1,5 @@
 import * as SystemUI from 'expo-system-ui'
+import * as NavigationBar from 'expo-navigation-bar'
 
 export const gradientLocations = [0, 0.28, 0.69, 1]
 export const gradientStart = { x: 0, y: 0 }
@@ -77,4 +78,5 @@ export const colors = {
 
 export function changeBackgroundColor(color) {
 	SystemUI.setBackgroundColorAsync(color)
+	NavigationBar.setBackgroundColorAsync(color)
 }
