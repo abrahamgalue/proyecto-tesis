@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Text } from 'react-native'
-import { formatTime } from '@/lib/utils'
+import { formatHour } from '@/lib/utils'
 
 function DigitalClock() {
 	const [time, setTime] = useState(new Date())
@@ -15,7 +15,7 @@ function DigitalClock() {
 
 	return (
 		<Text className='text-foreground text-3xl font-bold'>
-			{formatTime(time)}
+			{formatHour(time)}
 		</Text>
 	)
 }

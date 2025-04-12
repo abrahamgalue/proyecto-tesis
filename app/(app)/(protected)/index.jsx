@@ -11,6 +11,7 @@ import {
 import { useColorScheme } from '@/lib/useColorScheme'
 import { Image } from '@/components/image'
 import DigitalClock from '@/components/ui/DigitalClock'
+import Day from '@/components/ui/Date'
 
 const ForecastDay = ({ day, icon, temp, detail }) => {
 	const { colorScheme } = useColorScheme()
@@ -137,9 +138,7 @@ export default function App() {
 									family='MaterialCommunityIcons'
 								/>
 								<View className='items-end'>
-									<Text className='text-foreground text-lg mb-3'>
-										Lunes | Nov 15
-									</Text>
+									<Day />
 									<DigitalClock />
 								</View>
 							</View>
