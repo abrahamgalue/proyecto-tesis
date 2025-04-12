@@ -7,6 +7,7 @@
 		--accent-foreground: 	#18181b;
 		--accent: #6da5c0;
 		--background: #ffffff;
+		--background-skeleton: #d9d9d9;
 		--border: #6da5c0;
 		--card-foreground: #070708;
 		--card: #ffffff;
@@ -41,6 +42,7 @@
 	.dark:root {
     --activity-indicator: #00171e;
 		--background: #082D33;
+    --background-skeleton: #082D33;
 		--foreground: #fafafa;
 		--card: #09090b;
 		--card-foreground: #fafafa;

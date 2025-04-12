@@ -11,6 +11,7 @@ export const colors = {
 		accentForeground: '#18181b',
 		activityIndicator: '#00171e',
 		background: '#FFFFFF',
+		backgroundSkeleton: '#d9d9d9',
 		baseIcons: '#2c2c2c',
 		border: '#6DA5C0',
 		card: '#FFFFFF',
@@ -43,6 +44,7 @@ export const colors = {
 	dark: {
 		activityIndicator: '#00171e',
 		background: '#082D33',
+		backgroundSkeleton: '#082D33',
 		foreground: '#FAFAFA',
 		tabBarTintIcon: '#6DA5C0',
 		card: '#09090b',
