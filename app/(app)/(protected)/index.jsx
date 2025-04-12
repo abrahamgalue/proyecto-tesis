@@ -12,6 +12,9 @@ import { useColorScheme } from '@/lib/useColorScheme'
 import { Image } from '@/components/image'
 import DigitalClock from '@/components/ui/DigitalClock'
 import Day from '@/components/ui/Date'
+import { useState, useEffect } from 'react'
+import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
+import { GenericSkeleton } from '@/components/ui/skeletons'
 
 const ForecastDay = ({ day, icon, temp, detail }) => {
 	const { colorScheme } = useColorScheme()
@@ -48,6 +51,30 @@ const InfoBlock = ({ icon, value, label }) => (
 export default function App() {
 	const { colorScheme } = useColorScheme()
 	const router = useRouter()
+	const [weatherData, setWeatherData] = useState({})
+
+	useEffect(() => {
+		let ignore = false
+
+		getWeatherData()
+			.then((data) => {
+				if (!ignore) {
+					setWeatherData({
+						tempOutside: data.temperaturaExterior,
+						humidity: data.humedad
+					})
+				}
+			})
+			.catch(() => {
+				if (!ignore) {
+					setWeatherData(FALLBACK_WEATHER_DATA)
+				}
+			})
+
+		return () => {
+			ignore = true
+		}
+	}, [])
 
 	return (
 		<View>
@@ -144,13 +171,23 @@ export default function App() {
 							</View>
 							<View className='flex-row justify-center gap-2 items-end mb-5'>
 								<View className='items-center'>
-									<Text className='text-[92px] text-foreground font-semi-bold leading-[100px]'>
-										32°
-									</Text>
+									{weatherData.tempOutside ? (
+										<Text className='text-[92px] text-foreground font-semi-bold leading-[100px]'>
+											{weatherData.tempOutside}°
+										</Text>
+									) : (
+										<GenericSkeleton width={150} height={90} />
+									)}
 									<Text className='text-foreground text-base'>Nublado</Text>
 								</View>
 								<View className='items-start justify-center'>
-									<Text className='text-lg text-foreground font-bold'>60%</Text>
+									{weatherData.humidity ? (
+										<Text className='text-lg text-foreground font-bold'>
+											{weatherData.humidity}
+										</Text>
+									) : (
+										<GenericSkeleton width={40} height={20} />
+									)}
 									<Text className='text-foreground text-sm'>Humedad</Text>
 								</View>
 							</View>
@@ -202,7 +239,15 @@ export default function App() {
 							label='Temperatura del suelo'
 						/>
 						<InfoBlock icon='science' value='6,83' label='Nivel de PH' />
-						<InfoBlock icon='opacity' value='40%' label='Humedad' />
+						{weatherData.humidity ? (
+							<InfoBlock
+								icon='opacity'
+								value={weatherData.humidity}
+								label='Humedad'
+							/>
+						) : (
+							<GenericSkeleton width='48%' height={42} />
+						)}
 					</View>
 
 					{/* --- Control Bar --- */}
