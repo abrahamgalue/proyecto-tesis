@@ -23,7 +23,10 @@ export default function ProtectedLayout() {
 				tabBarStyle: {
 					backgroundColor: isDarkColorScheme
 						? colors.dark.background
-						: colors.light.background
+						: colors.light.background,
+					borderColor: isDarkColorScheme
+						? colors.dark.border
+						: colors.light.border
 				},
 				tabBarActiveTintColor: isDarkColorScheme
 					? colors.dark.tabBarTintIcon

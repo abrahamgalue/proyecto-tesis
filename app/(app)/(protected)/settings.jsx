@@ -10,8 +10,11 @@ export default function Settings() {
 			<Text className='text-center text-sm text-muted-foreground web:select-text'>
 				Cerrar sesión y volver a la pantalla de bienvenida.
 			</Text>
-			<Pressable className='w-full bg-blue-600' onPress={signOut}>
-				<Text>Desconectar</Text>
+			<Pressable
+				className='w-full bg-blue-600 p-4 rounded-full'
+				onPress={signOut}
+			>
+				<Text className='text-center'>Desconectar</Text>
 			</Pressable>
 		</View>
 	)

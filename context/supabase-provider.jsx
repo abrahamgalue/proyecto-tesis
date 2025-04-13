@@ -63,11 +63,6 @@ export const SupabaseProvider = ({ children }) => {
 			router.replace('/(app)/sign-in')
 		}
 
-		/* HACK: Something must be rendered when determining the initial auth state... 
-		instead of creating a loading screen, we use the SplashScreen and hide it after
-		a small delay (500 ms)
-		*/
-
 		setTimeout(() => {
 			SplashScreen.hideAsync()
 		}, 500)
