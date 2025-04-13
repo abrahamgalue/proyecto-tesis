@@ -15,38 +15,12 @@ import Day from '@/components/ui/Date'
 import { useState, useEffect } from 'react'
 import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
 import { GenericSkeleton } from '@/components/ui/skeletons'
-
-const ForecastDay = ({ day, icon, temp, detail }) => {
-	const { isDarkColorScheme } = useColorScheme()
-
-	return (
-		<View className='items-center flex-1'>
-			<Text className='text-foreground text-base mb-1'>{day}</Text>
-			<IconSymbol
-				name={icon}
-				size={34}
-				color={
-					isDarkColorScheme ? colors.dark.baseIcons : colors.light.baseIcons
-				}
-				className='my-1'
-			/>
-			<Text className='text-foreground text-lg font-bold'>{temp}</Text>
-			<Text className='text-foreground text-sm'>{detail}</Text>
-		</View>
-	)
-}
-
-const InfoBlock = ({ icon, value, label }) => (
-	<View className='w-[48%] gap-2 flex-row px-2.5 items-start mb-[15px]'>
-		<IconSymbol name={icon} size={42} color='#a1a1aa' />
-		<View className='flex-1 items-start'>
-			<Text className='text-foreground text-lg font-bold'>{value}</Text>
-			<Text className='text-foreground text-sm'>{label}</Text>
-		</View>
-	</View>
-)
+import ForecastDay from '@/components/ui/ForecastDay'
+import MonitoringBlock from '@/components/ui/MonitoringBlock'
+import Line from '@/components/ui/Line'
 
 export default function App() {
+	const notifications = 3
 	const { isDarkColorScheme } = useColorScheme()
 	const router = useRouter()
 	const [weatherData, setWeatherData] = useState({})
@@ -88,7 +62,7 @@ export default function App() {
 							: [colors.light.fromGradient, colors.light.toGradient]
 					}
 				>
-					{/* --- Header --- */}
+					{/* --- Notifications --- */}
 					<View className='w-full flex-row h-10 items-center justify-start mb-6'>
 						<View className='relative rounded-full p-1 border border-border h-11 w-11 items-center justify-center'>
 							<IconSymbol
@@ -100,9 +74,13 @@ export default function App() {
 										: colors.light.foreground
 								}
 							/>
-							<View className='absolute top-0 right-0 bg-[#008A08] rounded-full w-4 h-4 justify-center items-center'>
-								<Text className='text-foreground text-[10px] font-bold'>3</Text>
-							</View>
+							{notifications > 0 && (
+								<View className='absolute top-0 right-0 bg-[#008A08] rounded-full w-4 h-4 justify-center items-center'>
+									<Text className='text-foreground text-[10px] font-bold'>
+										{notifications < 10 ? notifications : '+9'}
+									</Text>
+								</View>
+							)}
 						</View>
 					</View>
 
@@ -189,7 +167,7 @@ export default function App() {
 									<Text className='text-foreground text-sm'>Humedad</Text>
 								</View>
 							</View>
-							<View className='h-[1px] bg-white w-[65%] m-auto'></View>
+							<Line width='65%' />
 							<View className='flex-row justify-between pt-[15px] mt-[15px]'>
 								<ForecastDay
 									day='Martes'
@@ -197,12 +175,14 @@ export default function App() {
 									temp='20°/26°'
 									detail='74% Nub'
 								/>
+								<Line height='55%' />
 								<ForecastDay
 									day='Miércoles'
 									icon='wb-sunny'
 									temp='26°/29°'
 									detail='83% Sol'
 								/>
+								<Line height='55%' />
 								<ForecastDay
 									day='Jueves'
 									icon='wb-sunny'
@@ -228,17 +208,21 @@ export default function App() {
 						</TouchableOpacity>
 					</LinearGradient>
 
-					{/* --- Secondary Info Grid --- */}
+					{/* --- Monitoring --- */}
 					<View className='flex-row flex-wrap justify-between w-full mb-12'>
-						<InfoBlock icon='water-drop' value='60%' label='Nivel de Agua' />
-						<InfoBlock
+						<MonitoringBlock
+							icon='water-drop'
+							value='60%'
+							label='Nivel de Agua'
+						/>
+						<MonitoringBlock
 							icon='thermostat'
 							value='25°C'
 							label='Temperatura del suelo'
 						/>
-						<InfoBlock icon='science' value='6,83' label='Nivel de PH' />
+						<MonitoringBlock icon='science' value='6,83' label='Nivel de PH' />
 						{weatherData.humidity ? (
-							<InfoBlock
+							<MonitoringBlock
 								icon='opacity'
 								value={weatherData.humidity}
 								label='Humedad'
