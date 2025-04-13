@@ -6,32 +6,28 @@ import { useColorScheme } from '@/lib/useColorScheme'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 
 export default function ProtectedLayout() {
-	const { colorScheme } = useColorScheme()
+	const { isDarkColorScheme } = useColorScheme()
 
 	return (
 		<Tabs
 			screenOptions={{
 				headerShown: true,
 				headerStyle: {
-					backgroundColor:
-						colorScheme === 'dark'
-							? colors.dark.background
-							: colors.light.background
+					backgroundColor: isDarkColorScheme
+						? colors.dark.background
+						: colors.light.background
 				},
-				headerTintColor:
-					colorScheme === 'dark'
-						? colors.dark.foreground
-						: colors.light.foreground,
+				headerTintColor: isDarkColorScheme
+					? colors.dark.foreground
+					: colors.light.foreground,
 				tabBarStyle: {
-					backgroundColor:
-						colorScheme === 'dark'
-							? colors.dark.background
-							: colors.light.background
+					backgroundColor: isDarkColorScheme
+						? colors.dark.background
+						: colors.light.background
 				},
-				tabBarActiveTintColor:
-					colorScheme === 'dark'
-						? colors.dark.tabBarTintIcon
-						: colors.light.tabBarTintIcon
+				tabBarActiveTintColor: isDarkColorScheme
+					? colors.dark.tabBarTintIcon
+					: colors.light.tabBarTintIcon
 			}}
 		>
 			<Tabs.Screen

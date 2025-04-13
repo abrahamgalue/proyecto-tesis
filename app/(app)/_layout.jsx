@@ -8,7 +8,7 @@ export const unstable_settings = {
 }
 
 export default function AppLayout() {
-	const { colorScheme } = useColorScheme()
+	const { isDarkColorScheme } = useColorScheme()
 
 	return (
 		<Stack screenOptions={{ headerShown: false, gestureEnabled: false }}>
@@ -20,15 +20,13 @@ export default function AppLayout() {
 					headerShown: false,
 					headerTitle: 'Iniciar sesión',
 					headerStyle: {
-						backgroundColor:
-							colorScheme === 'dark'
-								? colors.dark.background
-								: colors.light.background
+						backgroundColor: isDarkColorScheme
+							? colors.dark.background
+							: colors.light.background
 					},
-					headerTintColor:
-						colorScheme === 'dark'
-							? colors.dark.foreground
-							: colors.light.foreground,
+					headerTintColor: isDarkColorScheme
+						? colors.dark.foreground
+						: colors.light.foreground,
 					gestureEnabled: true
 				}}
 			/>
@@ -39,15 +37,13 @@ export default function AppLayout() {
 					headerShown: true,
 					headerTitle: 'Modal',
 					headerStyle: {
-						backgroundColor:
-							colorScheme === 'dark'
-								? colors.dark.background
-								: colors.light.background
+						backgroundColor: isDarkColorScheme
+							? colors.dark.background
+							: colors.light.background
 					},
-					headerTintColor:
-						colorScheme === 'dark'
-							? colors.dark.foreground
-							: colors.light.foreground,
+					headerTintColor: isDarkColorScheme
+						? colors.dark.foreground
+						: colors.light.foreground,
 					gestureEnabled: true
 				}}
 			/>

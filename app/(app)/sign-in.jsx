@@ -28,7 +28,7 @@ const formSchema = z.object({
 })
 
 export default function SignIn() {
-	const { colorScheme } = useColorScheme()
+	const { isDarkColorScheme } = useColorScheme()
 	const { signInWithPassword } = useSupabase()
 
 	const [showPass, setShowPass] = useState(false)
@@ -57,7 +57,7 @@ export default function SignIn() {
 			<LinearGradient
 				className='flex-1 gap-4 justify-center items-center'
 				colors={
-					colorScheme === 'dark'
+					isDarkColorScheme
 						? [colors.dark.fromGradient, colors.dark.toGradient]
 						: [colors.light.fromGradient, colors.light.toGradient]
 				}
@@ -79,7 +79,7 @@ export default function SignIn() {
 							onChangeText={onChange}
 							placeholder='Email'
 							placeholderTextColor={
-								colorScheme === 'dark'
+								isDarkColorScheme
 									? colors.dark.foreground
 									: colors.light.foreground
 							}
@@ -102,7 +102,7 @@ export default function SignIn() {
 								onChangeText={onChange}
 								placeholder='Contraseña'
 								placeholderTextColor={
-									colorScheme === 'dark'
+									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
@@ -115,9 +115,7 @@ export default function SignIn() {
 							>
 								<IconSymbol
 									color={
-										colorScheme === 'dark'
-											? colors.dark.accent
-											: colors.light.accent
+										isDarkColorScheme ? colors.dark.accent : colors.light.accent
 									}
 									name={!showPass ? 'visibility' : 'visibility-off'}
 								/>
@@ -140,7 +138,7 @@ export default function SignIn() {
 						<ActivityIndicator
 							size='small'
 							color={
-								colorScheme === 'dark'
+								isDarkColorScheme
 									? colors.dark.activityIndicator
 									: colors.light.activityIndicator
 							}

@@ -17,7 +17,7 @@ import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 
 const ForecastDay = ({ day, icon, temp, detail }) => {
-	const { colorScheme } = useColorScheme()
+	const { isDarkColorScheme } = useColorScheme()
 
 	return (
 		<View className='items-center flex-1'>
@@ -26,9 +26,7 @@ const ForecastDay = ({ day, icon, temp, detail }) => {
 				name={icon}
 				size={34}
 				color={
-					colorScheme === 'dark'
-						? colors.dark.baseIcons
-						: colors.light.baseIcons
+					isDarkColorScheme ? colors.dark.baseIcons : colors.light.baseIcons
 				}
 				className='my-1'
 			/>
@@ -49,7 +47,7 @@ const InfoBlock = ({ icon, value, label }) => (
 )
 
 export default function App() {
-	const { colorScheme } = useColorScheme()
+	const { isDarkColorScheme } = useColorScheme()
 	const router = useRouter()
 	const [weatherData, setWeatherData] = useState({})
 
@@ -85,7 +83,7 @@ export default function App() {
 				<LinearGradient
 					className='flex-1 px-[5%] pt-5 pb-[15px] items-center justify-center'
 					colors={
-						colorScheme === 'dark'
+						isDarkColorScheme
 							? [colors.dark.fromGradient, colors.dark.toGradient]
 							: [colors.light.fromGradient, colors.light.toGradient]
 					}
@@ -97,7 +95,7 @@ export default function App() {
 								name='notifications-none'
 								size={28}
 								color={
-									colorScheme === 'dark'
+									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
@@ -120,7 +118,7 @@ export default function App() {
 						locations={gradientLocations}
 						className='w-full mb-[30px] relative'
 						colors={
-							colorScheme === 'dark'
+							isDarkColorScheme
 								? [
 										colors.dark.weatherGradient1,
 										colors.dark.weatherGradient2,
@@ -143,7 +141,7 @@ export default function App() {
 							/>
 						</View>
 						<View className='p-5 w-full relative border border-border rounded-3xl'>
-							{colorScheme === 'dark' ? (
+							{isDarkColorScheme ? (
 								<Image
 									className='w-20 h-20 absolute -top-11 -right-3'
 									source={require('@/assets/logo-raw.png')}
@@ -222,7 +220,7 @@ export default function App() {
 								name='keyboard-arrow-down'
 								size={16}
 								color={
-									colorScheme === 'dark'
+									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
@@ -262,7 +260,7 @@ export default function App() {
 						locations={gradientLocations}
 						className='flex-row justify-around items-center rounded-[30px] py-3 px-[5%] w-[95%] mt-5 mb-5'
 						colors={
-							colorScheme === 'dark'
+							isDarkColorScheme
 								? [
 										colors.dark.controlGradient1,
 										colors.dark.controlGradient2,
@@ -287,7 +285,7 @@ export default function App() {
 							end={gradientEnd}
 							locations={gradientLocations}
 							colors={
-								colorScheme === 'dark'
+								isDarkColorScheme
 									? [
 											colors.dark.weatherGradient1,
 											colors.dark.weatherGradient2,
@@ -307,7 +305,7 @@ export default function App() {
 								name='phonelink-setup'
 								size={20}
 								color={
-									colorScheme === 'dark'
+									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
@@ -321,7 +319,7 @@ export default function App() {
 								name='person'
 								size={24}
 								color={
-									colorScheme === 'dark'
+									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
@@ -332,7 +330,7 @@ export default function App() {
 								name='settings'
 								size={24}
 								color={
-									colorScheme === 'dark'
+									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}

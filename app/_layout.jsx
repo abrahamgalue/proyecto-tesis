@@ -6,27 +6,26 @@ import { StatusBar } from 'expo-status-bar'
 
 import { useColorScheme } from '@/lib/useColorScheme'
 import { useEffect } from 'react'
-import { colors, changeBackgroundColor } from '@/constants/colors'
+import { changeBackgroundColor } from '@/lib/colors'
+import { colors } from '@/constants/colors'
 
 export default function AppLayout() {
-	const { colorScheme } = useColorScheme()
+	const { isDarkColorScheme } = useColorScheme()
 
 	useEffect(() => {
-		if (colorScheme === 'dark') {
+		if (isDarkColorScheme) {
 			changeBackgroundColor(colors.dark.background)
 		} else {
 			changeBackgroundColor(colors.light.background)
 		}
-	}, [colorScheme])
+	}, [isDarkColorScheme])
 
 	return (
 		<SupabaseProvider>
 			<Slot />
 			<StatusBar
 				backgroundColor={
-					colorScheme === 'dark'
-						? colors.dark.background
-						: colors.light.background
+					isDarkColorScheme ? colors.dark.background : colors.light.background
 				}
 				style='auto'
 			/>
