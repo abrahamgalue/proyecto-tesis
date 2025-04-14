@@ -18,6 +18,19 @@ import { GenericSkeleton } from '@/components/ui/skeletons'
 import ForecastDay from '@/components/ui/ForecastDay'
 import MonitoringBlock from '@/components/ui/MonitoringBlock'
 import Line from '@/components/ui/Line'
+import {
+	AccountCircle,
+	FloorTemp,
+	Humidity,
+	PHLevel,
+	PhoneControl,
+	SunCloud,
+	SunCloudSmall,
+	Sunny,
+	TemperatureSubstrate,
+	WaterLevel,
+	WaterObstruction
+} from '@/components/ui/Icons'
 
 export default function App() {
 	const notifications = 3
@@ -133,13 +146,7 @@ export default function App() {
 								/>
 							)}
 							<View className='flex-row justify-between items-center'>
-								<IconSymbol
-									className={'ml-4'}
-									name='weather-partly-cloudy'
-									size={120}
-									color='#77abff'
-									family='MaterialCommunityIcons'
-								/>
+								<SunCloud />
 								<View className='items-end'>
 									<Day />
 									<DigitalClock />
@@ -171,21 +178,21 @@ export default function App() {
 							<View className='flex-row justify-between pt-[15px] mt-[15px]'>
 								<ForecastDay
 									day='Martes'
-									icon='cloud-queue'
+									icon={<SunCloudSmall />}
 									temp='20°/26°'
 									detail='74% Nub'
 								/>
 								<Line height='55%' />
 								<ForecastDay
 									day='Miércoles'
-									icon='wb-sunny'
+									icon={<Sunny />}
 									temp='26°/29°'
 									detail='83% Sol'
 								/>
 								<Line height='55%' />
 								<ForecastDay
 									day='Jueves'
-									icon='wb-sunny'
+									icon={<Sunny />}
 									temp='30°/34°'
 									detail='88% Sol'
 								/>
@@ -209,27 +216,41 @@ export default function App() {
 					</LinearGradient>
 
 					{/* --- Monitoring --- */}
-					<View className='flex-row flex-wrap justify-between w-full mb-12'>
+					<View className='flex-row flex-wrap justify-between w-full mb-12 px-3'>
 						<MonitoringBlock
-							icon='water-drop'
+							icon={<WaterLevel />}
 							value='60%'
 							label='Nivel de Agua'
 						/>
 						<MonitoringBlock
-							icon='thermostat'
+							icon={<FloorTemp />}
 							value='25°C'
 							label='Temperatura del suelo'
 						/>
-						<MonitoringBlock icon='science' value='6,83' label='Nivel de PH' />
+						<MonitoringBlock
+							icon={<TemperatureSubstrate />}
+							value='20°C'
+							label='Temperatura del sustrato'
+						/>
 						{weatherData.humidity ? (
 							<MonitoringBlock
-								icon='opacity'
+								icon={<Humidity />}
 								value={weatherData.humidity}
 								label='Humedad'
 							/>
 						) : (
 							<GenericSkeleton width='48%' height={42} />
 						)}
+						<MonitoringBlock
+							icon={<PHLevel />}
+							value='6,83'
+							label='Nivel de PH'
+						/>
+						<MonitoringBlock
+							icon={<WaterObstruction />}
+							value='05%'
+							label='Obstrucción canal de agua'
+						/>
 					</View>
 
 					{/* --- Control Bar --- */}
@@ -283,31 +304,14 @@ export default function App() {
 											colors.light.weatherGradient4
 										]
 							}
-							className='flex-row items-center bg-[rgba(109,165,192,0.3)] py-2 px-[15px] rounded-[20px]'
+							className='flex-row gap-2 items-center bg-[rgba(109,165,192,0.3)] py-2 px-[15px] rounded-[20px]'
 						>
-							<IconSymbol
-								name='phonelink-setup'
-								size={20}
-								color={
-									isDarkColorScheme
-										? colors.dark.foreground
-										: colors.light.foreground
-								}
-							/>
-							<Text className='text-foreground ml-2 text-sm font-bold'>
-								Control
-							</Text>
+							<PhoneControl />
+							<Line height={15} />
+							<Text className='text-foreground text-sm font-bold'>Control</Text>
 						</LinearGradient>
 						<TouchableOpacity>
-							<IconSymbol
-								name='person'
-								size={24}
-								color={
-									isDarkColorScheme
-										? colors.dark.foreground
-										: colors.light.foreground
-								}
-							/>
+							<AccountCircle />
 						</TouchableOpacity>
 						<TouchableOpacity>
 							<IconSymbol

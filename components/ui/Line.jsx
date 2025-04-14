@@ -1,6 +1,6 @@
 import { View } from 'react-native'
 
-const Line = ({ width = 1, height = 1, className = '' }) => {
+const Line = ({ width = 1, height = 1 }) => {
 	const isPercentage = (value) =>
 		typeof value === 'string' && value.endsWith('%')
 
@@ -18,9 +18,7 @@ const Line = ({ width = 1, height = 1, className = '' }) => {
 		height
 	}
 
-	return (
-		<View style={styles} className={`bg-foreground m-auto ${className}`}></View>
-	)
+	return <View style={styles} className='bg-foreground m-auto'></View>
 }
 
 export default Line
