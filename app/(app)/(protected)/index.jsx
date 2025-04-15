@@ -19,17 +19,17 @@ import ForecastDay from '@/components/ui/ForecastDay'
 import MonitoringBlock from '@/components/ui/MonitoringBlock'
 import Line from '@/components/ui/Line'
 import {
-	AccountCircle,
-	FloorTemp,
-	Humidity,
-	PHLevel,
-	PhoneControl,
+	AccountCircleIcon,
+	FloorTempIcon,
+	HumidityIcon,
+	PHLevelIcon,
+	PhoneControlIcon,
 	SunCloud,
 	SunCloudSmall,
 	Sunny,
-	TemperatureSubstrate,
+	TemperatureSubstrateIcon,
 	WaterLevel,
-	WaterObstruction
+	WaterObstructionIcon
 } from '@/components/ui/Icons'
 
 export default function App() {
@@ -223,18 +223,48 @@ export default function App() {
 							label='Nivel de Agua'
 						/>
 						<MonitoringBlock
-							icon={<FloorTemp />}
+							icon={
+								<FloorTempIcon
+									width={42}
+									height={42}
+									color={
+										isDarkColorScheme
+											? colors.dark.baseIcons
+											: colors.light.baseIcons
+									}
+								/>
+							}
 							value='25°C'
 							label='Temperatura del suelo'
 						/>
 						<MonitoringBlock
-							icon={<TemperatureSubstrate />}
+							icon={
+								<TemperatureSubstrateIcon
+									width={42}
+									height={42}
+									color={
+										isDarkColorScheme
+											? colors.dark.baseIcons
+											: colors.light.baseIcons
+									}
+								/>
+							}
 							value='20°C'
 							label='Temperatura del sustrato'
 						/>
 						{weatherData.humidity ? (
 							<MonitoringBlock
-								icon={<Humidity />}
+								icon={
+									<HumidityIcon
+										width={42}
+										height={42}
+										color={
+											isDarkColorScheme
+												? colors.dark.baseIcons
+												: colors.light.baseIcons
+										}
+									/>
+								}
 								value={weatherData.humidity}
 								label='Humedad'
 							/>
@@ -242,12 +272,32 @@ export default function App() {
 							<GenericSkeleton width='48%' height={42} />
 						)}
 						<MonitoringBlock
-							icon={<PHLevel />}
+							icon={
+								<PHLevelIcon
+									width={42}
+									height={42}
+									color={
+										isDarkColorScheme
+											? colors.dark.baseIcons
+											: colors.light.baseIcons
+									}
+								/>
+							}
 							value='6,83'
 							label='Nivel de PH'
 						/>
 						<MonitoringBlock
-							icon={<WaterObstruction />}
+							icon={
+								<WaterObstructionIcon
+									width={42}
+									height={42}
+									color={
+										isDarkColorScheme
+											? colors.dark.baseIcons
+											: colors.light.baseIcons
+									}
+								/>
+							}
 							value='05%'
 							label='Obstrucción canal de agua'
 						/>
@@ -306,12 +356,28 @@ export default function App() {
 							}
 							className='flex-row gap-2 items-center bg-[rgba(109,165,192,0.3)] py-2 px-[15px] rounded-[20px]'
 						>
-							<PhoneControl />
+							<PhoneControlIcon
+								width={24}
+								height={24}
+								color={
+									isDarkColorScheme
+										? colors.dark.foreground
+										: colors.light.foreground
+								}
+							/>
 							<Line height={15} />
 							<Text className='text-foreground text-sm font-bold'>Control</Text>
 						</LinearGradient>
 						<TouchableOpacity>
-							<AccountCircle />
+							<AccountCircleIcon
+								width={33}
+								height={33}
+								color={
+									isDarkColorScheme
+										? colors.dark.foreground
+										: colors.light.foreground
+								}
+							/>
 						</TouchableOpacity>
 						<TouchableOpacity>
 							<IconSymbol
