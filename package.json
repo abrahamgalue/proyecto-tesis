@@ -46,7 +46,8 @@
     "tailwindcss": "3.4.14",
     "zod": "3.23.8",
     "expo-navigation-bar": "~4.0.9",
-    "react-native-svg": "15.8.0"
+    "react-native-svg": "15.8.0",
+    "expo-font": "~13.0.4"
   },
   "devDependencies": {
     "@types/react": "18.3.12",

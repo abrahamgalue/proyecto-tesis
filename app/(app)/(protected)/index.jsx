@@ -1,4 +1,4 @@
-import { Text, View, TouchableOpacity, ScrollView } from 'react-native'
+import { View, TouchableOpacity, ScrollView } from 'react-native'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import { useRouter } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
@@ -31,6 +31,7 @@ import {
 	WaterLevel,
 	WaterObstructionIcon
 } from '@/components/ui/Icons'
+import { Text } from '@/components/text'
 
 export default function App() {
 	const notifications = 3
@@ -124,7 +125,7 @@ export default function App() {
 									]
 						}
 					>
-						<View className='absolute w-full h-full rounded-3xl overflow-hidden bottom-9 right-0'>
+						<View className='absolute w-full h-full rounded-3xl overflow-hidden bottom-10 right-0'>
 							<Image
 								className='w-[400px] h-[400px] absolute -bottom-24 -right-36 opacity-10'
 								source={require('@/assets/logo-raw.png')}

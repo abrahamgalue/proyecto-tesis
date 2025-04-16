@@ -1,16 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, Controller } from 'react-hook-form'
-import {
-	ActivityIndicator,
-	Text,
-	Pressable,
-	TextInput,
-	View
-} from 'react-native'
+import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Image } from '@/components/image'
 import * as z from 'zod'
 import { LinearGradient } from 'expo-linear-gradient'
 import { IconSymbol } from '@/components/ui/IconSymbol'
+import { Text } from '@/components/text'
 
 import { SafeAreaView } from '@/components/safe-area-view'
 import { useSupabase } from '@/context/supabase-provider'

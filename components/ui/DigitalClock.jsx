@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Text } from 'react-native'
+import { Text } from '@/components/text'
 import { formatHour } from '@/lib/utils'
 
 function DigitalClock() {

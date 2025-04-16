@@ -1,5 +1,6 @@
 import { useSupabase } from '@/context/supabase-provider'
-import { View, Text, Pressable } from 'react-native'
+import { View, Pressable } from 'react-native'
+import { Text } from '@/components/text'
 
 export default function Settings() {
 	const { signOut } = useSupabase()
