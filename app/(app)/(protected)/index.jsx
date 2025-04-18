@@ -1,6 +1,5 @@
 import { View, TouchableOpacity, ScrollView } from 'react-native'
 import { IconSymbol } from '@/components/ui/IconSymbol'
-import { useRouter } from 'expo-router'
 import { LinearGradient } from 'expo-linear-gradient'
 import {
 	colors,
@@ -32,22 +31,26 @@ import {
 	WaterObstructionIcon
 } from '@/components/ui/Icons'
 import { Text } from '@/components/text'
+import WeatherDetail from '@/components/ui/WeatherDetail'
 
 export default function App() {
 	const notifications = 3
 	const { isDarkColorScheme } = useColorScheme()
-	const router = useRouter()
 	const [weatherData, setWeatherData] = useState({})
+	const [isShow, setIsShow] = useState(false)
 
 	useEffect(() => {
 		let ignore = false
 
 		getWeatherData()
-			.then((data) => {
+			.then(({ tempOutside, humidity, UV, wind, sensationThermal }) => {
 				if (!ignore) {
 					setWeatherData({
-						tempOutside: data.temperaturaExterior,
-						humidity: data.humedad
+						tempOutside,
+						humidity,
+						UV,
+						wind,
+						sensationThermal
 					})
 				}
 			})
@@ -198,14 +201,69 @@ export default function App() {
 									detail='88% Sol'
 								/>
 							</View>
+							{isShow && (
+								<View className='flex items-center justify-center pt-8 pb-3 gap-3'>
+									<WeatherDetail
+										icon={
+											<HumidityIcon
+												width={25}
+												height={25}
+												color={
+													isDarkColorScheme
+														? colors.dark.foreground
+														: colors.light.foreground
+												}
+											/>
+										}
+										label='Velocidad del Viento'
+										value={weatherData.wind.speed}
+										unit={weatherData.wind.unit}
+									/>
+									<WeatherDetail
+										icon={
+											<HumidityIcon
+												width={25}
+												height={25}
+												color={
+													isDarkColorScheme
+														? colors.dark.foreground
+														: colors.light.foreground
+												}
+											/>
+										}
+										label='Indice UV'
+										value={weatherData.UV.index}
+										unit={weatherData.UV.state}
+									/>
+									<WeatherDetail
+										icon={
+											<HumidityIcon
+												width={25}
+												height={25}
+												color={
+													isDarkColorScheme
+														? colors.dark.foreground
+														: colors.light.foreground
+												}
+											/>
+										}
+										label='Sensación Térmica'
+										value={weatherData.sensationThermal}
+										unit='°C'
+										isLargeText={true}
+									/>
+								</View>
+							)}
 						</View>
 						<TouchableOpacity
-							onPress={() => router.push('/(app)/modal')}
+							onPress={() => setIsShow(!isShow)}
 							className='flex-row justify-center items-center p-2'
 						>
-							<Text className='text-foreground'>Ver más</Text>
+							<Text className='text-foreground'>
+								Ver {isShow ? 'menos' : 'más'}
+							</Text>
 							<IconSymbol
-								name='keyboard-arrow-down'
+								name={isShow ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
 								size={16}
 								color={
 									isDarkColorScheme
