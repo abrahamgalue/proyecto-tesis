@@ -1,5 +1,3 @@
-// filepath: c:\Users\abrah\workspace\mobile\react-native\proyecto-tesis\components\ui\CustomText.jsx
-import React from 'react'
 import { Text, StyleSheet } from 'react-native'
 
 const CustomText = ({ style, ...props }) => {

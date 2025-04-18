@@ -1,5 +1,4 @@
 import { Tabs } from 'expo-router'
-import React from 'react'
 
 import { colors } from '@/constants/colors'
 import { useColorScheme } from '@/lib/useColorScheme'
