@@ -8,6 +8,12 @@ export default function WeatherDetail({
 	unit,
 	isLargeText
 }) {
+	const unitTextSize = isLargeText
+		? 'text-4xl h-8'
+		: unit.length > 5
+			? 'text-xs'
+			: ''
+
 	return (
 		<View className='flex flex-row justify-between py-2 px-4 w-full h-20 rounded-2xl border border-border'>
 			<View className='flex flex-row items-center justify-start flex-[4]'>
@@ -19,11 +25,7 @@ export default function WeatherDetail({
 					<Text className='text-foreground font-bold text-4xl h-8 mr-1'>
 						{value}
 					</Text>
-					<Text
-						className={`text-foreground ${isLargeText ? 'text-4xl h-8' : ''}`}
-					>
-						{unit}
-					</Text>
+					<Text className={`text-foreground ${unitTextSize}`}>{unit}</Text>
 				</View>
 			</View>
 		</View>
