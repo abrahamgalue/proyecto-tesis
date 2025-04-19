@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, Controller } from 'react-hook-form'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
-import { Image } from '@/components/image'
+import { Image, ImageBackground } from '@/components/image'
 import * as z from 'zod'
 import { LinearGradient } from 'expo-linear-gradient'
 import { IconSymbol } from '@/components/ui/IconSymbol'
@@ -50,98 +50,107 @@ export default function SignIn() {
 	return (
 		<SafeAreaView className='flex-1' edges={['bottom']}>
 			<LinearGradient
-				className='flex-1 gap-4 justify-center items-center'
+				className='flex-1'
 				colors={
 					isDarkColorScheme
 						? [colors.dark.fromGradient, colors.dark.toGradient]
 						: [colors.light.fromGradient, colors.light.toGradient]
 				}
 			>
-				<Image
-					className='w-52 h-52 mb-12 -mt-12'
-					source={require('@/assets/signin-icon.png')}
-					style={{ contentFit: 'contain' }}
-				/>
-				<Controller
-					control={control}
-					rules={{
-						required: true
-					}}
-					render={({ field: { onChange, onBlur, value } }) => (
-						<TextInput
-							className='w-[80%] text-foreground h-14 border border-border rounded-full px-8'
-							onBlur={onBlur}
-							onChangeText={onChange}
-							placeholder='Email'
-							placeholderTextColor={
-								isDarkColorScheme
-									? colors.dark.foreground
-									: colors.light.foreground
-							}
-							value={value}
-						/>
-					)}
-					name='email'
-				/>
-
-				<Controller
-					control={control}
-					rules={{
-						maxLength: 18
-					}}
-					render={({ field: { onChange, onBlur, value } }) => (
-						<View className='w-[80%] flex flex-row justify-center items-center border border-border rounded-full'>
+				<ImageBackground
+					source={require('@/assets/login-bg.png')}
+					className='flex-1 gap-4 justify-center items-center'
+				>
+					<Image
+						className='w-52 h-52 mb-12 -mt-12'
+						source={require('@/assets/signin-icon.png')}
+						style={{ contentFit: 'contain' }}
+					/>
+					<Controller
+						control={control}
+						rules={{
+							required: true
+						}}
+						render={({ field: { onChange, onBlur, value } }) => (
 							<TextInput
-								className='text-foreground h-14 flex-1 pl-8 rounded-l-full'
+								className='w-[80%] text-foreground h-14 border border-border rounded-full px-8'
 								onBlur={onBlur}
 								onChangeText={onChange}
-								placeholder='Contraseña'
+								placeholder='Email'
 								placeholderTextColor={
 									isDarkColorScheme
 										? colors.dark.foreground
 										: colors.light.foreground
 								}
-								secureTextEntry={!showPass}
 								value={value}
 							/>
-							<Pressable
-								className='px-4'
-								onPress={() => setShowPass(!showPass)}
-							>
-								<IconSymbol
-									color={
-										isDarkColorScheme ? colors.dark.accent : colors.light.accent
+						)}
+						name='email'
+					/>
+
+					<Controller
+						control={control}
+						rules={{
+							maxLength: 18
+						}}
+						render={({ field: { onChange, onBlur, value } }) => (
+							<View className='w-[80%] flex flex-row justify-center items-center border border-border rounded-full'>
+								<TextInput
+									className='text-foreground h-14 flex-1 pl-8 rounded-l-full'
+									onBlur={onBlur}
+									onChangeText={onChange}
+									placeholder='Contraseña'
+									placeholderTextColor={
+										isDarkColorScheme
+											? colors.dark.foreground
+											: colors.light.foreground
 									}
-									name={!showPass ? 'visibility' : 'visibility-off'}
+									secureTextEntry={!showPass}
+									value={value}
 								/>
-							</Pressable>
-						</View>
-					)}
-					name='password'
-				/>
+								<Pressable
+									className='px-4'
+									onPress={() => setShowPass(!showPass)}
+								>
+									<IconSymbol
+										color={
+											isDarkColorScheme
+												? colors.dark.accent
+												: colors.light.accent
+										}
+										name={!showPass ? 'visibility' : 'visibility-off'}
+									/>
+								</Pressable>
+							</View>
+						)}
+						name='password'
+					/>
 
-				<Text className='text-red-500'>
-					{error ? 'Correo y/o contraseña incorrecta' : ''}
-				</Text>
+					<Text className='text-red-500'>
+						{error ? 'Correo y/o contraseña incorrecta' : ''}
+					</Text>
 
-				<Pressable
-					className={`${!formState.isValid ? 'opacity-20 bg-slate-700' : 'bg-[#0C6971]'} w-[80%] p-4 rounded-full`}
-					disabled={!formState.isValid}
-					onPress={handleSubmit(onSubmit)}
-				>
-					{formState.isSubmitting ? (
-						<ActivityIndicator
-							size='small'
-							color={
-								isDarkColorScheme
-									? colors.dark.activityIndicator
-									: colors.light.activityIndicator
-							}
-						/>
-					) : (
-						<Text className='text-foreground text-center'>INICIAR SESIÓN</Text>
-					)}
-				</Pressable>
+					<Pressable
+						className={`${!formState.isValid ? 'opacity-20 bg-slate-700' : 'bg-[#0C6971]'} w-[80%] p-4 rounded-full`}
+						disabled={!formState.isValid}
+						onPress={handleSubmit(onSubmit)}
+					>
+						{formState.isSubmitting ? (
+							<ActivityIndicator
+								size='small'
+								color={
+									isDarkColorScheme
+										? colors.dark.activityIndicator
+										: colors.light.activityIndicator
+								}
+							/>
+						) : (
+							<Text className='text-foreground text-center'>
+								INICIAR SESIÓN
+							</Text>
+						)}
+					</Pressable>
+				</ImageBackground>
 			</LinearGradient>
 		</SafeAreaView>
 	)

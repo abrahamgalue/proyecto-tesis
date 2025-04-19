@@ -24,9 +24,9 @@ export default function AppLayout() {
 		<SupabaseProvider>
 			<Slot />
 			<StatusBar
-				backgroundColor={
-					isDarkColorScheme ? colors.dark.background : colors.light.background
-				}
+				// backgroundColor={
+				// 	isDarkColorScheme ? colors.dark.background : colors.light.background
+				// }
 				style='auto'
 			/>
 		</SupabaseProvider>
