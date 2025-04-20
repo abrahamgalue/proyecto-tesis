@@ -32,12 +32,21 @@ import {
 } from '@/components/ui/Icons'
 import { Text } from '@/components/text'
 import WeatherDetail from '@/components/ui/WeatherDetail'
+import Notifications from '@/components/ui/Notifications'
 
 export default function App() {
-	const notifications = 3
 	const { isDarkColorScheme } = useColorScheme()
 	const [weatherData, setWeatherData] = useState({})
 	const [isShow, setIsShow] = useState(false)
+	const [showNotifications, setShowNotifications] = useState(false)
+
+	const handleNotificationPress = () => {
+		setShowNotifications(!showNotifications)
+	}
+
+	const handleClearNotifications = () => {
+		setShowNotifications(false)
+	}
 
 	useEffect(() => {
 		let ignore = false
@@ -68,6 +77,7 @@ export default function App() {
 	return (
 		<View>
 			<ScrollView
+				scrollEnabled={!showNotifications}
 				className='bg-background'
 				contentContainerClassName='grow justify-between'
 			>
@@ -79,27 +89,11 @@ export default function App() {
 							: [colors.light.fromGradient, colors.light.toGradient]
 					}
 				>
-					{/* --- Notifications --- */}
-					<View className='w-full flex-row h-10 items-center justify-start mb-6'>
-						<View className='relative rounded-full p-1 border border-border h-11 w-11 items-center justify-center'>
-							<IconSymbol
-								name='notifications-none'
-								size={28}
-								color={
-									isDarkColorScheme
-										? colors.dark.foreground
-										: colors.light.foreground
-								}
-							/>
-							{notifications > 0 && (
-								<View className='absolute top-0 right-0 bg-[#008A08] rounded-full w-4 h-4 justify-center items-center'>
-									<Text className='text-foreground text-[10px] font-bold'>
-										{notifications < 10 ? notifications : '+9'}
-									</Text>
-								</View>
-							)}
-						</View>
-					</View>
+					<Notifications
+						showNotifications={showNotifications}
+						handleNotificationPress={handleNotificationPress}
+						handleClearNotifications={handleClearNotifications}
+					/>
 
 					{/* --- Weather Card --- */}
 					<LinearGradient
