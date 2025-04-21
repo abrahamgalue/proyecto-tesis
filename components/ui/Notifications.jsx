@@ -37,7 +37,7 @@ const Notifications = ({
 			<Pressable
 				hitSlop={25}
 				onPress={onPressNotification}
-				className={`relative rounded-full p-1 border border-border h-11 w-11 items-center justify-center active:scale-90 ${showNotifications ? 'bg-[#236c72]' : ''}`}
+				className={`relative rounded-full p-1 border border-border h-11 w-11 items-center justify-center active:scale-90 ${showNotifications ? 'bg-active-notification-bg' : ''}`}
 				disabled={notifications.length === 0}
 			>
 				<IconSymbol
@@ -48,8 +48,8 @@ const Notifications = ({
 					}
 				/>
 				{notifications.length > 0 && (
-					<View className='absolute top-0 right-0 bg-[#008A08] rounded-full w-4 h-4 justify-center items-center'>
-						<Text className='text-foreground text-[10px] font-bold'>
+					<View className='absolute top-0 right-0 bg-notification-num rounded-full w-4 h-4 justify-center items-center'>
+						<Text className='text-white text-[10px] font-bold'>
 							{notifications.length < 10 ? notifications.length : '+9'}
 						</Text>
 					</View>
@@ -57,7 +57,7 @@ const Notifications = ({
 			</Pressable>
 
 			{showNotifications && (
-				<View className='absolute top-12 left-0 bg-[#50798D] rounded-lg p-4 h-64 w-2/3 z-50'>
+				<View className='absolute top-12 left-0 bg-notification-view-bg rounded-lg p-4 h-64 w-2/3 z-50'>
 					<ScrollView>
 						{notifications.map((notification, index) => {
 							const IconComponent =
@@ -93,7 +93,9 @@ const Notifications = ({
 					>
 						{({ pressed }) => (
 							<Text
-								style={{ color: pressed ? '#fca5a5' : 'white' }}
+								style={{
+									color: pressed ? colors.dark.clearNotificationsText : 'white'
+								}}
 								className='font-bold'
 							>
 								Limpiar todo

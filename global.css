@@ -4,7 +4,7 @@
 
 @layer base {
 	:root {
-		--accent-foreground: 	#18181b;
+		--accent-foreground: #18181b;
 		--accent: #6da5c0;
 		--background: #ffffff;
 		--background-skeleton: #d9d9d9;
@@ -20,39 +20,43 @@
 		--popover-foreground: #070708;
 		--popover: #ffffff;
 		--primary-foreground: #fafafa;
-		--primary: 	#18181b;
-		--ring: 	#18181b;
-		--secondary-foreground: 	#18181b;
+		--primary: #18181b;
+		--ring: #18181b;
+		--secondary-foreground: #18181b;
 		--secondary: #f4f4f5;
-    --activity-indicator: #00171e;
-    --base-icons: #2c2c2c; 
-    --from-gradient: #fff;
-    --to-gradient: #fff;
-		--control-gradient1: rgba(51,77,90,0.1);
-		--control-gradient2: rgba(63,96,112,0.1);
-		--control-gradient3: rgba(80,121,141,0.1);
-		--control-gradient4: rgba(109,165,192,0.1);
-		--weather-gradient1: rgba(51,77,90,0.3);
-		--weather-gradient2: rgba(63,96,112,0.3);
-		--weather-gradient3: rgba(80,121,141,0.3);
-		--weather-gradient4: rgba(109,165,192,0.3);
+		--activity-indicator: #00171e;
+		--base-icons: #2c2c2c;
+		--from-gradient: #fff;
+		--to-gradient: #fff;
+		--control-gradient1: rgba(51, 77, 90, 0.1);
+		--control-gradient2: rgba(63, 96, 112, 0.1);
+		--control-gradient3: rgba(80, 121, 141, 0.1);
+		--control-gradient4: rgba(109, 165, 192, 0.1);
+		--weather-gradient1: rgba(51, 77, 90, 0.3);
+		--weather-gradient2: rgba(63, 96, 112, 0.3);
+		--weather-gradient3: rgba(80, 121, 141, 0.3);
+		--weather-gradient4: rgba(109, 165, 192, 0.3);
 		--tab-bar-tint-icon: #6da5c0;
+		--notification-num: #008a08;
+		--active-notification-bg: #368e96;
+		--notification-view-bg: #50798d;
+		--active-clear-notifications-btn-text: #fca5a5;
 	}
-  
+
 	.dark:root {
-    --activity-indicator: #00171e;
-		--background: #082D33;
-    --background-skeleton: #082D33;
+		--activity-indicator: #00171e;
+		--background: #082d33;
+		--background-skeleton: #082d33;
 		--foreground: #fafafa;
 		--card: #09090b;
 		--card-foreground: #fafafa;
 		--popover: #09090b;
 		--popover-foreground: #fafafa;
 		--primary: #fafafa;
-		--primary-foreground: 	#18181b;
-		--secondary: 	#27272a;
+		--primary-foreground: #18181b;
+		--secondary: #27272a;
 		--secondary-foreground: #fafafa;
-		--muted: 	#27272a;
+		--muted: #27272a;
 		--muted-foreground: #a1a1aa;
 		--accent: #6da5c0;
 		--accent-foreground: #fafafa;
@@ -61,17 +65,21 @@
 		--border: #6da5c0;
 		--input: transparent;
 		--ring: #d4d4d8;
-    --from-gradient: #082D33;
-    --to-gradient: #04151A;
-    --base-icons: #a1a1aa;
-		--control-gradient1: rgba(51,77,90,0.1);
-		--control-gradient2: rgba(63,96,112,0.1);
-		--control-gradient3: rgba(80,121,141,0.1);
-		--control-gradient4: rgba(109,165,192,0.1);
-		--weather-gradient1: rgba(51,77,90,0.3);
-		--weather-gradient2: rgba(63,96,112,0.3);
-		--weather-gradient3: rgba(80,121,141,0.3);
-		--weather-gradient4: rgba(109,165,192,0.3);
+		--from-gradient: #082d33;
+		--to-gradient: #04151a;
+		--base-icons: #a1a1aa;
+		--control-gradient1: rgba(51, 77, 90, 0.1);
+		--control-gradient2: rgba(63, 96, 112, 0.1);
+		--control-gradient3: rgba(80, 121, 141, 0.1);
+		--control-gradient4: rgba(109, 165, 192, 0.1);
+		--weather-gradient1: rgba(51, 77, 90, 0.3);
+		--weather-gradient2: rgba(63, 96, 112, 0.3);
+		--weather-gradient3: rgba(80, 121, 141, 0.3);
+		--weather-gradient4: rgba(109, 165, 192, 0.3);
 		--tab-bar-tint-icon: #6da5c0;
+		--notification-num: #008a08;
+		--active-notification-bg: #236c72;
+		--notification-view-bg: #50798d;
+		--active-clear-notifications-btn-text: #fca5a5;
 	}
 }

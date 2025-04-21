@@ -36,7 +36,8 @@ export const colors = {
 		weatherGradient1: 'rgba(51,77,90,0.3)',
 		weatherGradient2: 'rgba(63,96,112,0.3)',
 		weatherGradient3: 'rgba(80,121,141,0.3)',
-		weatherGradient4: 'rgba(109,165,192,0.3)'
+		weatherGradient4: 'rgba(109,165,192,0.3)',
+		clearNotificationsText: '#fca5a5'
 	},
 	dark: {
 		activityIndicator: '#00171e',
@@ -71,6 +72,7 @@ export const colors = {
 		controlGradient2: 'rgba(63,96,112,0.1)',
 		controlGradient3: 'rgba(80,121,141,0.1)',
 		controlGradient4: 'rgba(109,165,192,0.1)',
-		baseIcons: '#a1a1aa'
+		baseIcons: '#a1a1aa',
+		clearNotificationsText: '#fca5a5'
 	}
 }

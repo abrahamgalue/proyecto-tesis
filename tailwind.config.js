@@ -57,7 +57,12 @@ module.exports = {
 				'weather-gradient2': 'var(--weather-gradient2)',
 				'weather-gradient3': 'var(--weather-gradient3)',
 				'weather-gradient4': 'var(--weather-gradient4)',
-				'tab-bar-tint-icon': 'var(--tab-bar-tint-icon)'
+				'tab-bar-tint-icon': 'var(--tab-bar-tint-icon)',
+				'notification-num': 'var(--notification-num)',
+				'active-notification-bg': 'var(--active-notification-bg)',
+				'notification-view-bg': 'var(--notification-view-bg)',
+				'active-clear-notifications-btn-text':
+					'var(--active-clear-notifications-btn-text)'
 			}
 		}
 	},
