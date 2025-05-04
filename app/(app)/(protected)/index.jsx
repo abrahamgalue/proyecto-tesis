@@ -383,45 +383,49 @@ export default function App() {
 									]
 						}
 					>
-						<LinearGradient
-							style={{
-								borderColor: colors.dark.border,
-								borderRadius: 12,
-								borderWidth: 1
-							}}
-							start={gradientStart}
-							end={gradientEnd}
-							locations={gradientLocations}
-							colors={
-								isDarkColorScheme
-									? [
-											colors.dark.weatherGradient1,
-											colors.dark.weatherGradient2,
-											colors.dark.weatherGradient3,
-											colors.dark.weatherGradient4
-										]
-									: [
-											colors.light.weatherGradient1,
-											colors.light.weatherGradient2,
-											colors.light.weatherGradient3,
-											colors.light.weatherGradient4
-										]
-							}
-							className='flex-row gap-2 items-center bg-[rgba(109,165,192,0.3)] py-2 px-[15px] rounded-[20px]'
-						>
-							<PhoneControlIcon
-								width={24}
-								height={24}
-								color={
-									isDarkColorScheme
-										? colors.dark.foreground
-										: colors.light.foreground
-								}
-							/>
-							<Line height={15} />
-							<Text className='text-foreground text-sm font-bold'>Control</Text>
-						</LinearGradient>
 						<TouchableOpacity>
+							<LinearGradient
+								style={{
+									borderColor: colors.dark.border,
+									borderRadius: 12,
+									borderWidth: 1
+								}}
+								start={gradientStart}
+								end={gradientEnd}
+								locations={gradientLocations}
+								colors={
+									isDarkColorScheme
+										? [
+												colors.dark.weatherGradient1,
+												colors.dark.weatherGradient2,
+												colors.dark.weatherGradient3,
+												colors.dark.weatherGradient4
+											]
+										: [
+												colors.light.weatherGradient1,
+												colors.light.weatherGradient2,
+												colors.light.weatherGradient3,
+												colors.light.weatherGradient4
+											]
+								}
+								className='flex-row gap-2 items-center bg-[rgba(109,165,192,0.3)] py-2 px-[15px] rounded-[20px]'
+							>
+								<PhoneControlIcon
+									width={24}
+									height={24}
+									color={
+										isDarkColorScheme
+											? colors.dark.foreground
+											: colors.light.foreground
+									}
+								/>
+								<Line height={15} />
+								<Text className='text-foreground text-sm font-bold'>
+									Control
+								</Text>
+							</LinearGradient>
+						</TouchableOpacity>
+						<TouchableOpacity hitSlop={14}>
 							<AccountCircleIcon
 								width={33}
 								height={33}
@@ -432,7 +436,7 @@ export default function App() {
 								}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity>
+						<TouchableOpacity hitSlop={18}>
 							<IconSymbol
 								name='settings'
 								size={24}

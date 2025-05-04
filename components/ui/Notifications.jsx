@@ -1,5 +1,11 @@
 import { useState } from 'react'
-import { View, Pressable, ScrollView, Text } from 'react-native'
+import {
+	View,
+	Pressable,
+	ScrollView,
+	Text,
+	TouchableOpacity
+} from 'react-native'
 import { IconSymbol } from './IconSymbol'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { colors } from '@/constants/colors'
@@ -34,10 +40,10 @@ const Notifications = ({
 
 	return (
 		<View className='w-full flex-row h-10 items-center justify-start mb-6'>
-			<Pressable
-				hitSlop={25}
+			<TouchableOpacity
+				hitSlop={20}
 				onPress={onPressNotification}
-				className={`relative rounded-full p-1 border border-border h-11 w-11 items-center justify-center active:scale-90 ${showNotifications ? 'bg-active-notification-bg' : ''}`}
+				className={`relative rounded-full p-1 border z-10 border-border h-11 w-11 items-center justify-center ${showNotifications ? 'bg-active-notification-bg' : ''}`}
 				disabled={notifications.length === 0}
 			>
 				<IconSymbol
@@ -54,10 +60,10 @@ const Notifications = ({
 						</Text>
 					</View>
 				)}
-			</Pressable>
+			</TouchableOpacity>
 
 			{showNotifications && (
-				<View className='absolute top-12 left-0 bg-notification-view-bg rounded-lg p-4 h-64 w-2/3 z-50'>
+				<View className='absolute top-12 left-0 bg-notification-view-bg rounded-lg p-4 h-64 w-2/3 z-20'>
 					<ScrollView>
 						{notifications.map((notification, index) => {
 							const IconComponent =
