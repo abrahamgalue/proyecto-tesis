@@ -1,17 +1,9 @@
-import { useState, useEffect } from 'react'
+import useTime from '@/hooks/useTime'
 import { Text } from '@/components/text'
 import { formatHour } from '@/lib/utils'
 
 function DigitalClock() {
-	const [time, setTime] = useState(new Date())
-
-	useEffect(() => {
-		const timeInterval = setInterval(() => {
-			setTime(new Date())
-		}, 1000)
-
-		return () => clearInterval(timeInterval)
-	}, [])
+	const { time } = useTime()
 
 	return (
 		<Text className='text-foreground text-3xl font-bold'>
