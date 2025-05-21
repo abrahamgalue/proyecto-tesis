@@ -11,8 +11,7 @@ import { useColorScheme } from '@/lib/useColorScheme'
 import { Image } from '@/components/image'
 import DigitalClock from '@/components/ui/DigitalClock'
 import Day from '@/components/ui/Date'
-import { useState, useEffect } from 'react'
-import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
+import { useState } from 'react'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 import ForecastDay from '@/components/ui/ForecastDay'
 import MonitoringBlock from '@/components/ui/MonitoringBlock'
@@ -33,10 +32,11 @@ import {
 import { Text } from '@/components/text'
 import WeatherDetail from '@/components/ui/WeatherDetail'
 import Notifications from '@/components/ui/Notifications'
+import useWeatherData from '@/hooks/useWeatherData'
 
 export default function App() {
+	const { weatherData } = useWeatherData()
 	const { isDarkColorScheme } = useColorScheme()
-	const [weatherData, setWeatherData] = useState({})
 	const [isShow, setIsShow] = useState(false)
 	const [showNotifications, setShowNotifications] = useState(false)
 
@@ -47,32 +47,6 @@ export default function App() {
 	const handleClearNotifications = () => {
 		setShowNotifications(false)
 	}
-
-	useEffect(() => {
-		let ignore = false
-
-		getWeatherData()
-			.then(({ tempOutside, humidity, UV, wind, sensationThermal }) => {
-				if (!ignore) {
-					setWeatherData({
-						tempOutside,
-						humidity,
-						UV,
-						wind,
-						sensationThermal
-					})
-				}
-			})
-			.catch(() => {
-				if (!ignore) {
-					setWeatherData(FALLBACK_WEATHER_DATA)
-				}
-			})
-
-		return () => {
-			ignore = true
-		}
-	}, [])
 
 	return (
 		<View>
