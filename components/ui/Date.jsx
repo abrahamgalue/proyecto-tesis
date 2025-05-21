@@ -3,10 +3,7 @@ import { Text } from '@/components/text'
 
 function Day() {
 	return (
-		<Text
-			style={{ fontFamily: 'Inter' }}
-			className='text-foreground text-lg mb-3 capitalize'
-		>
+		<Text className='text-foreground text-lg mb-3 capitalize'>
 			{formatDate()}
 		</Text>
 	)
