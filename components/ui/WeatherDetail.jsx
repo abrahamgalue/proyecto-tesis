@@ -1,5 +1,6 @@
 import { View } from 'react-native'
 import { Text } from '@/components/text'
+import { getTextSize } from '@/lib/utils'
 
 export default function WeatherDetail({
 	icon,
@@ -8,11 +9,7 @@ export default function WeatherDetail({
 	unit,
 	isLargeText
 }) {
-	const unitTextSize = isLargeText
-		? 'text-4xl h-8'
-		: unit.length > 5
-			? 'text-xs'
-			: ''
+	const unitTextSize = getTextSize({ isLargeText, unit })
 
 	return (
 		<View className='flex flex-row justify-between py-2 px-4 w-full h-20 rounded-2xl border border-border'>
