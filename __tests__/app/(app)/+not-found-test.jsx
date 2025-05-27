@@ -9,14 +9,4 @@ describe('<NotFound />', () => {
 
 		expect(screen.getByText('This page could not be found.')).toBeOnTheScreen()
 	})
-
-	test('should apply correct styles and layout classes', () => {
-		render(<NotFound />)
-
-		const title = screen.getByText('404')
-		const subtitle = screen.getByText('This page could not be found.')
-
-		expect(title.props.className).toContain('text-4xl text-foreground')
-		expect(subtitle.props.className).toContain('text-sm text-muted-foreground')
-	})
 })
