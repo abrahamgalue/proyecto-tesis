@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native'
-import Modal from '@/app/(app)/modal'
+import Modal from '@/app/(protected)/modal'
 
 describe('<Modal />', () => {
 	test('should render the title and description', () => {

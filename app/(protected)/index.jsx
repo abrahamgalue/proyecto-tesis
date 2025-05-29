@@ -33,6 +33,8 @@ import { Text } from '@/components/text'
 import WeatherDetail from '@/components/ui/WeatherDetail'
 import Notifications from '@/components/ui/Notifications'
 import useWeatherData from '@/hooks/useWeatherData'
+import { router } from 'expo-router'
+import { SafeAreaView } from '@/components/safe-area-view'
 
 export default function App() {
 	const { weatherData } = useWeatherData()
@@ -49,7 +51,7 @@ export default function App() {
 	}
 
 	return (
-		<View>
+		<SafeAreaView>
 			<ScrollView
 				scrollEnabled={!showNotifications}
 				className='bg-background'
@@ -399,7 +401,10 @@ export default function App() {
 								</Text>
 							</LinearGradient>
 						</TouchableOpacity>
-						<TouchableOpacity hitSlop={14}>
+						<TouchableOpacity
+							onPress={() => router.push('/modal')}
+							hitSlop={14}
+						>
 							<AccountCircleIcon
 								width={33}
 								height={33}
@@ -410,7 +415,10 @@ export default function App() {
 								}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity hitSlop={18}>
+						<TouchableOpacity
+							onPress={() => router.push('/settings')}
+							hitSlop={18}
+						>
 							<IconSymbol
 								name='settings'
 								size={24}
@@ -434,6 +442,6 @@ export default function App() {
 					</View>
 				</LinearGradient>
 			</ScrollView>
-		</View>
+		</SafeAreaView>
 	)
 }
