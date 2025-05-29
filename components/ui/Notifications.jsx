@@ -1,15 +1,11 @@
-import { useState } from 'react'
-import {
-	View,
-	Pressable,
-	ScrollView,
-	Text,
-	TouchableOpacity
-} from 'react-native'
-import { IconSymbol } from './IconSymbol'
+import { View, Pressable, ScrollView, TouchableOpacity } from 'react-native'
+import { IconSymbol } from '@/components/ui/IconSymbol'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { colors } from '@/constants/colors'
-import { TemperatureSubstrateIcon, WaterObstructionIcon } from './Icons'
+import NotificationBadge from '@/components/ui/NotificationBadge'
+import NotificationElement from '@/components/ui/NotificationElement'
+import { Text } from '@/components/text'
+import useNotifications from '@/hooks/useNotifications'
 
 const Notifications = ({
 	showNotifications,
@@ -17,30 +13,17 @@ const Notifications = ({
 	handleClearNotifications
 }) => {
 	const { isDarkColorScheme } = useColorScheme()
-	const [notifications, setNotifications] = useState([
-		{ type: 'waterLevel', content: '60% de agua restante' },
-		{ type: 'waterObstruction', content: '0.5% obstrucción' },
-		{ type: 'waterObstruction', content: '0.5% obstrucción' },
-		{ type: 'waterObstruction', content: '0.5% obstrucción' },
-		{ type: 'waterObstruction', content: '0.5% obstrucción' },
-		{ type: 'waterObstruction', content: '0.5% obstrucción' },
-		{ type: 'waterLevel', content: '60% de agua restante' }
-	])
-
-	const onPressNotification = () => {
-		if (notifications.length > 0) {
-			handleNotificationPress()
-		}
-	}
-
-	const onPressClearNotifications = () => {
-		setNotifications([])
-		handleClearNotifications()
-	}
+	const {
+		notifications,
+		numOfNotifications,
+		onPressClearNotifications,
+		onPressNotification
+	} = useNotifications({ handleClearNotifications, handleNotificationPress })
 
 	return (
 		<View className='w-full flex-row h-10 items-center justify-start mb-6'>
 			<TouchableOpacity
+				accessibilityRole='button'
 				hitSlop={20}
 				onPress={onPressNotification}
 				className={`relative rounded-full p-1 border z-10 border-border h-11 w-11 items-center justify-center ${showNotifications ? 'bg-active-notification-bg' : ''}`}
@@ -54,44 +37,16 @@ const Notifications = ({
 					}
 				/>
 				{notifications.length > 0 && (
-					<View className='absolute top-0 right-0 bg-notification-num rounded-full w-4 h-4 justify-center items-center'>
-						<Text className='text-white text-[10px] font-bold'>
-							{notifications.length < 10 ? notifications.length : '+9'}
-						</Text>
-					</View>
+					<NotificationBadge count={numOfNotifications} />
 				)}
 			</TouchableOpacity>
 
 			{showNotifications && (
 				<View className='absolute top-12 left-0 bg-notification-view-bg rounded-lg p-4 h-64 w-2/3 z-20'>
 					<ScrollView>
-						{notifications.map((notification, index) => {
-							const IconComponent =
-								notification.type === 'waterObstruction'
-									? WaterObstructionIcon
-									: TemperatureSubstrateIcon
-							return (
-								<View
-									key={index}
-									className='flex-row items-center mb-3 border-b border-foreground pb-2'
-								>
-									{IconComponent && (
-										<IconComponent
-											width={20}
-											height={20}
-											color={
-												isDarkColorScheme
-													? colors.dark.foreground
-													: colors.light.foreground
-											}
-										/>
-									)}
-									<Text className='ml-3 text-foreground'>
-										{notification.content}
-									</Text>
-								</View>
-							)
-						})}
+						{notifications.map((notification, index) => (
+							<NotificationElement notification={notification} key={index} />
+						))}
 					</ScrollView>
 					<Pressable
 						onPress={onPressClearNotifications}

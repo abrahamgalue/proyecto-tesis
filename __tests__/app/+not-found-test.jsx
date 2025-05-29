@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native'
-import NotFound from '@/app/(app)/+not-found'
+import NotFound from '@/app/+not-found'
 
 describe('<NotFound />', () => {
 	test('should render correctly', () => {

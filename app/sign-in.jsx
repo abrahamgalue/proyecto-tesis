@@ -13,6 +13,7 @@ import { useState } from 'react'
 
 import { colors } from '@/constants/colors'
 import { useColorScheme } from '@/lib/useColorScheme'
+import { StatusBar } from 'expo-status-bar'
 
 const formSchema = z.object({
 	email: z.string().email('Dirección de correo electrónico inválida.'),
@@ -24,7 +25,7 @@ const formSchema = z.object({
 
 export default function SignIn() {
 	const { isDarkColorScheme } = useColorScheme()
-	const { signInWithPassword } = useSupabase()
+	const { signIn } = useSupabase()
 
 	const [showPass, setShowPass] = useState(false)
 	const [error, setError] = useState(false)
@@ -39,7 +40,7 @@ export default function SignIn() {
 
 	async function onSubmit(data) {
 		try {
-			await signInWithPassword(data.email, data.password)
+			await signIn(data.email, data.password)
 
 			reset()
 		} catch (_error) {
@@ -49,6 +50,7 @@ export default function SignIn() {
 
 	return (
 		<SafeAreaView className='flex-1' edges={['bottom']}>
+			<StatusBar style='auto' />
 			<LinearGradient
 				className='flex-1'
 				colors={
@@ -131,6 +133,7 @@ export default function SignIn() {
 					</Text>
 
 					<Pressable
+						accessibilityRole='button'
 						className={`${!formState.isValid ? 'opacity-20 bg-slate-700' : 'bg-[#0C6971]'} w-[80%] p-4 rounded-full`}
 						disabled={!formState.isValid}
 						onPress={handleSubmit(onSubmit)}

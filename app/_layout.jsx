@@ -1,5 +1,5 @@
 import '../global.css'
-import { Slot } from 'expo-router'
+import { Stack } from 'expo-router'
 
 import { SupabaseProvider } from '@/context/supabase-provider'
 import { StatusBar } from 'expo-status-bar'
@@ -22,13 +22,32 @@ export default function AppLayout() {
 
 	return (
 		<SupabaseProvider>
-			<Slot />
 			<StatusBar
-				// backgroundColor={
-				// 	isDarkColorScheme ? colors.dark.background : colors.light.background
-				// }
+				backgroundColor={
+					isDarkColorScheme ? colors.dark.background : colors.light.background
+				}
 				style='auto'
 			/>
+			<Stack screenOptions={{ headerShown: false, gestureEnabled: false }}>
+				<Stack.Screen name='(protected)' />
+				<Stack.Screen
+					name='sign-in'
+					options={{
+						presentation: 'modal',
+						headerShown: false,
+						headerTitle: 'Iniciar sesión',
+						headerStyle: {
+							backgroundColor: isDarkColorScheme
+								? colors.dark.background
+								: colors.light.background
+						},
+						headerTintColor: isDarkColorScheme
+							? colors.dark.foreground
+							: colors.light.foreground,
+						gestureEnabled: true
+					}}
+				/>
+			</Stack>
 		</SupabaseProvider>
 	)
 }
