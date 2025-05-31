@@ -111,6 +111,7 @@ export default function SignIn() {
 									value={value}
 								/>
 								<Pressable
+									accessibilityRole='togglebutton'
 									className='px-4'
 									onPress={() => setShowPass(!showPass)}
 								>
