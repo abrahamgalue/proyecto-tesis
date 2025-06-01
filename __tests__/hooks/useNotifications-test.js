@@ -23,17 +23,25 @@ describe('useNotifications', () => {
 	let handleNotificationPress
 	let handleClearNotifications
 
+	const renderNotifications = () => {
+		return renderHook(() =>
+			useNotifications({ handleNotificationPress, handleClearNotifications })
+		)
+	}
+
 	beforeEach(() => {
 		handleNotificationPress = jest.fn()
 		handleClearNotifications = jest.fn()
 	})
 
+	afterEach(() => {
+		mockInitialNotifications.mockReset()
+	})
+
 	test('initializes with default notification list', () => {
 		mockInitialNotifications.mockReturnValue(initialNotificationsValue)
 
-		const { result } = renderHook(() =>
-			useNotifications({ handleNotificationPress, handleClearNotifications })
-		)
+		const { result } = renderNotifications()
 
 		expect(result.current.notifications).toStrictEqual(
 			initialNotificationsValue
@@ -43,9 +51,7 @@ describe('useNotifications', () => {
 	test('returns correct count when notifications are under threshold', () => {
 		mockInitialNotifications.mockReturnValue(initialNotificationsValue)
 
-		const { result } = renderHook(() =>
-			useNotifications({ handleNotificationPress, handleClearNotifications })
-		)
+		const { result } = renderNotifications()
 
 		expect(result.current.numOfNotifications).toBe(2)
 	})
@@ -58,9 +64,7 @@ describe('useNotifications', () => {
 			})
 		)
 
-		const { result } = renderHook(() =>
-			useNotifications({ handleNotificationPress, handleClearNotifications })
-		)
+		const { result } = renderNotifications()
 
 		expect(result.current.numOfNotifications).toBe('+9')
 	})
@@ -68,9 +72,7 @@ describe('useNotifications', () => {
 	test('triggers external handler when interacting with available notifications', () => {
 		mockInitialNotifications.mockReturnValue(initialNotificationsValue)
 
-		const { result } = renderHook(() =>
-			useNotifications({ handleNotificationPress, handleClearNotifications })
-		)
+		const { result } = renderNotifications()
 
 		act(() => {
 			result.current.onPressNotification()
@@ -82,9 +84,7 @@ describe('useNotifications', () => {
 	test('avoids triggering interaction handler when list is empty', () => {
 		mockInitialNotifications.mockReturnValue([])
 
-		const { result } = renderHook(() =>
-			useNotifications({ handleNotificationPress, handleClearNotifications })
-		)
+		const { result } = renderNotifications()
 
 		act(() => {
 			result.current.onPressNotification()
@@ -96,9 +96,7 @@ describe('useNotifications', () => {
 	test('clears list and calls cleanup handler on clear action', () => {
 		mockInitialNotifications.mockReturnValue(initialNotificationsValue)
 
-		const { result } = renderHook(() =>
-			useNotifications({ handleNotificationPress, handleClearNotifications })
-		)
+		const { result } = renderNotifications()
 
 		act(() => {
 			result.current.onPressClearNotifications()

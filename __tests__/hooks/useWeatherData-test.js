@@ -14,6 +14,10 @@ jest.mock('@/lib/weather', () => {
 describe('useWeatherData', () => {
 	const mockGetWeatherData = getWeatherData
 
+	afterEach(() => {
+		mockGetWeatherData.mockReset()
+	})
+
 	test('should set weather data on successful fetch', async () => {
 		mockGetWeatherData.mockResolvedValue(FALLBACK_WEATHER_DATA)
 
