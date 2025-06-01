@@ -15,7 +15,7 @@ describe('useWeatherData', () => {
 	const mockGetWeatherData = getWeatherData
 
 	afterEach(() => {
-		mockGetWeatherData.mockReset()
+		mockGetWeatherData.mockClear()
 	})
 
 	test('should set weather data on successful fetch', async () => {
