@@ -402,6 +402,7 @@ export default function App() {
 							</LinearGradient>
 						</TouchableOpacity>
 						<TouchableOpacity
+							accessibilityLabel='Go to Modal'
 							onPress={() => router.push('/modal')}
 							hitSlop={14}
 						>
@@ -416,6 +417,7 @@ export default function App() {
 							/>
 						</TouchableOpacity>
 						<TouchableOpacity
+							accessibilityLabel='Go to Settings'
 							onPress={() => router.push('/settings')}
 							hitSlop={18}
 						>
