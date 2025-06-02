@@ -106,7 +106,7 @@ describe('App Component', () => {
 		})
 	})
 
-	test('should navigate to modal screen', async () => {
+	test('should navigate to settings screen', async () => {
 		const user = userEvent.setup()
 
 		render(<App />)
