@@ -142,11 +142,25 @@ describe('initialNotifications', () => {
 })
 
 describe('getTextSize', () => {
-	test('returns correct classes based on text size and unit', () => {
-		expect(getTextSize({ isLargeText: true, unit: '°C' })).toBe('text-4xl h-8')
-		expect(getTextSize({ isLargeText: false, unit: 'km/h' })).toBe('')
-		expect(getTextSize({ isLargeText: false, unit: 'porcentual' })).toBe(
-			'text-xs'
-		)
+	test('returns correct classes and display unit based on text size and unit', () => {
+		expect(getTextSize({ isLargeText: true, unit: '°C' })).toEqual({
+			className: 'text-4xl h-8',
+			displayUnit: '°C'
+		})
+
+		expect(getTextSize({ isLargeText: false, unit: 'km/h' })).toEqual({
+			className: '',
+			displayUnit: 'km/h'
+		})
+
+		expect(getTextSize({ isLargeText: false, unit: 'porcentual' })).toEqual({
+			className: 'text-xs',
+			displayUnit: 'por...'
+		})
+
+		expect(getTextSize({ isLargeText: false, unit: 'grams' })).toEqual({
+			className: '',
+			displayUnit: 'gra...'
+		})
 	})
 })
