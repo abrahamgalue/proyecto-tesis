@@ -1,4 +1,4 @@
-import NotificationBadge from '@/components/ui/NotificationBadge'
+import NotificationBadge from '@/components/ui/Notifications/NotificationBadge'
 import { render, screen } from '@testing-library/react-native'
 
 describe('<NotificationBadge />', () => {

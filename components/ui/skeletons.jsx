@@ -1,6 +1,11 @@
+import { memo } from 'react'
 import { View } from 'react-native'
 
-export function GenericSkeleton({ width, height, className = '' }) {
+export const GenericSkeleton = memo(function GenericSkeleton({
+	width,
+	height,
+	className = ''
+}) {
 	const styleClass =
 		`bg-background-skeleton animate-pulse rounded-md ${className}`.trim()
 
@@ -10,4 +15,4 @@ export function GenericSkeleton({ width, height, className = '' }) {
 	}
 
 	return <View className={styleClass} style={style} />
-}
+})

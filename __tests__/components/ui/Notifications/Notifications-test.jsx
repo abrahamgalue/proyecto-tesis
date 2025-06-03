@@ -4,7 +4,7 @@ import {
 	waitFor,
 	userEvent
 } from '@testing-library/react-native'
-import Notifications from '@/components/ui/Notifications'
+import Notifications from '@/components/ui/Notifications/Notifications'
 import { initialNotifications } from '@/lib/utils'
 
 jest.mock('@/lib/useColorScheme', () => ({
@@ -17,11 +17,11 @@ jest.mock('@/lib/utils', () => ({
 
 const mockInitialNotifications = initialNotifications
 
-jest.mock('@/components/ui/IconSymbol', () => ({
+jest.mock('@/components/ui/Icons/IconSymbol', () => ({
 	IconSymbol: jest.fn(() => <></>)
 }))
 
-jest.mock('@/components/ui/Icons', () => ({
+jest.mock('@/components/ui/Icons/Icons', () => ({
 	WaterObstructionIcon: jest.fn(() => <></>),
 	TemperatureSubstrateIcon: jest.fn(() => <></>)
 }))

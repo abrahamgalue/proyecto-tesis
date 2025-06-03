@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react-native'
 import { Text } from '@/components/text'
-import WeatherDetail from '@/components/ui/WeatherDetail'
+import WeatherDetailBlock from '@/components/ui/WeatherCard/WeatherCardDetailBlock'
 
 const MockIcon = () => <Text>{'ICON'}</Text>
 
-describe('<WeatherDetail />', () => {
+describe('<WeatherDetailBlock />', () => {
 	test('should render information', () => {
 		render(
-			<WeatherDetail
+			<WeatherDetailBlock
 				icon={<MockIcon />}
 				label='Indice UV'
 				value='6'
@@ -22,7 +22,7 @@ describe('<WeatherDetail />', () => {
 
 	test('should render large texts', () => {
 		render(
-			<WeatherDetail
+			<WeatherDetailBlock
 				icon={<MockIcon />}
 				label='Sensación Térmica'
 				value='47'
@@ -40,7 +40,7 @@ describe('<WeatherDetail />', () => {
 
 	test('should render the icon', () => {
 		render(
-			<WeatherDetail
+			<WeatherDetailBlock
 				icon={<MockIcon />}
 				label='Indice UV'
 				value='6'

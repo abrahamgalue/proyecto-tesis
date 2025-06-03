@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react-native'
-import NotificationElement from '@/components/ui/NotificationElement'
+import NotificationElement from '@/components/ui/Notifications/NotificationElement'
 import { useColorScheme } from '@/lib/useColorScheme'
 
-jest.mock('@/components/ui/Icons', () => ({
+jest.mock('@/components/ui/Icons/Icons', () => ({
 	WaterObstructionIcon: () => <></>,
 	TemperatureSubstrateIcon: () => <></>
 }))

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react-native'
-import Day from '@/components/ui/Date'
+import Day from '@/components/ui/Date/Day'
 
 jest.mock('@/lib/utils', () => ({
 	formatDate: jest.fn(() => 'Martes | 20 May')
 }))
 
-describe('<Date />', () => {
+describe('<Day />', () => {
 	test('should render date', () => {
 		render(<Day />)
 

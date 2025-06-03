@@ -11,7 +11,7 @@ import {
 	TemperatureSubstrateIcon,
 	WaterObstructionIcon,
 	PHLevelIcon
-} from '@/components/ui/Icons'
+} from '@/components/ui/Icons/Icons'
 
 describe('<Icons />', () => {
 	const commonProps = {

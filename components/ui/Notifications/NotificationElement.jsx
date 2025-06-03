@@ -1,19 +1,23 @@
+import { memo, useMemo } from 'react'
 import { View } from 'react-native'
 import { useColorScheme } from '@/lib/useColorScheme'
 import {
 	TemperatureSubstrateIcon,
 	WaterObstructionIcon
-} from '@/components/ui/Icons'
+} from '@/components/ui/Icons/Icons'
 import { colors } from '@/constants/colors'
 import { Text } from '@/components/text'
 
-export default function NotificationElement({ notification }) {
+const NotificationElement = memo(function NotificationElement({
+	notification
+}) {
 	const { isDarkColorScheme } = useColorScheme()
 
-	const IconComponent =
+	const IconComponent = useMemo(() =>
 		notification.type === 'waterObstruction'
 			? WaterObstructionIcon
 			: TemperatureSubstrateIcon
+	)
 
 	return (
 		<View className='flex-row items-center mb-3 border-b border-foreground pb-2'>
@@ -29,4 +33,6 @@ export default function NotificationElement({ notification }) {
 			<Text className='ml-3 text-foreground'>{notification.content}</Text>
 		</View>
 	)
-}
+})
+
+export default NotificationElement

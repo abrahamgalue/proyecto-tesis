@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native'
-import DigitalClock from '@/components/ui/DigitalClock'
+import DigitalClock from '@/components/ui/Date/DigitalClock'
 
 jest.mock('@/lib/utils', () => ({
 	formatHour: jest.fn(() => '04:25')

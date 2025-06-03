@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import { initialNotifications } from '@/lib/utils'
 
 const useNotifications = ({
@@ -6,19 +6,21 @@ const useNotifications = ({
 	handleClearNotifications
 }) => {
 	const [notifications, setNotifications] = useState(initialNotifications)
-	const numOfNotifications =
-		notifications.length < 10 ? notifications.length : '+9'
+	const numOfNotifications = useMemo(
+		() => (notifications.length < 10 ? notifications.length : '+9'),
+		[notifications]
+	)
 
-	const onPressNotification = () => {
+	const onPressNotification = useCallback(() => {
 		if (notifications.length > 0) {
 			handleNotificationPress()
 		}
-	}
+	}, [notifications, handleNotificationPress])
 
-	const onPressClearNotifications = () => {
+	const onPressClearNotifications = useCallback(() => {
 		setNotifications([])
 		handleClearNotifications()
-	}
+	}, [handleClearNotifications])
 
 	return {
 		notifications,

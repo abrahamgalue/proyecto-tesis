@@ -1,7 +1,8 @@
+import { memo, useMemo } from 'react'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 
-export function IconSymbol({
+export const IconSymbol = memo(function IconSymbol({
 	name,
 	size = 24,
 	color,
@@ -9,8 +10,9 @@ export function IconSymbol({
 	className,
 	family = 'MaterialIcons'
 }) {
-	const IconComponent =
+	const IconComponent = useMemo(() =>
 		family === 'MaterialCommunityIcons' ? MaterialCommunityIcons : MaterialIcons
+	)
 
 	return (
 		<IconComponent
@@ -21,4 +23,4 @@ export function IconSymbol({
 			className={className}
 		/>
 	)
-}
+})

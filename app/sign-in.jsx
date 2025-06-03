@@ -4,7 +4,7 @@ import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Image, ImageBackground } from '@/components/image'
 import * as z from 'zod'
 import { LinearGradient } from 'expo-linear-gradient'
-import { IconSymbol } from '@/components/ui/IconSymbol'
+import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { Text } from '@/components/text'
 
 import { SafeAreaView } from '@/components/safe-area-view'

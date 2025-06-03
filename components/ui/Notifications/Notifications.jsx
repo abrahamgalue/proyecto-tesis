@@ -1,17 +1,18 @@
+import { memo } from 'react'
 import { View, Pressable, ScrollView, TouchableOpacity } from 'react-native'
-import { IconSymbol } from '@/components/ui/IconSymbol'
+import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { colors } from '@/constants/colors'
-import NotificationBadge from '@/components/ui/NotificationBadge'
-import NotificationElement from '@/components/ui/NotificationElement'
+import NotificationBadge from '@/components/ui/Notifications/NotificationBadge'
+import NotificationElement from '@/components/ui/Notifications/NotificationElement'
 import { Text } from '@/components/text'
 import useNotifications from '@/hooks/useNotifications'
 
-const Notifications = ({
+const Notifications = memo(function Notifications({
 	showNotifications,
 	handleNotificationPress,
 	handleClearNotifications
-}) => {
+}) {
 	const { isDarkColorScheme } = useColorScheme()
 	const {
 		notifications,
@@ -67,6 +68,6 @@ const Notifications = ({
 			)}
 		</View>
 	)
-}
+})
 
 export default Notifications

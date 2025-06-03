@@ -10,7 +10,7 @@ jest.mock('@/components/image', () => ({
 	Image: 'Image',
 	ImageBackground: 'ImageBackground'
 }))
-jest.mock('@/components/ui/IconSymbol', () => ({
+jest.mock('@/components/ui/Icons/IconSymbol', () => ({
 	IconSymbol: () => 'IconSymbol'
 }))
 jest.mock('@/components/safe-area-view', () => ({
@@ -105,7 +105,9 @@ describe('<SignIn />', () => {
 
 		await user.press(button)
 
-		expect(button.props.accessibilityState.disabled).toBe(true)
+		await waitFor(() => {
+			expect(button.props.accessibilityState.disabled).toBe(true)
+		})
 
 		expect(mockSignInWithPassword).toHaveBeenCalled()
 	})

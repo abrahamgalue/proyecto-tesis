@@ -1,7 +1,8 @@
+import { memo } from 'react'
 import { View } from 'react-native'
 import { isValidLine } from '@/lib/utils'
 
-const Line = ({ width = 1, height = 1 }) => {
+const Line = memo(function Line({ width = 1, height = 1 }) {
 	isValidLine({ width, height })
 
 	const styles = {
@@ -10,6 +11,6 @@ const Line = ({ width = 1, height = 1 }) => {
 	}
 
 	return <View style={styles} className='bg-foreground m-auto'></View>
-}
+})
 
 export default Line

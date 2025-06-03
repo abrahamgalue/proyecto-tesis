@@ -1,8 +1,9 @@
+import { memo } from 'react'
 import useTime from '@/hooks/useTime'
 import { Text } from '@/components/text'
 import { formatHour } from '@/lib/utils'
 
-function DigitalClock() {
+const DigitalClock = memo(function DigitalClock() {
 	const { time } = useTime()
 
 	return (
@@ -10,6 +11,6 @@ function DigitalClock() {
 			{formatHour(time)}
 		</Text>
 	)
-}
+})
 
 export default DigitalClock

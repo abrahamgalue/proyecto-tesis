@@ -1,0 +1,23 @@
+import { memo } from 'react'
+import { useColorScheme } from '@/lib/useColorScheme'
+import { Image } from '@/components/image'
+
+const WeatherCardLogo = memo(function WeatherCardLogo() {
+	const { isDarkColorScheme } = useColorScheme()
+
+	return isDarkColorScheme ? (
+		<Image
+			className='w-20 h-20 absolute -top-11 -right-3'
+			source={require('@/assets/logo-raw.png')}
+			style={{ contentFit: 'contain' }}
+		/>
+	) : (
+		<Image
+			className='w-20 h-20 absolute -top-11 -right-3'
+			source={require('@/assets/logo.png')}
+			style={{ contentFit: 'contain' }}
+		/>
+	)
+})
+
+export default WeatherCardLogo
