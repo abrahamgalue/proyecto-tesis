@@ -11,7 +11,7 @@ import {
 import Line from '@/components/ui/Line'
 import { AccountCircleIcon, PhoneControlIcon } from './Icons/Icons'
 import { Text } from '@/components/text'
-import { router } from 'expo-router'
+import { Link } from 'expo-router'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 
 const ControlBar = memo(function ControlBar() {
@@ -84,32 +84,34 @@ const ControlBar = memo(function ControlBar() {
 					<Text className='text-foreground text-sm font-bold'>Control</Text>
 				</LinearGradient>
 			</TouchableOpacity>
-			<TouchableOpacity
-				accessibilityLabel='Go to Modal'
-				onPress={() => router.push('/modal')}
-				hitSlop={14}
-			>
-				<AccountCircleIcon
-					width={33}
-					height={33}
-					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
-					}
-				/>
-			</TouchableOpacity>
-			<TouchableOpacity
-				accessibilityLabel='Go to Settings'
-				onPress={() => router.push('/settings')}
-				hitSlop={18}
-			>
-				<IconSymbol
-					name='settings'
-					size={24}
-					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
-					}
-				/>
-			</TouchableOpacity>
+
+			<Link href='/modal' asChild>
+				<TouchableOpacity accessibilityLabel='Go to Modal' hitSlop={14}>
+					<AccountCircleIcon
+						width={33}
+						height={33}
+						color={
+							isDarkColorScheme
+								? colors.dark.foreground
+								: colors.light.foreground
+						}
+					/>
+				</TouchableOpacity>
+			</Link>
+
+			<Link href='/settings' asChild>
+				<TouchableOpacity accessibilityLabel='Go to Settings' hitSlop={18}>
+					<IconSymbol
+						name='settings'
+						size={24}
+						color={
+							isDarkColorScheme
+								? colors.dark.foreground
+								: colors.light.foreground
+						}
+					/>
+				</TouchableOpacity>
+			</Link>
 		</LinearGradient>
 	)
 })
