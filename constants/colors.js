@@ -76,3 +76,38 @@ export const colors = {
 		clearNotificationsText: '#fca5a5'
 	}
 }
+
+export const gradientBgColors = {
+	card: {
+		dark: [
+			colors.dark.weatherGradient1,
+			colors.dark.weatherGradient2,
+			colors.dark.weatherGradient3,
+			colors.dark.weatherGradient4
+		],
+		light: [
+			colors.light.weatherGradient1,
+			colors.light.weatherGradient2,
+			colors.light.weatherGradient3,
+			colors.light.weatherGradient4
+		]
+	},
+	screen: {
+		dark: [colors.dark.fromGradient, colors.dark.toGradient],
+		light: [colors.light.fromGradient, colors.light.toGradient]
+	},
+	control: {
+		dark: [
+			colors.dark.controlGradient1,
+			colors.dark.controlGradient2,
+			colors.dark.controlGradient3,
+			colors.dark.controlGradient4
+		],
+		light: [
+			colors.light.controlGradient1,
+			colors.light.controlGradient2,
+			colors.light.controlGradient3,
+			colors.light.controlGradient4
+		]
+	}
+}

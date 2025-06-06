@@ -1,13 +1,8 @@
 import { render, screen, userEvent } from '@testing-library/react-native'
-import * as useColorSchemeHook from '@/lib/useColorScheme'
 import * as useWeatherDataHook from '@/hooks/useWeatherData'
 import App from '@/app/(protected)/index'
 
 jest.mock('expo-font')
-
-jest.spyOn(useColorSchemeHook, 'useColorScheme').mockReturnValue({
-	isDarkColorScheme: false
-})
 
 jest.spyOn(useWeatherDataHook, 'default').mockReturnValue({
 	weatherData: {

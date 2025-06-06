@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Image, ImageBackground } from '@/components/image'
 import * as z from 'zod'
-import { LinearGradient } from 'expo-linear-gradient'
+import GradientBackground from '@/components/ui/GradientBackground'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { Text } from '@/components/text'
 
@@ -51,14 +51,7 @@ export default function SignIn() {
 	return (
 		<SafeAreaView className='flex-1' edges={['bottom']}>
 			<StatusBar style='auto' />
-			<LinearGradient
-				className='flex-1'
-				colors={
-					isDarkColorScheme
-						? [colors.dark.fromGradient, colors.dark.toGradient]
-						: [colors.light.fromGradient, colors.light.toGradient]
-				}
-			>
+			<GradientBackground className='flex-1' type='screen'>
 				<ImageBackground
 					source={require('@/assets/login-bg.png')}
 					className='flex-1 gap-4 justify-center items-center'
@@ -155,7 +148,7 @@ export default function SignIn() {
 						)}
 					</Pressable>
 				</ImageBackground>
-			</LinearGradient>
+			</GradientBackground>
 		</SafeAreaView>
 	)
 }
