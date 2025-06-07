@@ -14,13 +14,13 @@ const ControlBar = memo(function ControlBar() {
 
 	return (
 		<GradientBackground
-			className='flex-row justify-around items-center rounded-[30px] py-3 px-[5%] w-[95%] mt-5 mb-5'
+			className='mb-5 mt-5 w-[95%] flex-row items-center justify-around rounded-[30px] px-[5%] py-3'
 			type='control'
 		>
 			<Link href='/control' asChild>
 				<TouchableOpacity accessibilityLabel='Go to Control'>
 					<GradientBackground
-						className='flex-row gap-2 items-center bg-[rgba(109,165,192,0.3)] py-2 px-[15px] rounded-[20px]'
+						className='flex-row items-center gap-2 rounded-[20px] bg-[rgba(109,165,192,0.3)] px-[15px] py-2'
 						style={{
 							borderRadius: 12
 						}}
@@ -36,7 +36,7 @@ const ControlBar = memo(function ControlBar() {
 							}
 						/>
 						<Line height={15} />
-						<Text className='text-foreground text-sm font-bold'>Control</Text>
+						<Text className='text-sm font-bold text-foreground'>Control</Text>
 					</GradientBackground>
 				</TouchableOpacity>
 			</Link>

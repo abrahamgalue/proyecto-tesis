@@ -4,11 +4,11 @@ import { Text } from '@/components/text'
 
 const ForecastDay = memo(function ForecastDay({ day, icon, temp, detail }) {
 	return (
-		<View className='items-center flex-1'>
-			<Text className='text-foreground text-base mb-1'>{day}</Text>
+		<View className='flex-1 items-center'>
+			<Text className='mb-1 text-base text-foreground'>{day}</Text>
 			{icon}
-			<Text className='text-foreground text-lg font-bold'>{temp}</Text>
-			<Text className='text-foreground text-sm'>{detail}</Text>
+			<Text className='text-lg font-bold text-foreground'>{temp}</Text>
+			<Text className='text-sm text-foreground'>{detail}</Text>
 		</View>
 	)
 })

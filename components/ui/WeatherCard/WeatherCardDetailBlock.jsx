@@ -18,14 +18,14 @@ const WeatherCardDetailBlock = memo(function WeatherCardDetailBlock({
 	)
 
 	return (
-		<View className='flex flex-row justify-between py-2 px-4 w-full h-20 rounded-2xl border border-border'>
-			<View className='flex flex-row items-center justify-start flex-[4]'>
+		<View className='flex h-20 w-full flex-row justify-between rounded-2xl border border-border px-4 py-2'>
+			<View className='flex flex-[4] flex-row items-center justify-start'>
 				{icon}
-				<Text className='text-foreground ml-1'>{label}</Text>
+				<Text className='ml-1 text-foreground'>{label}</Text>
 			</View>
-			<View className='flex flex-row items-center flex-[2]'>
-				<View className='flex items-end flex-row'>
-					<Text className='text-foreground font-bold text-4xl h-8 mr-1'>
+			<View className='flex flex-[2] flex-row items-center'>
+				<View className='flex flex-row items-end'>
+					<Text className='mr-1 h-8 text-4xl font-bold text-foreground'>
 						{value}
 					</Text>
 					<Text className={`text-foreground ${unitTextSize}`}>{newUnit}</Text>

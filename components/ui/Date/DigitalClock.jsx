@@ -7,7 +7,7 @@ const DigitalClock = memo(function DigitalClock() {
 	const { time } = useTime()
 
 	return (
-		<Text className='text-foreground text-3xl font-bold'>
+		<Text className='text-3xl font-bold text-foreground'>
 			{formatHour(time)}
 		</Text>
 	)

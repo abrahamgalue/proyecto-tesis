@@ -4,11 +4,11 @@ import { Text } from '@/components/text'
 
 const MonitoringBlock = memo(function MonitoringBlock({ icon, value, label }) {
 	return (
-		<View className='w-[48%] gap-2 flex-row px-2.5 items-start mb-[15px]'>
+		<View className='mb-[15px] w-[48%] flex-row items-start gap-2 px-2.5'>
 			<View className=''>{icon}</View>
 			<View className='flex-1 items-start'>
-				<Text className='text-foreground text-lg font-bold'>{value}</Text>
-				<Text className='text-foreground text-sm'>{label}</Text>
+				<Text className='text-lg font-bold text-foreground'>{value}</Text>
+				<Text className='text-sm text-foreground'>{label}</Text>
 			</View>
 		</View>
 	)

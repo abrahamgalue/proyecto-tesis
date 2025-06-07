@@ -5,26 +5,26 @@ import { GenericSkeleton } from '@/components/ui/skeletons'
 
 const WeatherCardInfo = memo(function WeatherCardInfo({ weatherData }) {
 	return (
-		<View className='flex-row justify-center gap-2 items-end mb-5'>
+		<View className='mb-5 flex-row items-end justify-center gap-2'>
 			<View className='items-center'>
 				{weatherData.tempOutside ? (
-					<Text className='text-[92px] text-foreground font-semi-bold leading-[100px]'>
+					<Text className='font-semi-bold text-[92px] leading-[100px] text-foreground'>
 						{weatherData.tempOutside}°
 					</Text>
 				) : (
 					<GenericSkeleton width={150} height={90} />
 				)}
-				<Text className='text-foreground text-base'>Nublado</Text>
+				<Text className='text-base text-foreground'>Nublado</Text>
 			</View>
 			<View className='items-start justify-center'>
 				{weatherData.humidity ? (
-					<Text className='text-lg text-foreground font-bold'>
+					<Text className='text-lg font-bold text-foreground'>
 						{weatherData.humidity}
 					</Text>
 				) : (
 					<GenericSkeleton width={40} height={20} />
 				)}
-				<Text className='text-foreground text-sm'>Humedad</Text>
+				<Text className='text-sm text-foreground'>Humedad</Text>
 			</View>
 		</View>
 	)

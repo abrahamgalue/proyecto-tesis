@@ -22,12 +22,12 @@ const Notifications = memo(function Notifications({
 	} = useNotifications({ handleClearNotifications, handleNotificationPress })
 
 	return (
-		<View className='w-full flex-row h-10 items-center justify-start mb-6'>
+		<View className='mb-6 h-10 w-full flex-row items-center justify-start'>
 			<TouchableOpacity
 				accessibilityRole='button'
 				hitSlop={20}
 				onPress={onPressNotification}
-				className={`relative rounded-full p-1 border z-10 border-border h-11 w-11 items-center justify-center ${showNotifications ? 'bg-active-notification-bg' : ''}`}
+				className={`relative z-10 h-11 w-11 items-center justify-center rounded-full border border-border p-1 ${showNotifications ? 'bg-active-notification-bg' : ''}`}
 				disabled={notifications.length === 0}
 			>
 				<IconSymbol
@@ -43,7 +43,7 @@ const Notifications = memo(function Notifications({
 			</TouchableOpacity>
 
 			{showNotifications && (
-				<View className='absolute top-12 left-0 bg-notification-view-bg rounded-lg p-4 h-64 w-2/3 z-20'>
+				<View className='absolute left-0 top-12 z-20 h-64 w-2/3 rounded-lg bg-notification-view-bg p-4'>
 					<ScrollView>
 						{notifications.map((notification, index) => (
 							<NotificationElement notification={notification} key={index} />
@@ -51,7 +51,7 @@ const Notifications = memo(function Notifications({
 					</ScrollView>
 					<Pressable
 						onPress={onPressClearNotifications}
-						className='mt-3 bg-red-500 active:bg-red-700 rounded-lg p-2 items-center'
+						className='mt-3 items-center rounded-lg bg-red-500 p-2 active:bg-red-700'
 					>
 						{({ pressed }) => (
 							<Text

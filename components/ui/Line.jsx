@@ -10,7 +10,7 @@ const Line = memo(function Line({ width = 1, height = 1 }) {
 		height
 	}
 
-	return <View style={styles} className='bg-foreground m-auto'></View>
+	return <View style={styles} className='m-auto bg-foreground'></View>
 })
 
 export default Line

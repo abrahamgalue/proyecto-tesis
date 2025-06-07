@@ -17,7 +17,7 @@ const Monitoring = memo(function Monitoring({ weatherData }) {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
-		<View className='flex-row flex-wrap justify-between w-full mb-12 px-3'>
+		<View className='mb-12 w-full flex-row flex-wrap justify-between px-3'>
 			<MonitoringBlock
 				icon={<WaterLevel />}
 				value='60%'

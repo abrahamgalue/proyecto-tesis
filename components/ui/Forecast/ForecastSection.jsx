@@ -6,7 +6,7 @@ import Line from '@/components/ui/Line'
 
 const ForecastSection = memo(function ForecastSection() {
 	return (
-		<View className='flex-row justify-between pt-[15px] mt-[15px]'>
+		<View className='mt-[15px] flex-row justify-between pt-[15px]'>
 			<ForecastDay
 				day='Martes'
 				icon={<SunCloudSmall />}

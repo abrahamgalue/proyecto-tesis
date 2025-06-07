@@ -4,8 +4,8 @@ import { Text } from '@/components/text'
 
 const NotificationBadge = memo(function NotificationBadge({ count }) {
 	return (
-		<View className='absolute top-0 right-0 bg-notification-num rounded-full w-4 h-4 justify-center items-center'>
-			<Text className='text-white text-[10px] font-bold'>{count}</Text>
+		<View className='absolute right-0 top-0 h-4 w-4 items-center justify-center rounded-full bg-notification-num'>
+			<Text className='text-[10px] font-bold text-white'>{count}</Text>
 		</View>
 	)
 })

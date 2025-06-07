@@ -20,7 +20,7 @@ const NotificationElement = memo(function NotificationElement({
 	)
 
 	return (
-		<View className='flex-row items-center mb-3 border-b border-foreground pb-2'>
+		<View className='mb-3 flex-row items-center border-b border-foreground pb-2'>
 			{IconComponent && (
 				<IconComponent
 					width={20}

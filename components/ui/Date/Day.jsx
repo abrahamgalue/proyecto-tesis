@@ -6,7 +6,7 @@ const Day = memo(function Day() {
 	const nowDate = useMemo(() => formatDate())
 
 	return (
-		<Text className='text-foreground text-lg mb-3 capitalize'>{nowDate}</Text>
+		<Text className='mb-3 text-lg capitalize text-foreground'>{nowDate}</Text>
 	)
 })
 

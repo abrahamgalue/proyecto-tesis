@@ -54,10 +54,10 @@ export default function SignIn() {
 			<GradientBackground className='flex-1' type='screen'>
 				<ImageBackground
 					source={require('@/assets/login-bg.png')}
-					className='flex-1 gap-4 justify-center items-center'
+					className='flex-1 items-center justify-center gap-4'
 				>
 					<Image
-						className='w-52 h-52 mb-12 -mt-12'
+						className='-mt-12 mb-12 h-52 w-52'
 						source={require('@/assets/signin-icon.png')}
 						style={{ contentFit: 'contain' }}
 					/>
@@ -68,7 +68,7 @@ export default function SignIn() {
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (
 							<TextInput
-								className='w-[80%] text-foreground h-14 border border-border rounded-full px-8'
+								className='h-14 w-[80%] rounded-full border border-border px-8 text-foreground'
 								onBlur={onBlur}
 								onChangeText={onChange}
 								placeholder='Email'
@@ -89,9 +89,9 @@ export default function SignIn() {
 							maxLength: 18
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (
-							<View className='w-[80%] flex flex-row justify-center items-center border border-border rounded-full'>
+							<View className='flex w-[80%] flex-row items-center justify-center rounded-full border border-border'>
 								<TextInput
-									className='text-foreground h-14 flex-1 pl-8 rounded-l-full'
+									className='h-14 flex-1 rounded-l-full pl-8 text-foreground'
 									onBlur={onBlur}
 									onChangeText={onChange}
 									placeholder='Contraseña'
@@ -128,7 +128,7 @@ export default function SignIn() {
 
 					<Pressable
 						accessibilityRole='button'
-						className={`${!formState.isValid ? 'opacity-20 bg-slate-700' : 'bg-[#0C6971]'} w-[80%] p-4 rounded-full`}
+						className={`${!formState.isValid ? 'bg-slate-700 opacity-20' : 'bg-[#0C6971]'} w-[80%] rounded-full p-4`}
 						disabled={!formState.isValid}
 						onPress={handleSubmit(onSubmit)}
 					>
@@ -142,7 +142,7 @@ export default function SignIn() {
 								}
 							/>
 						) : (
-							<Text className='text-foreground text-center'>
+							<Text className='text-center text-foreground'>
 								INICIAR SESIÓN
 							</Text>
 						)}

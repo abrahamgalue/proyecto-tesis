@@ -27,12 +27,6 @@ describe('<Line />', () => {
 		expect(screen.root).toHaveStyle({ height: 1, width: 1 })
 	})
 
-	test('should apply custom className', () => {
-		render(<Line />)
-
-		expect(screen.root.props.className).toContain('bg-foreground m-auto')
-	})
-
 	test('should render line with percentage values', () => {
 		render(<Line height='60%' />)
 

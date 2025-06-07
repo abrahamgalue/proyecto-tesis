@@ -5,7 +5,7 @@ import Date from '@/components/ui/Date/Date'
 
 const WeatherCardHeader = memo(function WeatherCardHeader() {
 	return (
-		<View className='flex-row justify-between items-center'>
+		<View className='flex-row items-center justify-between'>
 			<SunCloud />
 			<Date />
 		</View>

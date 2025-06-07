@@ -11,7 +11,7 @@ const ShowMoreBtn = memo(function ShowMoreBtn({ isShow, handleShow }) {
 	return (
 		<TouchableOpacity
 			onPress={handleShow}
-			className='flex-row justify-center items-center p-2'
+			className='flex-row items-center justify-center p-2'
 		>
 			<Text className='text-foreground'>Ver {isShow ? 'menos' : 'más'}</Text>
 			<IconSymbol

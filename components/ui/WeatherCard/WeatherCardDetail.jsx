@@ -9,7 +9,7 @@ const WeatherCardDetail = memo(function WeatherCardDetail({ weatherData }) {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
-		<View className='flex items-center justify-center pt-8 pb-3 gap-3'>
+		<View className='flex items-center justify-center gap-3 pb-3 pt-8'>
 			<WeatherDetailBlock
 				icon={
 					<HumidityIcon

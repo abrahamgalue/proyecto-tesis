@@ -34,7 +34,7 @@ function App() {
 				contentContainerClassName='grow justify-between'
 			>
 				<GradientBackground
-					className='flex-1 px-[5%] pt-5 pb-[15px] items-center justify-center'
+					className='flex-1 items-center justify-center px-[5%] pb-[15px] pt-5'
 					type='screen'
 				>
 					<Notifications

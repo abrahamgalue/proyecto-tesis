@@ -7,13 +7,13 @@ const WeatherCardLogo = memo(function WeatherCardLogo() {
 
 	return isDarkColorScheme ? (
 		<Image
-			className='w-20 h-20 absolute -top-11 -right-3'
+			className='absolute -right-3 -top-11 h-20 w-20'
 			source={require('@/assets/logo-raw.png')}
 			style={{ contentFit: 'contain' }}
 		/>
 	) : (
 		<Image
-			className='w-20 h-20 absolute -top-11 -right-3'
+			className='absolute -right-3 -top-11 h-20 w-20'
 			source={require('@/assets/logo.png')}
 			style={{ contentFit: 'contain' }}
 		/>

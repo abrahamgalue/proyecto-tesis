@@ -5,10 +5,10 @@ import { Text } from '@/components/text'
 const Footer = memo(function Footer() {
 	return (
 		<View className='flex-row gap-1'>
-			<Text className='text-foreground text-sm font-bold tracking-[1px]'>
+			<Text className='text-sm font-bold tracking-[1px] text-foreground'>
 				GREENWALL
 			</Text>
-			<Text className='text-border text-sm font-bold tracking-[1px]'>
+			<Text className='text-sm font-bold tracking-[1px] text-border'>
 				MANAGER
 			</Text>
 		</View>

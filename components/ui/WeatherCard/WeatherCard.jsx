@@ -16,9 +16,9 @@ const WeatherCard = memo(function WeatherCard({
 	handleWeatherDataMore
 }) {
 	return (
-		<GradientBackground className='w-full mb-[30px] relative' type='card'>
+		<GradientBackground className='relative mb-[30px] w-full' type='card'>
 			<WeatherCardImgBackground />
-			<View className='p-5 w-full relative border border-border rounded-3xl'>
+			<View className='relative w-full rounded-3xl border border-border p-5'>
 				<WeatherCardLogo />
 				<WeatherCardHeader />
 				<WeatherCardInfo weatherData={weatherData} />
