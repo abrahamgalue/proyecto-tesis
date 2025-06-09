@@ -3,7 +3,7 @@ import { SafeAreaView } from '@/components/safe-area-view'
 import GradientBackground from '@/components/ui/GradientBackground'
 import { Image } from '@/components/image'
 import { Text } from '@/components/text'
-import { router } from 'expo-router'
+import { Link, router } from 'expo-router'
 import DigitalClock from '@/components/ui/Date/DigitalClock'
 import Day from '@/components/ui/Date/Day'
 import {
@@ -17,50 +17,14 @@ import {
 } from '@/components/ui/Icons/Icons'
 import Footer from '@/components/ui/Footer'
 import { useWindowDimensions } from 'react-native'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { cn } from '@/lib/utils'
+import { useDevices, useDevicesActions } from '@/store/devicesStore'
+import { useEdit, useEditActions } from '@/store/editStore'
 
-const DATA = [
-	{
-		id: Math.random().toString(16),
-		name: `Luz`,
-		type: 'light',
-		isOn: false,
-		location: 'Zona sur'
-	},
-	{
-		id: Math.random().toString(16),
-		name: `Bomba`,
-		type: 'bomb',
-		isOn: true,
-		location: 'Zona oeste'
-	},
-	{
-		id: Math.random().toString(16),
-		name: `Luz`,
-		type: 'light',
-		isOn: true,
-		location: 'Jardín'
-	},
-	{
-		id: Math.random().toString(16),
-		name: `Luz`,
-		type: 'light',
-		isOn: false,
-		location: 'Zona sur'
-	},
-	{
-		id: Math.random().toString(16),
-		name: `Bomba`,
-		type: 'bomb',
-		isOn: true,
-		location: 'Zona este'
-	}
-]
-
-const GridItem = ({ item, num, edit }) => {
-	const [isEnabled, setIsEnabled] = useState(item.isOn)
-	const toggleSwitch = () => setIsEnabled((previousState) => !previousState)
+const GridItem = ({ item, num, edit, handleEdit }) => {
+	const isEnabled = item.isOn
+	const toggleSwitch = () => handleEdit(item.id)
 
 	const { width } = useWindowDimensions()
 	const itemSize = (width - 96) / 2
@@ -72,12 +36,14 @@ const GridItem = ({ item, num, edit }) => {
 	return (
 		<View className='relative'>
 			{edit && (
-				<TouchableOpacity
-					className='absolute z-20 m-2 items-center justify-center rounded-lg border border-border'
-					style={{ width: itemSize, height: itemSize }}
-				>
-					<EditIcon />
-				</TouchableOpacity>
+				<Link href={`/control/edit/${item.id}`} asChild>
+					<TouchableOpacity
+						className='absolute z-20 m-2 items-center justify-center rounded-lg border border-border'
+						style={{ width: itemSize, height: itemSize }}
+					>
+						<EditIcon />
+					</TouchableOpacity>
+				</Link>
 			)}
 
 			<View
@@ -97,8 +63,7 @@ const GridItem = ({ item, num, edit }) => {
 					{item.name} #{num}
 				</Text>
 				<Text className='text-xs text-muted-foreground'>{item.location}</Text>
-				<View className='flex-1 flex-row items-end justify-between'>
-					<Text className='text-foreground'>{isEnabled ? 'ON' : 'OFF'}</Text>
+				<View className='flex-1 items-end justify-end'>
 					<Switch
 						disabled={edit}
 						trackColor={{ false: '#ffffff', true: '#0fb1ff' }}
@@ -113,14 +78,24 @@ const GridItem = ({ item, num, edit }) => {
 }
 
 export default function Control() {
-	const [edit, setEdit] = useState(false)
+	const devices = useDevices()
+	const { fetchDevices, toggleEnableDevices } = useDevicesActions()
+	const edit = useEdit()
+	const { toggleEdited, setEdited } = useEditActions()
+
 	const [filter, setFilter] = useState('')
-	const items =
-		filter === '' ? DATA : DATA.filter((items) => items.type === filter)
+	const filteredDevices =
+		filter === '' ? devices : devices.filter((items) => items.type === filter)
+	const filtersBtnHitSlops = { bottom: 10, top: 10, left: 5, right: 5 }
 
 	const handleFilter = ({ filter }) => {
+		if (edit === true) setEdited(false)
 		setFilter(filter)
 	}
+
+	useEffect(() => {
+		fetchDevices()
+	}, [])
 
 	return (
 		<SafeAreaView className='flex-1'>
@@ -157,6 +132,7 @@ export default function Control() {
 							</View>
 							<View className='h-11 flex-row items-center justify-center gap-4 py-2'>
 								<TouchableOpacity
+									hitSlop={filtersBtnHitSlops}
 									onPress={() => handleFilter({ filter: '' })}
 									className={cn(
 										'rounded-3xl border-border px-4',
@@ -166,6 +142,7 @@ export default function Control() {
 									<Text className='text-foreground'>Todos</Text>
 								</TouchableOpacity>
 								<TouchableOpacity
+									hitSlop={filtersBtnHitSlops}
 									onPress={() => handleFilter({ filter: 'bomb' })}
 									className={cn(
 										'rounded-3xl border-border px-4',
@@ -175,6 +152,7 @@ export default function Control() {
 									<Text className='text-foreground'>Bombas</Text>
 								</TouchableOpacity>
 								<TouchableOpacity
+									hitSlop={filtersBtnHitSlops}
 									onPress={() => handleFilter({ filter: 'light' })}
 									className={cn(
 										'rounded-3xl border-border px-4',
@@ -188,9 +166,14 @@ export default function Control() {
 
 						<View className='flex-1 px-4'>
 							<FlatList
-								data={items}
+								data={filteredDevices}
 								renderItem={({ item, index }) => (
-									<GridItem num={index + 1} item={item} edit={edit} />
+									<GridItem
+										num={index + 1}
+										item={item}
+										edit={edit}
+										handleEdit={toggleEnableDevices}
+									/>
 								)}
 								keyExtractor={(item) => item.id}
 								numColumns={2}
@@ -199,15 +182,18 @@ export default function Control() {
 					</GradientBackground>
 
 					<GradientBackground
-						className='mb-5 mt-5 w-[95%] flex-row items-center justify-around rounded-[30px] px-6 py-1'
+						className='relative mb-5 mt-5 w-[95%] flex-row items-center justify-start rounded-[30px] px-10 py-1'
 						type='control'
 					>
-						<TouchableOpacity onPress={() => setEdit(!edit)}>
+						<TouchableOpacity
+							onPress={toggleEdited}
+							hitSlop={{ bottom: 4, top: 4, left: 5, right: 5 }}
+						>
 							{edit ? <DeleteBtnIcon /> : <EditBtnIcon />}
 						</TouchableOpacity>
-						<View>
+						<View className='absolute -right-6 -top-1/2'>
 							<Image
-								className='h-20 w-20'
+								className='h-36 w-36'
 								source={require('@/assets/logo-raw.png')}
 								style={{ contentFit: 'contain' }}
 							/>
