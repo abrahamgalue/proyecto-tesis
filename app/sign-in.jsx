@@ -72,6 +72,7 @@ export default function SignIn() {
 								onBlur={onBlur}
 								onChangeText={onChange}
 								placeholder='Email'
+								inputMode='email'
 								placeholderTextColor={
 									isDarkColorScheme
 										? colors.dark.foreground
