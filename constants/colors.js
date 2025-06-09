@@ -10,6 +10,7 @@ export const colors = {
 		background: '#FFFFFF',
 		backgroundSkeleton: '#d9d9d9',
 		baseIcons: '#2c2c2c',
+		editInput: '#a1a1aa',
 		border: '#6DA5C0',
 		card: '#FFFFFF',
 		cardForeground: '#070708',
@@ -73,7 +74,8 @@ export const colors = {
 		controlGradient3: 'rgba(80,121,141,0.1)',
 		controlGradient4: 'rgba(109,165,192,0.1)',
 		baseIcons: '#a1a1aa',
-		clearNotificationsText: '#fca5a5'
+		clearNotificationsText: '#fca5a5',
+		editInput: '#a1a1aa'
 	}
 }
 
