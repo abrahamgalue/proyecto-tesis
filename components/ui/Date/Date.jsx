@@ -1,11 +1,14 @@
 import { memo } from 'react'
 import { View } from 'react-native'
+import { cn } from '@/lib/utils'
 import Day from '@/components/ui/Date/Day'
 import DigitalClock from '@/components/ui/Date/DigitalClock'
 
-const Date = memo(function Date() {
+const Date = memo(function Date({ className = '' }) {
+	const styles = cn('items-end', className)
+
 	return (
-		<View className='items-end'>
+		<View className={styles}>
 			<Day />
 			<DigitalClock />
 		</View>
