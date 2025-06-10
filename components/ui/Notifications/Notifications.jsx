@@ -45,8 +45,11 @@ const Notifications = memo(function Notifications({
 			{showNotifications && (
 				<View className='absolute left-0 top-12 z-20 h-64 w-2/3 rounded-lg bg-notification-view-bg p-4'>
 					<ScrollView>
-						{notifications.map((notification, index) => (
-							<NotificationElement notification={notification} key={index} />
+						{notifications.map((notification) => (
+							<NotificationElement
+								notification={notification}
+								key={notification.id}
+							/>
 						))}
 					</ScrollView>
 					<Pressable
