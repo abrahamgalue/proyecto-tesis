@@ -1,74 +1,30 @@
 import { memo } from 'react'
-import { TouchableOpacity } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
-import GradientBackground from './GradientBackground'
-import { colors } from '@/constants/colors'
-import Line from '@/components/ui/Line'
-import { AccountCircleIcon, PhoneControlIcon } from './Icons/Icons'
-import { Text } from '@/components/text'
-import { Link } from 'expo-router'
-import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
+import { View, TouchableOpacity } from 'react-native'
+import ActionBar from '@/components/ui/ActionBar'
+import { Image } from '@/components/image'
+import { DeleteBtnIcon, EditBtnIcon } from '@/components/ui/Icons/Icons'
+import { useEdit, useEditActions } from '@/store/editStore'
 
 const ControlBar = memo(function ControlBar() {
-	const { isDarkColorScheme } = useColorScheme()
+	const edit = useEdit()
+	const { toggleEdited } = useEditActions()
 
 	return (
-		<GradientBackground
-			className='mb-5 mt-5 w-[95%] flex-row items-center justify-around rounded-[30px] px-[5%] py-3'
-			type='control'
-		>
-			<Link href='/control' asChild>
-				<TouchableOpacity accessibilityLabel='Go to Control'>
-					<GradientBackground
-						className='flex-row items-center gap-2 rounded-[20px] bg-[rgba(109,165,192,0.3)] px-[15px] py-2'
-						style={{
-							borderRadius: 12
-						}}
-						type='card'
-					>
-						<PhoneControlIcon
-							width={24}
-							height={24}
-							color={
-								isDarkColorScheme
-									? colors.dark.foreground
-									: colors.light.foreground
-							}
-						/>
-						<Line height={15} />
-						<Text className='text-sm font-bold text-foreground'>Control</Text>
-					</GradientBackground>
-				</TouchableOpacity>
-			</Link>
-
-			<Link href='/modal' asChild>
-				<TouchableOpacity accessibilityLabel='Go to Modal' hitSlop={14}>
-					<AccountCircleIcon
-						width={33}
-						height={33}
-						color={
-							isDarkColorScheme
-								? colors.dark.foreground
-								: colors.light.foreground
-						}
-					/>
-				</TouchableOpacity>
-			</Link>
-
-			<Link href='/settings' asChild>
-				<TouchableOpacity accessibilityLabel='Go to Settings' hitSlop={18}>
-					<IconSymbol
-						name='settings'
-						size={24}
-						color={
-							isDarkColorScheme
-								? colors.dark.foreground
-								: colors.light.foreground
-						}
-					/>
-				</TouchableOpacity>
-			</Link>
-		</GradientBackground>
+		<ActionBar className='relative justify-start px-10 py-1'>
+			<TouchableOpacity
+				onPress={toggleEdited}
+				hitSlop={{ bottom: 4, top: 4, left: 5, right: 5 }}
+			>
+				{edit ? <DeleteBtnIcon /> : <EditBtnIcon />}
+			</TouchableOpacity>
+			<View className='absolute -right-6 -top-1/2'>
+				<Image
+					className='h-36 w-36'
+					source={require('@/assets/logo-raw.png')}
+					style={{ contentFit: 'contain' }}
+				/>
+			</View>
+		</ActionBar>
 	)
 })
 
