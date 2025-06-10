@@ -9,11 +9,12 @@ import { Text } from '@/components/text'
 
 import { SafeAreaView } from '@/components/safe-area-view'
 import { useSupabase } from '@/context/supabase-provider'
-import { useState } from 'react'
 
 import { colors } from '@/constants/colors'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { StatusBar } from 'expo-status-bar'
+import useError from '@/hooks/useError'
+import useShowPassword from '@/hooks/useShowPassword'
 
 const formSchema = z.object({
 	email: z.string().email('Dirección de correo electrónico inválida.'),
@@ -27,8 +28,8 @@ export default function SignIn() {
 	const { isDarkColorScheme } = useColorScheme()
 	const { signIn } = useSupabase()
 
-	const [showPass, setShowPass] = useState(false)
-	const [error, setError] = useState(false)
+	const { showPass, toggleShowPass } = useShowPassword()
+	const { error, handleError } = useError()
 
 	const { control, handleSubmit, formState, reset } = useForm({
 		resolver: zodResolver(formSchema),
@@ -44,7 +45,7 @@ export default function SignIn() {
 
 			reset()
 		} catch (_error) {
-			setError(true)
+			handleError(true)
 		}
 	}
 
@@ -96,6 +97,7 @@ export default function SignIn() {
 									onBlur={onBlur}
 									onChangeText={onChange}
 									placeholder='Contraseña'
+									inputMode='text'
 									placeholderTextColor={
 										isDarkColorScheme
 											? colors.dark.foreground
@@ -107,7 +109,7 @@ export default function SignIn() {
 								<Pressable
 									accessibilityRole='togglebutton'
 									className='px-4'
-									onPress={() => setShowPass(!showPass)}
+									onPress={toggleShowPass}
 								>
 									<IconSymbol
 										color={

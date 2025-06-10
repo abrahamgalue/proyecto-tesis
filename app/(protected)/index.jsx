@@ -1,30 +1,23 @@
-import { useState, useCallback } from 'react'
 import { ScrollView } from 'react-native'
 import useWeatherData from '@/hooks/useWeatherData'
+import useToggleWeatherDetails from '@/hooks/useToggleWeatherDetails'
+import useShowNotifications from '@/hooks/useShowNotifications'
 import { SafeAreaView } from '@/components/safe-area-view'
 import GradientBackground from '@/components/ui/GradientBackground'
 import Notifications from '@/components/ui/Notifications/Notifications'
 import WeatherCard from '@/components/ui/WeatherCard/WeatherCard'
 import Monitoring from '@/components/ui/Monitoring/Monitoring'
-import ControlBar from '@/components/ui/ControlBar'
+import MenuBar from '@/components/ui/MenuBar'
 import Footer from '@/components/ui/Footer'
 
 function App() {
 	const { weatherData } = useWeatherData()
-	const [isWeatherDataMoreShow, setIsWeatherDataMoreShow] = useState(false)
-	const [showNotifications, setShowNotifications] = useState(false)
-
-	const handleNotificationPress = useCallback(() => {
-		setShowNotifications(!showNotifications)
-	}, [showNotifications])
-
-	const handleClearNotifications = useCallback(() => {
-		setShowNotifications(false)
-	}, [showNotifications])
-
-	const handleWeatherDataMore = useCallback(() => {
-		setIsWeatherDataMoreShow(!isWeatherDataMoreShow)
-	}, [isWeatherDataMoreShow])
+	const { showDetails, toggleDetails } = useToggleWeatherDetails()
+	const {
+		showNotifications,
+		handleNotificationPress,
+		handleClearNotifications
+	} = useShowNotifications()
 
 	return (
 		<SafeAreaView>
@@ -45,13 +38,13 @@ function App() {
 
 					<WeatherCard
 						weatherData={weatherData}
-						isWeatherDataMoreShow={isWeatherDataMoreShow}
-						handleWeatherDataMore={handleWeatherDataMore}
+						showDetails={showDetails}
+						toggleDetails={toggleDetails}
 					/>
 
 					<Monitoring weatherData={weatherData} />
 
-					<ControlBar />
+					<MenuBar />
 
 					<Footer />
 				</GradientBackground>
