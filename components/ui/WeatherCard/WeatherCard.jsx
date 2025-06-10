@@ -1,7 +1,6 @@
 import { memo } from 'react'
-import GradientBackground from '../GradientBackground'
+import Card from '@/components/ui/Card'
 import { View } from 'react-native'
-import WeatherCardImgBackground from '@/components/ui/WeatherCard/WeatherCardImgBackground'
 import WeatherCardLogo from '@/components/ui/WeatherCard/WeatherCardLogo'
 import WeatherCardHeader from '@/components/ui/WeatherCard/WeatherCardHeader'
 import WeatherCardInfo from '@/components/ui/WeatherCard/WeatherCardInfo'
@@ -12,27 +11,21 @@ import ShowMoreBtn from '@/components/ui/ShowMoreBtn'
 
 const WeatherCard = memo(function WeatherCard({
 	weatherData,
-	isWeatherDataMoreShow,
-	handleWeatherDataMore
+	showDetails,
+	toggleDetails
 }) {
 	return (
-		<GradientBackground className='relative mb-[30px] w-full' type='card'>
-			<WeatherCardImgBackground />
+		<Card className='mb-[30px]'>
 			<View className='relative w-full rounded-3xl border border-border p-5'>
 				<WeatherCardLogo />
 				<WeatherCardHeader />
 				<WeatherCardInfo weatherData={weatherData} />
 				<Line width='65%' />
 				<ForecastSection />
-				{isWeatherDataMoreShow && (
-					<WeatherCardDetail weatherData={weatherData} />
-				)}
+				{showDetails && <WeatherCardDetail weatherData={weatherData} />}
 			</View>
-			<ShowMoreBtn
-				isShow={isWeatherDataMoreShow}
-				handleShow={handleWeatherDataMore}
-			/>
-		</GradientBackground>
+			<ShowMoreBtn isShow={showDetails} handleShow={toggleDetails} />
+		</Card>
 	)
 })
 
