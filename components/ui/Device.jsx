@@ -1,84 +1,48 @@
-import { memo, useCallback } from 'react'
-import {
-	View,
-	TouchableOpacity,
-	Switch,
-	useWindowDimensions
-} from 'react-native'
-import { Link } from 'expo-router'
-import {
-	BombIcon,
-	ConnectedIcon,
-	EditIcon,
-	LightBulbIcon
-} from '@/components/ui/Icons/Icons'
-import { cn } from '@/lib/utils'
-import { Text } from '@/components/text'
+import { memo, useCallback, useState } from 'react'
+import { View } from 'react-native'
 import { useEdit } from '@/store/editStore'
-import { useDevicesActions } from '@/store/devicesStore'
+import ModalLightbulb from '@/components/ui/ModalLightbulb'
+import { Text } from '@/components/text'
+import EditBtn from '@/components/ui/EditBtn'
+import DeviceContent from '@/components/ui/DeviceContent'
+import SettingsLightBtn from '@/components/ui/SettingsLightBtn'
 
-const icons = {
-	bomb: BombIcon,
-	light: LightBulbIcon
-}
-
-const Device = memo(function Device({ item, num }) {
+function Device({ item, num, itemSize }) {
 	const isEdit = useEdit()
-	const { toggleEnableDevices } = useDevicesActions()
+	const isLight = item.type === 'light'
 
-	const isEnabled = item.isOn
-	const toggleSwitch = useCallback(
-		() => toggleEnableDevices(item.id),
-		[item.id]
-	)
+	const [modalVisible, setModalVisible] = useState(false)
 
-	const { width } = useWindowDimensions()
-	const itemSize = (width - 96) / 2
-
-	const IconComponent = icons[item.type] || icons.bomb
+	const handleShowModal = useCallback(() => setModalVisible(true), [])
+	const handleHideModal = useCallback(() => setModalVisible(false), [])
 
 	return (
 		<View className='relative'>
+			<ModalLightbulb
+				visible={modalVisible}
+				onClose={handleHideModal}
+				title={`${item.name} #${num}`}
+			>
+				<Text className='text-foreground'>Texto dentro de modal</Text>
+			</ModalLightbulb>
+
 			{isEdit && (
-				<Link href={`/control/edit/${item.id}`} asChild>
-					<TouchableOpacity
-						className='absolute z-20 m-2 items-center justify-center rounded-lg border border-border'
-						style={{ width: itemSize, height: itemSize }}
-					>
-						<EditIcon />
-					</TouchableOpacity>
-				</Link>
+				<EditBtn
+					href={`/control/edit/${item.id}`}
+					width={itemSize}
+					height={itemSize}
+				/>
 			)}
 
-			<View
-				className={cn(
-					'relative z-10 m-2 rounded-lg border border-border bg-white/20 p-4 dark:bg-[#082D33]/80',
-					{ 'opacity-10': isEdit }
-				)}
-				style={{ width: itemSize, height: itemSize }}
-			>
-				<View className='h-12 flex-row items-start justify-between'>
-					<View className='ml-2'>
-						<IconComponent />
-					</View>
-					<ConnectedIcon />
-				</View>
-				<Text className='text-lg font-bold text-foreground'>
-					{item.name} #{num}
-				</Text>
-				<Text className='text-xs text-muted-foreground'>{item.location}</Text>
-				<View className='flex-1 items-end justify-end'>
-					<Switch
-						disabled={isEdit}
-						trackColor={{ false: '#ffffff', true: '#0fb1ff' }}
-						thumbColor={isEnabled ? '#ffffff' : '#757575'}
-						onValueChange={toggleSwitch}
-						value={isEnabled}
-					/>
-				</View>
+			<View style={{ opacity: isEdit ? 0.1 : 1 }}>
+				<DeviceContent item={item} num={num} itemSize={itemSize} />
 			</View>
+
+			{isLight && (
+				<SettingsLightBtn width={itemSize} handlePress={handleShowModal} />
+			)}
 		</View>
 	)
-})
+}
 
-export default Device
+export default memo(Device)
