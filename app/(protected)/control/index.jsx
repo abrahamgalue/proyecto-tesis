@@ -1,17 +1,18 @@
+import { useEffect } from 'react'
 import { View } from 'react-native'
+import { useDevicesActions } from '@/store/devicesStore'
+import { useEditActions } from '@/store/editStore'
+import { router } from 'expo-router'
 import { SafeAreaView } from '@/components/safe-area-view'
 import GradientBackground from '@/components/ui/GradientBackground'
-import { router } from 'expo-router'
-import Date from '@/components/ui/Date/Date'
-import Footer from '@/components/ui/Footer'
-import { useEffect } from 'react'
-import { useDevicesActions } from '@/store/devicesStore'
 import Card from '@/components/ui/Card'
-import BackBtn from '@/components/ui/BackBtn'
-import ControlBar from '@/components/ui/ControlBar'
 import CardTitle from '@/components/ui/CardTitle'
-import DevicesList from '@/components/ui/DeviceList'
+import BackBtn from '@/components/ui/BackBtn'
+import Date from '@/components/ui/Date/Date'
 import FiltersBtn from '@/components/ui/FiltersBtn'
+import DevicesList from '@/components/ui/DeviceList'
+import ControlBar from '@/components/ui/ControlBar'
+import Footer from '@/components/ui/Footer'
 
 export default function Control() {
 	const { fetchDevices } = useDevicesActions()
@@ -19,6 +20,13 @@ export default function Control() {
 	useEffect(() => {
 		fetchDevices()
 	}, [])
+
+	const { setEdited } = useEditActions()
+
+	const handleBack = () => {
+		setEdited(false)
+		router.back()
+	}
 
 	return (
 		<SafeAreaView className='flex-1'>
@@ -32,7 +40,7 @@ export default function Control() {
 							<CardTitle>CONTROL</CardTitle>
 							<BackBtn
 								hitSlop={20}
-								onPress={() => router.back()}
+								onPress={handleBack}
 								className='absolute -top-11 right-3'
 							/>
 
