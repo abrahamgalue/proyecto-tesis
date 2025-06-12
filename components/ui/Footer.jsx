@@ -1,8 +1,7 @@
-import { memo } from 'react'
 import { View } from 'react-native'
 import { Text } from '@/components/text'
 
-const Footer = memo(function Footer() {
+function Footer() {
 	return (
 		<View className='flex-row gap-1'>
 			<Text className='text-sm font-bold tracking-[1px] text-foreground'>
@@ -13,6 +12,6 @@ const Footer = memo(function Footer() {
 			</Text>
 		</View>
 	)
-})
+}
 
 export default Footer

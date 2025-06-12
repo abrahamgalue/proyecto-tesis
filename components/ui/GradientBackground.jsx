@@ -1,4 +1,3 @@
-import { memo } from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import { useColorScheme } from '@/lib/useColorScheme'
 import {
@@ -15,7 +14,7 @@ const cardBaseStyle = {
 	borderWidth: 1
 }
 
-const GradientBackground = memo(function GradientBackground({
+function GradientBackground({
 	children,
 	style,
 	className,
@@ -50,6 +49,6 @@ const GradientBackground = memo(function GradientBackground({
 			{children}
 		</LinearGradient>
 	)
-})
+}
 
 export default GradientBackground
