@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-export const useFilterStore = create((set) => ({
+const useFilterStore = create((set) => ({
 	filter: '',
 	actions: {
 		setFilter: (value) => set({ filter: value }),
