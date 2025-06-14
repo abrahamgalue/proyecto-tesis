@@ -1,13 +1,8 @@
 import { memo } from 'react'
 import { Switch, View } from 'react-native'
-import { BombIcon, LightBulbIcon } from '@/components/ui/Icons/Icons'
+import { icons } from '@/constants/style'
 import { useDevicesActions } from '@/store/devicesStore'
 import DeviceHeader from '@/components/ui/DeviceHeader'
-
-const icons = {
-	bomb: BombIcon,
-	light: LightBulbIcon
-}
 
 function DeviceContent({ item, num, itemSize }) {
 	const IconComponent = icons[item.type] || icons.bomb

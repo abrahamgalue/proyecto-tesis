@@ -5,17 +5,17 @@ import {
 	userEvent
 } from '@testing-library/react-native'
 import Notifications from '@/components/ui/Notifications/Notifications'
-import { initialNotifications } from '@/lib/utils'
+import { INITIAL_NOTIFICATIONS } from '@/constants/data'
 
 jest.mock('@/lib/useColorScheme', () => ({
 	useColorScheme: () => ({ isDarkColorScheme: true })
 }))
 
-jest.mock('@/lib/utils', () => ({
-	initialNotifications: jest.fn()
+jest.mock('@/constants/data', () => ({
+	INITIAL_NOTIFICATIONS: jest.fn()
 }))
 
-const mockInitialNotifications = initialNotifications
+const mockInitialNotifications = INITIAL_NOTIFICATIONS
 
 jest.mock('@/components/ui/Icons/IconSymbol', () => ({
 	IconSymbol: jest.fn(() => <></>)

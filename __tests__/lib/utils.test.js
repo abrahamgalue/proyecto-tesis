@@ -9,7 +9,6 @@ import {
 	formatSensation,
 	isValidLine,
 	getUVIndex,
-	initialNotifications,
 	getTextSize,
 	LINE_ERR_MSG
 } from '@/lib/utils'
@@ -130,14 +129,6 @@ describe('isValidLine', () => {
 		expect(() => isValidLine({ width: '50%', height: '100%' })).toThrow(
 			LINE_ERR_MSG
 		)
-	})
-})
-
-describe('initialNotifications', () => {
-	test('contains valid initial notifications', () => {
-		expect(initialNotifications.length).toBeGreaterThan(0)
-		expect(initialNotifications[0]).toHaveProperty('type')
-		expect(initialNotifications[0]).toHaveProperty('content')
 	})
 })
 

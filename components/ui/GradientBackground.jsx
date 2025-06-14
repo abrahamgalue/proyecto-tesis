@@ -1,18 +1,12 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import { useColorScheme } from '@/lib/useColorScheme'
+import { cardBaseStyle } from '@/constants/style'
 import {
 	gradientStart,
 	gradientEnd,
 	gradientLocations,
-	gradientBgColors,
-	colors
+	gradientBgColors
 } from '@/constants/colors'
-
-const cardBaseStyle = {
-	borderColor: colors.dark.border,
-	borderRadius: 23,
-	borderWidth: 1
-}
 
 function GradientBackground({
 	children,

@@ -2,7 +2,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, Controller } from 'react-hook-form'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Image, ImageBackground } from '@/components/image'
-import * as z from 'zod'
 import GradientBackground from '@/components/ui/GradientBackground'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { Text } from '@/components/text'
@@ -12,17 +11,10 @@ import { useSupabase } from '@/context/supabase-provider'
 
 import { colors } from '@/constants/colors'
 import { useColorScheme } from '@/lib/useColorScheme'
+import { signInSchema } from '@/constants/schemas'
+import useShowPassword from '@/hooks/useShowPassword'
 import { StatusBar } from 'expo-status-bar'
 import useError from '@/hooks/useError'
-import useShowPassword from '@/hooks/useShowPassword'
-
-const formSchema = z.object({
-	email: z.string().email('Dirección de correo electrónico inválida.'),
-	password: z
-		.string()
-		.min(6, 'Por favor, introduzca al menos 6 caracteres.')
-		.max(18, 'Introduzca menos de 18 caracteres.')
-})
 
 export default function SignIn() {
 	const { isDarkColorScheme } = useColorScheme()
@@ -32,7 +24,7 @@ export default function SignIn() {
 	const { error, handleError } = useError()
 
 	const { control, handleSubmit, formState, reset } = useForm({
-		resolver: zodResolver(formSchema),
+		resolver: zodResolver(signInSchema),
 		defaultValues: {
 			email: '',
 			password: ''

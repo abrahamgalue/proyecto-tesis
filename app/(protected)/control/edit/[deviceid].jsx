@@ -1,30 +1,19 @@
-import * as z from 'zod'
-import { router, useLocalSearchParams } from 'expo-router'
-import { useForm, Controller } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
-
+import { router, useLocalSearchParams } from 'expo-router'
 import { useDevice, useDevicesActions } from '@/store/devicesStore'
 import { useEditActions } from '@/store/editStore'
 import { useColorScheme } from '@/lib/useColorScheme'
 import useError from '@/hooks/useError'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { editSchema } from '@/constants/schemas'
+
 import { SafeAreaView } from '@/components/safe-area-view'
 import GradientBackground from '@/components/ui/GradientBackground'
 import BackBtn from '@/components/ui/BackBtn'
 import { Text } from '@/components/text'
 import { colors } from '@/constants/colors'
 import { ChevronDownIcon } from '@/components/ui/Icons/Icons'
-
-const formSchema = z.object({
-	name: z
-		.string()
-		.min(3, 'El campo debe tener al menos 3 caracteres')
-		.max(10, 'Introduzca menos de 10 caracteres.'),
-	description: z
-		.string()
-		.min(3, 'El campo debe tener al menos 3 caracteres')
-		.max(10, 'Introduzca menos de 10 caracteres.')
-})
 
 export default function EditDevice() {
 	const { deviceid } = useLocalSearchParams()
@@ -36,7 +25,7 @@ export default function EditDevice() {
 	const { error, handleError } = useError()
 
 	const { control, handleSubmit, formState, reset } = useForm({
-		resolver: zodResolver(formSchema),
+		resolver: zodResolver(editSchema),
 		defaultValues: {
 			name: device.name,
 			description: device.location

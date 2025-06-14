@@ -1,12 +1,12 @@
 import { renderHook, act } from '@testing-library/react-native'
-import { initialNotifications } from '@/lib/utils'
+import { INITIAL_NOTIFICATIONS } from '@/constants/data'
 import useNotifications from '@/hooks/useNotifications'
 
-jest.mock('@/lib/utils', () => ({
-	initialNotifications: jest.fn()
+jest.mock('@/constants/data', () => ({
+	INITIAL_NOTIFICATIONS: jest.fn()
 }))
 
-const mockInitialNotifications = initialNotifications
+const mockInitialNotifications = INITIAL_NOTIFICATIONS
 
 const initialNotificationsValue = [
 	{

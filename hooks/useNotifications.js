@@ -1,11 +1,11 @@
 import { useState, useMemo, useCallback } from 'react'
-import { initialNotifications } from '@/lib/utils'
+import { INITIAL_NOTIFICATIONS } from '@/constants/data'
 
 const useNotifications = ({
 	handleNotificationPress,
 	handleClearNotifications
 }) => {
-	const [notifications, setNotifications] = useState(initialNotifications)
+	const [notifications, setNotifications] = useState(INITIAL_NOTIFICATIONS)
 	const numOfNotifications = useMemo(
 		() => (notifications.length < 10 ? notifications.length : '+9'),
 		[notifications]
