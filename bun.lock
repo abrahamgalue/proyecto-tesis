@@ -8,6 +8,7 @@
         "@hookform/resolvers": "3.9.1",
         "@react-native-async-storage/async-storage": "1.23.1",
         "@supabase/supabase-js": "2.46.1",
+        "@tanstack/react-query": "^5.80.7",
         "class-variance-authority": "0.7.0",
         "clsx": "2.1.1",
         "expo": "~52.0.46",
@@ -41,6 +42,7 @@
         "zustand": "^5.0.5",
       },
       "devDependencies": {
+        "@tanstack/eslint-plugin-query": "^5.78.0",
         "@testing-library/react-native": "^13.2.0",
         "@types/jest": "^29.5.14",
         "@types/react": "18.3.12",
@@ -547,6 +549,12 @@
     "@supabase/storage-js": ["@supabase/storage-js@2.7.1", "", { "dependencies": { "@supabase/node-fetch": "^2.6.14" } }, "sha512-asYHcyDR1fKqrMpytAS1zjyEfvxuOIp1CIXX7ji4lHHcJKqyk+sLl/Vxgm4sN6u8zvuUtae9e4kDxQP2qrwWBA=="],
 
     "@supabase/supabase-js": ["@supabase/supabase-js@2.46.1", "", { "dependencies": { "@supabase/auth-js": "2.65.1", "@supabase/functions-js": "2.4.3", "@supabase/node-fetch": "2.6.15", "@supabase/postgrest-js": "1.16.3", "@supabase/realtime-js": "2.10.7", "@supabase/storage-js": "2.7.1" } }, "sha512-HiBpd8stf7M6+tlr+/82L8b2QmCjAD8ex9YdSAKU+whB/SHXXJdus1dGlqiH9Umy9ePUuxaYmVkGd9BcvBnNvg=="],
+
+    "@tanstack/eslint-plugin-query": ["@tanstack/eslint-plugin-query@5.78.0", "", { "dependencies": { "@typescript-eslint/utils": "^8.18.1" }, "peerDependencies": { "eslint": "^8.57.0 || ^9.0.0" } }, "sha512-hYkhWr3UP0CkAsn/phBVR98UQawbw8CmTSgWtdgEBUjI60/GBaEIkpgi/Bp/2I8eIDK4+vdY7ac6jZx+GR+hEQ=="],
+
+    "@tanstack/query-core": ["@tanstack/query-core@5.80.7", "", {}, "sha512-s09l5zeUKC8q7DCCCIkVSns8zZrK4ZDT6ryEjxNBFi68G4z2EBobBS7rdOY3r6W1WbUDpc1fe5oY+YO/+2UVUg=="],
+
+    "@tanstack/react-query": ["@tanstack/react-query@5.80.7", "", { "dependencies": { "@tanstack/query-core": "5.80.7" }, "peerDependencies": { "react": "^18 || ^19" } }, "sha512-u2F0VK6+anItoEvB3+rfvTO9GEh2vb00Je05OwlUe/A0lkJBgW1HckiY3f9YZa+jx6IOe4dHPh10dyp9aY3iRQ=="],
 
     "@testing-library/react-native": ["@testing-library/react-native@13.2.0", "", { "dependencies": { "chalk": "^4.1.2", "jest-matcher-utils": "^29.7.0", "pretty-format": "^29.7.0", "redent": "^3.0.0" }, "peerDependencies": { "jest": ">=29.0.0", "react": ">=18.2.0", "react-native": ">=0.71", "react-test-renderer": ">=18.2.0" }, "optionalPeers": ["jest"] }, "sha512-3FX+vW/JScXkoH8VSCRTYF4KCHC56y4AI6TMDISfLna6r+z8kaSEmxH1I6NVaFOxoWX9yaHDyI26xh7BykmqKw=="],
 
