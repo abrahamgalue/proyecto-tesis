@@ -3,6 +3,7 @@ import { FlatList, useWindowDimensions, View } from 'react-native'
 import { useDevices } from '@/store/devicesStore'
 import { useFilter } from '@/store/filterStore'
 import Device from '@/components/ui/Device'
+import { DevicesSkeletons } from './skeletons'
 
 function DevicesList() {
 	const devices = useDevices()
@@ -30,6 +31,10 @@ function DevicesList() {
 		),
 		[]
 	)
+
+	if (filteredDevices.length === 0) {
+		return <DevicesSkeletons itemSize={ITEM_HEIGHT} />
+	}
 
 	return (
 		<View className='flex-1 px-4'>
