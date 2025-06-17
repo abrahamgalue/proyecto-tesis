@@ -1,6 +1,7 @@
 import { memo } from 'react'
 import { View } from 'react-native'
 import { useColorScheme } from '@/lib/useColorScheme'
+import useWeatherData from '@/hooks/useWeatherData'
 import MonitoringBlock from '@/components/ui/Monitoring/MonitoringBlock'
 import {
 	FloorTempIcon,
@@ -13,8 +14,10 @@ import {
 import { colors } from '@/constants/colors'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 
-const Monitoring = memo(function Monitoring({ weatherData }) {
+const Monitoring = memo(function Monitoring() {
 	const { isDarkColorScheme } = useColorScheme()
+
+	const { data, isLoading } = useWeatherData()
 
 	return (
 		<View className='mb-12 w-full flex-row flex-wrap justify-between px-3'>
@@ -49,7 +52,7 @@ const Monitoring = memo(function Monitoring({ weatherData }) {
 				value='20°C'
 				label='Temperatura del sustrato'
 			/>
-			{weatherData.humidity ? (
+			{!isLoading ? (
 				<MonitoringBlock
 					icon={
 						<HumidityIcon
@@ -62,7 +65,7 @@ const Monitoring = memo(function Monitoring({ weatherData }) {
 							}
 						/>
 					}
-					value={weatherData.humidity}
+					value={data.humidity}
 					label='Humedad'
 				/>
 			) : (

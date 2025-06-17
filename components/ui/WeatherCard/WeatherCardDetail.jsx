@@ -6,12 +6,12 @@ import { HumidityIcon } from '@/components/ui/Icons/Icons'
 import { colors } from '@/constants/colors'
 import { GenericSkeleton } from '../skeletons'
 
-const WeatherCardDetail = memo(function WeatherCardDetail({ weatherData }) {
+function WeatherCardDetail({ data, isLoading }) {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
 		<View className='flex items-center justify-center gap-3 pb-3 pt-8'>
-			{weatherData.wind ? (
+			{!isLoading ? (
 				<WeatherDetailBlock
 					icon={
 						<HumidityIcon
@@ -25,13 +25,13 @@ const WeatherCardDetail = memo(function WeatherCardDetail({ weatherData }) {
 						/>
 					}
 					label='Velocidad del Viento'
-					value={weatherData.wind.speed}
-					unit={weatherData.wind.unit}
+					value={data.wind.speed}
+					unit={data.wind.unit}
 				/>
 			) : (
 				<GenericSkeleton className='w-full rounded-2xl' height={80} />
 			)}
-			{weatherData.UV ? (
+			{!isLoading ? (
 				<WeatherDetailBlock
 					icon={
 						<HumidityIcon
@@ -45,14 +45,14 @@ const WeatherCardDetail = memo(function WeatherCardDetail({ weatherData }) {
 						/>
 					}
 					label='Indice UV'
-					value={weatherData.UV.index}
-					unit={weatherData.UV.state}
+					value={data.UV.index}
+					unit={data.UV.state}
 				/>
 			) : (
 				<GenericSkeleton className='w-full rounded-2xl' height={80} />
 			)}
 
-			{weatherData.sensationThermal ? (
+			{!isLoading ? (
 				<WeatherDetailBlock
 					icon={
 						<HumidityIcon
@@ -66,7 +66,7 @@ const WeatherCardDetail = memo(function WeatherCardDetail({ weatherData }) {
 						/>
 					}
 					label='Sensación Térmica'
-					value={weatherData.sensationThermal}
+					value={data.sensationThermal}
 					unit='°C'
 					isLargeText={true}
 				/>
@@ -75,6 +75,6 @@ const WeatherCardDetail = memo(function WeatherCardDetail({ weatherData }) {
 			)}
 		</View>
 	)
-})
+}
 
-export default WeatherCardDetail
+export default memo(WeatherCardDetail)

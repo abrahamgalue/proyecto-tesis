@@ -56,17 +56,16 @@ describe('getWeatherData', () => {
 		})
 	})
 
-	test('logs an error and returns undefined on failure', async () => {
+	test('logs an error and throw error on failure', async () => {
 		const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
-		fetch.mockRejectedValue(new Error('API is down'))
+		fetch.mockRejectedValue(new Error('Failed to get weather data'))
 
-		const result = await getWeatherData()
+		await expect(getWeatherData()).rejects.toThrow('Failed to get weather data')
 
 		expect(consoleSpy).toHaveBeenCalledWith(
 			'Failed to get weather data',
 			expect.any(Error)
 		)
-		expect(result).toBeUndefined()
 
 		consoleSpy.mockRestore()
 	})

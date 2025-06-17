@@ -1,36 +1,16 @@
-import { useState, useEffect } from 'react'
-import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
+import { useQuery } from '@tanstack/react-query'
+import { FALLBACK_WEATHER_DATA, getWeatherData } from '@/lib/weather'
 
 const useWeatherData = () => {
-	const [weatherData, setWeatherData] = useState({})
+	const { data, isLoading, isError } = useQuery({
+		queryFn: getWeatherData,
+		queryKey: ['weather'],
+		staleTime: 1000 * 60 * 30
+	})
 
-	useEffect(() => {
-		let ignore = false
+	const weatherData = isError ? FALLBACK_WEATHER_DATA : data
 
-		getWeatherData()
-			.then(({ tempOutside, humidity, UV, wind, sensationThermal }) => {
-				if (!ignore) {
-					setWeatherData({
-						tempOutside,
-						humidity,
-						UV,
-						wind,
-						sensationThermal
-					})
-				}
-			})
-			.catch(() => {
-				if (!ignore) {
-					setWeatherData(FALLBACK_WEATHER_DATA)
-				}
-			})
-
-		return () => {
-			ignore = true
-		}
-	}, [])
-
-	return { weatherData }
+	return { data: weatherData, isLoading, isError }
 }
 
 export default useWeatherData
