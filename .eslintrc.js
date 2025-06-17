@@ -4,8 +4,8 @@ module.exports = {
 		browser: true,
 		node: true
 	},
-	extends: ['expo', 'prettier'],
-	plugins: ['prettier'],
+	extends: ['expo', 'prettier', 'plugin:@tanstack/query/recommended'],
+	plugins: ['prettier', 'testing-library'],
 	rules: {
 		'prettier/prettier': [
 			'error',

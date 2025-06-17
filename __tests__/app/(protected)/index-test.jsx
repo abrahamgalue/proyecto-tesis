@@ -5,7 +5,7 @@ import App from '@/app/(protected)/index'
 jest.mock('expo-font')
 
 jest.spyOn(useWeatherDataHook, 'default').mockReturnValue({
-	weatherData: {
+	data: {
 		tempOutside: 25,
 		humidity: '68%',
 		wind: { speed: 12, unit: 'km/h' },

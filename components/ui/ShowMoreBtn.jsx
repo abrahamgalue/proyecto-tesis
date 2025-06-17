@@ -1,17 +1,20 @@
 import { memo } from 'react'
 import { TouchableOpacity } from 'react-native'
+import { useShowNotifications } from '@/store/notificationsStore'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { Text } from '@/components/text'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { colors } from '@/constants/colors'
 
-const ShowMoreBtn = memo(function ShowMoreBtn({ isShow, handleShow }) {
+function ShowMoreBtn({ isShow, handleShow }) {
+	const showNotifications = useShowNotifications()
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
 		<TouchableOpacity
 			onPress={handleShow}
 			className='flex-row items-center justify-center p-2'
+			disabled={showNotifications}
 		>
 			<Text className='text-foreground'>Ver {isShow ? 'menos' : 'más'}</Text>
 			<IconSymbol
@@ -23,6 +26,6 @@ const ShowMoreBtn = memo(function ShowMoreBtn({ isShow, handleShow }) {
 			/>
 		</TouchableOpacity>
 	)
-})
+}
 
-export default ShowMoreBtn
+export default memo(ShowMoreBtn)

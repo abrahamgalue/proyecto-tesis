@@ -4,7 +4,7 @@ import ForecastDay from '@/components/ui/Forecast/ForecastDay'
 import { SunCloudSmall, Sunny } from '@/components/ui/Icons/Icons'
 import Line from '@/components/ui/Line'
 
-const ForecastSection = memo(function ForecastSection() {
+function ForecastSection() {
 	return (
 		<View className='mt-[15px] flex-row justify-between pt-[15px]'>
 			<ForecastDay
@@ -29,6 +29,6 @@ const ForecastSection = memo(function ForecastSection() {
 			/>
 		</View>
 	)
-})
+}
 
-export default ForecastSection
+export default memo(ForecastSection)
