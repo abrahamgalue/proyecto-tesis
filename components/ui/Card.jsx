@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { cn } from '@/lib/utils'
 import GradientBackground from '@/components/ui/GradientBackground'
 import CardImgBackground from '@/components/ui/CardImgBackground'
@@ -13,4 +14,4 @@ function Card({ children, className = '', imgClassName = '' }) {
 	)
 }
 
-export default Card
+export default memo(Card)

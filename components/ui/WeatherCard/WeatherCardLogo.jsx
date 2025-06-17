@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { Image } from '@/components/image'
 
-const WeatherCardLogo = memo(function WeatherCardLogo() {
+function WeatherCardLogo() {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return isDarkColorScheme ? (
@@ -18,6 +18,6 @@ const WeatherCardLogo = memo(function WeatherCardLogo() {
 			style={{ contentFit: 'contain' }}
 		/>
 	)
-})
+}
 
-export default WeatherCardLogo
+export default memo(WeatherCardLogo)
