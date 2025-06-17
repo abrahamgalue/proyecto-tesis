@@ -16,6 +16,7 @@ const queryClient = new QueryClient({
 	defaultOptions: {
 		queries: {
 			// ✅ turns retries off
+			gcTime: Infinity,
 			retry: false
 		}
 	}
