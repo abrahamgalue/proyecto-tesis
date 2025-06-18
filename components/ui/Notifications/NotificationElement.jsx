@@ -8,9 +8,7 @@ import {
 import { colors } from '@/constants/colors'
 import { Text } from '@/components/text'
 
-const NotificationElement = memo(function NotificationElement({
-	notification
-}) {
+function NotificationElement({ notification }) {
 	const { isDarkColorScheme } = useColorScheme()
 
 	const IconComponent = useMemo(() =>
@@ -33,6 +31,6 @@ const NotificationElement = memo(function NotificationElement({
 			<Text className='ml-3 text-foreground'>{notification.content}</Text>
 		</View>
 	)
-})
+}
 
-export default NotificationElement
+export default memo(NotificationElement)

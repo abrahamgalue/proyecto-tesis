@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { View } from 'react-native'
 import { Text } from '@/components/text'
 
-const MonitoringBlock = memo(function MonitoringBlock({ icon, value, label }) {
+function MonitoringBlock({ icon, value, label }) {
 	return (
 		<View className='mb-[15px] w-[48%] flex-row items-start gap-2 px-2.5'>
 			<View className=''>{icon}</View>
@@ -12,6 +12,6 @@ const MonitoringBlock = memo(function MonitoringBlock({ icon, value, label }) {
 			</View>
 		</View>
 	)
-})
+}
 
-export default MonitoringBlock
+export default memo(MonitoringBlock)

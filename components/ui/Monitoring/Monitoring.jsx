@@ -14,7 +14,7 @@ import {
 import { colors } from '@/constants/colors'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 
-const Monitoring = memo(function Monitoring() {
+function Monitoring() {
 	const { isDarkColorScheme } = useColorScheme()
 
 	const { data, isLoading } = useWeatherData()
@@ -99,6 +99,6 @@ const Monitoring = memo(function Monitoring() {
 			/>
 		</View>
 	)
-})
+}
 
-export default Monitoring
+export default memo(Monitoring)

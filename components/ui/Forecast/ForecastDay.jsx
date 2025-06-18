@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { View } from 'react-native'
 import { Text } from '@/components/text'
 
-const ForecastDay = memo(function ForecastDay({ day, icon, temp, detail }) {
+function ForecastDay({ day, icon, temp, detail }) {
 	return (
 		<View className='flex-1 items-center'>
 			<Text className='mb-1 text-base text-foreground'>{day}</Text>
@@ -11,6 +11,6 @@ const ForecastDay = memo(function ForecastDay({ day, icon, temp, detail }) {
 			<Text className='text-sm text-foreground'>{detail}</Text>
 		</View>
 	)
-})
+}
 
-export default ForecastDay
+export default memo(ForecastDay)
