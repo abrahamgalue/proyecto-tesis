@@ -10,7 +10,7 @@ import { Text } from '@/components/text'
 import { Link } from 'expo-router'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 
-const MenuBar = memo(function MenuBar() {
+function MenuBar() {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
@@ -68,6 +68,6 @@ const MenuBar = memo(function MenuBar() {
 			</Link>
 		</ActionBar>
 	)
-})
+}
 
-export default MenuBar
+export default memo(MenuBar)

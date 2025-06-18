@@ -2,11 +2,7 @@ import { memo } from 'react'
 import GradientBackground from '@/components/ui/GradientBackground'
 import { cn } from '@/lib/utils'
 
-const ActionBar = memo(function ActionBar({
-	className = '',
-	children,
-	...props
-}) {
+function ActionBar({ className = '', children, ...props }) {
 	const stylesClass = cn(
 		'mb-5 mt-5 w-[95%] flex-row items-center justify-around rounded-[30px]',
 		className
@@ -16,6 +12,6 @@ const ActionBar = memo(function ActionBar({
 			{children}
 		</GradientBackground>
 	)
-})
+}
 
-export default ActionBar
+export default memo(ActionBar)

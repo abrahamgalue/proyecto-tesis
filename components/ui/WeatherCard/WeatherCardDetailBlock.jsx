@@ -3,13 +3,7 @@ import { View } from 'react-native'
 import { getTextSize } from '@/lib/utils'
 import { Text } from '@/components/text'
 
-const WeatherCardDetailBlock = memo(function WeatherCardDetailBlock({
-	icon,
-	label,
-	value,
-	unit,
-	isLargeText
-}) {
+function WeatherCardDetailBlock({ icon, label, value, unit, isLargeText }) {
 	const { className: unitTextSize, displayUnit: newUnit } = useMemo(() =>
 		getTextSize({
 			isLargeText,
@@ -33,6 +27,6 @@ const WeatherCardDetailBlock = memo(function WeatherCardDetailBlock({
 			</View>
 		</View>
 	)
-})
+}
 
-export default WeatherCardDetailBlock
+export default memo(WeatherCardDetailBlock)

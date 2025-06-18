@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { cn } from '@/lib/utils'
 import { Image } from '@/components/image'
 
-const CardImgBackground = memo(function CardImgBackground({ imgClassName }) {
+function CardImgBackground({ imgClassName }) {
 	const imgStylesClass = cn(
 		'absolute bottom-10 right-0 h-full w-full overflow-hidden rounded-3xl',
 		imgClassName
@@ -18,6 +18,6 @@ const CardImgBackground = memo(function CardImgBackground({ imgClassName }) {
 			/>
 		</View>
 	)
-})
+}
 
-export default CardImgBackground
+export default memo(CardImgBackground)
