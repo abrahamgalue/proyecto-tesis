@@ -1,7 +1,8 @@
-import { View, Modal, Pressable } from 'react-native'
-import { Text } from '@/components/text'
+import { memo } from 'react'
+import { View, Modal } from 'react-native'
 import CardTitle from '@/components/ui/CardTitle'
 import BackBtn from './BackBtn'
+import AcceptBtn from './AcceptBtn'
 
 function ModalLightbulb({ visible, onClose, title = 'Modal', children }) {
 	return (
@@ -21,17 +22,11 @@ function ModalLightbulb({ visible, onClose, title = 'Modal', children }) {
 						onPress={onClose}
 					/>
 					{children}
-					<Pressable
-						accessibilityRole='button'
-						className='absolute -bottom-5 w-[70%] rounded-full bg-border p-4'
-						onPress={onClose}
-					>
-						<Text className='text-center text-foreground'>Aceptar</Text>
-					</Pressable>
+					<AcceptBtn onPress={onClose} />
 				</View>
 			</View>
 		</Modal>
 	)
 }
 
-export default ModalLightbulb
+export default memo(ModalLightbulb)

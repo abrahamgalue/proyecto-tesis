@@ -2,7 +2,8 @@ import { memo, useCallback, useState } from 'react'
 import { View } from 'react-native'
 import { useEdit } from '@/store/editStore'
 import ModalLightbulb from '@/components/ui/ModalLightbulb'
-import { Text } from '@/components/text'
+import LightColor from './LightColor'
+import LightLevel from './LightLevel'
 import EditBtn from '@/components/ui/EditBtn'
 import DeviceContent from '@/components/ui/DeviceContent'
 import SettingsLightBtn from '@/components/ui/SettingsLightBtn'
@@ -18,13 +19,16 @@ function Device({ item, num, itemSize }) {
 
 	return (
 		<View className='relative'>
-			<ModalLightbulb
-				visible={modalVisible}
-				onClose={handleHideModal}
-				title={`${item.name} #${num}`}
-			>
-				<Text className='text-foreground'>Texto dentro de modal</Text>
-			</ModalLightbulb>
+			{isLight && (
+				<ModalLightbulb
+					visible={modalVisible}
+					onClose={handleHideModal}
+					title={`${item.name} #${num}`}
+				>
+					<LightColor deviceId={item.id} color={item.color} />
+					<LightLevel deviceId={item.id} brightness={item.brightness} />
+				</ModalLightbulb>
+			)}
 
 			{isEdit && (
 				<EditBtn

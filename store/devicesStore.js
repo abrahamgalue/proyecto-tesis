@@ -46,6 +46,40 @@ const useDevicesStore = create((set) => ({
 
 				return { devices: newDevices }
 			})
+		},
+		handleDeviceBrightness: (id, brightness) => {
+			set((old) => {
+				const { devices } = old
+
+				const deviceIndex = devices.findIndex((d) => d.id === id)
+
+				if (deviceIndex === -1) return {}
+
+				const newDevices = [
+					...devices.slice(0, deviceIndex),
+					{ ...devices[deviceIndex], brightness },
+					...devices.slice(deviceIndex + 1)
+				]
+
+				return { devices: newDevices }
+			})
+		},
+		handleDeviceColor: (id, color) => {
+			set((old) => {
+				const { devices } = old
+
+				const deviceIndex = devices.findIndex((d) => d.id === id)
+
+				if (deviceIndex === -1) return {}
+
+				const newDevices = [
+					...devices.slice(0, deviceIndex),
+					{ ...devices[deviceIndex], color },
+					...devices.slice(deviceIndex + 1)
+				]
+
+				return { devices: newDevices }
+			})
 		}
 	}
 }))

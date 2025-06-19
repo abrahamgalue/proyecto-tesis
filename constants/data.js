@@ -17,7 +17,9 @@ export const INITIAL_DEVICES_DATA = [
 		name: `Luz`,
 		type: 'light',
 		isOn: false,
-		location: 'Zona sur'
+		location: 'Zona sur',
+		brightness: 95,
+		color: '#FF00D4'
 	},
 	{
 		id: '310e1819-2b99-4b83-8a66-a11c6565c685',
@@ -31,14 +33,18 @@ export const INITIAL_DEVICES_DATA = [
 		name: `Luz`,
 		type: 'light',
 		isOn: true,
-		location: 'Jardín'
+		location: 'Jardín',
+		brightness: 70,
+		color: '#FF1C42'
 	},
 	{
 		id: 'c5fc2879-0561-4eaf-a765-525cb8021e2f',
 		name: `Luz`,
 		type: 'light',
 		isOn: false,
-		location: 'Zona sur'
+		location: 'Zona sur',
+		brightness: 20,
+		color: '#1E279E'
 	},
 	{
 		id: '5daf736b-94b6-4af5-885c-4d80af79f706',

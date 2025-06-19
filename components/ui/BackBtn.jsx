@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { CloseIcon, CloseSmallIcon } from '@/components/ui/Icons/Icons'
 
@@ -9,4 +10,4 @@ function BackBtn({ small = true, className, hitSlop, onPress }) {
 	)
 }
 
-export default BackBtn
+export default memo(BackBtn)

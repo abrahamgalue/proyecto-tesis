@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { cn } from '@/lib/utils'
 import { Text } from '@/components/text'
 
@@ -10,4 +11,4 @@ function CardTitle({ children, className = '' }) {
 	return <Text className={stylesClass}>{children}</Text>
 }
 
-export default CardTitle
+export default memo(CardTitle)
