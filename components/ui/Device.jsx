@@ -1,6 +1,7 @@
-import { memo, useCallback, useState } from 'react'
+import { memo } from 'react'
 import { View } from 'react-native'
 import { useEdit } from '@/store/editStore'
+import useModal from '@/hooks/useModal'
 import ModalLightbulb from '@/components/ui/ModalLightbulb'
 import LightColor from './LightColor'
 import LightLevel from './LightLevel'
@@ -12,16 +13,13 @@ function Device({ item, num, itemSize }) {
 	const isEdit = useEdit()
 	const isLight = item.type === 'light'
 
-	const [modalVisible, setModalVisible] = useState(false)
-
-	const handleShowModal = useCallback(() => setModalVisible(true), [])
-	const handleHideModal = useCallback(() => setModalVisible(false), [])
+	const { visible, handleShowModal, handleHideModal } = useModal()
 
 	return (
 		<View className='relative'>
 			{isLight && (
 				<ModalLightbulb
-					visible={modalVisible}
+					visible={visible}
 					onClose={handleHideModal}
 					title={`${item.name} #${num}`}
 				>
