@@ -22,6 +22,7 @@ export default function ProtectedLayout() {
 			>
 				<Stack.Screen name='index' />
 				<Stack.Screen name='settings' />
+				<Stack.Screen name='notifications' />
 				<Stack.Screen name='control/index' />
 				<Stack.Screen name='modal' options={{ presentation: 'modal' }} />
 			</Stack>

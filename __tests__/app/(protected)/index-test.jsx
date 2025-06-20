@@ -4,6 +4,8 @@ import App from '@/app/(protected)/index'
 
 jest.mock('expo-font')
 
+jest.mock('@/config/supabase')
+
 jest.spyOn(useWeatherDataHook, 'default').mockReturnValue({
 	data: {
 		tempOutside: 25,

@@ -1,72 +1,44 @@
 import { memo } from 'react'
-import { TouchableOpacity } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
+import useModal from '@/hooks/useModal'
+import ModalSettings from '@/components/ui/ModalSettings'
+import SettingsHeader from '@/components/ui/SettingsHeader'
+import {
+	NotificationsSettingsBtn,
+	AboutBtn,
+	SignOutBtn
+} from '@/components/ui/SettingsButtons'
 import ActionBar from '@/components/ui/ActionBar'
-import GradientBackground from '@/components/ui/GradientBackground'
-import { colors } from '@/constants/colors'
-import Line from '@/components/ui/Line'
-import { AccountCircleIcon, PhoneControlIcon } from './Icons/Icons'
-import { Text } from '@/components/text'
-import { Link } from 'expo-router'
-import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
+import {
+	AccountBtn,
+	ControlBtn,
+	SettingsBtn
+} from '@/components/ui/MenuBarButtons'
 
 function MenuBar() {
-	const { isDarkColorScheme } = useColorScheme()
+	const { visible, handleShowModal, handleHideModal } = useModal()
 
 	return (
-		<ActionBar className='px-[5%] py-3'>
-			<Link href='/control' asChild>
-				<TouchableOpacity accessibilityLabel='Go to Control'>
-					<GradientBackground
-						className='flex-row items-center gap-2 rounded-[20px] bg-[rgba(109,165,192,0.3)] px-[15px] py-2'
-						style={{
-							borderRadius: 12
-						}}
-						type='card'
-					>
-						<PhoneControlIcon
-							width={24}
-							height={24}
-							color={
-								isDarkColorScheme
-									? colors.dark.foreground
-									: colors.light.foreground
-							}
-						/>
-						<Line height={15} />
-						<Text className='text-sm font-bold text-foreground'>Control</Text>
-					</GradientBackground>
-				</TouchableOpacity>
-			</Link>
+		<>
+			<ModalSettings
+				visible={visible}
+				onClose={handleHideModal}
+				title='CONFIGURACIÓN'
+			>
+				<SettingsHeader />
 
-			<Link href='/modal' asChild>
-				<TouchableOpacity accessibilityLabel='Go to Modal' hitSlop={14}>
-					<AccountCircleIcon
-						width={33}
-						height={33}
-						color={
-							isDarkColorScheme
-								? colors.dark.foreground
-								: colors.light.foreground
-						}
-					/>
-				</TouchableOpacity>
-			</Link>
+				<NotificationsSettingsBtn onPress={handleHideModal} />
 
-			<Link href='/settings' asChild>
-				<TouchableOpacity accessibilityLabel='Go to Settings' hitSlop={18}>
-					<IconSymbol
-						name='settings'
-						size={24}
-						color={
-							isDarkColorScheme
-								? colors.dark.foreground
-								: colors.light.foreground
-						}
-					/>
-				</TouchableOpacity>
-			</Link>
-		</ActionBar>
+				<AboutBtn />
+
+				<SignOutBtn />
+			</ModalSettings>
+
+			<ActionBar className='px-[5%] py-3'>
+				<ControlBtn />
+				<AccountBtn />
+				<SettingsBtn handleShowModal={handleShowModal} />
+			</ActionBar>
+		</>
 	)
 }
 
