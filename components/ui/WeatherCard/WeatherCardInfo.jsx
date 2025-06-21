@@ -12,7 +12,7 @@ function WeatherCardInfo({ data, isLoading }) {
 						{data.tempOutside}°
 					</Text>
 				) : (
-					<GenericSkeleton width={150} height={90} />
+					<GenericSkeleton width={155} height={100} />
 				)}
 				<Text className='text-base text-foreground'>Nublado</Text>
 			</View>
