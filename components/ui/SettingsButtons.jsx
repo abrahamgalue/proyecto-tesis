@@ -32,7 +32,7 @@ export const NotificationsSettingsBtn = ({ onPress }) => {
 export const AboutBtn = () => {
 	const { isDarkColorScheme } = useColorScheme()
 	return (
-		<TouchableOpacity className='h-24 w-full flex-row items-center gap-2 border-y border-border px-6'>
+		<TouchableOpacity className='h-24 w-full flex-row items-center gap-2 border-b border-border px-6'>
 			<IconSymbol
 				name='info-outline'
 				size={33}
