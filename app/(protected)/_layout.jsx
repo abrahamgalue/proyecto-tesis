@@ -2,6 +2,10 @@ import { useSupabase } from '@/context/supabase-provider'
 import { Redirect, Stack } from 'expo-router'
 import { View } from 'react-native'
 
+export const unstable_settings = {
+	initialRouteName: 'index'
+}
+
 export default function ProtectedLayout() {
 	const { initialized, session } = useSupabase()
 
@@ -21,10 +25,15 @@ export default function ProtectedLayout() {
 				}}
 			>
 				<Stack.Screen name='index' />
-				<Stack.Screen name='settings' />
-				<Stack.Screen name='notifications' />
 				<Stack.Screen name='control/index' />
-				<Stack.Screen name='modal' options={{ presentation: 'modal' }} />
+				<Stack.Screen
+					name='settings'
+					options={{
+						presentation: 'transparentModal',
+						animation: 'fade',
+						headerShown: false
+					}}
+				/>
 			</Stack>
 		</View>
 	)

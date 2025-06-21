@@ -77,12 +77,12 @@ describe('App Component', () => {
 		expect(screen.queryByText('Sensación Térmica')).not.toBeOnTheScreen()
 	})
 
-	test('should navigate to modal screen', async () => {
+	test('should navigate to settings screen', async () => {
 		render(<App />)
 
-		const modalBtn = screen.getByLabelText('Go to Modal')
+		const settingsBtn = screen.getByLabelText('Go to Settings')
 
-		expect(modalBtn).toBeVisible()
+		expect(settingsBtn).toBeVisible()
 	})
 
 	test('should navigate to settings screen', async () => {

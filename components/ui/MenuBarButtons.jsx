@@ -43,30 +43,24 @@ export const AccountBtn = memo(function AccountBtn() {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
-		<Link href='/modal' asChild>
-			<TouchableOpacity accessibilityLabel='Go to Modal' hitSlop={14}>
-				<AccountCircleIcon
-					width={33}
-					height={33}
-					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
-					}
-				/>
-			</TouchableOpacity>
-		</Link>
+		<TouchableOpacity accessibilityLabel='Go to User' hitSlop={14}>
+			<AccountCircleIcon
+				width={33}
+				height={33}
+				color={
+					isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+				}
+			/>
+		</TouchableOpacity>
 	)
 })
 
-export const SettingsBtn = memo(function SettingsBtn({ handleShowModal }) {
+export const SettingsBtn = memo(function SettingsBtn() {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
-		<>
-			<TouchableOpacity
-				onPress={handleShowModal}
-				accessibilityLabel='Go to Settings'
-				hitSlop={18}
-			>
+		<Link href='/settings' asChild>
+			<TouchableOpacity accessibilityLabel='Go to Settings' hitSlop={18}>
 				<IconSymbol
 					name='settings'
 					size={24}
@@ -75,6 +69,6 @@ export const SettingsBtn = memo(function SettingsBtn({ handleShowModal }) {
 					}
 				/>
 			</TouchableOpacity>
-		</>
+		</Link>
 	)
 })
