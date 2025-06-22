@@ -11,10 +11,17 @@ export const signInSchema = z.object({
 export const editSchema = z.object({
 	name: z
 		.string()
-		.min(3, 'El campo debe tener al menos 3 caracteres')
-		.max(10, 'Introduzca menos de 10 caracteres.'),
+		.min(3, 'El nombre debe tener al menos 3 caracteres')
+		.max(10, 'El nombre debe tener menos de 10 caracteres.'),
 	description: z
 		.string()
-		.min(3, 'El campo debe tener al menos 3 caracteres')
-		.max(10, 'Introduzca menos de 10 caracteres.')
+		.min(3, 'La ubicación debe tener al menos 3 caracteres')
+		.max(10, 'La ubicación debe tener menos de 10 caracteres.')
+})
+
+export const usernameSchema = z.object({
+	username: z
+		.string()
+		.min(3, 'El nombre de usuario debe tener al menos 3 caracteres')
+		.max(20, 'El nombre de usuario debe tener menos de 20 caracteres.')
 })

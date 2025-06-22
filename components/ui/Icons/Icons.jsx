@@ -769,3 +769,22 @@ export const ChevronDownIcon = memo(function ChevronDownIcon({ color, props }) {
 		</Svg>
 	)
 })
+
+export const EditUsernameIcon = memo(function EditUsernameIcon(props) {
+	return (
+		<Svg
+			xmlns='http://www.w3.org/2000/svg'
+			width={12}
+			height={12}
+			fill='none'
+			{...props}
+		>
+			<Path
+				stroke='#B3B3B3'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+				d='M6 10.667h5.25M8.625 1.042a1.237 1.237 0 1 1 1.75 1.75l-7.292 7.291-2.333.584.583-2.334 7.292-7.291Z'
+			/>
+		</Svg>
+	)
+})

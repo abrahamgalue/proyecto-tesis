@@ -34,6 +34,14 @@ export default function ProtectedLayout() {
 						headerShown: false
 					}}
 				/>
+				<Stack.Screen
+					name='account'
+					options={{
+						presentation: 'transparentModal',
+						animation: 'fade',
+						headerShown: false
+					}}
+				/>
 			</Stack>
 		</View>
 	)
