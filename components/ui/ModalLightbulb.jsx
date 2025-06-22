@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { View, Modal } from 'react-native'
 import CardTitle from '@/components/ui/CardTitle'
 import BackBtn from './BackBtn'
-import AcceptBtn from './AcceptBtn'
+import Button from '@/components/Button'
 
 function ModalLightbulb({ visible, onClose, title = 'Modal', children }) {
 	return (
@@ -22,7 +22,12 @@ function ModalLightbulb({ visible, onClose, title = 'Modal', children }) {
 						onPress={onClose}
 					/>
 					{children}
-					<AcceptBtn onPress={onClose} />
+					<Button
+						activeOpacity={1}
+						title='Aceptar'
+						className='absolute -bottom-5 w-[70%] bg-border'
+						onPress={onClose}
+					/>
 				</View>
 			</View>
 		</Modal>

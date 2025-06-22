@@ -5,6 +5,7 @@ import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { colors } from '@/constants/colors'
 import { Text } from '@/components/text'
 import { useSupabase } from '@/context/supabase-provider'
+import Button from '@/components/Button'
 
 export const NotificationsSettingsBtn = () => {
 	const { isDarkColorScheme } = useColorScheme()
@@ -55,13 +56,8 @@ export const SignOutBtn = () => {
 	const { signOut } = useSupabase()
 
 	return (
-		<View className='mb-10 flex w-full flex-1 items-center justify-end'>
-			<TouchableOpacity
-				onPress={signOut}
-				className='w-[80%] rounded-full bg-[#0C6971] p-4'
-			>
-				<Text className='text-center text-foreground'>Cerrar Sesión</Text>
-			</TouchableOpacity>
+		<View className='mb-10 flex w-[80%] flex-1 items-center justify-end'>
+			<Button title='Cerrar Sesión' className='rounded-2xl' onPress={signOut} />
 		</View>
 	)
 }

@@ -43,15 +43,17 @@ export const AccountBtn = memo(function AccountBtn() {
 	const { isDarkColorScheme } = useColorScheme()
 
 	return (
-		<TouchableOpacity accessibilityLabel='Go to User' hitSlop={14}>
-			<AccountCircleIcon
-				width={33}
-				height={33}
-				color={
-					isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
-				}
-			/>
-		</TouchableOpacity>
+		<Link href='/account' asChild>
+			<TouchableOpacity accessibilityLabel='Go to User' hitSlop={14}>
+				<AccountCircleIcon
+					width={33}
+					height={33}
+					color={
+						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+					}
+				/>
+			</TouchableOpacity>
+		</Link>
 	)
 })
 

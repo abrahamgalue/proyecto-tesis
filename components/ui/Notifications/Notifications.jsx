@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { View, Pressable, ScrollView, TouchableOpacity } from 'react-native'
+import { View, ScrollView, TouchableOpacity } from 'react-native'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import {
 	useNotifications,
@@ -10,7 +10,7 @@ import { useColorScheme } from '@/lib/useColorScheme'
 import { colors } from '@/constants/colors'
 import NotificationBadge from '@/components/ui/Notifications/NotificationBadge'
 import NotificationElement from '@/components/ui/Notifications/NotificationElement'
-import { Text } from '@/components/text'
+import Button from '@/components/Button'
 
 function Notifications() {
 	const notifications = useNotifications()
@@ -55,21 +55,12 @@ function Notifications() {
 							/>
 						))}
 					</ScrollView>
-					<Pressable
+					<Button
+						title='Limpiar todo'
+						className='mt-3 w-full rounded-lg bg-red-500 p-2 active:bg-red-700'
 						onPress={clearNotifications}
-						className='mt-3 items-center rounded-lg bg-red-500 p-2 active:bg-red-700'
-					>
-						{({ pressed }) => (
-							<Text
-								style={{
-									color: pressed ? colors.dark.clearNotificationsText : 'white'
-								}}
-								className='font-bold'
-							>
-								Limpiar todo
-							</Text>
-						)}
-					</Pressable>
+						textClassName='font-bold'
+					/>
 				</View>
 			)}
 		</View>
