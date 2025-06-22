@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import { Switch, TouchableOpacity, View } from 'react-native'
+import { Switch, View } from 'react-native'
 import { router } from 'expo-router'
 import { SafeAreaView } from '@/components/safe-area-view'
 import GradientBackground from '@/components/ui/GradientBackground'
 import BackBtn from '@/components/ui/BackBtn'
 import { Text } from '@/components/text'
+import Button from '@/components/Button'
 
 export default function Notifications() {
 	const [isEnabled, setIsEnabled] = useState(true)
@@ -14,16 +15,16 @@ export default function Notifications() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1'>
+		<SafeAreaView className='flex-1 bg-background'>
 			<GradientBackground
-				className='flex-1 items-center justify-start gap-4'
+				className='flex-1 items-center justify-start gap-4 px-[5%]'
 				type='screen'
 			>
-				<View className='flex w-[80%] flex-row items-start gap-3 py-8'>
+				<View className='flex w-full flex-row items-start gap-3 py-8'>
 					<BackBtn small={false} hitSlop={20} onPress={handleBack} />
 					<Text className='font-bold text-foreground'>Notificaciones</Text>
 				</View>
-				<View className='mb-4 flex w-[80%] flex-row'>
+				<View className='mb-4 flex w-full flex-row'>
 					<Text className='text-foreground'>
 						{isEnabled ? 'Activadas' : 'Desactivadas'}
 					</Text>
@@ -37,13 +38,7 @@ export default function Notifications() {
 					</View>
 				</View>
 
-				<TouchableOpacity
-					accessibilityRole='button'
-					className='w-[80%] rounded-full bg-[#0C6971] p-4'
-					onPress={handleBack}
-				>
-					<Text className='text-center text-foreground'>Aceptar</Text>
-				</TouchableOpacity>
+				<Button title='Aceptar' onPress={handleBack} />
 			</GradientBackground>
 		</SafeAreaView>
 	)

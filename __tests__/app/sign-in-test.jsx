@@ -31,6 +31,23 @@ jest.mock('@/context/supabase-provider', () => ({
 const mockSignInWithPassword = jest.fn()
 
 describe('<SignIn />', () => {
+	/**
+	 * TO-DO
+	 *
+	 * Warning: An update to Animated(View) inside a test was not wrapped in act(...).
+	 */
+	beforeAll(() => {
+		jest.spyOn(console, 'error').mockImplementation(() => {})
+	})
+
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
+
+	beforeEach(() => {
+		jest.clearAllMocks()
+	})
+
 	test('should render correctly', () => {
 		render(<SignIn />)
 

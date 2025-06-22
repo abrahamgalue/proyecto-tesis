@@ -15,6 +15,7 @@ import { signInSchema } from '@/constants/schemas'
 import useShowPassword from '@/hooks/useShowPassword'
 import { StatusBar } from 'expo-status-bar'
 import useError from '@/hooks/useError'
+import Button from '@/components/Button'
 
 export default function SignIn() {
 	const { isDarkColorScheme } = useColorScheme()
@@ -23,7 +24,12 @@ export default function SignIn() {
 	const { showPass, toggleShowPass } = useShowPassword()
 	const { error, handleError } = useError()
 
-	const { control, handleSubmit, formState, reset } = useForm({
+	const {
+		control,
+		handleSubmit,
+		formState: { isSubmitting, isValid },
+		reset
+	} = useForm({
 		resolver: zodResolver(signInSchema),
 		defaultValues: {
 			email: '',
@@ -42,7 +48,7 @@ export default function SignIn() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1' edges={['bottom']}>
+		<SafeAreaView className='flex-1 bg-background' edges={['bottom']}>
 			<StatusBar style='auto' />
 			<GradientBackground className='flex-1' type='screen'>
 				<ImageBackground
@@ -121,13 +127,12 @@ export default function SignIn() {
 						{error ? 'Correo y/o contraseña incorrecta' : ''}
 					</Text>
 
-					<Pressable
-						accessibilityRole='button'
-						className={`${!formState.isValid ? 'bg-slate-700 opacity-20' : 'bg-[#0C6971]'} w-[80%] rounded-full p-4`}
-						disabled={!formState.isValid}
+					<Button
+						className={`w-[80%] ${!isValid ? 'bg-slate-700 opacity-20' : 'bg-[#0C6971]'}`}
+						disabled={!isValid}
 						onPress={handleSubmit(onSubmit)}
 					>
-						{formState.isSubmitting ? (
+						{isSubmitting ? (
 							<ActivityIndicator
 								size='small'
 								color={
@@ -137,11 +142,11 @@ export default function SignIn() {
 								}
 							/>
 						) : (
-							<Text className='text-center text-foreground'>
+							<Text className='text-center uppercase text-foreground'>
 								INICIAR SESIÓN
 							</Text>
 						)}
-					</Pressable>
+					</Button>
 				</ImageBackground>
 			</GradientBackground>
 		</SafeAreaView>
