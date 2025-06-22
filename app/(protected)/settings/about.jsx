@@ -31,7 +31,9 @@ export default function About() {
 							source={require('@/assets/signin-icon.png')}
 							style={{ contentFit: 'contain' }}
 						/>
-						<Text className='mb-3 text-sm text-[#0C6971]'>v1.0 2025</Text>
+						<Text className='mb-3 text-sm text-[#0C6971]'>
+							v1.0 {currentYear}
+						</Text>
 						<View className='w-full rounded-3xl border border-border py-8'>
 							<Text className='mb-8 text-center text-sm text-foreground'>
 								Desarrollado por:
@@ -55,7 +57,7 @@ export default function About() {
 						/>
 					</Card>
 					<Text className='mt-3 text-center text-sm text-[#0C6971]'>
-						{`Copyright ©${currentYear} PANGO Studios Ve., Ltd.`}
+						Copyright ©{currentYear} PANGO Studios Ve., Ltd.
 					</Text>
 					<Text className='text-center text-sm text-[#0C6971]'>
 						Todos los derechos reservados.
