@@ -1,9 +1,8 @@
-import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
+import { ActivityIndicator, TextInput, View } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useDevice, useDevicesActions } from '@/store/devicesStore'
 import { useEditActions } from '@/store/editStore'
 import { useColorScheme } from '@/lib/useColorScheme'
-import useError from '@/hooks/useError'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { editSchema } from '@/constants/schemas'
@@ -14,6 +13,8 @@ import BackBtn from '@/components/ui/BackBtn'
 import { Text } from '@/components/text'
 import { colors } from '@/constants/colors'
 import { ChevronDownIcon } from '@/components/ui/Icons/Icons'
+import Button from '@/components/Button'
+import { cn } from '@/lib/utils'
 
 export default function EditDevice() {
 	const { deviceid } = useLocalSearchParams()
@@ -22,14 +23,19 @@ export default function EditDevice() {
 	const { setEdited } = useEditActions()
 
 	const { isDarkColorScheme } = useColorScheme()
-	const { error, handleError } = useError()
 
-	const { control, handleSubmit, formState, reset } = useForm({
+	const {
+		control,
+		handleSubmit,
+		formState: { errors, isSubmitting, isValid },
+		reset
+	} = useForm({
 		resolver: zodResolver(editSchema),
 		defaultValues: {
 			name: device.name,
 			description: device.location
-		}
+		},
+		mode: 'onChange'
 	})
 
 	async function onSubmit(data) {
@@ -40,7 +46,6 @@ export default function EditDevice() {
 			router.back()
 		} catch (err) {
 			console.log(err)
-			handleError(true)
 		}
 	}
 
@@ -50,16 +55,16 @@ export default function EditDevice() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1'>
+		<SafeAreaView className='flex-1 bg-background'>
 			<GradientBackground
-				className='flex-1 items-center justify-start gap-4'
+				className='flex-1 items-center gap-4 px-[5%]'
 				type='screen'
 			>
-				<View className='flex w-[80%] flex-row items-start gap-3 py-8'>
+				<View className='flex w-full flex-row items-start gap-3 py-8'>
 					<BackBtn small={false} hitSlop={20} onPress={handleBack} />
 					<Text className='font-bold text-foreground'>Editar Dispositivo</Text>
 				</View>
-				<View className='flex w-[80%] flex-row items-center justify-center rounded-full border border-gray-400 bg-gray-700'>
+				<View className='flex w-full flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-700'>
 					<TextInput
 						className='h-14 flex-1 rounded-full px-8 text-gray-400'
 						placeholder='Nombre'
@@ -82,7 +87,13 @@ export default function EditDevice() {
 					}}
 					render={({ field: { onChange, onBlur, value } }) => (
 						<TextInput
-							className='h-14 w-[80%] rounded-full border border-border bg-white px-8 font-bold'
+							className={cn(
+								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
+								{
+									'border-border': !errors.name?.message,
+									'border-red-400': !!errors.name?.message
+								}
+							)}
 							onBlur={onBlur}
 							onChangeText={onChange}
 							placeholder='Nombre'
@@ -101,7 +112,13 @@ export default function EditDevice() {
 					}}
 					render={({ field: { onChange, onBlur, value } }) => (
 						<TextInput
-							className='h-14 w-[80%] rounded-full border border-border bg-white px-8 font-bold'
+							className={cn(
+								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
+								{
+									'border-border': !errors.description?.message,
+									'border-red-400': !!errors.description?.message
+								}
+							)}
 							onBlur={onBlur}
 							onChangeText={onChange}
 							placeholder='Descripción'
@@ -114,18 +131,22 @@ export default function EditDevice() {
 				/>
 
 				<Text className='text-red-500'>
-					{error
-						? 'Los campos deben tener mas de 10 caracteres y no pueden estar vacíos'
-						: ''}
+					{errors.name?.message ? errors.name.message : ''}
 				</Text>
 
-				<Pressable
-					accessibilityRole='button'
-					className={`${!formState.isValid ? 'bg-slate-700 opacity-20' : 'bg-[#0C6971]'} w-[80%] rounded-full p-4`}
-					disabled={!formState.isValid}
+				<Text className='text-red-500'>
+					{errors.description?.message ? errors.description.message : ''}
+				</Text>
+
+				<Button
+					className={{
+						'bg-slate-700 opacity-20': !isValid,
+						'bg-[#0C6971]': isValid
+					}}
+					disabled={!isValid}
 					onPress={handleSubmit(onSubmit)}
 				>
-					{formState.isSubmitting ? (
+					{isSubmitting ? (
 						<ActivityIndicator
 							size='small'
 							color={
@@ -137,7 +158,7 @@ export default function EditDevice() {
 					) : (
 						<Text className='text-center text-foreground'>ACEPTAR</Text>
 					)}
-				</Pressable>
+				</Button>
 			</GradientBackground>
 		</SafeAreaView>
 	)
