@@ -1,5 +1,8 @@
-import { useState } from 'react'
 import { Switch, View } from 'react-native'
+import {
+	useNotificationsEnabled,
+	useNotificationsActions
+} from '@/store/notificationsStore'
 import { router } from 'expo-router'
 import { SafeAreaView } from '@/components/safe-area-view'
 import GradientBackground from '@/components/ui/GradientBackground'
@@ -8,7 +11,8 @@ import { Text } from '@/components/text'
 import Button from '@/components/Button'
 
 export default function Notifications() {
-	const [isEnabled, setIsEnabled] = useState(true)
+	const isEnabled = useNotificationsEnabled()
+	const { toggleNotificationsEnabled } = useNotificationsActions()
 
 	const handleBack = () => {
 		router.back()
@@ -32,7 +36,7 @@ export default function Notifications() {
 						<Switch
 							trackColor={{ false: '#ffffff', true: '#0fb1ff' }}
 							thumbColor={isEnabled ? '#ffffff' : '#757575'}
-							onValueChange={() => setIsEnabled(!isEnabled)}
+							onValueChange={toggleNotificationsEnabled}
 							value={isEnabled}
 						/>
 					</View>

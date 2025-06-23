@@ -4,6 +4,7 @@ import { INITIAL_NOTIFICATIONS, INITIAL_DEVICES_DATA } from '@/constants/data'
 const useNotificationsStore = create((set) => ({
 	notifications: INITIAL_NOTIFICATIONS,
 	showNotifications: false,
+	notificationsEnabled: true,
 	actions: {
 		clearNotifications: () => {
 			console.log('[ESP32] Limpiando notificaciones en el ESP32.')
@@ -34,6 +35,17 @@ const useNotificationsStore = create((set) => ({
 				})
 				return { showNotifications: !state.showNotifications }
 			})
+		},
+		toggleNotificationsEnabled: () => {
+			set((state) => {
+				const newValue = !state.notificationsEnabled
+				console.log(
+					`[ESP32] ${
+						newValue ? 'Activando' : 'Desactivando'
+					} notificaciones en el ESP32.`
+				)
+				return { notificationsEnabled: newValue }
+			})
 		}
 	}
 }))
@@ -43,6 +55,9 @@ export const useNotifications = () =>
 
 export const useShowNotifications = () =>
 	useNotificationsStore((state) => state.showNotifications)
+
+export const useNotificationsEnabled = () =>
+	useNotificationsStore((state) => state.notificationsEnabled)
 
 export const useNotificationsActions = () =>
 	useNotificationsStore((state) => state.actions)
