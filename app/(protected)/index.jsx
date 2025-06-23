@@ -9,7 +9,13 @@ import MenuBar from '@/components/ui/MenuBar'
 import Footer from '@/components/ui/Footer'
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 
-const weather = new QueryClient()
+const weather = new QueryClient({
+	defaultOptions: {
+		queries: {
+			retry: 2
+		}
+	}
+})
 
 function App() {
 	const showNotifications = useShowNotifications()
