@@ -18,7 +18,7 @@ function DevicesList() {
 	const ITEM_HEIGHT = (width - 96) / 2
 
 	const filteredDevices =
-		filter === '' ? devices : devices.filter((item) => item.type === filter)
+		filter === 'all' ? devices : devices.filter((item) => item.type === filter)
 
 	const renderItem = useCallback(
 		({ item, index }) => (

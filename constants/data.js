@@ -2,12 +2,14 @@ export const INITIAL_NOTIFICATIONS = [
 	{
 		id: 'a521eab9-5126-4f2c-8327-066caf5d7a62',
 		type: 'waterLevel',
-		content: '60% de agua restante'
+		content: '60% de agua restante',
+		deviceId: '310e1819-2b99-4b83-8a66-a11c6565c685'
 	},
 	{
 		id: '906644fa-fb46-4899-8b7a-3251d133825a',
 		type: 'waterObstruction',
-		content: '0.5% obstrucción'
+		content: '0.5% obstrucción',
+		deviceId: '5daf736b-94b6-4af5-885c-4d80af79f706'
 	}
 ]
 

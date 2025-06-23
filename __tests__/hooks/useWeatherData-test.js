@@ -29,6 +29,13 @@ const wrapper = ({ children }) => (
 describe('useWeatherData', () => {
 	const mockGetWeatherData = getWeatherData
 
+	beforeAll(() => {
+		jest.spyOn(console, 'log').mockImplementation(() => {})
+	})
+	afterAll(() => {
+		console.log.mockRestore()
+	})
+
 	afterEach(() => {
 		queryClient.clear()
 		mockGetWeatherData.mockClear()

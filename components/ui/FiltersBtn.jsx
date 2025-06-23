@@ -16,7 +16,7 @@ function FiltersBtn() {
 		<View className='flex-row items-center justify-around px-2 py-2'>
 			<FilterButton
 				title={'Todos'}
-				value=''
+				value='all'
 				onPress={handlePress}
 				hitSlop={{ bottom: 10, top: 10, left: 5, right: 5 }}
 			/>

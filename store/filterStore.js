@@ -1,10 +1,12 @@
 import { create } from 'zustand'
 
 const useFilterStore = create((set) => ({
-	filter: '',
+	filter: 'all',
 	actions: {
-		setFilter: (value) => set({ filter: value }),
-		resetFilter: () => set({ filter: '' })
+		setFilter: (value) => {
+			console.log(`[ESP32] Enviando filtro al ESP32: ${value}`)
+			set({ filter: value })
+		}
 	}
 }))
 

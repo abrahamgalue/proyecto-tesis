@@ -31,9 +31,9 @@ export const SupabaseProvider = ({ children }) => {
 
 		if (data.session) {
 			setSession(data.session)
-			console.log('User signed in:', data.user)
+			console.log('Usuario ha iniciado sesión:', data.user)
 		} else {
-			console.log('No user returned from sign up')
+			console.log('No se devolvió usuario después del registro')
 		}
 	}
 
@@ -43,7 +43,7 @@ export const SupabaseProvider = ({ children }) => {
 		if (error) {
 			throw error
 		} else {
-			console.log('User signed out')
+			console.log('Usuario ha cerrado sesión')
 		}
 	}
 
