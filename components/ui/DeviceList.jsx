@@ -2,6 +2,7 @@ import { useCallback } from 'react'
 import { FlatList, useWindowDimensions, View } from 'react-native'
 import { useDevices } from '@/store/devicesStore'
 import { useFilter } from '@/store/filterStore'
+import { calculateDeviceSize } from '@/lib/utils'
 import Device from '@/components/ui/Device'
 import { DevicesSkeletons } from './skeletons'
 
@@ -10,12 +11,8 @@ function DevicesList() {
 	const filter = useFilter()
 
 	const { width } = useWindowDimensions()
-	/**
-	 * Renders a filtered two-column device list.
-	 * Explains: 96 = (8px margin + 16px padding) * 2 sides * 2 columns.
-	 * ITEM_HEIGHT = (window width - 96) / 2.
-	 */
-	const ITEM_HEIGHT = (width - 96) / 2
+
+	const ITEM_HEIGHT = calculateDeviceSize(width)
 
 	const filteredDevices =
 		filter === 'all' ? devices : devices.filter((item) => item.type === filter)

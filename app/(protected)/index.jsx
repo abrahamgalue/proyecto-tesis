@@ -24,9 +24,9 @@ function App() {
 		<QueryClientProvider client={weather}>
 			<SafeAreaView>
 				<ScrollView
-					scrollEnabled={!showNotifications}
 					className='bg-background'
 					contentContainerClassName='grow justify-between'
+					scrollEnabled={!showNotifications}
 				>
 					<GradientBackground
 						className='flex-1 items-center justify-center px-[5%] pb-[15px] pt-5'

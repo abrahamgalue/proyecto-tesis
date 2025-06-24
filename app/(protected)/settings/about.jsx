@@ -8,11 +8,11 @@ import Card from '@/components/ui/Card'
 import { Image } from '@/components/image'
 
 export default function About() {
+	const currentYear = useMemo(() => new Date().getFullYear(), [])
+
 	const handleBack = () => {
 		router.back()
 	}
-
-	const currentYear = useMemo(() => new Date().getFullYear(), [])
 
 	return (
 		<>

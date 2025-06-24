@@ -8,13 +8,11 @@ import {
 
 function MenuBar() {
 	return (
-		<>
-			<ActionBar className='px-[5%] py-3'>
-				<ControlBtn />
-				<AccountBtn />
-				<SettingsBtn />
-			</ActionBar>
-		</>
+		<ActionBar className='px-[5%] py-3'>
+			<ControlBtn />
+			<AccountBtn />
+			<SettingsBtn />
+		</ActionBar>
 	)
 }
 

@@ -32,6 +32,7 @@ export const NotificationsSettingsBtn = () => {
 
 export const AboutBtn = () => {
 	const { isDarkColorScheme } = useColorScheme()
+
 	return (
 		<Link
 			href='/settings/about'

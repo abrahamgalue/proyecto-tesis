@@ -10,12 +10,12 @@ export const IconSymbol = memo(function IconSymbol({
 	className,
 	family = 'MaterialIcons'
 }) {
-	const IconComponent = useMemo(() =>
+	const Icon = useMemo(() =>
 		family === 'MaterialCommunityIcons' ? MaterialCommunityIcons : MaterialIcons
 	)
 
 	return (
-		<IconComponent
+		<Icon
 			color={color}
 			size={size}
 			name={name}

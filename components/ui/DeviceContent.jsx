@@ -5,7 +5,7 @@ import { useDevicesActions } from '@/store/devicesStore'
 import DeviceHeader from '@/components/ui/DeviceHeader'
 
 function DeviceContent({ item, num, itemSize }) {
-	const IconComponent = icons[item.type] || icons.bomb
+	const Icon = icons[item.type] || icons.bomb
 	const isEnabled = item.isOn
 	const { toggleEnableDevices } = useDevicesActions()
 
@@ -15,7 +15,7 @@ function DeviceContent({ item, num, itemSize }) {
 			style={{ width: itemSize, height: itemSize }}
 		>
 			<DeviceHeader
-				IconComponent={IconComponent}
+				icon={<Icon />}
 				name={item.name}
 				num={num}
 				location={item.location}

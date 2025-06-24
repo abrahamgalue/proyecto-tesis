@@ -50,7 +50,7 @@ export default function EditDevice() {
 	}
 
 	const handleBack = () => {
-		setEdited()
+		setEdited(false)
 		router.back()
 	}
 
