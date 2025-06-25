@@ -53,8 +53,12 @@ export default function EditUsername() {
 				className='flex-1 items-center gap-4 px-[5%]'
 				type='screen'
 			>
-				<View className='flex w-full flex-row items-start gap-3 py-8'>
-					<BackBtn small={false} hitSlop={20} onPress={handleBack} />
+				<View className='flex w-full flex-row items-center gap-3 py-8'>
+					<BackBtn
+						small={isDarkColorScheme ? false : true}
+						hitSlop={20}
+						onPress={handleBack}
+					/>
 					<Text className='font-bold text-foreground'>
 						Editar nombre de usuario
 					</Text>
@@ -92,7 +96,7 @@ export default function EditUsername() {
 				<Button
 					className={{
 						'bg-slate-700 opacity-20': !isValid,
-						'bg-[#0C6971]': isValid
+						'bg-btn': isValid
 					}}
 					disabled={!isValid}
 					onPress={handleSubmit(onSubmit)}

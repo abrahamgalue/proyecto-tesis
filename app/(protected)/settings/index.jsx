@@ -15,14 +15,16 @@ export default function SettingsModal() {
 
 	return (
 		<View
-			className='flex-1 items-center justify-center bg-[#0c2229c7] px-[5%]'
+			className='bg-modal-bg-transparent flex-1 items-center justify-center px-[5%]'
 			style={{ minHeight: '100%' }}
 		>
 			<Card
-				className='relative h-[70%] w-full items-center rounded-3xl border border-border bg-[#0c2229CC]'
+				className='relative h-[70%] w-full items-center rounded-3xl border border-border'
 				imgClassName='bottom-0'
 			>
-				<CardTitle className='z-10 text-4xl'>CONFIGURACIÓN</CardTitle>
+				<CardTitle className='text-modal-title z-10 text-4xl'>
+					CONFIGURACIÓN
+				</CardTitle>
 				{isPresented && (
 					<Link href='../' asChild>
 						<TouchableOpacity

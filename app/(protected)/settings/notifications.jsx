@@ -1,4 +1,5 @@
 import { Switch, View } from 'react-native'
+import { useColorScheme } from '@/lib/useColorScheme'
 import {
 	useNotificationsEnabled,
 	useNotificationsActions
@@ -11,6 +12,7 @@ import { Text } from '@/components/text'
 import Button from '@/components/Button'
 
 export default function Notifications() {
+	const { isDarkColorScheme } = useColorScheme()
 	const isEnabled = useNotificationsEnabled()
 	const { toggleNotificationsEnabled } = useNotificationsActions()
 
@@ -24,8 +26,12 @@ export default function Notifications() {
 				className='flex-1 items-center justify-start gap-4 px-[5%]'
 				type='screen'
 			>
-				<View className='flex w-full flex-row items-start gap-3 py-8'>
-					<BackBtn small={false} hitSlop={20} onPress={handleBack} />
+				<View className='flex w-full flex-row items-center gap-3 py-8'>
+					<BackBtn
+						small={isDarkColorScheme ? false : true}
+						hitSlop={20}
+						onPress={handleBack}
+					/>
 					<Text className='font-bold text-foreground'>Notificaciones</Text>
 				</View>
 				<View className='mb-4 flex w-full flex-row'>

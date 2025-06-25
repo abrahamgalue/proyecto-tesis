@@ -128,7 +128,7 @@ export default function SignIn() {
 					</Text>
 
 					<Button
-						className={`w-[80%] ${!isValid ? 'bg-slate-700 opacity-20' : 'bg-[#0C6971]'}`}
+						className={`w-[80%] ${!isValid ? 'bg-slate-700 opacity-20' : 'bg-btn'}`}
 						disabled={!isValid}
 						onPress={handleSubmit(onSubmit)}
 					>

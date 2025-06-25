@@ -10,7 +10,7 @@ function Button({
 	textClassName,
 	...props
 }) {
-	const stylesClass = cn('w-full rounded-full bg-[#0C6971] p-4', className)
+	const stylesClass = cn('w-full rounded-full bg-btn p-4', className)
 	const stylesText = cn('text-center text-foreground', textClassName)
 
 	return (

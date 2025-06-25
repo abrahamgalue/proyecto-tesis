@@ -9,7 +9,12 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
+				'bright-title': 'var(--bright-title)',
+				'modal-bg-transparent': 'var(--modal-bg-transparent)',
+				'modal-bg': 'var(--modal-bg)',
+				'modal-title': 'var(--modal-title)',
 				border: 'var(--border)',
+				btn: 'var(--btn)',
 				input: 'var(--input)',
 				ring: 'var(--ring)',
 				background: {
@@ -29,6 +34,7 @@ module.exports = {
 					DEFAULT: 'var(--destructive)',
 					foreground: 'var(--destructive-foreground)'
 				},
+				'device-bg': 'var(--device-bg)',
 				muted: {
 					DEFAULT: 'var(--muted)',
 					foreground: 'var(--muted-foreground)'
@@ -45,24 +51,25 @@ module.exports = {
 					DEFAULT: 'var(--card)',
 					foreground: 'var(--card-foreground)'
 				},
-				'from-gradient': 'var(--from-gradient)',
-				'to-gradient': 'var(--to-gradient)',
-				'base-icons': 'var(--base-icons)',
+				'active-clear-notifications-btn-text':
+					'var(--active-clear-notifications-btn-text)',
+				'active-notification-bg': 'var(--active-notification-bg)',
 				'activity-indicator': 'var(--activity-indicator)',
+				'base-icons': 'var(--base-icons)',
 				'control-gradient1': 'var(--control-gradient1)',
 				'control-gradient2': 'var(--control-gradient2)',
 				'control-gradient3': 'var(--control-gradient3)',
 				'control-gradient4': 'var(--control-gradient4)',
+				'from-gradient': 'var(--from-gradient)',
+				'header-modal-bg': 'var(--header-modal-bg)',
+				'notification-num': 'var(--notification-num)',
+				'notification-view-bg': 'var(--notification-view-bg)',
+				'tab-bar-tint-icon': 'var(--tab-bar-tint-icon)',
+				'to-gradient': 'var(--to-gradient)',
 				'weather-gradient1': 'var(--weather-gradient1)',
 				'weather-gradient2': 'var(--weather-gradient2)',
 				'weather-gradient3': 'var(--weather-gradient3)',
-				'weather-gradient4': 'var(--weather-gradient4)',
-				'tab-bar-tint-icon': 'var(--tab-bar-tint-icon)',
-				'notification-num': 'var(--notification-num)',
-				'active-notification-bg': 'var(--active-notification-bg)',
-				'notification-view-bg': 'var(--notification-view-bg)',
-				'active-clear-notifications-btn-text':
-					'var(--active-clear-notifications-btn-text)'
+				'weather-gradient4': 'var(--weather-gradient4)'
 			}
 		}
 	},

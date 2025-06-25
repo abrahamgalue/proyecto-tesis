@@ -9,7 +9,7 @@ function LightLevel({ deviceId, brightness }) {
 
 	return (
 		<View>
-			<Text className='px-8 text-start text-[#929BA3]'>
+			<Text className='text-bright-title px-8 text-start'>
 				BRILLO {brightness}%
 			</Text>
 			<Slider

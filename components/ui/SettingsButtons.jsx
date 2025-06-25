@@ -1,5 +1,4 @@
 import { TouchableOpacity, View } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
 import { Link } from 'expo-router'
 import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
 import { colors } from '@/constants/colors'
@@ -8,8 +7,6 @@ import { useSupabase } from '@/context/supabase-provider'
 import Button from '@/components/Button'
 
 export const NotificationsSettingsBtn = () => {
-	const { isDarkColorScheme } = useColorScheme()
-
 	return (
 		<Link
 			href='/settings/notifications'
@@ -20,9 +17,7 @@ export const NotificationsSettingsBtn = () => {
 				<IconSymbol
 					name='notifications-none'
 					size={33}
-					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
-					}
+					color={colors.light.iconsWhite}
 				/>
 				<Text className='text-white'>Notificaciones</Text>
 			</TouchableOpacity>
@@ -31,8 +26,6 @@ export const NotificationsSettingsBtn = () => {
 }
 
 export const AboutBtn = () => {
-	const { isDarkColorScheme } = useColorScheme()
-
 	return (
 		<Link
 			href='/settings/about'
@@ -43,9 +36,7 @@ export const AboutBtn = () => {
 				<IconSymbol
 					name='info-outline'
 					size={33}
-					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
-					}
+					color={colors.light.iconsWhite}
 				/>
 				<Text className='text-white'>Acerca de</Text>
 			</TouchableOpacity>
@@ -58,7 +49,12 @@ export const SignOutBtn = () => {
 
 	return (
 		<View className='mb-10 flex w-[80%] flex-1 items-center justify-end'>
-			<Button title='Cerrar Sesión' className='rounded-2xl' onPress={signOut} />
+			<Button
+				title='Cerrar Sesión'
+				className='rounded-2xl'
+				textClassName='text-modal-title'
+				onPress={signOut}
+			/>
 		</View>
 	)
 }
