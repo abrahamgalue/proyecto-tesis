@@ -8,7 +8,7 @@ export const GenericSkeleton = memo(function GenericSkeleton({
 	className = ''
 }) {
 	const styleClass = cn(
-		'bg-background-skeleton animate-pulse rounded-md',
+		'bg-brand-primary-skeleton animate-pulse rounded-md',
 		className
 	)
 

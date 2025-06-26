@@ -48,7 +48,7 @@ export default function EditUsername() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1 bg-background'>
+		<SafeAreaView className='bg-brand-primary flex-1'>
 			<GradientBackground
 				className='flex-1 items-center gap-4 px-[5%]'
 				type='screen'
@@ -59,7 +59,7 @@ export default function EditUsername() {
 						hitSlop={20}
 						onPress={handleBack}
 					/>
-					<Text className='font-bold text-foreground'>
+					<Text className='text-foreground-primary font-bold'>
 						Editar nombre de usuario
 					</Text>
 				</View>
@@ -74,7 +74,7 @@ export default function EditUsername() {
 							className={cn(
 								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
 								{
-									'border-border': !errors.username?.message,
+									'border-primary': !errors.username?.message,
 									'border-red-400': !!errors.username?.message
 								}
 							)}
@@ -96,7 +96,7 @@ export default function EditUsername() {
 				<Button
 					className={{
 						'bg-slate-700 opacity-20': !isValid,
-						'bg-btn': isValid
+						'bg-btn-primary': isValid
 					}}
 					disabled={!isValid}
 					onPress={handleSubmit(onSubmit)}
@@ -111,7 +111,7 @@ export default function EditUsername() {
 							}
 						/>
 					) : (
-						<Text className='text-center text-foreground'>ACEPTAR</Text>
+						<Text className='text-btn-white text-center'>ACEPTAR</Text>
 					)}
 				</Button>
 			</GradientBackground>

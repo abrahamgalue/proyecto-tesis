@@ -15,14 +15,14 @@ export default function AccountModal() {
 
 	return (
 		<View
-			className='bg-modal-bg-transparent flex-1 items-center justify-center px-[5%]'
+			className='bg-modal-primary-transparent flex-1 items-center justify-center px-[5%]'
 			style={{ minHeight: '100%' }}
 		>
 			<Card
-				className='relative h-[70%] w-full items-center rounded-3xl border border-border'
+				className='relative h-[70%] w-full items-center rounded-3xl border border-primary'
 				imgClassName='bottom-0'
 			>
-				<CardTitle className='text-modal-title z-10 text-4xl'>
+				<CardTitle className='text-modal-primary z-10 text-4xl'>
 					Usuario
 				</CardTitle>
 				{isPresented && (
@@ -41,7 +41,7 @@ export default function AccountModal() {
 					<Button
 						title='Aceptar'
 						className='rounded-2xl'
-						textClassName='text-modal-title'
+						textClassName='text-modal-primary'
 						onPress={handleBack}
 					/>
 				</View>

@@ -13,9 +13,9 @@ function ModalLightbulb({ visible, onClose, title = 'Modal', children }) {
 			statusBarTranslucent={true}
 			onRequestClose={onClose}
 		>
-			<View className='bg-modal-bg-transparent flex-1 items-center justify-center px-[5%]'>
-				<View className='bg-modal-bg relative h-[50%] w-full items-center justify-center gap-4 rounded-3xl border border-border'>
-					<CardTitle className='text-modal-title'>{title}</CardTitle>
+			<View className='bg-modal-primary-transparent flex-1 items-center justify-center px-[5%]'>
+				<View className='bg-modal-primary relative h-[50%] w-full items-center justify-center gap-4 rounded-3xl border border-primary'>
+					<CardTitle className='text-modal-primary'>{title}</CardTitle>
 					<BackBtn
 						className='absolute right-5 top-5'
 						hitSlop={20}
@@ -25,7 +25,8 @@ function ModalLightbulb({ visible, onClose, title = 'Modal', children }) {
 					<Button
 						activeOpacity={1}
 						title='Aceptar'
-						className='absolute -bottom-5 w-[70%] bg-border'
+						className='absolute -bottom-5 w-[70%]'
+						textClassName='text-btn-white'
 						onPress={onClose}
 					/>
 				</View>

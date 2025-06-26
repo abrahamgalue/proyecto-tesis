@@ -30,14 +30,16 @@ function Notifications() {
 				accessibilityRole='button'
 				hitSlop={20}
 				onPress={handleNotificationPress}
-				className={`relative z-10 h-11 w-11 items-center justify-center rounded-full border border-border p-1 ${showNotifications ? 'bg-active-notification-bg' : ''}`}
+				className={`relative z-10 h-11 w-11 items-center justify-center rounded-full border border-primary p-1 ${showNotifications ? 'bg-notification-primary-active' : ''}`}
 				disabled={isNotificationPressDisabled}
 			>
 				<IconSymbol
 					name='notifications-none'
 					size={28}
 					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+						isDarkColorScheme
+							? colors.dark.textForegroundPrimary
+							: colors.light.textForegroundPrimary
 					}
 				/>
 				{notifications.length > 0 && (
@@ -46,7 +48,7 @@ function Notifications() {
 			</TouchableOpacity>
 
 			{showNotifications && (
-				<View className='absolute left-0 top-12 z-20 h-64 w-2/3 rounded-lg bg-notification-view-bg p-4'>
+				<View className='bg-notification-tertiary absolute left-0 top-12 z-20 h-64 w-2/3 rounded-lg p-4'>
 					<ScrollView>
 						{notifications.map((notification) => (
 							<NotificationElement

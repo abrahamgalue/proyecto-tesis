@@ -11,7 +11,7 @@ function DeviceContent({ item, num, itemSize }) {
 
 	return (
 		<View
-			className='bg-device-bg relative m-2 rounded-lg border border-border p-4'
+			className='bg-device-primary relative m-2 rounded-lg border border-primary p-4'
 			style={{ width: itemSize, height: itemSize }}
 		>
 			<DeviceHeader

@@ -55,7 +55,7 @@ export default function EditDevice() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1 bg-background'>
+		<SafeAreaView className='bg-brand-primary flex-1'>
 			<GradientBackground
 				className='flex-1 items-center gap-4 px-[5%]'
 				type='screen'
@@ -66,7 +66,9 @@ export default function EditDevice() {
 						hitSlop={20}
 						onPress={handleBack}
 					/>
-					<Text className='font-bold text-foreground'>Editar Dispositivo</Text>
+					<Text className='text-foreground-primary font-bold'>
+						Editar Dispositivo
+					</Text>
 				</View>
 				<View className='flex w-full flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-700'>
 					<TextInput
@@ -74,8 +76,8 @@ export default function EditDevice() {
 						placeholder='Nombre'
 						placeholderTextColor={
 							isDarkColorScheme
-								? colors.dark.foreground
-								: colors.light.foreground
+								? colors.dark.textForegroundPrimary
+								: colors.light.textForegroundPrimary
 						}
 						readOnly
 						value={device.type === 'light' ? 'Bombillo' : 'Bomba'}
@@ -94,7 +96,7 @@ export default function EditDevice() {
 							className={cn(
 								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
 								{
-									'border-border': !errors.name?.message,
+									'border-primary': !errors.name?.message,
 									'border-red-400': !!errors.name?.message
 								}
 							)}
@@ -119,7 +121,7 @@ export default function EditDevice() {
 							className={cn(
 								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
 								{
-									'border-border': !errors.description?.message,
+									'border-primary': !errors.description?.message,
 									'border-red-400': !!errors.description?.message
 								}
 							)}
@@ -145,7 +147,7 @@ export default function EditDevice() {
 				<Button
 					className={{
 						'bg-slate-700 opacity-20': !isValid,
-						'bg-btn': isValid
+						'bg-btn-primary': isValid
 					}}
 					disabled={!isValid}
 					onPress={handleSubmit(onSubmit)}
@@ -160,7 +162,7 @@ export default function EditDevice() {
 							}
 						/>
 					) : (
-						<Text className='text-center text-foreground'>ACEPTAR</Text>
+						<Text className='text-btn-white text-center'>ACEPTAR</Text>
 					)}
 				</Button>
 			</GradientBackground>

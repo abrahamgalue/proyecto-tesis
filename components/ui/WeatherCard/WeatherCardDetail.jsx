@@ -19,8 +19,8 @@ function WeatherCardDetail({ data, isLoading }) {
 							height={25}
 							color={
 								isDarkColorScheme
-									? colors.dark.foreground
-									: colors.light.foreground
+									? colors.dark.textForegroundPrimary
+									: colors.light.textForegroundPrimary
 							}
 						/>
 					}
@@ -39,8 +39,8 @@ function WeatherCardDetail({ data, isLoading }) {
 							height={25}
 							color={
 								isDarkColorScheme
-									? colors.dark.foreground
-									: colors.light.foreground
+									? colors.dark.textForegroundPrimary
+									: colors.light.textForegroundPrimary
 							}
 						/>
 					}
@@ -60,8 +60,8 @@ function WeatherCardDetail({ data, isLoading }) {
 							height={25}
 							color={
 								isDarkColorScheme
-									? colors.dark.foreground
-									: colors.light.foreground
+									? colors.dark.textForegroundPrimary
+									: colors.light.textForegroundPrimary
 							}
 						/>
 					}

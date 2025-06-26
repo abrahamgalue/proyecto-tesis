@@ -4,10 +4,10 @@ import { Text } from '@/components/text'
 function Footer() {
 	return (
 		<View className='flex-row gap-1'>
-			<Text className='text-sm font-bold tracking-[1px] text-foreground'>
+			<Text className='text-foreground-primary text-sm font-bold tracking-[1px]'>
 				GREENWALL
 			</Text>
-			<Text className='text-sm font-bold tracking-[1px] text-border'>
+			<Text className='text-foreground-tertiary text-sm font-bold tracking-[1px]'>
 				MANAGER
 			</Text>
 		</View>

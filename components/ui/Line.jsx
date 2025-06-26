@@ -10,7 +10,7 @@ function Line({ width = 1, height = 1 }) {
 		height
 	}
 
-	return <View style={styles} className='m-auto bg-foreground'></View>
+	return <View style={styles} className='bg-line-primary m-auto'></View>
 }
 
 export default memo(Line)

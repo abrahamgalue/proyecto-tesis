@@ -14,9 +14,9 @@ export default function AppLayout() {
 
 	useEffect(() => {
 		if (isDarkColorScheme) {
-			changeBackgroundColor(colors.dark.background)
+			changeBackgroundColor(colors.dark.bgBrandPrimary)
 		} else {
-			changeBackgroundColor(colors.light.background)
+			changeBackgroundColor(colors.light.bgBrandPrimary)
 		}
 	}, [isDarkColorScheme])
 
@@ -24,7 +24,9 @@ export default function AppLayout() {
 		<SupabaseProvider>
 			<StatusBar
 				backgroundColor={
-					isDarkColorScheme ? colors.dark.background : colors.light.background
+					isDarkColorScheme
+						? colors.dark.bgBrandPrimary
+						: colors.light.bgBrandPrimary
 				}
 				style='auto'
 			/>
@@ -38,12 +40,12 @@ export default function AppLayout() {
 						headerTitle: 'Iniciar sesión',
 						headerStyle: {
 							backgroundColor: isDarkColorScheme
-								? colors.dark.background
-								: colors.light.background
+								? colors.dark.bgBrandPrimary
+								: colors.light.bgBrandPrimary
 						},
 						headerTintColor: isDarkColorScheme
-							? colors.dark.foreground
-							: colors.light.foreground,
+							? colors.dark.textForegroundPrimary
+							: colors.light.textForegroundPrimary,
 						gestureEnabled: true
 					}}
 				/>

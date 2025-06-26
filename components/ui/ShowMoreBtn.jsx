@@ -16,12 +16,16 @@ function ShowMoreBtn({ isShow, handleShow }) {
 			className='flex-row items-center justify-center p-2'
 			disabled={showNotifications}
 		>
-			<Text className='text-foreground'>Ver {isShow ? 'menos' : 'más'}</Text>
+			<Text className='text-foreground-primary'>
+				Ver {isShow ? 'menos' : 'más'}
+			</Text>
 			<IconSymbol
 				name={isShow ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
 				size={16}
 				color={
-					isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+					isDarkColorScheme
+						? colors.dark.textForegroundPrimary
+						: colors.light.textForegroundPrimary
 				}
 			/>
 		</TouchableOpacity>

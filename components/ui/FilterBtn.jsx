@@ -11,11 +11,11 @@ function FilterButton({ title, value, onPress, hitSlop }) {
 			hitSlop={hitSlop}
 			onPress={() => onPress(value)}
 			className={cn(
-				'w-24 items-center justify-center rounded-3xl border-border px-2',
+				'w-24 items-center justify-center rounded-3xl border-primary px-2',
 				{ 'border-4': value === filter, border: value !== filter }
 			)}
 		>
-			<Text className='text-foreground'>{title}</Text>
+			<Text className='text-foreground-primary'>{title}</Text>
 		</TouchableOpacity>
 	)
 }

@@ -5,10 +5,10 @@ import { Text } from '@/components/text'
 function ForecastDay({ day, icon, temp, detail }) {
 	return (
 		<View className='flex-1 items-center'>
-			<Text className='mb-1 text-base text-foreground'>{day}</Text>
+			<Text className='text-foreground-primary mb-1 text-base'>{day}</Text>
 			{icon}
-			<Text className='text-lg font-bold text-foreground'>{temp}</Text>
-			<Text className='text-sm text-foreground'>{detail}</Text>
+			<Text className='text-foreground-primary text-lg font-bold'>{temp}</Text>
+			<Text className='text-foreground-primary text-sm'>{detail}</Text>
 		</View>
 	)
 }

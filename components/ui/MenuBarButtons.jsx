@@ -16,7 +16,7 @@ export const ControlBtn = memo(function ControlBtn() {
 		<Link href='/control' asChild>
 			<TouchableOpacity accessibilityLabel='Go to Control'>
 				<GradientBackground
-					className='flex-row items-center gap-2 rounded-[20px] bg-[rgba(109,165,192,0.3)] px-[15px] py-2'
+					className='bg-btn-tertiary flex-row items-center gap-2 rounded-[20px] px-[15px] py-2'
 					style={{
 						borderRadius: 12
 					}}
@@ -27,12 +27,14 @@ export const ControlBtn = memo(function ControlBtn() {
 						height={24}
 						color={
 							isDarkColorScheme
-								? colors.dark.foreground
-								: colors.light.foreground
+								? colors.dark.textForegroundPrimary
+								: colors.light.textForegroundPrimary
 						}
 					/>
 					<Line height={15} />
-					<Text className='text-sm font-bold text-foreground'>Control</Text>
+					<Text className='text-foreground-primary text-sm font-bold'>
+						Control
+					</Text>
 				</GradientBackground>
 			</TouchableOpacity>
 		</Link>
@@ -49,7 +51,9 @@ export const AccountBtn = memo(function AccountBtn() {
 					width={33}
 					height={33}
 					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+						isDarkColorScheme
+							? colors.dark.textForegroundPrimary
+							: colors.light.textForegroundPrimary
 					}
 				/>
 			</TouchableOpacity>
@@ -67,7 +71,9 @@ export const SettingsBtn = memo(function SettingsBtn() {
 					name='settings'
 					size={24}
 					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+						isDarkColorScheme
+							? colors.dark.textForegroundPrimary
+							: colors.light.textForegroundPrimary
 					}
 				/>
 			</TouchableOpacity>
