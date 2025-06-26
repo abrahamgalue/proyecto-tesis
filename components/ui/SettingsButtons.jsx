@@ -19,7 +19,7 @@ export const NotificationsSettingsBtn = () => {
 					size={33}
 					color={colors.light.bgIconsWhite}
 				/>
-				<Text className='text-white'>Notificaciones</Text>
+				<Text className='text-btn-white'>Notificaciones</Text>
 			</TouchableOpacity>
 		</Link>
 	)
