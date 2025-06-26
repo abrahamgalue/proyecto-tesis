@@ -18,17 +18,21 @@ function NotificationElement({ notification }) {
 	)
 
 	return (
-		<View className='mb-3 flex-row items-center border-b border-foreground pb-2'>
+		<View className='mb-3 flex-row items-center border-b border-secondary pb-2'>
 			{IconComponent && (
 				<IconComponent
 					width={20}
 					height={20}
 					color={
-						isDarkColorScheme ? colors.dark.foreground : colors.light.foreground
+						isDarkColorScheme
+							? colors.dark.textForegroundPrimary
+							: colors.light.textForegroundPrimary
 					}
 				/>
 			)}
-			<Text className='ml-3 text-foreground'>{notification.content}</Text>
+			<Text className='text-foreground-primary ml-3'>
+				{notification.content}
+			</Text>
 		</View>
 	)
 }

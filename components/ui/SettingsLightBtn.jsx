@@ -9,7 +9,7 @@ function SettingsLightBtn({ width, handlePress }) {
 			style={{ width }}
 		>
 			<TouchableOpacity
-				className='rounded-full bg-border p-1'
+				className='bg-btn-secondary rounded-full p-1'
 				onPress={handlePress}
 			>
 				<SettingsIcon />

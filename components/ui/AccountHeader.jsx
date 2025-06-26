@@ -20,7 +20,7 @@ function AccountHeader() {
 	}, [session, username, getUsername])
 
 	return (
-		<View className='bg-header-modal-bg h-40 w-full items-center justify-end gap-2 rounded-t-3xl px-6 pb-6'>
+		<View className='bg-modal-header-primary h-40 w-full items-center justify-end gap-2 rounded-t-3xl px-6 pb-6'>
 			<Image
 				style={{
 					contentFit: 'contain',

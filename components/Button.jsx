@@ -10,8 +10,8 @@ function Button({
 	textClassName,
 	...props
 }) {
-	const stylesClass = cn('w-full rounded-full bg-btn p-4', className)
-	const stylesText = cn('text-center text-foreground', textClassName)
+	const stylesClass = cn('w-full rounded-full bg-btn-primary p-4', className)
+	const stylesText = cn('text-center text-btn-primary', textClassName)
 
 	return (
 		<TouchableOpacity

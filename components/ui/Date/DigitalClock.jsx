@@ -6,7 +6,7 @@ function DigitalClock() {
 	const { time } = useTime()
 
 	return (
-		<Text className='text-3xl font-bold text-foreground'>
+		<Text className='text-foreground-primary text-3xl font-bold'>
 			{formatHour(time)}
 		</Text>
 	)

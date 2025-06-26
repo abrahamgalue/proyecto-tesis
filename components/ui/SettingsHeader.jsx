@@ -18,7 +18,7 @@ function SettingsHeader() {
 	}, [session, username, getUsername])
 
 	return (
-		<View className='bg-header-modal-bg h-24 w-full flex-row items-center gap-2 rounded-t-3xl px-6'>
+		<View className='bg-modal-header-primary h-24 w-full flex-row items-center gap-2 rounded-t-3xl px-6'>
 			<Image
 				style={{
 					contentFit: 'contain',

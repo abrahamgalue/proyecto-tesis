@@ -30,7 +30,7 @@ export default function Control() {
 
 	return (
 		<SafeAreaView className='flex-1'>
-			<View className='flex-1 bg-background'>
+			<View className='bg-brand-primary flex-1'>
 				<GradientBackground
 					className='flex-1 items-center justify-center px-[5%] pb-[15px] pt-5'
 					type='screen'

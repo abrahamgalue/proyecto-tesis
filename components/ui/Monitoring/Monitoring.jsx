@@ -32,7 +32,9 @@ function Monitoring() {
 						width={42}
 						height={42}
 						color={
-							isDarkColorScheme ? colors.dark.baseIcons : colors.light.baseIcons
+							isDarkColorScheme
+								? colors.dark.bgIconsPrimary
+								: colors.light.bgIconsPrimary
 						}
 					/>
 				}
@@ -45,7 +47,9 @@ function Monitoring() {
 						width={42}
 						height={42}
 						color={
-							isDarkColorScheme ? colors.dark.baseIcons : colors.light.baseIcons
+							isDarkColorScheme
+								? colors.dark.bgIconsPrimary
+								: colors.light.bgIconsPrimary
 						}
 					/>
 				}
@@ -60,8 +64,8 @@ function Monitoring() {
 							height={42}
 							color={
 								isDarkColorScheme
-									? colors.dark.baseIcons
-									: colors.light.baseIcons
+									? colors.dark.bgIconsPrimary
+									: colors.light.bgIconsPrimary
 							}
 						/>
 					}
@@ -77,7 +81,9 @@ function Monitoring() {
 						width={42}
 						height={42}
 						color={
-							isDarkColorScheme ? colors.dark.baseIcons : colors.light.baseIcons
+							isDarkColorScheme
+								? colors.dark.bgIconsPrimary
+								: colors.light.bgIconsPrimary
 						}
 					/>
 				}
@@ -90,7 +96,9 @@ function Monitoring() {
 						width={42}
 						height={42}
 						color={
-							isDarkColorScheme ? colors.dark.baseIcons : colors.light.baseIcons
+							isDarkColorScheme
+								? colors.dark.bgIconsPrimary
+								: colors.light.bgIconsPrimary
 						}
 					/>
 				}

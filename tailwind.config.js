@@ -8,68 +8,64 @@ module.exports = {
 	presets: [require('nativewind/preset')],
 	theme: {
 		extend: {
+			backgroundColor: {
+				'brand-primary': {
+					DEFAULT: 'var(--bg-brand-primary)',
+					skeleton: 'var(--bg-brand-primary-skeleton)'
+				},
+				btn: {
+					primary: 'var(--bg-btn-primary)',
+					secondary: 'var(--bg-btn-secondary)',
+					tertiary: 'var(--bg-btn-tertiary)',
+					quaternary: 'var(--bg-btn-quaternary)'
+				},
+				'modal-primary': {
+					DEFAULT: 'var(--bg-modal-primary)',
+					transparent: 'var(--bg-modal-primary-transparent)'
+				},
+				'modal-header-primary': {
+					DEFAULT: 'var(--bg-modal-header-primary)'
+				},
+				'device-primary': 'var(--bg-device-primary)',
+				'line-primary': 'var(--bg-line-primary)',
+				notification: {
+					'primary-active': 'var(--notification-primary-active)',
+					secondary: 'var(--notification-secondary)',
+					tertiary: 'var(--notification-tertiary)'
+				}
+			},
+			textColor: {
+				foreground: {
+					primary: 'var(--text-foreground-primary)',
+					secondary: 'var(--text-foreground-secondary)',
+					tertiary: 'var(--text-foreground-tertiary)',
+					emphasis: 'var(--text-foreground-emphasis)'
+				},
+				modal: {
+					primary: 'var(--text-modal-primary)',
+					secondary: 'var(--text-modal-secondary)'
+				},
+				btn: {
+					primary: 'var(--text-btn-primary)',
+					white: 'var(--text-btn-white)'
+				}
+			},
+			borderColor: {
+				primary: 'var(--border-primary)',
+				secondary: 'var(--border-secondary)'
+			},
 			colors: {
-				'bright-title': 'var(--bright-title)',
-				'modal-bg-transparent': 'var(--modal-bg-transparent)',
-				'modal-bg': 'var(--modal-bg)',
-				'modal-title': 'var(--modal-title)',
-				border: 'var(--border)',
-				btn: 'var(--btn)',
-				input: 'var(--input)',
-				ring: 'var(--ring)',
-				background: {
-					DEFAULT: 'var(--background)',
-					skeleton: 'var(--background-skeleton)'
-				},
-				foreground: 'var(--foreground)',
-				primary: {
-					DEFAULT: 'var(--primary)',
-					foreground: 'var(--primary-foreground)'
-				},
-				secondary: {
-					DEFAULT: 'var(--secondary)',
-					foreground: 'var(--secondary-foreground)'
-				},
-				destructive: {
-					DEFAULT: 'var(--destructive)',
-					foreground: 'var(--destructive-foreground)'
-				},
-				'device-bg': 'var(--device-bg)',
-				muted: {
-					DEFAULT: 'var(--muted)',
-					foreground: 'var(--muted-foreground)'
-				},
-				accent: {
-					DEFAULT: 'var(--accent)',
-					foreground: 'var(--accent-foreground)'
-				},
-				popover: {
-					DEFAULT: 'var(--popover)',
-					foreground: 'var(--popover-foreground)'
-				},
-				card: {
-					DEFAULT: 'var(--card)',
-					foreground: 'var(--card-foreground)'
-				},
-				'active-clear-notifications-btn-text':
-					'var(--active-clear-notifications-btn-text)',
-				'active-notification-bg': 'var(--active-notification-bg)',
 				'activity-indicator': 'var(--activity-indicator)',
-				'base-icons': 'var(--base-icons)',
-				'control-gradient1': 'var(--control-gradient1)',
-				'control-gradient2': 'var(--control-gradient2)',
-				'control-gradient3': 'var(--control-gradient3)',
-				'control-gradient4': 'var(--control-gradient4)',
-				'from-gradient': 'var(--from-gradient)',
-				'header-modal-bg': 'var(--header-modal-bg)',
-				'notification-num': 'var(--notification-num)',
-				'notification-view-bg': 'var(--notification-view-bg)',
-				'tab-bar-tint-icon': 'var(--tab-bar-tint-icon)',
-				'to-gradient': 'var(--to-gradient)',
-				'weather-gradient1': 'var(--weather-gradient1)',
-				'weather-gradient2': 'var(--weather-gradient2)',
-				'weather-gradient3': 'var(--weather-gradient3)',
-				'weather-gradient4': 'var(--weather-gradient4)'
+				'gradient-control-start': 'var(--gradient-control-start)',
+				'gradient-control-mid1': 'var(--gradient-control-mid1)',
+				'gradient-control-mid2': 'var(--gradient-control-mid2)',
+				'gradient-control-end': 'var(--gradient-control-end)',
+				'gradient-from': 'var(--gradient-from)',
+				'gradient-to': 'var(--gradient-to)',
+				'gradient-weather-start': 'var(--gradient-weather-start)',
+				'gradient-weather-mid1': 'var(--gradient-weather-mid1)',
+				'gradient-weather-mid2': 'var(--gradient-weather-mid2)',
+				'gradient-weather-end': 'var(--gradient-weather-end)'
 			}
 		}
 	},

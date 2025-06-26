@@ -10,14 +10,14 @@ export const NotificationsSettingsBtn = () => {
 	return (
 		<Link
 			href='/settings/notifications'
-			className='h-24 w-full flex-row items-center gap-2 border-y border-border px-6'
+			className='h-24 w-full flex-row items-center gap-2 border-y border-primary px-6'
 			asChild
 		>
 			<TouchableOpacity>
 				<IconSymbol
 					name='notifications-none'
 					size={33}
-					color={colors.light.iconsWhite}
+					color={colors.light.bgIconsWhite}
 				/>
 				<Text className='text-white'>Notificaciones</Text>
 			</TouchableOpacity>
@@ -29,14 +29,14 @@ export const AboutBtn = () => {
 	return (
 		<Link
 			href='/settings/about'
-			className='h-24 w-full flex-row items-center gap-2 border-b border-border px-6'
+			className='h-24 w-full flex-row items-center gap-2 border-b border-primary px-6'
 			asChild
 		>
 			<TouchableOpacity>
 				<IconSymbol
 					name='info-outline'
 					size={33}
-					color={colors.light.iconsWhite}
+					color={colors.light.bgIconsWhite}
 				/>
 				<Text className='text-white'>Acerca de</Text>
 			</TouchableOpacity>
@@ -52,7 +52,7 @@ export const SignOutBtn = () => {
 			<Button
 				title='Cerrar Sesión'
 				className='rounded-2xl'
-				textClassName='text-modal-title'
+				textClassName='text-modal-primary'
 				onPress={signOut}
 			/>
 		</View>

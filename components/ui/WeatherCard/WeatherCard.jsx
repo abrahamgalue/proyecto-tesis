@@ -17,7 +17,7 @@ function WeatherCard() {
 
 	return (
 		<Card className='mb-[30px]'>
-			<View className='relative w-full rounded-3xl border border-border p-5'>
+			<View className='relative w-full rounded-3xl border border-primary p-5'>
 				<WeatherCardLogo />
 				<WeatherCardHeader />
 				<WeatherCardInfo data={data} isLoading={isLoading} />

@@ -10,10 +10,10 @@ function DeviceHeader({ icon, name, num, location }) {
 				<View className='ml-2'>{icon}</View>
 				<ConnectedIcon />
 			</View>
-			<Text className='text-lg font-bold text-foreground'>
+			<Text className='text-foreground-primary text-lg font-bold'>
 				{name} #{num}
 			</Text>
-			<Text className='text-xs text-muted-foreground'>{location}</Text>
+			<Text className='text-foreground-secondary text-xs'>{location}</Text>
 		</>
 	)
 }

@@ -21,7 +21,7 @@ export default function Notifications() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1 bg-background'>
+		<SafeAreaView className='bg-brand-primary flex-1'>
 			<GradientBackground
 				className='flex-1 items-center justify-start gap-4 px-[5%]'
 				type='screen'
@@ -32,10 +32,12 @@ export default function Notifications() {
 						hitSlop={20}
 						onPress={handleBack}
 					/>
-					<Text className='font-bold text-foreground'>Notificaciones</Text>
+					<Text className='text-foreground-primary font-bold'>
+						Notificaciones
+					</Text>
 				</View>
 				<View className='mb-4 flex w-full flex-row'>
-					<Text className='text-foreground'>
+					<Text className='text-foreground-primary'>
 						{isEnabled ? 'Activadas' : 'Desactivadas'}
 					</Text>
 					<View className='flex-1 items-end justify-end'>
@@ -48,7 +50,11 @@ export default function Notifications() {
 					</View>
 				</View>
 
-				<Button title='Aceptar' onPress={handleBack} />
+				<Button
+					title='Aceptar'
+					textClassName='text-btn-white'
+					onPress={handleBack}
+				/>
 			</GradientBackground>
 		</SafeAreaView>
 	)

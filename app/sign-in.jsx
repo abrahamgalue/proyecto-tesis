@@ -48,7 +48,7 @@ export default function SignIn() {
 	}
 
 	return (
-		<SafeAreaView className='flex-1 bg-background' edges={['bottom']}>
+		<SafeAreaView className='bg-brand-primary flex-1' edges={['bottom']}>
 			<StatusBar style='auto' />
 			<GradientBackground className='flex-1' type='screen'>
 				<ImageBackground
@@ -67,15 +67,15 @@ export default function SignIn() {
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (
 							<TextInput
-								className='h-14 w-[80%] rounded-full border border-border px-8 text-foreground'
+								className='text-foreground-primary h-14 w-[80%] rounded-full border border-primary px-8'
 								onBlur={onBlur}
 								onChangeText={onChange}
 								placeholder='Email'
 								inputMode='email'
 								placeholderTextColor={
 									isDarkColorScheme
-										? colors.dark.foreground
-										: colors.light.foreground
+										? colors.dark.textForegroundPrimary
+										: colors.light.textForegroundPrimary
 								}
 								value={value}
 							/>
@@ -89,17 +89,17 @@ export default function SignIn() {
 							maxLength: 18
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (
-							<View className='flex w-[80%] flex-row items-center justify-center rounded-full border border-border'>
+							<View className='flex w-[80%] flex-row items-center justify-center rounded-full border border-primary'>
 								<TextInput
-									className='h-14 flex-1 rounded-l-full pl-8 text-foreground'
+									className='text-foreground-primary h-14 flex-1 rounded-l-full pl-8'
 									onBlur={onBlur}
 									onChangeText={onChange}
 									placeholder='Contraseña'
 									inputMode='text'
 									placeholderTextColor={
 										isDarkColorScheme
-											? colors.dark.foreground
-											: colors.light.foreground
+											? colors.dark.textForegroundPrimary
+											: colors.light.textForegroundPrimary
 									}
 									secureTextEntry={!showPass}
 									value={value}
@@ -112,8 +112,8 @@ export default function SignIn() {
 									<IconSymbol
 										color={
 											isDarkColorScheme
-												? colors.dark.accent
-												: colors.light.accent
+												? colors.dark.bgBtnQuaternary
+												: colors.light.bgBtnQuaternary
 										}
 										name={!showPass ? 'visibility' : 'visibility-off'}
 									/>
@@ -128,7 +128,7 @@ export default function SignIn() {
 					</Text>
 
 					<Button
-						className={`w-[80%] ${!isValid ? 'bg-slate-700 opacity-20' : 'bg-btn'}`}
+						className={`w-[80%] ${!isValid ? 'bg-slate-700 opacity-20' : 'bg-btn-primary'}`}
 						disabled={!isValid}
 						onPress={handleSubmit(onSubmit)}
 					>
@@ -142,7 +142,7 @@ export default function SignIn() {
 								}
 							/>
 						) : (
-							<Text className='text-center uppercase text-foreground'>
+							<Text className='text-btn-white text-center uppercase'>
 								INICIAR SESIÓN
 							</Text>
 						)}
