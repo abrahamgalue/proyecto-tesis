@@ -18,7 +18,7 @@ export default function About() {
 
 	return (
 		<>
-			<SafeAreaView className='bg-brand-primary flex-1'>
+			<SafeAreaView className='flex-1 bg-brand-primary'>
 				<View className='flex-1 items-center px-[5%]'>
 					<View className='flex w-full flex-row items-center gap-3 py-8'>
 						<BackBtn
@@ -26,7 +26,7 @@ export default function About() {
 							hitSlop={20}
 							onPress={handleBack}
 						/>
-						<Text className='text-foreground-primary font-bold'>Acerca de</Text>
+						<Text className='font-bold text-foreground-primary'>Acerca de</Text>
 					</View>
 					<Card
 						className='h-[75%] items-center justify-center px-[5%]'
@@ -34,38 +34,38 @@ export default function About() {
 					>
 						<Image
 							className='h-64 w-64'
-							source={require('@/assets/signin-icon.png')}
+							source={require('@/assets/images/signin-icon.png')}
 							style={{ contentFit: 'contain' }}
 						/>
-						<Text className='text-foreground-emphasis mb-3 text-sm'>
+						<Text className='mb-3 text-sm text-foreground-emphasis'>
 							v1.0 {currentYear}
 						</Text>
 						<View className='w-full rounded-3xl border border-primary py-8'>
-							<Text className='text-foreground-primary mb-8 text-center text-sm'>
+							<Text className='mb-8 text-center text-sm text-foreground-primary'>
 								Desarrollado por:
 							</Text>
 							<View className='gap-1'>
-								<Text className='text-foreground-primary text-center text-sm'>
+								<Text className='text-center text-sm text-foreground-primary'>
 									Francesco Di Bella - Diseño UI
 								</Text>
-								<Text className='text-foreground-primary text-center text-sm'>
+								<Text className='text-center text-sm text-foreground-primary'>
 									Abraham Galue - Programador
 								</Text>
-								<Text className='text-foreground-primary text-center text-sm'>
+								<Text className='text-center text-sm text-foreground-primary'>
 									Copilot - Programador
 								</Text>
 							</View>
 						</View>
 						<Image
 							className='h-32 w-32'
-							source={require('@/assets/logo-urbe.png')}
+							source={require('@/assets/images/logo-urbe.png')}
 							style={{ contentFit: 'contain' }}
 						/>
 					</Card>
-					<Text className='text-foreground-emphasis mt-3 text-center text-sm'>
+					<Text className='mt-3 text-center text-sm text-foreground-emphasis'>
 						Copyright ©{currentYear} PANGO Studios Ve., Ltd.
 					</Text>
-					<Text className='text-foreground-emphasis text-center text-sm'>
+					<Text className='text-center text-sm text-foreground-emphasis'>
 						Todos los derechos reservados.
 					</Text>
 				</View>

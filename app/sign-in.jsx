@@ -48,16 +48,16 @@ export default function SignIn() {
 	}
 
 	return (
-		<SafeAreaView className='bg-brand-primary flex-1' edges={['bottom']}>
+		<SafeAreaView className='flex-1 bg-brand-primary' edges={['bottom']}>
 			<StatusBar style='auto' />
 			<GradientBackground className='flex-1' type='screen'>
 				<ImageBackground
-					source={require('@/assets/login-bg.png')}
+					source={require('@/assets/images/login-bg.png')}
 					className='flex-1 items-center justify-center gap-4'
 				>
 					<Image
 						className='-mt-12 mb-12 h-52 w-52'
-						source={require('@/assets/signin-icon.png')}
+						source={require('@/assets/images/signin-icon.png')}
 						style={{ contentFit: 'contain' }}
 					/>
 					<Controller
@@ -67,7 +67,7 @@ export default function SignIn() {
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (
 							<TextInput
-								className='text-foreground-primary h-14 w-[80%] rounded-full border border-primary px-8'
+								className='h-14 w-[80%] rounded-full border border-primary px-8 text-foreground-primary'
 								onBlur={onBlur}
 								onChangeText={onChange}
 								placeholder='Email'
@@ -91,7 +91,7 @@ export default function SignIn() {
 						render={({ field: { onChange, onBlur, value } }) => (
 							<View className='flex w-[80%] flex-row items-center justify-center rounded-full border border-primary'>
 								<TextInput
-									className='text-foreground-primary h-14 flex-1 rounded-l-full pl-8'
+									className='h-14 flex-1 rounded-l-full pl-8 text-foreground-primary'
 									onBlur={onBlur}
 									onChangeText={onChange}
 									placeholder='Contraseña'
@@ -142,7 +142,7 @@ export default function SignIn() {
 								}
 							/>
 						) : (
-							<Text className='text-btn-white text-center uppercase'>
+							<Text className='text-center uppercase text-btn-white'>
 								INICIAR SESIÓN
 							</Text>
 						)}

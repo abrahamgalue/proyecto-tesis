@@ -20,7 +20,7 @@ function AccountHeader() {
 	}, [session, username, getUsername])
 
 	return (
-		<View className='bg-modal-header-primary h-40 w-full items-center justify-end gap-2 rounded-t-3xl px-6 pb-6'>
+		<View className='h-40 w-full items-center justify-end gap-2 rounded-t-3xl bg-modal-header-primary px-6 pb-6'>
 			<Image
 				style={{
 					contentFit: 'contain',
@@ -28,7 +28,7 @@ function AccountHeader() {
 					height: 50
 				}}
 				className='rounded-full'
-				source={require('@/assets/account.jpg')}
+				source={require('@/assets/images/account.jpg')}
 			/>
 			{!!username ? (
 				<View className='flex-row items-center gap-2'>

@@ -29,13 +29,13 @@ const ControlBar = () => {
 				{isDarkColorScheme ? (
 					<Image
 						className='h-36 w-36'
-						source={require('@/assets/logo-raw.png')}
+						source={require('@/assets/images/logo-raw.png')}
 						style={{ contentFit: 'contain' }}
 					/>
 				) : (
 					<Image
 						className='h-36 w-36'
-						source={require('@/assets/logo.png')}
+						source={require('@/assets/images/logo.png')}
 						style={{ contentFit: 'contain' }}
 					/>
 				)}

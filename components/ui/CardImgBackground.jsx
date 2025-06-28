@@ -13,7 +13,7 @@ function CardImgBackground({ imgClassName }) {
 		<View className={imgStylesClass}>
 			<Image
 				className='absolute -bottom-24 -right-36 h-[400px] w-[400px] opacity-10'
-				source={require('@/assets/logo-raw.png')}
+				source={require('@/assets/images/logo-raw.png')}
 				style={{ contentFit: 'contain' }}
 			/>
 		</View>
