@@ -5,7 +5,7 @@
 		"scheme": "paredes-verdes",
 		"version": "1.0.0",
 		"orientation": "portrait",
-		"icon": "./assets/icon.png",
+		"icon": "./assets/images/icon.png",
 		"userInterfaceStyle": "automatic",
 		"assetBundlePatterns": ["**/*"],
 		"newArchEnabled": true,
@@ -16,9 +16,9 @@
 			},
 			"splash": {
 				"backgroundColor": "#ffffff",
-				"image": "./assets/splash.png",
+				"image": "./assets/images/splash.png",
 				"dark": {
-					"image": "./assets/splash-dark.png",
+					"image": "./assets/images/splash-dark.png",
 					"backgroundColor": "#04151A"
 				}
 			}
@@ -26,9 +26,9 @@
 		"android": {
 			"splash": {
 				"backgroundColor": "#ffffff",
-				"image": "./assets/splash.png",
+				"image": "./assets/images/splash.png",
 				"dark": {
-					"image": "./assets/splash-dark.png",
+					"image": "./assets/images/splash-dark.png",
 					"backgroundColor": "#04151A"
 				},
 				"imageWidth": 200
@@ -38,13 +38,16 @@
 		"experiments": {
 			"typedRoutes": true
 		},
-		"plugins": ["expo-router", "expo-secure-store", 
-      [
-        "expo-font", {
-          "fonts": ["./assets/fonts/Inter.ttf"]
-        }
-      ]
-    ],
+		"plugins": [
+			"expo-router",
+			"expo-secure-store",
+			[
+				"expo-font",
+				{
+					"fonts": ["./assets/fonts/Inter.ttf"]
+				}
+			]
+		],
 		"extra": {
 			"router": {
 				"origin": false
