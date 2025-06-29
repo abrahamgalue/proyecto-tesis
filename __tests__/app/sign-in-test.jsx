@@ -10,7 +10,7 @@ jest.mock('@/components/image', () => ({
 	Image: 'Image',
 	ImageBackground: 'ImageBackground'
 }))
-jest.mock('@/components/ui/Icons/IconSymbol', () => ({
+jest.mock('@/components/ui/IconSymbol', () => ({
 	IconSymbol: () => 'IconSymbol'
 }))
 jest.mock('@/components/safe-area-view', () => ({

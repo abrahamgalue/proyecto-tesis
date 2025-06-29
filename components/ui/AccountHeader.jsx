@@ -5,7 +5,7 @@ import { useUsername, useUserActions } from '@/store/userStore'
 import { Image } from '@/components/image'
 import { Text } from '@/components/text'
 import { GenericSkeleton } from '@/components/ui/skeletons'
-import { EditUsernameIcon } from './Icons/Icons'
+import Edit2 from '@/components/icons/Edit2'
 import { Link } from 'expo-router'
 
 function AccountHeader() {
@@ -35,7 +35,7 @@ function AccountHeader() {
 					<Text className='text-white'>{username}</Text>
 					<Link href={`/account/edit/${session.user.id}`} asChild>
 						<TouchableOpacity hitSlop={14}>
-							<EditUsernameIcon />
+							<Edit2 />
 						</TouchableOpacity>
 					</Link>
 				</View>

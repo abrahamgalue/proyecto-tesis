@@ -12,7 +12,7 @@ import GradientBackground from '@/components/ui/GradientBackground'
 import BackBtn from '@/components/ui/BackBtn'
 import { Text } from '@/components/text'
 import { colors } from '@/constants/colors'
-import { ChevronDownIcon } from '@/components/ui/Icons/Icons'
+import ChevronDown from '@/components/icons/ChevronDown'
 import Button from '@/components/Button'
 import { cn } from '@/lib/utils'
 
@@ -55,7 +55,7 @@ export default function EditDevice() {
 	}
 
 	return (
-		<SafeAreaView className='bg-brand-primary flex-1'>
+		<SafeAreaView className='flex-1 bg-brand-primary'>
 			<GradientBackground
 				className='flex-1 items-center gap-4 px-[5%]'
 				type='screen'
@@ -66,7 +66,7 @@ export default function EditDevice() {
 						hitSlop={20}
 						onPress={handleBack}
 					/>
-					<Text className='text-foreground-primary font-bold'>
+					<Text className='font-bold text-foreground-primary'>
 						Editar Dispositivo
 					</Text>
 				</View>
@@ -83,7 +83,7 @@ export default function EditDevice() {
 						value={device.type === 'light' ? 'Bombillo' : 'Bomba'}
 					/>
 					<View className='px-4'>
-						<ChevronDownIcon color='#9ca3af' />
+						<ChevronDown color='#9ca3af' />
 					</View>
 				</View>
 				<Controller
@@ -162,7 +162,7 @@ export default function EditDevice() {
 							}
 						/>
 					) : (
-						<Text className='text-btn-white text-center'>ACEPTAR</Text>
+						<Text className='text-center text-btn-white'>ACEPTAR</Text>
 					)}
 				</Button>
 			</GradientBackground>

@@ -1,6 +1,6 @@
 import { TouchableOpacity } from 'react-native'
 import { Link } from 'expo-router'
-import { EditIcon } from '@/components/ui/Icons/Icons'
+import Edit from '@/components/icons/Edit'
 
 function EditBtn({ href, width, height }) {
 	return (
@@ -9,7 +9,7 @@ function EditBtn({ href, width, height }) {
 				className='absolute z-10 m-2 items-center justify-center rounded-lg border border-primary'
 				style={{ width, height }}
 			>
-				<EditIcon />
+				<Edit />
 			</TouchableOpacity>
 		</Link>
 	)

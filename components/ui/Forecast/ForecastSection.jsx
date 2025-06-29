@@ -1,7 +1,8 @@
 import { memo } from 'react'
 import { View } from 'react-native'
 import ForecastDay from '@/components/ui/Forecast/ForecastDay'
-import { SunCloudSmall, Sunny } from '@/components/ui/Icons/Icons'
+import SunCloudSmall from '@/components/icons/SunCloudSmall'
+import Sunny from '@/components/icons/Sunny'
 import Line from '@/components/ui/Line'
 
 function ForecastSection() {

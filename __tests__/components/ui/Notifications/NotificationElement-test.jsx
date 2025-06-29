@@ -2,9 +2,14 @@ import { render, screen } from '@testing-library/react-native'
 import NotificationElement from '@/components/ui/Notifications/NotificationElement'
 import { useColorScheme } from '@/lib/useColorScheme'
 
-jest.mock('@/components/ui/Icons/Icons', () => ({
-	WaterObstructionIcon: () => <></>,
-	TemperatureSubstrateIcon: () => <></>
+jest.mock('@/components/icons/WaterObstruction', () => ({
+	__esModule: true,
+	default: () => 'WaterObstruction'
+}))
+
+jest.mock('@/components/icons/TemperatureSubstrate', () => ({
+	__esModule: true,
+	default: () => 'TemperatureSubstrate'
 }))
 
 jest.mock('@/lib/useColorScheme', () => ({
@@ -28,7 +33,7 @@ describe('<NotificationElement />', () => {
 		expect(screen.getByText('60% de agua restante')).toBeOnTheScreen()
 	})
 
-	test('should render WaterObstructionIcon if the type is passed', () => {
+	test('should render WaterObstruction icon if the type is passed', () => {
 		useColorScheme.mockReturnValue({ isDarkColorScheme: false })
 
 		render(
@@ -43,7 +48,7 @@ describe('<NotificationElement />', () => {
 		expect(screen.root).toBeOnTheScreen()
 	})
 
-	test('should render TemperatureSubstrateIcon if the type is passed', () => {
+	test('should render TemperatureSubstrate icon if the type is passed', () => {
 		useColorScheme.mockReturnValue({ isDarkColorScheme: false })
 
 		render(

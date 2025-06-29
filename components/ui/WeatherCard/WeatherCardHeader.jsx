@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { View } from 'react-native'
-import { SunCloud } from '@/components/ui/Icons/Icons'
+import SunCloud from '@/components/icons/SunCloud'
 import Date from '@/components/ui/Date/Date'
 
 function WeatherCardHeader() {
