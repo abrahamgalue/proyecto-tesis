@@ -1,6 +1,7 @@
 import { View, TouchableOpacity } from 'react-native'
 import ActionBar from '@/components/ui/ActionBar'
-import { DeleteBtnIcon, EditBtnIcon } from '@/components/ui/Icons/Icons'
+import DeleteBtn from '@/components/icons/DeleteBtn'
+import EditBtn from '@/components/icons/EditBtn'
 import { useEdit, useEditActions } from '@/store/editStore'
 import { useColorScheme } from '@/lib/useColorScheme'
 import { Image } from '@/components/image'
@@ -14,7 +15,7 @@ const ControlBarBtn = () => {
 			onPress={toggleEdited}
 			hitSlop={{ bottom: 4, top: 4, left: 5, right: 5 }}
 		>
-			{edit ? <DeleteBtnIcon /> : <EditBtnIcon />}
+			{edit ? <DeleteBtn /> : <EditBtn />}
 		</TouchableOpacity>
 	)
 }

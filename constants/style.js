@@ -1,5 +1,6 @@
 import { colors } from '@/constants/colors'
-import { BombIcon, LightBulbIcon } from '@/components/ui/Icons/Icons'
+import Bomb from '@/components/icons/Bomb'
+import LightBulb from '@/components/icons/LightBulb'
 
 export const cardBaseStyle = {
 	borderColor: colors.dark.borderPrimary,
@@ -8,6 +9,6 @@ export const cardBaseStyle = {
 }
 
 export const icons = {
-	bomb: BombIcon,
-	light: LightBulbIcon
+	bomb: Bomb,
+	light: LightBulb
 }

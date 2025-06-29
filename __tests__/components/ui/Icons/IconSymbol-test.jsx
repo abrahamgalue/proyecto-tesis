@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native'
-import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
+import { IconSymbol } from '@/components/ui/IconSymbol'
 
 jest.mock('@expo/vector-icons/MaterialIcons', () => {
 	return jest

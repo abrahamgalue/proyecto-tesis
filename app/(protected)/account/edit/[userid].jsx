@@ -48,7 +48,7 @@ export default function EditUsername() {
 	}
 
 	return (
-		<SafeAreaView className='bg-brand-primary flex-1'>
+		<SafeAreaView className='flex-1 bg-brand-primary'>
 			<GradientBackground
 				className='flex-1 items-center gap-4 px-[5%]'
 				type='screen'
@@ -59,7 +59,7 @@ export default function EditUsername() {
 						hitSlop={20}
 						onPress={handleBack}
 					/>
-					<Text className='text-foreground-primary font-bold'>
+					<Text className='font-bold text-foreground-primary'>
 						Editar nombre de usuario
 					</Text>
 				</View>
@@ -111,7 +111,7 @@ export default function EditUsername() {
 							}
 						/>
 					) : (
-						<Text className='text-btn-white text-center'>ACEPTAR</Text>
+						<Text className='text-center text-btn-white'>ACEPTAR</Text>
 					)}
 				</Button>
 			</GradientBackground>

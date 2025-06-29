@@ -5,9 +5,10 @@ import { Link } from 'expo-router'
 import GradientBackground from '@/components/ui/GradientBackground'
 import { colors } from '@/constants/colors'
 import Line from '@/components/ui/Line'
-import { AccountCircleIcon, PhoneControlIcon } from './Icons/Icons'
+import PhoneControl from '@/components/icons/PhoneControl'
+import AccountCircle from '@/components/icons/AccountCircle'
 import { Text } from '@/components/text'
-import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
+import { IconSymbol } from '@/components/ui/IconSymbol'
 
 export const ControlBtn = memo(function ControlBtn() {
 	const { isDarkColorScheme } = useColorScheme()
@@ -16,13 +17,13 @@ export const ControlBtn = memo(function ControlBtn() {
 		<Link href='/control' asChild>
 			<TouchableOpacity accessibilityLabel='Go to Control'>
 				<GradientBackground
-					className='bg-btn-tertiary flex-row items-center gap-2 rounded-[20px] px-[15px] py-2'
+					className='flex-row items-center gap-2 rounded-[20px] bg-btn-tertiary px-[15px] py-2'
 					style={{
 						borderRadius: 12
 					}}
 					type='card'
 				>
-					<PhoneControlIcon
+					<PhoneControl
 						width={24}
 						height={24}
 						color={
@@ -32,7 +33,7 @@ export const ControlBtn = memo(function ControlBtn() {
 						}
 					/>
 					<Line height={15} />
-					<Text className='text-foreground-primary text-sm font-bold'>
+					<Text className='text-sm font-bold text-foreground-primary'>
 						Control
 					</Text>
 				</GradientBackground>
@@ -47,7 +48,7 @@ export const AccountBtn = memo(function AccountBtn() {
 	return (
 		<Link href='/account' asChild>
 			<TouchableOpacity accessibilityLabel='Go to User' hitSlop={14}>
-				<AccountCircleIcon
+				<AccountCircle
 					width={33}
 					height={33}
 					color={

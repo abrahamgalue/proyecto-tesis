@@ -2,7 +2,7 @@ import { TouchableOpacity, View } from 'react-native'
 import { router, Link } from 'expo-router'
 import Card from '@/components/ui/Card'
 import CardTitle from '@/components/ui/CardTitle'
-import { CloseSmallIcon } from '@/components/ui/Icons/Icons'
+import CloseSmall from '@/components/icons/CloseSmall'
 import SettingsHeader from '@/components/ui/SettingsHeader'
 import {
 	NotificationsSettingsBtn,
@@ -15,14 +15,14 @@ export default function SettingsModal() {
 
 	return (
 		<View
-			className='bg-modal-primary-transparent flex-1 items-center justify-center px-[5%]'
+			className='flex-1 items-center justify-center bg-modal-primary-transparent px-[5%]'
 			style={{ minHeight: '100%' }}
 		>
 			<Card
 				className='relative h-[70%] w-full items-center rounded-3xl border border-primary'
 				imgClassName='bottom-0'
 			>
-				<CardTitle className='text-modal-primary z-10 text-4xl'>
+				<CardTitle className='z-10 text-4xl text-modal-primary'>
 					CONFIGURACIÓN
 				</CardTitle>
 				{isPresented && (
@@ -31,7 +31,7 @@ export default function SettingsModal() {
 							className='absolute -top-8 right-5 z-10'
 							hitSlop={20}
 						>
-							<CloseSmallIcon />
+							<CloseSmall />
 						</TouchableOpacity>
 					</Link>
 				)}

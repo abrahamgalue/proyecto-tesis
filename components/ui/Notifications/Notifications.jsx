@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { View, ScrollView, TouchableOpacity } from 'react-native'
-import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
+import { IconSymbol } from '@/components/ui/IconSymbol'
 import {
 	useNotifications,
 	useNotificationsActions,
@@ -48,7 +48,7 @@ function Notifications() {
 			</TouchableOpacity>
 
 			{showNotifications && (
-				<View className='bg-notification-tertiary absolute left-0 top-12 z-20 h-64 w-2/3 rounded-lg p-4'>
+				<View className='absolute left-0 top-12 z-20 h-64 w-2/3 rounded-lg bg-notification-tertiary p-4'>
 					<ScrollView>
 						{notifications.map((notification) => (
 							<NotificationElement

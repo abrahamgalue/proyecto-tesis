@@ -1,6 +1,6 @@
 import { TouchableOpacity, View } from 'react-native'
 import { Link } from 'expo-router'
-import { IconSymbol } from '@/components/ui/Icons/IconSymbol'
+import { IconSymbol } from '@/components/ui/IconSymbol'
 import { colors } from '@/constants/colors'
 import { Text } from '@/components/text'
 import { useSupabase } from '@/context/supabase-provider'

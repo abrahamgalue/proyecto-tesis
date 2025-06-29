@@ -1,17 +1,15 @@
 import { render, screen } from '@testing-library/react-native'
-import {
-	FloorTempIcon,
-	SunCloud,
-	SunCloudSmall,
-	Sunny,
-	WaterLevel,
-	AccountCircleIcon,
-	PhoneControlIcon,
-	HumidityIcon,
-	TemperatureSubstrateIcon,
-	WaterObstructionIcon,
-	PHLevelIcon
-} from '@/components/ui/Icons/Icons'
+import SunCloud from '@/components/icons/SunCloud'
+import SunCloudSmall from '@/components/icons/SunCloudSmall'
+import Sunny from '@/components/icons/Sunny'
+import FloorTemp from '@/components/icons/FloorTemp'
+import WaterLevel from '@/components/icons/WaterLevel'
+import AccountCircle from '@/components/icons/AccountCircle'
+import PhoneControl from '@/components/icons/PhoneControl'
+import Humidity from '@/components/icons/Humidity'
+import TemperatureSubstrate from '@/components/icons/TemperatureSubstrate'
+import WaterObstruction from '@/components/icons/WaterObstruction'
+import PHLevel from '@/components/icons/PHLevel'
 
 describe('<Icons />', () => {
 	const commonProps = {
@@ -35,44 +33,47 @@ describe('<Icons />', () => {
 			Component: Sunny
 		},
 		{
-			name: 'FloorTempIcon',
-			Component: FloorTempIcon
+			name: 'FloorTemp',
+			Component: FloorTemp
 		},
 		{
 			name: 'WaterLevel',
 			Component: WaterLevel
 		},
 		{
-			name: 'AccountCircleIcon',
-			Component: AccountCircleIcon
+			name: 'AccountCircle',
+			Component: AccountCircle
 		},
 		{
-			name: 'PhoneControlIcon',
-			Component: PhoneControlIcon
+			name: 'PhoneControl',
+			Component: PhoneControl
 		},
 		{
-			name: 'HumidityIcon',
-			Component: HumidityIcon
+			name: 'Humidity',
+			Component: Humidity
 		},
 		{
-			name: 'TemperatureSubstrateIcon',
-			Component: TemperatureSubstrateIcon
+			name: 'TemperatureSubstrate',
+			Component: TemperatureSubstrate
 		},
 		{
-			name: 'WaterObstructionIcon',
-			Component: WaterObstructionIcon
+			name: 'WaterObstruction',
+			Component: WaterObstruction
 		},
 		{
-			name: 'PHLevelIcon',
-			Component: PHLevelIcon
+			name: 'PHLevel',
+			Component: PHLevel
 		}
 	]
 
-	test.each(tableOfIcons)('$name should render correctly', ({ Component }) => {
-		render(<Component {...commonProps} />)
+	test.each(tableOfIcons)(
+		'$name icon should render correctly',
+		({ Component }) => {
+			render(<Component {...commonProps} />)
 
-		expect(screen.root).toBeOnTheScreen()
-	})
+			expect(screen.root).toBeOnTheScreen()
+		}
+	)
 
 	test.each(tableOfIcons)(
 		'$name should receive props correctly',

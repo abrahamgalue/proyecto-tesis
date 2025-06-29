@@ -3,14 +3,12 @@ import { View } from 'react-native'
 import { useColorScheme } from '@/lib/useColorScheme'
 import useWeatherData from '@/hooks/useWeatherData'
 import MonitoringBlock from '@/components/ui/Monitoring/MonitoringBlock'
-import {
-	FloorTempIcon,
-	HumidityIcon,
-	PHLevelIcon,
-	TemperatureSubstrateIcon,
-	WaterLevel,
-	WaterObstructionIcon
-} from '@/components/ui/Icons/Icons'
+import WaterLevel from '@/components/icons/WaterLevel'
+import FloorTemp from '@/components/icons/FloorTemp'
+import TemperatureSubstrate from '@/components/icons/TemperatureSubstrate'
+import Humidity from '@/components/icons/Humidity'
+import PHLevel from '@/components/icons/PHLevel'
+import WaterObstruction from '@/components/icons/WaterObstruction'
 import { colors } from '@/constants/colors'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 
@@ -28,7 +26,7 @@ function Monitoring() {
 			/>
 			<MonitoringBlock
 				icon={
-					<FloorTempIcon
+					<FloorTemp
 						width={42}
 						height={42}
 						color={
@@ -43,7 +41,7 @@ function Monitoring() {
 			/>
 			<MonitoringBlock
 				icon={
-					<TemperatureSubstrateIcon
+					<TemperatureSubstrate
 						width={42}
 						height={42}
 						color={
@@ -59,7 +57,7 @@ function Monitoring() {
 			{!isLoading ? (
 				<MonitoringBlock
 					icon={
-						<HumidityIcon
+						<Humidity
 							width={42}
 							height={42}
 							color={
@@ -77,7 +75,7 @@ function Monitoring() {
 			)}
 			<MonitoringBlock
 				icon={
-					<PHLevelIcon
+					<PHLevel
 						width={42}
 						height={42}
 						color={
@@ -92,7 +90,7 @@ function Monitoring() {
 			/>
 			<MonitoringBlock
 				icon={
-					<WaterObstructionIcon
+					<WaterObstruction
 						width={42}
 						height={42}
 						color={

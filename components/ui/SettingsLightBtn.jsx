@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { TouchableOpacity, View } from 'react-native'
-import { SettingsIcon } from '@/components/ui/Icons/Icons'
+import Settings from '@/components/icons/Settings'
 
 function SettingsLightBtn({ width, handlePress }) {
 	return (
@@ -9,10 +9,10 @@ function SettingsLightBtn({ width, handlePress }) {
 			style={{ width }}
 		>
 			<TouchableOpacity
-				className='bg-btn-secondary rounded-full p-1'
+				className='rounded-full bg-btn-secondary p-1'
 				onPress={handlePress}
 			>
-				<SettingsIcon />
+				<Settings />
 			</TouchableOpacity>
 		</View>
 	)
