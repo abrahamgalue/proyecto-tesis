@@ -22,7 +22,7 @@ function App() {
 
 	return (
 		<QueryClientProvider client={weather}>
-			<SafeAreaView>
+			<SafeAreaView className='flex-1 bg-brand-primary'>
 				<ScrollView
 					className='bg-brand-primary'
 					contentContainerClassName='grow justify-between'

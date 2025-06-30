@@ -4,7 +4,7 @@ import Card from '@/components/ui/Card'
 import CardTitle from '@/components/ui/CardTitle'
 import CloseSmall from '@/components/icons/CloseSmall'
 import AccountHeader from '@/components/ui/AccountHeader'
-import Button from '@/components/Button'
+import Button from '@/components/ui/button'
 
 export default function AccountModal() {
 	const isPresented = router.canGoBack()
