@@ -2,9 +2,9 @@ import { TouchableOpacity, View } from 'react-native'
 import { Link } from 'expo-router'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import { colors } from '@/constants/colors'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 import { useSupabase } from '@/context/supabase-provider'
-import Button from '@/components/Button'
+import Button from '@/components/ui/button'
 
 export const NotificationsSettingsBtn = () => {
 	return (

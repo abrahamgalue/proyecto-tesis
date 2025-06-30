@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { useShowNotifications } from '@/store/notificationsStore'
 import { useColorScheme } from '@/lib/useColorScheme'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import { colors } from '@/constants/colors'
 

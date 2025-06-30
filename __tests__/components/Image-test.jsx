@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native'
 import { Image, ImageBackground } from '@/components/image'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 describe('<Image />', () => {
 	test('should render Image', () => {

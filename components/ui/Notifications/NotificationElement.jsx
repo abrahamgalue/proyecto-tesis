@@ -4,7 +4,7 @@ import { useColorScheme } from '@/lib/useColorScheme'
 import WaterObstruction from '@/components/icons/WaterObstruction'
 import TemperatureSubstrate from '@/components/icons/TemperatureSubstrate'
 import { colors } from '@/constants/colors'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 function NotificationElement({ notification }) {
 	const { isDarkColorScheme } = useColorScheme()

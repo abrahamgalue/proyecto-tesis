@@ -1,6 +1,6 @@
 import { TouchableOpacity } from 'react-native'
 import { cn } from '@/lib/utils'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 function Button({
 	title,

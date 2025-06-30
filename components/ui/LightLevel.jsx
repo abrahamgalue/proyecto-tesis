@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { View } from 'react-native'
 import { useDevicesActions } from '@/store/devicesStore'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 import Slider from '@react-native-community/slider'
 
 function LightLevel({ deviceId, brightness }) {
@@ -9,7 +9,7 @@ function LightLevel({ deviceId, brightness }) {
 
 	return (
 		<View>
-			<Text className='text-modal-secondary px-8 text-start'>
+			<Text className='px-8 text-start text-modal-secondary'>
 				BRILLO {brightness}%
 			</Text>
 			<Slider

@@ -7,14 +7,13 @@ import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { editSchema } from '@/constants/schemas'
 
-import { SafeAreaView } from '@/components/safe-area-view'
-import GradientBackground from '@/components/ui/GradientBackground'
-import BackBtn from '@/components/ui/BackBtn'
-import { Text } from '@/components/text'
+import ScreenWithBackButton from '@/components/ScreenWithBackButton'
+import { Text } from '@/components/ui/text'
 import { colors } from '@/constants/colors'
 import ChevronDown from '@/components/icons/ChevronDown'
-import Button from '@/components/Button'
+import Button from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useCallback } from 'react'
 
 export default function EditDevice() {
 	const { deviceid } = useLocalSearchParams()
@@ -49,123 +48,112 @@ export default function EditDevice() {
 		}
 	}
 
-	const handleBack = () => {
+	const handleBack = useCallback(() => {
 		setEdited(false)
 		router.back()
-	}
+	}, [])
 
 	return (
-		<SafeAreaView className='flex-1 bg-brand-primary'>
-			<GradientBackground
-				className='flex-1 items-center gap-4 px-[5%]'
-				type='screen'
-			>
-				<View className='flex w-full flex-row items-center gap-3 py-8'>
-					<BackBtn
-						small={isDarkColorScheme ? false : true}
-						hitSlop={20}
-						onPress={handleBack}
-					/>
-					<Text className='font-bold text-foreground-primary'>
-						Editar Dispositivo
-					</Text>
+		<ScreenWithBackButton
+			title='Editar Dispositivo'
+			onHandleBack={handleBack}
+			containerClassName='gap-4'
+		>
+			<View className='flex w-full flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-700'>
+				<TextInput
+					className='h-14 flex-1 rounded-full px-8 text-gray-400'
+					placeholder='Nombre'
+					placeholderTextColor={
+						isDarkColorScheme
+							? colors.dark.textForegroundPrimary
+							: colors.light.textForegroundPrimary
+					}
+					readOnly
+					value={device.type === 'light' ? 'Bombillo' : 'Bomba'}
+				/>
+				<View className='px-4'>
+					<ChevronDown color='#9ca3af' />
 				</View>
-				<View className='flex w-full flex-row items-center justify-center rounded-2xl border border-gray-400 bg-gray-700'>
+			</View>
+			<Controller
+				control={control}
+				rules={{
+					required: true
+				}}
+				render={({ field: { onChange, onBlur, value } }) => (
 					<TextInput
-						className='h-14 flex-1 rounded-full px-8 text-gray-400'
-						placeholder='Nombre'
-						placeholderTextColor={
-							isDarkColorScheme
-								? colors.dark.textForegroundPrimary
-								: colors.light.textForegroundPrimary
-						}
-						readOnly
-						value={device.type === 'light' ? 'Bombillo' : 'Bomba'}
-					/>
-					<View className='px-4'>
-						<ChevronDown color='#9ca3af' />
-					</View>
-				</View>
-				<Controller
-					control={control}
-					rules={{
-						required: true
-					}}
-					render={({ field: { onChange, onBlur, value } }) => (
-						<TextInput
-							className={cn(
-								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
-								{
-									'border-primary': !errors.name?.message,
-									'border-red-400': !!errors.name?.message
-								}
-							)}
-							onBlur={onBlur}
-							onChangeText={onChange}
-							placeholder='Nombre'
-							inputMode='text'
-							placeholderTextColor={colors.dark.editInput}
-							value={value}
-						/>
-					)}
-					name='name'
-				/>
-
-				<Controller
-					control={control}
-					rules={{
-						maxLength: 18
-					}}
-					render={({ field: { onChange, onBlur, value } }) => (
-						<TextInput
-							className={cn(
-								'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
-								{
-									'border-primary': !errors.description?.message,
-									'border-red-400': !!errors.description?.message
-								}
-							)}
-							onBlur={onBlur}
-							onChangeText={onChange}
-							placeholder='Descripción'
-							inputMode='text'
-							placeholderTextColor={colors.dark.editInput}
-							value={value}
-						/>
-					)}
-					name='description'
-				/>
-
-				<Text className='text-red-500'>
-					{errors.name?.message ? errors.name.message : ''}
-				</Text>
-
-				<Text className='text-red-500'>
-					{errors.description?.message ? errors.description.message : ''}
-				</Text>
-
-				<Button
-					className={{
-						'bg-slate-700 opacity-20': !isValid,
-						'bg-btn-primary': isValid
-					}}
-					disabled={!isValid}
-					onPress={handleSubmit(onSubmit)}
-				>
-					{isSubmitting ? (
-						<ActivityIndicator
-							size='small'
-							color={
-								isDarkColorScheme
-									? colors.dark.activityIndicator
-									: colors.light.activityIndicator
+						className={cn(
+							'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
+							{
+								'border-primary': !errors.name?.message,
+								'border-red-400': !!errors.name?.message
 							}
-						/>
-					) : (
-						<Text className='text-center text-btn-white'>ACEPTAR</Text>
-					)}
-				</Button>
-			</GradientBackground>
-		</SafeAreaView>
+						)}
+						onBlur={onBlur}
+						onChangeText={onChange}
+						placeholder='Nombre'
+						inputMode='text'
+						placeholderTextColor={colors.dark.editInput}
+						value={value}
+					/>
+				)}
+				name='name'
+			/>
+
+			<Controller
+				control={control}
+				rules={{
+					maxLength: 18
+				}}
+				render={({ field: { onChange, onBlur, value } }) => (
+					<TextInput
+						className={cn(
+							'h-14 w-full rounded-2xl border bg-white px-8 font-bold',
+							{
+								'border-primary': !errors.description?.message,
+								'border-red-400': !!errors.description?.message
+							}
+						)}
+						onBlur={onBlur}
+						onChangeText={onChange}
+						placeholder='Descripción'
+						inputMode='text'
+						placeholderTextColor={colors.dark.editInput}
+						value={value}
+					/>
+				)}
+				name='description'
+			/>
+
+			<Text className='text-red-500'>
+				{errors.name?.message ? errors.name.message : ''}
+			</Text>
+
+			<Text className='text-red-500'>
+				{errors.description?.message ? errors.description.message : ''}
+			</Text>
+
+			<Button
+				className={{
+					'bg-slate-700 opacity-20': !isValid,
+					'bg-btn-primary': isValid
+				}}
+				disabled={!isValid}
+				onPress={handleSubmit(onSubmit)}
+			>
+				{isSubmitting ? (
+					<ActivityIndicator
+						size='small'
+						color={
+							isDarkColorScheme
+								? colors.dark.activityIndicator
+								: colors.light.activityIndicator
+						}
+					/>
+				) : (
+					<Text className='text-center text-btn-white'>ACEPTAR</Text>
+				)}
+			</Button>
+		</ScreenWithBackButton>
 	)
 }

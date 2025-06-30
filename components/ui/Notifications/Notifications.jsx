@@ -10,7 +10,7 @@ import { useColorScheme } from '@/lib/useColorScheme'
 import { colors } from '@/constants/colors'
 import NotificationBadge from '@/components/ui/Notifications/NotificationBadge'
 import NotificationElement from '@/components/ui/Notifications/NotificationElement'
-import Button from '@/components/Button'
+import Button from '@/components/ui/button'
 
 function Notifications() {
 	const notifications = useNotifications()
