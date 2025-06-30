@@ -7,7 +7,7 @@ import { colors } from '@/constants/colors'
 import Line from '@/components/ui/Line'
 import PhoneControl from '@/components/icons/PhoneControl'
 import AccountCircle from '@/components/icons/AccountCircle'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 
 export const ControlBtn = memo(function ControlBtn() {

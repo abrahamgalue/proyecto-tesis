@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native'
 import { SafeAreaView } from '@/components/safe-area-view'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 describe('<SafeAreaView />', () => {
 	test('should render children correctly', () => {

@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { useSupabase } from '@/context/supabase-provider'
 import { useUsername, useUserActions } from '@/store/userStore'
 import { Image } from '@/components/image'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 
 function SettingsHeader() {

@@ -1,16 +1,16 @@
 import { memo } from 'react'
 import { View } from 'react-native'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 function MonitoringBlock({ icon, value, label }) {
 	return (
 		<View className='mb-[15px] w-[48%] flex-row items-start gap-2 px-2.5'>
 			<View className=''>{icon}</View>
 			<View className='flex-1 items-start'>
-				<Text className='text-foreground-primary text-lg font-bold'>
+				<Text className='text-lg font-bold text-foreground-primary'>
 					{value}
 				</Text>
-				<Text className='text-foreground-primary text-sm'>{label}</Text>
+				<Text className='text-sm text-foreground-primary'>{label}</Text>
 			</View>
 		</View>
 	)

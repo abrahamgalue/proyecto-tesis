@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { View } from 'react-native'
 import Connected from '@/components/icons/Connected'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 function DeviceHeader({ icon, name, num, location }) {
 	return (

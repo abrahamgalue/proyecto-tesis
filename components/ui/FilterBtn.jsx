@@ -1,7 +1,7 @@
 import { TouchableOpacity } from 'react-native'
 import { useFilter } from '@/store/filterStore'
 import { cn } from '@/lib/utils'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 function FilterButton({ title, value, onPress, hitSlop }) {
 	const filter = useFilter()

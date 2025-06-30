@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 import ForecastDay from '@/components/ui/Forecast/ForecastDay'
 
 const MockIcon = () => <Text>{'ICON'}</Text>

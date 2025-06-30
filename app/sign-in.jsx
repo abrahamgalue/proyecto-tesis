@@ -4,7 +4,7 @@ import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
 import { Image, ImageBackground } from '@/components/image'
 import GradientBackground from '@/components/ui/GradientBackground'
 import { IconSymbol } from '@/components/ui/IconSymbol'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 import { SafeAreaView } from '@/components/safe-area-view'
 import { useSupabase } from '@/context/supabase-provider'
@@ -15,7 +15,7 @@ import { signInSchema } from '@/constants/schemas'
 import useShowPassword from '@/hooks/useShowPassword'
 import { StatusBar } from 'expo-status-bar'
 import useError from '@/hooks/useError'
-import Button from '@/components/Button'
+import Button from '@/components/ui/button'
 
 export default function SignIn() {
 	const { isDarkColorScheme } = useColorScheme()

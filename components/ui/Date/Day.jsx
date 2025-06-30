@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { formatDate } from '@/lib/utils'
-import { Text } from '@/components/text'
+import { Text } from '@/components/ui/text'
 
 function Day() {
 	const nowDate = useMemo(() => formatDate())
 
 	return (
-		<Text className='text-foreground-primary mb-3 text-lg capitalize'>
+		<Text className='mb-3 text-lg capitalize text-foreground-primary'>
 			{nowDate}
 		</Text>
 	)
