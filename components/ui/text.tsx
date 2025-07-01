@@ -1,5 +1,5 @@
-import { memo, ReactNode } from 'react'
-import { Text, StyleSheet, TextStyle, StyleProp } from 'react-native'
+import { memo, type ReactNode } from 'react'
+import { Text, StyleSheet, TextStyle, type StyleProp } from 'react-native'
 
 interface Props {
 	children: ReactNode
