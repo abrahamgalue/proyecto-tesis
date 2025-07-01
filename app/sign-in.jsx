@@ -1,21 +1,20 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm, Controller } from 'react-hook-form'
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
+import { useColorScheme } from '@/lib/useColorScheme'
+import { useSupabase } from '@/context/supabase-provider'
+import useShowPassword from '@/hooks/useShowPassword'
+import useError from '@/hooks/useError'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { signInSchema } from '@/constants/schemas'
+import { SafeAreaView } from '@/components/safe-area-view'
+import { StatusBar } from 'expo-status-bar'
 import { Image, ImageBackground } from '@/components/image'
 import GradientBackground from '@/components/ui/GradientBackground'
+import { colors } from '@/constants/colors'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import { Text } from '@/components/ui/text'
-
-import { SafeAreaView } from '@/components/safe-area-view'
-import { useSupabase } from '@/context/supabase-provider'
-
-import { colors } from '@/constants/colors'
-import { useColorScheme } from '@/lib/useColorScheme'
-import { signInSchema } from '@/constants/schemas'
-import useShowPassword from '@/hooks/useShowPassword'
-import { StatusBar } from 'expo-status-bar'
-import useError from '@/hooks/useError'
 import Button from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 export default function SignIn() {
 	const { isDarkColorScheme } = useColorScheme()
@@ -128,7 +127,9 @@ export default function SignIn() {
 					</Text>
 
 					<Button
-						className={`w-[80%] ${!isValid ? 'bg-slate-700 opacity-20' : 'bg-btn-primary'}`}
+						className={cn('w-[80%] bg-btn-primary', {
+							'bg-slate-700 opacity-20': !isValid
+						})}
 						disabled={!isValid}
 						onPress={handleSubmit(onSubmit)}
 					>

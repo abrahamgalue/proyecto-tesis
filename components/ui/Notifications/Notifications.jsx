@@ -1,16 +1,17 @@
 import { memo } from 'react'
 import { View, ScrollView, TouchableOpacity } from 'react-native'
-import { IconSymbol } from '@/components/ui/IconSymbol'
 import {
 	useNotifications,
-	useNotificationsActions,
-	useShowNotifications
+	useShowNotifications,
+	useNotificationsActions
 } from '@/store/notificationsStore'
 import { useColorScheme } from '@/lib/useColorScheme'
+import { IconSymbol } from '@/components/ui/IconSymbol'
 import { colors } from '@/constants/colors'
 import NotificationBadge from '@/components/ui/Notifications/NotificationBadge'
 import NotificationElement from '@/components/ui/Notifications/NotificationElement'
 import Button from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 function Notifications() {
 	const notifications = useNotifications()
@@ -30,7 +31,10 @@ function Notifications() {
 				accessibilityRole='button'
 				hitSlop={20}
 				onPress={handleNotificationPress}
-				className={`relative z-10 h-11 w-11 items-center justify-center rounded-full border border-primary p-1 ${showNotifications ? 'bg-notification-primary-active' : ''}`}
+				className={cn(
+					'relative z-10 h-11 w-11 items-center justify-center rounded-full border border-primary p-1',
+					{ 'bg-notification-primary-active': showNotifications }
+				)}
 				disabled={isNotificationPressDisabled}
 			>
 				<IconSymbol
