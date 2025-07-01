@@ -6,7 +6,7 @@ import Close from '@/components/icons/Close'
 interface Props {
 	small?: boolean
 	className?: string
-	hitSlop?: Insets | number
+	hitSlop: Insets | number
 	onPress: () => void
 }
 
