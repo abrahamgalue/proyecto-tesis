@@ -1,12 +1,12 @@
 import { memo } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Insets, TouchableOpacity } from 'react-native'
 import CloseSmall from '@/components/icons/CloseSmall'
 import Close from '@/components/icons/Close'
 
 interface Props {
 	small?: boolean
 	className?: string
-	hitSlop: number
+	hitSlop?: Insets | number
 	onPress: () => void
 }
 
