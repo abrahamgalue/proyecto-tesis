@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from '@testing-library/react-native'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
+import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/services/weather'
 import useWeatherData from '@/hooks/useWeatherData'
 
-jest.mock('@/lib/weather', () => {
-	const actual = jest.requireActual('@/lib/weather')
+jest.mock('@/services/weather', () => {
+	const actual = jest.requireActual('@/services/weather')
 
 	return {
 		...actual,
