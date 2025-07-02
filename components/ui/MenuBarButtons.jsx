@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { TouchableOpacity } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { Link } from 'expo-router'
 import GradientBackground from '@/components/ui/GradientBackground'
 import { colors } from '@/constants/colors'

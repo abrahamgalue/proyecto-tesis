@@ -13,7 +13,7 @@ jest.mock('@/store/notificationsStore', () => ({
 	useNotificationsActions: jest.fn()
 }))
 
-jest.mock('@/lib/useColorScheme', () => ({
+jest.mock('@/hooks/useColorScheme', () => ({
 	useColorScheme: () => ({
 		isDarkColorScheme: false
 	})

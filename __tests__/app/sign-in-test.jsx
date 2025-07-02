@@ -19,7 +19,7 @@ jest.mock('@/components/safe-area-view', () => ({
 jest.mock('expo-linear-gradient', () => ({
 	LinearGradient: ({ children }) => children
 }))
-jest.mock('@/lib/useColorScheme', () => ({
+jest.mock('@/hooks/useColorScheme', () => ({
 	useColorScheme: () => ({ isDarkColorScheme: true })
 }))
 jest.mock('@/context/supabase-provider', () => ({

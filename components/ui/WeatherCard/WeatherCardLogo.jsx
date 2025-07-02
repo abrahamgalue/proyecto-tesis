@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { Image } from '@/components/image'
 
 function WeatherCardLogo() {

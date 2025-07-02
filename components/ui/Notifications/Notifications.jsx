@@ -5,7 +5,7 @@ import {
 	useShowNotifications,
 	useNotificationsActions
 } from '@/store/notificationsStore'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import { colors } from '@/constants/colors'
 import NotificationBadge from '@/components/ui/Notifications/NotificationBadge'

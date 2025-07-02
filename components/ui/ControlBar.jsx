@@ -3,7 +3,7 @@ import ActionBar from '@/components/ui/ActionBar'
 import DeleteBtn from '@/components/icons/DeleteBtn'
 import EditBtn from '@/components/icons/EditBtn'
 import { useEdit, useEditActions } from '@/store/editStore'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { Image } from '@/components/image'
 
 const ControlBarBtn = () => {
