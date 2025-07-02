@@ -1,4 +1,4 @@
-import { colors } from './generatedColors'
+import { colors } from '@/constants/generatedColors'
 
 export const gradientLocations = [0, 0.28, 0.69, 1]
 export const gradientStart = { x: 0, y: 0 }
