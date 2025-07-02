@@ -3,7 +3,7 @@ import {
 	formatSpeedWind,
 	formatTemp,
 	formatUVIndex
-} from './utils'
+} from '@/lib/formatters'
 
 export const FALLBACK_WEATHER_DATA = {
 	tempOutside: '32',

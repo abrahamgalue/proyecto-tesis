@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react-native'
 import Day from '@/components/ui/Date/Day'
 
-jest.mock('@/lib/utils', () => ({
+jest.mock('@/lib/formatters', () => ({
 	formatDate: jest.fn(() => 'Martes | 20 May')
 }))
 

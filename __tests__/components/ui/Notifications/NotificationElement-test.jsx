@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react-native'
 import NotificationElement from '@/components/ui/Notifications/NotificationElement'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 
 jest.mock('@/components/icons/WaterObstruction', () => ({
 	__esModule: true,
@@ -12,7 +12,7 @@ jest.mock('@/components/icons/TemperatureSubstrate', () => ({
 	default: () => 'TemperatureSubstrate'
 }))
 
-jest.mock('@/lib/useColorScheme', () => ({
+jest.mock('@/hooks/useColorScheme', () => ({
 	useColorScheme: jest.fn()
 }))
 

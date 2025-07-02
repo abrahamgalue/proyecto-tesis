@@ -1,5 +1,5 @@
 import { ActivityIndicator, Pressable, TextInput, View } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { useSupabase } from '@/context/supabase-provider'
 import useShowPassword from '@/hooks/useShowPassword'
 import useError from '@/hooks/useError'

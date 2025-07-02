@@ -3,10 +3,10 @@ import {
 	formatSpeedWind,
 	formatUVIndex,
 	formatSensation
-} from '@/lib/utils'
-import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/lib/weather'
+} from '@/lib/formatters'
+import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/services/weather'
 
-jest.mock('@/lib/utils', () => ({
+jest.mock('@/lib/formatters', () => ({
 	formatTemp: jest.fn(),
 	formatSpeedWind: jest.fn(),
 	formatUVIndex: jest.fn(),

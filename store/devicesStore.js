@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { INITIAL_DEVICES_DATA } from '@/constants/data'
+import { devices as initialDevices } from '@/data/devices.json'
 
 const useDevicesStore = create((set) => ({
 	devices: [],
@@ -12,13 +12,13 @@ const useDevicesStore = create((set) => ({
 			try {
 				const jsonValue = await AsyncStorage.getItem('devices')
 				const devices =
-					jsonValue != null ? JSON.parse(jsonValue) : INITIAL_DEVICES_DATA
+					jsonValue != null ? JSON.parse(jsonValue) : initialDevices
 
 				set({ devices })
 				console.log('[ESP32] Datos de dispositivos recibidos del ESP32.')
 			} catch (err) {
 				console.error('No se pudo obtener datos del dispositivo:', err)
-				set({ devices: INITIAL_DEVICES_DATA })
+				set({ devices: initialDevices })
 				console.log(
 					'[ESP32] Usando datos iniciales de dispositivos debido a un error.'
 				)

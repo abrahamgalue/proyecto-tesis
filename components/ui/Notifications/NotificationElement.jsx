@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react'
 import { View } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import WaterObstruction from '@/components/icons/WaterObstruction'
 import TemperatureSubstrate from '@/components/icons/TemperatureSubstrate'
 import { colors } from '@/constants/colors'

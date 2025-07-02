@@ -4,7 +4,7 @@ import { Stack } from 'expo-router'
 import { SupabaseProvider } from '@/context/supabase-provider'
 import { StatusBar } from 'expo-status-bar'
 
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { useEffect } from 'react'
 import { changeBackgroundColor } from '@/lib/colors'
 import { colors } from '@/constants/colors'

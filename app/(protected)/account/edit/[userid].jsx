@@ -1,7 +1,7 @@
 import { ActivityIndicator, TextInput } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useUserActions, useUsername } from '@/store/userStore'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { usernameSchema } from '@/constants/schemas'

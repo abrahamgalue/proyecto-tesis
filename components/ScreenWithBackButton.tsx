@@ -1,6 +1,6 @@
 import { memo, type ReactNode } from 'react'
 import { View } from 'react-native'
-import { useColorScheme } from '@/lib/useColorScheme'
+import { useColorScheme } from '@/hooks/useColorScheme'
 import { cn } from '@/lib/utils'
 import { SafeAreaView } from '@/components/safe-area-view'
 import BackBtn from '@/components/ui/BackBtn'

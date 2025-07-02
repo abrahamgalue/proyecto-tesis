@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { FALLBACK_WEATHER_DATA, getWeatherData } from '@/lib/weather'
+import { FALLBACK_WEATHER_DATA, getWeatherData } from '@/services/weather'
 
 const useWeatherData = () => {
 	const { data, isLoading, isError } = useQuery({
