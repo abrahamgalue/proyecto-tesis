@@ -1,8 +1,9 @@
 import { create } from 'zustand'
-import { INITIAL_NOTIFICATIONS, INITIAL_DEVICES_DATA } from '@/constants/data'
+import { notifications as initialNotifications } from '@/data/notifications.json'
+import { devices as initialDevices } from '@/data/devices.json'
 
 const useNotificationsStore = create((set) => ({
-	notifications: INITIAL_NOTIFICATIONS,
+	notifications: initialNotifications,
 	showNotifications: false,
 	notificationsEnabled: true,
 	actions: {
@@ -17,7 +18,7 @@ const useNotificationsStore = create((set) => ({
 			set((state) => {
 				if (state.notifications.length === 0) return state
 
-				const devices = INITIAL_DEVICES_DATA
+				const devices = initialDevices
 				state.notifications.forEach((n) => {
 					const device = devices.find((d) => d.id === n.deviceId)
 					if (device) {
