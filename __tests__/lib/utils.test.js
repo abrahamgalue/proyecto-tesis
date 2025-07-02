@@ -1,3 +1,4 @@
+import { isValidLine, getTextSize, LINE_ERR_MSG } from '@/lib/utils'
 import {
 	padZero,
 	to12HourFormat,
@@ -7,11 +8,8 @@ import {
 	formatUVIndex,
 	formatSpeedWind,
 	formatSensation,
-	isValidLine,
-	getUVIndex,
-	getTextSize,
-	LINE_ERR_MSG
-} from '@/lib/utils'
+	getUVIndex
+} from '@/lib/formatters'
 
 describe('padZero', () => {
 	test('adds a 0 if the number is less than 10', () => {

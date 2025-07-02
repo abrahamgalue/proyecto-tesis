@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { formatDate } from '@/lib/utils'
+import { formatDate } from '@/lib/formatters'
 import { Text } from '@/components/ui/text'
 
 function Day() {

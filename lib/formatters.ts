@@ -1,19 +1,12 @@
-import { clsx } from 'clsx'
-import { twMerge } from 'tailwind-merge'
-
-export function cn(...inputs) {
-	return twMerge(clsx(inputs))
-}
-
-export function padZero(num) {
+export function padZero(num: number) {
 	return (num < 10 ? '0' : '') + num
 }
 
-export function to12HourFormat(hour) {
+export function to12HourFormat(hour: number) {
 	return hour % 12 || 12
 }
 
-export function formatHour(time) {
+export function formatHour(time: Date) {
 	let hours = to12HourFormat(time.getHours())
 	let minutes = time.getMinutes()
 
@@ -22,7 +15,11 @@ export function formatHour(time) {
 
 export function formatDate() {
 	const date = new Date()
-	const options = { weekday: 'long', month: 'short', day: 'numeric' }
+	const options: Intl.DateTimeFormatOptions = {
+		weekday: 'long',
+		month: 'short',
+		day: 'numeric'
+	}
 	const formattedDateParts = date
 		.toLocaleDateString('es-VE', options)
 		.replace('.', '')
@@ -31,7 +28,7 @@ export function formatDate() {
 	return formattedDateParts.join(' | ')
 }
 
-export function formatTemp(temp) {
+export function formatTemp(temp: string) {
 	if (typeof temp !== 'string') return '32'
 
 	const parts = temp.split(',')
@@ -43,7 +40,7 @@ export function formatTemp(temp) {
 	return isNaN(integerPart) ? '32' : String(integerPart)
 }
 
-export function formatUVIndex(indiceUV) {
+export function formatUVIndex(indiceUV: string) {
 	if (typeof indiceUV !== 'string') {
 		return { index: '1.3', state: 'Bajo' }
 	}
@@ -60,7 +57,7 @@ export function formatUVIndex(indiceUV) {
 	return { index, state }
 }
 
-export function getUVIndex(indice) {
+export function getUVIndex(indice: number) {
 	if (indice >= 0 && indice <= 2) {
 		return 'Bajo'
 	} else if (indice > 2 && indice <= 5) {
@@ -76,7 +73,7 @@ export function getUVIndex(indice) {
 	}
 }
 
-export function formatSpeedWind(velocidadViento) {
+export function formatSpeedWind(velocidadViento: string) {
 	if (typeof velocidadViento !== 'string') {
 		return { speed: '40', unit: 'km/h' }
 	}
@@ -89,7 +86,7 @@ export function formatSpeedWind(velocidadViento) {
 	return { speed, unit }
 }
 
-export function formatSensation(sensacionTermicaSol) {
+export function formatSensation(sensacionTermicaSol: string) {
 	let num
 
 	if (typeof sensacionTermicaSol === 'string') {
@@ -104,42 +101,5 @@ export function formatSensation(sensacionTermicaSol) {
 		return '30'
 	}
 
-	return (~~num).toString()
-}
-
-const isPercentage = (value) => typeof value === 'string' && value.endsWith('%')
-
-export const LINE_ERR_MSG =
-	"Invalid dimensions: Only one of 'width' or 'height' can be greater than 1 or a percentage to render a line."
-
-export const isValidLine = ({ height, width }) => {
-	if (
-		(width > 1 || isPercentage(width)) &&
-		(height > 1 || isPercentage(height))
-	) {
-		throw new Error(LINE_ERR_MSG)
-	}
-}
-
-export const getTextSize = ({ isLargeText, unit }) => {
-	const textSize = isLargeText
-		? 'text-4xl h-8'
-		: unit.length > 5
-			? 'text-xs'
-			: ''
-	const newUnit = unit.length >= 5 ? unit.slice(0, 3) + '...' : unit
-
-	return {
-		className: textSize,
-		displayUnit: newUnit
-	}
-}
-
-/**
- * Renders a filtered two-column device list.
- * Explains: 96 = (8px margin + 16px padding) * 2 sides * 2 columns.
- * ITEM_HEIGHT = (window width - 96) / 2.
- */
-export const calculateDeviceSize = (width) => {
-	return (width - 96) / 2
+	return Math.trunc(num).toString()
 }
