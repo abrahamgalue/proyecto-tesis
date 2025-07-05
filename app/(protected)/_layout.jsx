@@ -18,7 +18,7 @@ export default function ProtectedLayout() {
 	}
 
 	return (
-		<View className='bg-brand-primary flex-1'>
+		<View className='flex-1 bg-brand-primary'>
 			<Stack
 				screenOptions={{
 					headerShown: false

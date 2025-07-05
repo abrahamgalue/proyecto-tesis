@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { cn } from '@/lib/utils'
 import { SafeAreaView } from '@/components/safe-area-view'
-import BackBtn from '@/components/ui/BackBtn'
+import BackBtn from '@/components/ui/back-btn'
 import { Text } from '@/components/ui/text'
 
 interface Props {

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react-native'
-import Line from '@/components/ui/Line'
+import Line from '@/components/ui/line'
 import { LINE_ERR_MSG } from '@/lib/utils'
 
 describe('<Line />', () => {

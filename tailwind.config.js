@@ -2,7 +2,8 @@ module.exports = {
 	content: [
 		'./app/**/*.{js,jsx,ts,tsx}',
 		'./components/**/*.{js,jsx,ts,tsx}',
-		'./pages/**/*.{js,ts,jsx,tsx}'
+		'./features/**/*.{js,jsx,ts,tsx}',
+		'./features/**/components/**/*.{js,jsx,ts,tsx}'
 	],
 	darkMode: 'class',
 	presets: [require('nativewind/preset')],
