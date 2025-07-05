@@ -1,120 +1,10 @@
-import { isValidLine, getTextSize, LINE_ERR_MSG } from '@/lib/utils'
 import {
-	padZero,
-	to12HourFormat,
-	formatHour,
-	formatDate,
-	formatTemp,
-	formatUVIndex,
-	formatSpeedWind,
-	formatSensation,
-	getUVIndex
-} from '@/lib/formatters'
-
-describe('padZero', () => {
-	test('adds a 0 if the number is less than 10', () => {
-		expect(padZero(5)).toBe('05')
-		expect(padZero(0)).toBe('00')
-		expect(padZero(9)).toBe('09')
-	})
-
-	test('does not add 0 if the number is 10 or greater', () => {
-		expect(padZero(10)).toBe('10')
-		expect(padZero(23)).toBe('23')
-	})
-})
-
-describe('to12HourFormat', () => {
-	test('converts 0 to 12 (midnight)', () => {
-		expect(to12HourFormat(0)).toBe(12)
-	})
-
-	test('converts 12 to 12 (noon)', () => {
-		expect(to12HourFormat(12)).toBe(12)
-	})
-
-	test('converts 13 to 1 (1 PM)', () => {
-		expect(to12HourFormat(13)).toBe(1)
-	})
-
-	test('converts 23 to 11 (11 PM)', () => {
-		expect(to12HourFormat(23)).toBe(11)
-	})
-
-	test('converts 1 to 1 (1 AM)', () => {
-		expect(to12HourFormat(1)).toBe(1)
-	})
-})
-
-describe('formatHour', () => {
-	test('formats the hour in hh:mm (12h) format', () => {
-		const date = new Date('2023-05-24T14:07:00')
-		expect(formatHour(date)).toBe('02:07')
-	})
-})
-
-describe('formatDate', () => {
-	test('returns a formatted date with | separators', () => {
-		const result = formatDate()
-		expect(typeof result).toBe('string')
-		expect(result.includes('|')).toBe(true)
-	})
-})
-
-describe('formatTemp', () => {
-	test('extracts the integer part of the temperature', () => {
-		expect(formatTemp('32,4')).toBe('32')
-		expect(formatTemp('abc')).toBe('32')
-		expect(formatTemp('32')).toBe('32')
-		expect(formatTemp(32)).toBe('32')
-	})
-
-	test('returns "32" if the integer part is not a number', () => {
-		expect(formatTemp('abc,0')).toBe('32')
-	})
-
-	test('returns the integer part as string if valid', () => {
-		expect(formatTemp('28,0')).toBe('28')
-	})
-})
-
-describe('formatUVIndex', () => {
-	test('formats the UV index and classifies the state correctly', () => {
-		expect(formatUVIndex('1,5')).toEqual({ index: '1.5', state: 'Bajo' })
-		expect(formatUVIndex('6,3')).toEqual({ index: '6.3', state: 'Alto' })
-		expect(formatUVIndex('11')).toEqual({ index: '11.0', state: 'Extremo' })
-		expect(formatUVIndex('abc')).toEqual({ index: '1.3', state: 'Bajo' })
-		expect(formatUVIndex(11)).toEqual({ index: '1.3', state: 'Bajo' })
-	})
-})
-
-describe('getUVIndex', () => {
-	test('classifies the UV index state correctly', () => {
-		expect(getUVIndex(0)).toBe('Bajo')
-		expect(getUVIndex(3)).toBe('Moderado')
-		expect(getUVIndex(6)).toBe('Alto')
-		expect(getUVIndex(8)).toBe('Muy alto')
-		expect(getUVIndex(11)).toBe('Extremo')
-		expect(getUVIndex('Alto')).toBe('Desconocido')
-	})
-})
-
-describe('formatSpeedWind', () => {
-	test('splits wind speed and unit correctly', () => {
-		expect(formatSpeedWind('20 km/h')).toEqual({ speed: '20', unit: 'km/h' })
-		expect(formatSpeedWind('abc')).toEqual({ speed: '40', unit: 'km/h' })
-		expect(formatSpeedWind(20)).toEqual({ speed: '40', unit: 'km/h' })
-	})
-})
-
-describe('formatSensation', () => {
-	test('rounds and returns thermal sensation as string', () => {
-		expect(formatSensation('30.6')).toBe('30')
-		expect(formatSensation(28.7)).toBe('28')
-		expect(formatSensation('abc')).toBe('30')
-		expect(formatSensation(null)).toBe('30')
-	})
-})
+	isValidLine,
+	getTextSize,
+	LINE_ERR_MSG,
+	cn,
+	calculateDeviceSize
+} from '@/lib/utils'
 
 describe('isValidLine', () => {
 	test('does not throw if one value is 1 or less', () => {
@@ -151,5 +41,20 @@ describe('getTextSize', () => {
 			className: '',
 			displayUnit: 'gra...'
 		})
+	})
+})
+
+describe('cn', () => {
+	test('merges class names and keeps order/duplicates as tailwind-merge does', () => {
+		expect(cn('foo', 'bar', 'foo')).toBe('foo bar foo')
+		expect(cn('a', false && 'b', null, undefined, 'c')).toBe('a c')
+		expect(cn('a', 0, '', 'b')).toBe('a b')
+	})
+})
+
+describe('calculateDeviceSize', () => {
+	test('calculates device size based on width', () => {
+		expect(calculateDeviceSize(400)).toBe((400 - 96) / 2)
+		expect(calculateDeviceSize(200)).toBe((200 - 96) / 2)
 	})
 })

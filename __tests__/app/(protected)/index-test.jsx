@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from '@testing-library/react-native'
-import * as useWeatherDataHook from '@/hooks/useWeatherData'
+import * as useWeatherDataHook from '@/features/weather/hooks/useWeatherData'
 import App from '@/app/(protected)/index'
 
 jest.mock('expo-font')

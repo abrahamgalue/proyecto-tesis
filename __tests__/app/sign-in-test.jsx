@@ -6,11 +6,11 @@ import {
 } from '@testing-library/react-native'
 import SignIn from '@/app/sign-in'
 
-jest.mock('@/components/image', () => ({
+jest.mock('@/components/ui/image', () => ({
 	Image: 'Image',
 	ImageBackground: 'ImageBackground'
 }))
-jest.mock('@/components/ui/IconSymbol', () => ({
+jest.mock('@/components/ui/icon-symbol', () => ({
 	IconSymbol: () => 'IconSymbol'
 }))
 jest.mock('@/components/safe-area-view', () => ({
