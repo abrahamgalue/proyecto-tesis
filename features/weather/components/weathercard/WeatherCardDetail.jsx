@@ -4,7 +4,7 @@ import { useColorScheme } from '@/hooks/useColorScheme'
 import WeatherDetailBlock from '@/features/weather/components/weathercard/WeatherCardDetailBlock'
 import Humidity from '@/components/icons/Humidity'
 import { colors } from '@/constants/colors'
-import { GenericSkeleton } from '../../../../components/ui/skeletons'
+import { GenericSkeleton } from '@/components/ui/skeletons'
 
 function WeatherCardDetail({ data, isLoading }) {
 	const { isDarkColorScheme } = useColorScheme()
