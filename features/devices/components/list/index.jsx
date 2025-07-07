@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { FlatList, useWindowDimensions, View } from 'react-native'
-import { useDevices } from '@/store/devicesStore'
+import { useDevices, useDevicesHydrated } from '@/store/devicesStore'
 import { useFilter } from '@/store/filterStore'
 import { calculateDeviceSize } from '@/lib/utils'
 import Device from '@/features/devices/components/list/Device'
@@ -8,6 +8,7 @@ import { DevicesSkeletons } from '@/components/ui/skeletons'
 
 function DevicesList() {
 	const devices = useDevices()
+	const hydrated = useDevicesHydrated()
 	const filter = useFilter()
 
 	const { width } = useWindowDimensions()
@@ -29,7 +30,7 @@ function DevicesList() {
 		[]
 	)
 
-	if (filteredDevices.length === 0) {
+	if (!hydrated) {
 		return <DevicesSkeletons itemSize={ITEM_HEIGHT} />
 	}
 

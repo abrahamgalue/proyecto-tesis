@@ -1,6 +1,10 @@
 import { useEffect } from 'react'
 import { View } from 'react-native'
-import { useDevicesActions } from '@/store/devicesStore'
+import {
+	useDevicesReadOnly,
+	useDevicesActions,
+	useDevicesHydrated
+} from '@/store/devicesStore'
 import { useEditActions } from '@/store/editStore'
 import { router } from 'expo-router'
 import { SafeAreaView } from '@/components/safe-area-view'
@@ -15,13 +19,16 @@ import ControlBar from '@/features/devices/components/controlbar'
 import Footer from '@/components/Footer'
 
 function ControlScreen() {
+	const devicesReadOnly = useDevicesReadOnly()
 	const { fetchDevices } = useDevicesActions()
+	const hydrated = useDevicesHydrated()
+	const { setEdited } = useEditActions()
 
 	useEffect(() => {
-		fetchDevices()
-	}, [])
-
-	const { setEdited } = useEditActions()
+		if (hydrated && (!devicesReadOnly || devicesReadOnly.length === 0)) {
+			fetchDevices()
+		}
+	}, [hydrated])
 
 	const handleBack = () => {
 		setEdited(false)
