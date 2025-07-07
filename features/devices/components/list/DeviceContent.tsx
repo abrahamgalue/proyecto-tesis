@@ -1,4 +1,4 @@
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Switch, View } from 'react-native'
 import { type Device } from '@/features/devices/type'
 import { getDeviceIcon } from '@/features/devices/lib/utils'
@@ -13,6 +13,7 @@ interface Props {
 
 function DeviceContent({ item, num, itemSize }: Props) {
 	const Icon = getDeviceIcon(item.type)
+	const iconElement = useMemo(() => <Icon />, [Icon])
 	const isEnabled = item.isOn
 	const { toggleEnableDevices } = useDevicesActions()
 
@@ -22,7 +23,7 @@ function DeviceContent({ item, num, itemSize }: Props) {
 			style={{ width: itemSize, height: itemSize }}
 		>
 			<DeviceHeader
-				icon={<Icon />}
+				icon={iconElement}
 				name={item.name}
 				num={num}
 				location={item.location}
