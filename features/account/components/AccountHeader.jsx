@@ -1,7 +1,11 @@
 import { memo, useEffect } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { useSupabase } from '@/context/supabase-provider'
-import { useUsername, useUserActions } from '@/store/userStore'
+import {
+	useUsername,
+	useUserActions,
+	useAccountHydrated
+} from '@/store/accountStore'
 import { Image } from '@/components/ui/image'
 import { Text } from '@/components/ui/text'
 import { GenericSkeleton } from '@/components/ui/skeletons'
@@ -10,11 +14,12 @@ import { Link } from 'expo-router'
 
 function AccountHeader() {
 	const { session } = useSupabase()
+	const hydrated = useAccountHydrated()
 	const username = useUsername()
 	const { getUsername } = useUserActions()
 
 	useEffect(() => {
-		if (session?.user?.id && username === '') {
+		if (hydrated && session?.user?.id && username === '') {
 			getUsername(session.user.id)
 		}
 	}, [session, username, getUsername])
@@ -30,7 +35,7 @@ function AccountHeader() {
 				className='rounded-full'
 				source={require('@/assets/images/account.jpg')}
 			/>
-			{!!username ? (
+			{!!username && hydrated ? (
 				<View className='flex-row items-center gap-2'>
 					<Text className='text-white'>{username}</Text>
 					<Link href={`/account/edit/${session.user.id}`} asChild>

@@ -1,6 +1,6 @@
 import { ActivityIndicator, TextInput } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
-import { useUserActions, useUsername } from '@/store/userStore'
+import { useUserActions, useUsername } from '@/store/accountStore'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
