@@ -39,3 +39,8 @@ expo-env.d.ts
 
 # Jest
 coverage/
+__tests__/
+__mocks__/
+
+# Scripts
+scripts/
