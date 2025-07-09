@@ -2,7 +2,9 @@ import { memo } from 'react'
 import { View } from 'react-native'
 import { useColorScheme } from '@/hooks/useColorScheme'
 import WeatherDetailBlock from '@/features/weather/components/weathercard/WeatherCardDetailBlock'
-import Humidity from '@/components/icons/Humidity'
+import Wind from '@/components/icons/Wind'
+import Sun from '@/components/icons/Sun'
+import ThermalSensation from '@/components/icons/ThermalSensation'
 import { colors } from '@/constants/colors'
 import { GenericSkeleton } from '@/components/ui/skeletons'
 
@@ -14,9 +16,7 @@ function WeatherCardDetail({ data, isLoading }) {
 			{!isLoading ? (
 				<WeatherDetailBlock
 					icon={
-						<Humidity
-							width={25}
-							height={25}
+						<Wind
 							color={
 								isDarkColorScheme
 									? colors.dark.textForegroundPrimary
@@ -34,9 +34,7 @@ function WeatherCardDetail({ data, isLoading }) {
 			{!isLoading ? (
 				<WeatherDetailBlock
 					icon={
-						<Humidity
-							width={25}
-							height={25}
+						<Sun
 							color={
 								isDarkColorScheme
 									? colors.dark.textForegroundPrimary
@@ -55,9 +53,7 @@ function WeatherCardDetail({ data, isLoading }) {
 			{!isLoading ? (
 				<WeatherDetailBlock
 					icon={
-						<Humidity
-							width={25}
-							height={25}
+						<ThermalSensation
 							color={
 								isDarkColorScheme
 									? colors.dark.textForegroundPrimary

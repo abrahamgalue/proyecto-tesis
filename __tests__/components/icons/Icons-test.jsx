@@ -24,6 +24,9 @@ import LightBulb from '@/components/icons/LightBulb'
 import PlusBtn from '@/components/icons/PlusBtn'
 import Settings from '@/components/icons/Settings'
 import Trash from '@/components/icons/Trash'
+import Sun from '@/components/icons/Sun'
+import ThermalSensation from '@/components/icons/ThermalSensation'
+import Wind from '@/components/icons/Wind'
 
 describe('Icons', () => {
 	const commonProps = {
@@ -133,6 +136,18 @@ describe('Icons', () => {
 		{
 			name: 'Trash',
 			Component: Trash
+		},
+		{
+			name: 'Sun',
+			Component: Sun
+		},
+		{
+			name: 'ThermalSensation',
+			Component: ThermalSensation
+		},
+		{
+			name: 'Wind',
+			Component: Wind
 		}
 	]
 
