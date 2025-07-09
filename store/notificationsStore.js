@@ -1,55 +1,68 @@
 import { create } from 'zustand'
+import { persist, createJSONStorage } from 'zustand/middleware'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { notifications as initialNotifications } from '@/data/notifications.json'
 import { devices as initialDevices } from '@/data/devices.json'
 
-const useNotificationsStore = create((set) => ({
-	notifications: initialNotifications,
-	showNotifications: false,
-	notificationsEnabled: true,
-	actions: {
-		clearNotifications: () => {
-			console.log('[ESP32] Limpiando notificaciones en el ESP32.')
-			set({ notifications: [], showNotifications: false })
-		},
-		handleNotificationPress: () => {
-			console.log(
-				'[ESP32] Cambiando visibilidad de notificaciones en el ESP32.'
-			)
-			set((state) => {
-				if (state.notifications.length === 0) return state
+const useNotificationsStore = create(
+	persist(
+		(set) => ({
+			notifications: initialNotifications,
+			showNotifications: false,
+			notificationsEnabled: true,
+			actions: {
+				clearNotifications: () => {
+					console.log('[ESP32] Limpiando notificaciones en el ESP32.')
+					set({ notifications: [], showNotifications: false })
+				},
+				handleNotificationPress: () => {
+					console.log(
+						'[ESP32] Cambiando visibilidad de notificaciones en el ESP32.'
+					)
+					set((state) => {
+						if (state.notifications.length === 0) return state
 
-				const devices = initialDevices
-				state.notifications.forEach((n) => {
-					const device = devices.find((d) => d.id === n.deviceId)
-					if (device) {
+						const devices = initialDevices
+						state.notifications.forEach((n) => {
+							const device = devices.find((d) => d.id === n.deviceId)
+							if (device) {
+								console.log(
+									`[ESP32] ¡Atención! Problema detectado en el dispositivo: ${device.name} (Ubicación: ${device.location}). Notificación: ${n.content}`
+								)
+								console.log(
+									`[ESP32] Verifique físicamente el dispositivo: ${device.name} (Ubicación: ${device.location})`
+								)
+							} else {
+								console.log(
+									`[ESP32] Notificación recibida: ${n.content} (Tipo: ${n.type})`
+								)
+							}
+						})
+						return { showNotifications: !state.showNotifications }
+					})
+				},
+				toggleNotificationsEnabled: () => {
+					set((state) => {
+						const newValue = !state.notificationsEnabled
 						console.log(
-							`[ESP32] ¡Atención! Problema detectado en el dispositivo: ${device.name} (Ubicación: ${device.location}). Notificación: ${n.content}`
+							`[ESP32] ${
+								newValue ? 'Activando' : 'Desactivando'
+							} notificaciones en el ESP32.`
 						)
-						console.log(
-							`[ESP32] Verifique físicamente el dispositivo: ${device.name} (Ubicación: ${device.location})`
-						)
-					} else {
-						console.log(
-							`[ESP32] Notificación recibida: ${n.content} (Tipo: ${n.type})`
-						)
-					}
-				})
-				return { showNotifications: !state.showNotifications }
-			})
-		},
-		toggleNotificationsEnabled: () => {
-			set((state) => {
-				const newValue = !state.notificationsEnabled
-				console.log(
-					`[ESP32] ${
-						newValue ? 'Activando' : 'Desactivando'
-					} notificaciones en el ESP32.`
-				)
-				return { notificationsEnabled: newValue }
+						return { notificationsEnabled: newValue }
+					})
+				}
+			}
+		}),
+		{
+			name: 'notifications-store',
+			storage: createJSONStorage(() => AsyncStorage),
+			partialize: (state) => ({
+				notificationsEnabled: state.notificationsEnabled
 			})
 		}
-	}
-}))
+	)
+)
 
 export const useNotifications = () =>
 	useNotificationsStore((state) => state.notifications)
