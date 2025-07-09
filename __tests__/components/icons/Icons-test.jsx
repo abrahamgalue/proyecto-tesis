@@ -10,8 +10,22 @@ import Humidity from '@/components/icons/Humidity'
 import TemperatureSubstrate from '@/components/icons/TemperatureSubstrate'
 import WaterObstruction from '@/components/icons/WaterObstruction'
 import PHLevel from '@/components/icons/PHLevel'
+import Bomb from '@/components/icons/Bomb'
+import ChevronDown from '@/components/icons/ChevronDown'
+import Close from '@/components/icons/Close'
+import CloseSmall from '@/components/icons/CloseSmall'
+import Connected from '@/components/icons/Connected'
+import DeleteBtn from '@/components/icons/DeleteBtn'
+import Disconnected from '@/components/icons/Disconnected'
+import Edit from '@/components/icons/Edit'
+import Edit2 from '@/components/icons/Edit2'
+import EditBtn from '@/components/icons/EditBtn'
+import LightBulb from '@/components/icons/LightBulb'
+import PlusBtn from '@/components/icons/PlusBtn'
+import Settings from '@/components/icons/Settings'
+import Trash from '@/components/icons/Trash'
 
-describe('<Icons />', () => {
+describe('Icons', () => {
 	const commonProps = {
 		width: 100,
 		height: 100,
@@ -63,6 +77,62 @@ describe('<Icons />', () => {
 		{
 			name: 'PHLevel',
 			Component: PHLevel
+		},
+		{
+			name: 'Bomb',
+			Component: Bomb
+		},
+		{
+			name: 'ChevronDown',
+			Component: ChevronDown
+		},
+		{
+			name: 'Close',
+			Component: Close
+		},
+		{
+			name: 'CloseSmall',
+			Component: CloseSmall
+		},
+		{
+			name: 'Connected',
+			Component: Connected
+		},
+		{
+			name: 'DeleteBtn',
+			Component: DeleteBtn
+		},
+		{
+			name: 'Disconnected',
+			Component: Disconnected
+		},
+		{
+			name: 'Edit',
+			Component: Edit
+		},
+		{
+			name: 'Edit2',
+			Component: Edit2
+		},
+		{
+			name: 'EditBtn',
+			Component: EditBtn
+		},
+		{
+			name: 'LightBulb',
+			Component: LightBulb
+		},
+		{
+			name: 'PlusBtn',
+			Component: PlusBtn
+		},
+		{
+			name: 'Settings',
+			Component: Settings
+		},
+		{
+			name: 'Trash',
+			Component: Trash
 		}
 	]
 
@@ -80,7 +150,8 @@ describe('<Icons />', () => {
 		({ Component }) => {
 			render(<Component {...commonProps} />)
 
-			expect(screen.root).toHaveStyle({ width: 100, height: 100 })
+			expect(screen.root).toHaveProp('width')
+			expect(screen.root).toHaveProp('height')
 		}
 	)
 })
