@@ -1,0 +1,72 @@
+import { render, screen } from '@testing-library/react-native'
+import SettingsHeader from '@/features/settings/components/SettingsHeader'
+import { Text } from '@/components/ui/text'
+
+const mockGetUsername = jest.fn()
+const mockUseUsername = jest.fn()
+const mockUseAccountHydrated = jest.fn()
+
+jest.mock('@/context/supabase-provider', () => ({
+	useSupabase: () => ({
+		session: {
+			user: {
+				id: 'user-123'
+			}
+		}
+	})
+}))
+
+jest.mock('@/store/accountStore', () => ({
+	useUsername: () => mockUseUsername(),
+	useAccountHydrated: () => mockUseAccountHydrated(),
+	useUserActions: () => ({
+		getUsername: mockGetUsername
+	})
+}))
+
+jest.mock('@/components/ui/image', () => ({
+	Image: () => 'Image'
+}))
+
+const mockGenericSkeleton = <Text>Loading...</Text>
+
+jest.mock('@/components/ui/skeletons', () => ({
+	GenericSkeleton: () => mockGenericSkeleton
+}))
+
+describe('<SettingsHeader />', () => {
+	afterEach(() => {
+		jest.clearAllMocks()
+	})
+
+	test('shows skeleton if not hydrated or username is empty', () => {
+		mockUseUsername.mockReturnValue('')
+		mockUseAccountHydrated.mockReturnValue(false)
+
+		render(<SettingsHeader />)
+
+		expect(screen.getByText('Loading...')).toBeTruthy()
+		expect(screen.queryByText('Julian')).toBeNull()
+		expect(mockGetUsername).not.toHaveBeenCalled()
+	})
+
+	test('calls getUsername when hydrated and username is empty', () => {
+		mockUseUsername.mockReturnValue('')
+		mockUseAccountHydrated.mockReturnValue(true)
+
+		render(<SettingsHeader />)
+
+		expect(mockGetUsername).toHaveBeenCalledWith('user-123')
+	})
+
+	test('shows username if hydrated and username exists', () => {
+		mockUseUsername.mockReturnValue('Julian')
+		mockUseAccountHydrated.mockReturnValue(true)
+
+		render(<SettingsHeader />)
+
+		expect(screen.getByText('Julian')).toBeTruthy()
+		expect(screen.queryByText('Loading...')).toBeNull()
+		expect(mockGetUsername).not.toHaveBeenCalled()
+	})
+})
