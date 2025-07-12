@@ -110,6 +110,6 @@ describe('<GradientBackground />', () => {
 		)
 
 		expect(screen.getByText('Prop Card')).toBeOnTheScreen()
-		expect(screen.root).toHaveProp('testProp')
+		expect(screen.root).toHaveProp('testProp', 'value')
 	})
 })
