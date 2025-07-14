@@ -10,6 +10,7 @@ function ControlBarBtn() {
 
 	return (
 		<TouchableOpacity
+			accessibilityRole='button'
 			onPress={toggleEdited}
 			hitSlop={{ bottom: 4, top: 4, left: 5, right: 5 }}
 		>
