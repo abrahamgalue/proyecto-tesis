@@ -12,7 +12,12 @@ interface Props {
 
 function BackBtn({ small = true, className = '', hitSlop, onPress }: Props) {
 	return (
-		<TouchableOpacity hitSlop={hitSlop} onPress={onPress} className={className}>
+		<TouchableOpacity
+			accessibilityLabel='Go Back'
+			hitSlop={hitSlop}
+			onPress={onPress}
+			className={className}
+		>
 			{small ? <CloseSmall /> : <Close />}
 		</TouchableOpacity>
 	)
