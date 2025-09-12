@@ -1,4 +1,5 @@
 import '../global.css'
+import { View } from 'react-native'
 import { Stack } from 'expo-router'
 
 import { SupabaseProvider } from '@/context/supabase-provider'
@@ -30,26 +31,28 @@ export default function AppLayout() {
 				}
 				style='auto'
 			/>
-			<Stack screenOptions={{ headerShown: false, gestureEnabled: false }}>
-				<Stack.Screen name='(protected)' />
-				<Stack.Screen
-					name='sign-in'
-					options={{
-						presentation: 'modal',
-						headerShown: false,
-						headerTitle: 'Iniciar sesión',
-						headerStyle: {
-							backgroundColor: isDarkColorScheme
-								? colors.dark.bgBrandPrimary
-								: colors.light.bgBrandPrimary
-						},
-						headerTintColor: isDarkColorScheme
-							? colors.dark.textForegroundPrimary
-							: colors.light.textForegroundPrimary,
-						gestureEnabled: true
-					}}
-				/>
-			</Stack>
+			<View className='flex-1 bg-brand-primary'>
+				<Stack screenOptions={{ headerShown: false, gestureEnabled: false }}>
+					<Stack.Screen name='(protected)' />
+					<Stack.Screen
+						name='sign-in'
+						options={{
+							presentation: 'modal',
+							headerShown: false,
+							headerTitle: 'Iniciar sesión',
+							headerStyle: {
+								backgroundColor: isDarkColorScheme
+									? colors.dark.bgBrandPrimary
+									: colors.light.bgBrandPrimary
+							},
+							headerTintColor: isDarkColorScheme
+								? colors.dark.textForegroundPrimary
+								: colors.light.textForegroundPrimary,
+							gestureEnabled: true
+						}}
+					/>
+				</Stack>
+			</View>
 		</SupabaseProvider>
 	)
 }

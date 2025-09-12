@@ -25,7 +25,7 @@ export default function ProtectedLayout() {
 				}}
 			>
 				<Stack.Screen name='index' />
-				<Stack.Screen name='control/index' />
+				<Stack.Screen name='control' />
 				<Stack.Screen
 					name='settings'
 					options={{

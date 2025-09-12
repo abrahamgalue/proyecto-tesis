@@ -1,10 +1,6 @@
 import { memo } from 'react'
 import { View } from 'react-native'
 import { useEdit } from '@/store/editStore'
-import useModal from '@/hooks/useModal'
-import ModalLightbulb from '@/features/devices/components/list/ModalLightbulb'
-import LightColor from './LightColor'
-import LightLevel from './LightLevel'
 import EditBtn from '@/features/devices/components/list/EditBtn'
 import DeviceContent from '@/features/devices/components/list/DeviceContent'
 import LightBtn from '@/features/devices/components/list/LightBtn'
@@ -13,21 +9,8 @@ function Device({ item, num, itemSize }) {
 	const isEdit = useEdit()
 	const isLight = item.type === 'light'
 
-	const { visible, handleShowModal, handleHideModal } = useModal()
-
 	return (
 		<View className='relative'>
-			{isLight && (
-				<ModalLightbulb
-					visible={visible}
-					onClose={handleHideModal}
-					title={`${item.name} #${num}`}
-				>
-					<LightColor deviceId={item.id} color={item.color} />
-					<LightLevel deviceId={item.id} brightness={item.brightness} />
-				</ModalLightbulb>
-			)}
-
 			{isEdit && (
 				<EditBtn
 					href={`/control/edit/${item.id}`}
@@ -40,7 +23,7 @@ function Device({ item, num, itemSize }) {
 				<DeviceContent item={item} num={num} itemSize={itemSize} />
 			</View>
 
-			{isLight && <LightBtn width={itemSize} handlePress={handleShowModal} />}
+			{isLight && <LightBtn width={itemSize} id={item.id} num={num} />}
 		</View>
 	)
 }
