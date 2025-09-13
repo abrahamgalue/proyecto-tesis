@@ -44,3 +44,6 @@ __mocks__/
 
 # Scripts
 scripts/
+
+# Preview images
+assets/preview/
