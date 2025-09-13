@@ -17,10 +17,10 @@
 
 <p align="center">
     <a href="https://github.com/abrahamgalue/proyecto-tesis/releases/latest">
-        <img src="https://img.shields.io/github/v/release/abrah/proyecto-tesis?include_prereleases&logo=github&style=for-the-badge&label=Latest%20Release" alt="Latest Release">
+        <img src="https://img.shields.io/github/v/release/abrahamgalue/proyecto-tesis?include_prereleases&logo=github&style=for-the-badge&label=Latest%20Release" alt="Latest Release">
     </a>
     <a href="https://github.com/abrahamgalue/proyecto-tesis/releases">
-        <img src="https://img.shields.io/github/downloads/abrah/proyecto-tesis/total?logo=github&style=for-the-badge" alt="Total Downloads">
+        <img src="https://img.shields.io/github/downloads/abrahamgalue/proyecto-tesis/total?logo=github&style=for-the-badge" alt="Total Downloads">
     </a>
 </p>
 
