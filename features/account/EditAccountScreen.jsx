@@ -1,4 +1,4 @@
-import { ActivityIndicator, TextInput } from 'react-native'
+import { ActivityIndicator, Alert, TextInput } from 'react-native'
 import { router, useLocalSearchParams } from 'expo-router'
 import { useUserActions, useUsername } from '@/store/accountStore'
 import { useColorScheme } from '@/hooks/useColorScheme'
@@ -34,11 +34,11 @@ function EditAccountScreen() {
 
 	async function onSubmit(data) {
 		try {
-			changeUsername(userid, data.username)
+			await changeUsername(userid, data.username)
 			reset()
 			router.back()
 		} catch (err) {
-			console.log(err)
+			Alert.alert(err.message, 'Intente de nuevo')
 		}
 	}
 

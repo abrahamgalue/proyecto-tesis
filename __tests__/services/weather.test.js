@@ -29,6 +29,7 @@ describe('getWeatherData', () => {
 		}
 
 		fetch.mockResolvedValueOnce({
+			ok: true,
 			json: jest.fn().mockResolvedValue(mockApiResponse)
 		})
 
@@ -57,10 +58,30 @@ describe('getWeatherData', () => {
 	})
 
 	test('logs an error and throw error on failure', async () => {
-		const consoleSpy = jest.spyOn(console, 'log').mockImplementation(() => {})
+		const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
 		fetch.mockRejectedValue(new Error('Failed to get weather data'))
 
 		await expect(getWeatherData()).rejects.toThrow('Failed to get weather data')
+
+		expect(consoleSpy).toHaveBeenCalledWith(
+			'Failed to get weather data',
+			expect.any(Error)
+		)
+
+		consoleSpy.mockRestore()
+	})
+
+	test('throws error when response is not ok', async () => {
+		const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {})
+
+		fetch.mockResolvedValueOnce({
+			ok: false,
+			json: jest.fn()
+		})
+
+		await expect(getWeatherData()).rejects.toThrow(
+			'No se pudieron obtener los datos del clima'
+		)
 
 		expect(consoleSpy).toHaveBeenCalledWith(
 			'Failed to get weather data',

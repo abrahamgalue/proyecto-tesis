@@ -16,7 +16,7 @@ const useWeatherData = () => {
 	const weatherData = isError ? FALLBACK_WEATHER_DATA : data
 
 	if (isError) {
-		console.log(
+		console.error(
 			'[ESP32] Error al obtener los datos meteorológicos del ESP32. Usando datos de respaldo.'
 		)
 	}

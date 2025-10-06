@@ -3,13 +3,20 @@ import { useFilterStore } from '@/store/filterStore'
 import FiltersBtn from '@/features/devices/components/filters'
 
 describe('filterStore', () => {
-	it('should render with initial state of "all"', () => {
+	beforeAll(() => {
+		jest.spyOn(console, 'log').mockImplementation(() => {})
+	})
+	afterAll(() => {
+		console.log.mockRestore()
+	})
+
+	test('should render with initial state of "all"', () => {
 		renderFiltersBtn()
 
 		expect(useFilterStore.getState().filter).toBe('all')
 	})
 
-	it('should update filter value by pressing a button', async () => {
+	test('should update filter value by pressing a button', async () => {
 		renderFiltersBtn()
 
 		expect(useFilterStore.getState().filter).toBe('all')

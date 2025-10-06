@@ -18,6 +18,8 @@ const WEATHER_API_URL = 'https://cloud.urbe.edu/web/v1/core/weather'
 export async function getWeatherData() {
 	try {
 		const res = await fetch(WEATHER_API_URL)
+		if (!res.ok) throw new Error('No se pudieron obtener los datos del clima')
+
 		const data = await res.json()
 
 		const {
@@ -36,7 +38,7 @@ export async function getWeatherData() {
 			sensationThermal: formatSensation(sensacionTermicaSol)
 		}
 	} catch (e) {
-		console.log('Failed to get weather data', e)
+		console.error('Failed to get weather data', e)
 		throw e
 	}
 }

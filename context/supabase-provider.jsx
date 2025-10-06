@@ -26,7 +26,8 @@ export const SupabaseProvider = ({ children }) => {
 		})
 
 		if (error) {
-			throw error
+			console.error('[ESP32] Error al iniciar sesión en el ESP32.')
+			throw new Error('No se pudo iniciar sesión')
 		}
 
 		if (data.session) {
@@ -41,7 +42,8 @@ export const SupabaseProvider = ({ children }) => {
 		const { error } = await supabase.auth.signOut()
 
 		if (error) {
-			throw error
+			console.error('[ESP32] Error al cerrar sesión en el ESP32.')
+			throw new Error('No se pudo cerrar sesión')
 		} else {
 			console.log('Usuario ha cerrado sesión')
 		}

@@ -41,8 +41,8 @@ function SignInScreen() {
 			await signIn(data.email, data.password)
 
 			reset()
-		} catch (_error) {
-			handleError(true)
+		} catch (err) {
+			handleError(err)
 		}
 	}
 
@@ -66,6 +66,7 @@ function SignInScreen() {
 						}}
 						render={({ field: { onChange, onBlur, value } }) => (
 							<TextInput
+								autoCapitalize='none'
 								className='h-14 w-[80%] rounded-full border border-primary px-8 text-foreground-primary'
 								onBlur={onBlur}
 								onChangeText={onChange}
@@ -90,6 +91,7 @@ function SignInScreen() {
 						render={({ field: { onChange, onBlur, value } }) => (
 							<View className='flex w-[80%] flex-row items-center justify-center rounded-full border border-primary'>
 								<TextInput
+									autoCapitalize='none'
 									className='h-14 flex-1 rounded-l-full pl-8 text-foreground-primary'
 									onBlur={onBlur}
 									onChangeText={onChange}

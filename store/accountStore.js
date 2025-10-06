@@ -37,7 +37,7 @@ const getUsername = async (userId) => {
 			username: data.username
 		})
 	}
-	console.log('[ESP32] Error al obtener el nombre de usuario del ESP32.')
+	console.error('[ESP32] Error al obtener el nombre de usuario del ESP32.')
 	return useAccountStore.setState({
 		username: 'Abraham'
 	})
@@ -51,15 +51,18 @@ const changeUsername = async (userId, newUsername) => {
 		.from('profiles')
 		.update({ username: newUsername })
 		.eq('id', userId)
-	if (!error) {
-		useAccountStore.setState({ username: newUsername })
-		console.log(
-			`[ESP32] Nombre de usuario actualizado en el ESP32: ${newUsername}`
+
+	if (error) {
+		console.error(
+			'[ESP32] Error al actualizar el nombre de usuario en el ESP32.'
 		)
-		return true
+		throw new Error('No se pudo actualizar el nombre de usuario')
 	}
-	console.log('[ESP32] Error al actualizar el nombre de usuario en el ESP32.')
-	return false
+
+	useAccountStore.setState({ username: newUsername })
+	console.log(
+		`[ESP32] Nombre de usuario actualizado en el ESP32: ${newUsername}`
+	)
 }
 
 export const useAccountHydrated = () =>

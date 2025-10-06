@@ -44,7 +44,7 @@ export default function EditDeviceScreen() {
 			reset()
 			router.back()
 		} catch (err) {
-			console.log(err)
+			console.error(err)
 		}
 	}
 
