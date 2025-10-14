@@ -12,9 +12,9 @@ cssInterop(Svg, {
 interface Props {
 	width: number
 	height: number
-	className: string
+	className?: string
 	color: string
-	props: SvgProps
+	props?: SvgProps
 }
 
 function FloorTemp({ width, height, className, color, props }: Props) {

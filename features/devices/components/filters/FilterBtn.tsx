@@ -1,9 +1,17 @@
-import { TouchableOpacity } from 'react-native'
+import { FilterTypes } from '@/features/devices/type'
+import { TouchableOpacity, Insets } from 'react-native'
 import { useFilter } from '@/store/filterStore'
 import { cn } from '@/lib/utils'
 import { Text } from '@/components/ui/text'
 
-function FilterButton({ title, value, onPress, hitSlop }) {
+interface Props {
+	title: string
+	value: FilterTypes
+	onPress: (value: FilterTypes) => void
+	hitSlop: Insets | number
+}
+
+function FilterButton({ title, value, onPress, hitSlop }: Props) {
 	const filter = useFilter()
 
 	return (

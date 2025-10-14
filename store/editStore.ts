@@ -1,6 +1,14 @@
 import { create } from 'zustand'
 
-const useEditStore = create((set) => ({
+interface EditState {
+	isEdit: boolean
+	actions: {
+		toggleEdited: () => void
+		setEdited: (value: boolean) => void
+	}
+}
+
+const useEditStore = create<EditState>()((set) => ({
 	isEdit: false,
 	actions: {
 		toggleEdited: () => set((old) => ({ isEdit: !old.isEdit })),

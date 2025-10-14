@@ -3,6 +3,12 @@ export enum DeviceType {
 	Light = 'light'
 }
 
+export enum FilterTypes {
+	All = 'all',
+	Bomb = 'bomb',
+	Light = 'light'
+}
+
 export interface Device {
 	id: string
 	name: string

@@ -33,7 +33,7 @@ function AccountHeader() {
 			{!!username ? (
 				<View className='flex-row items-center gap-2'>
 					<Text className='text-white'>{username}</Text>
-					<Link href={`/account/edit/${session.user.id}`} asChild>
+					<Link href={`/account/edit/${session?.user?.id}`} asChild>
 						<TouchableOpacity hitSlop={14}>
 							<Edit2 />
 						</TouchableOpacity>

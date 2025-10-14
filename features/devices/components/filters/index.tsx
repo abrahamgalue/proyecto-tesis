@@ -1,3 +1,4 @@
+import { FilterTypes } from '@/features/devices/type'
 import { View } from 'react-native'
 import { useFilterActions } from '@/store/filterStore'
 import { useEditActions } from '@/store/editStore'
@@ -7,7 +8,7 @@ function FiltersBtn() {
 	const { setFilter } = useFilterActions()
 	const { setEdited } = useEditActions()
 
-	const handlePress = (value) => {
+	const handlePress = (value: FilterTypes) => {
 		setEdited(false)
 		setFilter(value)
 	}
@@ -16,19 +17,19 @@ function FiltersBtn() {
 		<View className='flex-row items-center justify-around px-2 py-2'>
 			<FilterBtn
 				title={'Todos'}
-				value='all'
+				value={FilterTypes.All}
 				onPress={handlePress}
 				hitSlop={{ bottom: 10, top: 10, left: 5, right: 5 }}
 			/>
 			<FilterBtn
 				title={'Bombas'}
-				value='bomb'
+				value={FilterTypes.Bomb}
 				onPress={handlePress}
 				hitSlop={{ bottom: 10, top: 10, left: 5, right: 5 }}
 			/>
 			<FilterBtn
 				title={'Luces'}
-				value='light'
+				value={FilterTypes.Light}
 				onPress={handlePress}
 				hitSlop={{ bottom: 10, top: 10, left: 5, right: 5 }}
 			/>

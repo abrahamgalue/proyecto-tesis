@@ -1,11 +1,15 @@
 import { create } from 'zustand'
 import { supabase } from '@/config/supabase'
 
-const useAccountStore = create(() => ({
+interface AccountState {
+	username: string
+}
+
+const useAccountStore = create<AccountState>()(() => ({
 	username: ''
 }))
 
-const getUsername = async (userId) => {
+const getUsername = async (userId: string) => {
 	console.log(
 		`[ESP32] Solicitando nombre de usuario para el usuario con id: ${userId}`
 	)
@@ -28,7 +32,7 @@ const getUsername = async (userId) => {
 	})
 }
 
-const changeUsername = async (userId, newUsername) => {
+const changeUsername = async (userId: string, newUsername: string) => {
 	console.log(
 		`[ESP32] Enviando comando para cambiar el nombre de usuario a: ${newUsername} para el usuario con id: ${userId}`
 	)

@@ -1,7 +1,15 @@
+import { FilterTypes } from '@/features/devices/type'
 import { create } from 'zustand'
 
-export const useFilterStore = create((set) => ({
-	filter: 'all',
+interface FilterState {
+	filter: FilterTypes
+	actions: {
+		setFilter: (value: FilterTypes) => void
+	}
+}
+
+export const useFilterStore = create<FilterState>()((set) => ({
+	filter: FilterTypes.All,
 	actions: {
 		setFilter: (value) => {
 			console.log(`[ESP32] Enviando filtro al ESP32: ${value}`)

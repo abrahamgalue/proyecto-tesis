@@ -1,12 +1,18 @@
 import { memo } from 'react'
-import { View } from 'react-native'
+import { DimensionValue, View } from 'react-native'
 import { cn } from '@/lib/utils'
+
+interface SkeletonProps {
+	width?: DimensionValue
+	height?: DimensionValue
+	className?: string
+}
 
 export const GenericSkeleton = memo(function GenericSkeleton({
 	width,
 	height,
 	className = ''
-}) {
+}: SkeletonProps) {
 	const styleClass = cn(
 		'bg-brand-primary-skeleton animate-pulse rounded-md',
 		className
@@ -20,7 +26,13 @@ export const GenericSkeleton = memo(function GenericSkeleton({
 	return <View className={styleClass} style={style} />
 })
 
-export const DevicesSkeletons = memo(function DevicesSkeletons({ itemSize }) {
+interface DevicesSkeletonsProps {
+	itemSize: DimensionValue
+}
+
+export const DevicesSkeletons = memo(function DevicesSkeletons({
+	itemSize
+}: DevicesSkeletonsProps) {
 	return (
 		<View className='mt-2 flex-1 flex-row flex-wrap justify-between px-6'>
 			<GenericSkeleton width={itemSize} height={itemSize} className='mb-4' />

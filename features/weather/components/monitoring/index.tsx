@@ -24,11 +24,11 @@ function Monitoring() {
 			{!sensor.isLoading ? (
 				<MonitoringBlock
 					icon={<WaterLevel />}
-					value={sensor.data.waterLevel}
+					value={sensor?.data?.waterLevel}
 					label='Nivel de Agua'
 				/>
 			) : (
-				<GenericSkeleton width='48%' height={42} />
+				<GenericSkeleton width='48%' height={52} className='mb-[15px]' />
 			)}
 			{!sensor.isLoading ? (
 				<MonitoringBlock
@@ -43,11 +43,11 @@ function Monitoring() {
 							}
 						/>
 					}
-					value={sensor.data.soilTemp}
+					value={sensor?.data?.soilTemp}
 					label='Temperatura del suelo'
 				/>
 			) : (
-				<GenericSkeleton width='48%' height={42} />
+				<GenericSkeleton width='48%' height={52} className='mb-[15px]' />
 			)}
 			{!sensor.isLoading ? (
 				<MonitoringBlock
@@ -62,11 +62,11 @@ function Monitoring() {
 							}
 						/>
 					}
-					value={sensor.data.substrateTemp}
+					value={sensor?.data?.substrateTemp}
 					label='Temperatura del sustrato'
 				/>
 			) : (
-				<GenericSkeleton width='48%' height={42} />
+				<GenericSkeleton width='48%' height={52} className='mb-[15px]' />
 			)}
 			{!weather.isLoading ? (
 				<MonitoringBlock
@@ -81,11 +81,11 @@ function Monitoring() {
 							}
 						/>
 					}
-					value={weather.data.humidity}
+					value={weather?.data?.humidity}
 					label='Humedad'
 				/>
 			) : (
-				<GenericSkeleton width='48%' height={42} />
+				<GenericSkeleton width='48%' height={52} className='mb-[15px]' />
 			)}
 			{!sensor.isLoading ? (
 				<MonitoringBlock
@@ -100,11 +100,11 @@ function Monitoring() {
 							}
 						/>
 					}
-					value={sensor.data.phLevel}
+					value={sensor?.data?.phLevel}
 					label='Nivel de PH'
 				/>
 			) : (
-				<GenericSkeleton width='48%' height={42} />
+				<GenericSkeleton width='48%' height={52} className='mb-[15px]' />
 			)}
 			{!sensor.isLoading ? (
 				<MonitoringBlock
@@ -119,11 +119,11 @@ function Monitoring() {
 							}
 						/>
 					}
-					value={sensor.data.waterFlowObstruction}
+					value={sensor?.data?.waterFlowObstruction}
 					label='Obstrucción canal de agua'
 				/>
 			) : (
-				<GenericSkeleton width='48%' height={42} />
+				<GenericSkeleton width='48%' height={52} className='mb-[15px]' />
 			)}
 		</View>
 	)

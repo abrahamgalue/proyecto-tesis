@@ -12,9 +12,9 @@ cssInterop(Svg, {
 interface Props {
 	width: number
 	height: number
-	className: string
+	className?: string
 	color: string
-	props: SvgProps
+	props?: SvgProps
 }
 
 function WaterObstruction({ width, height, className, color, props }: Props) {
