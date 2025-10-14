@@ -1,5 +1,6 @@
 import { render, screen, userEvent } from '@testing-library/react-native'
 import * as useWeatherDataHook from '@/features/weather/hooks/useWeatherData'
+import * as useSensorDataHook from '@/features/weather/hooks/useSensorData'
 import App from '@/app/(protected)/index'
 
 jest.mock('expo-font')
@@ -17,6 +18,16 @@ jest.spyOn(useWeatherDataHook, 'default').mockReturnValue({
 		wind: { speed: 12, unit: 'km/h' },
 		UV: { index: 4, state: 'Moderado' },
 		sensationThermal: 27
+	}
+})
+
+jest.spyOn(useSensorDataHook, 'default').mockReturnValue({
+	data: {
+		waterLevel: '17%',
+		soilTemp: '34°C',
+		substrateTemp: '26°C',
+		phLevel: '2,83',
+		waterFlowObstruction: '08%'
 	}
 })
 
@@ -79,6 +90,16 @@ describe('App Component', () => {
 		expect(screen.queryByText('Velocidad del Viento')).not.toBeOnTheScreen()
 		expect(screen.queryByText('Indice UV')).not.toBeOnTheScreen()
 		expect(screen.queryByText('Sensación Térmica')).not.toBeOnTheScreen()
+	})
+
+	test('should render sensors data correctly', () => {
+		render(<App />)
+
+		expect(screen.getByText('17%')).toBeOnTheScreen()
+		expect(screen.getByText('34°C')).toBeOnTheScreen()
+		expect(screen.getByText('26°C')).toBeOnTheScreen()
+		expect(screen.getByText('2,83')).toBeOnTheScreen()
+		expect(screen.getByText('08%')).toBeOnTheScreen()
 	})
 
 	test('should navigate to settings screen', async () => {

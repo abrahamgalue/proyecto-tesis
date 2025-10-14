@@ -32,7 +32,7 @@ export async function getWeatherData() {
 
 		return {
 			tempOutside: formatTemp(temperaturaExterior),
-			humidity: humedad,
+			humidity: humedad ?? FALLBACK_WEATHER_DATA.humidity,
 			UV: formatUVIndex(indiceUV),
 			wind: formatSpeedWind(velocidadViento),
 			sensationThermal: formatSensation(sensacionTermicaSol)

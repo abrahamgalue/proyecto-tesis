@@ -102,4 +102,28 @@ describe('FALLBACK_WEATHER_DATA', () => {
 			sensationThermal: '30'
 		})
 	})
+
+	test('uses fallback humidity when API does not return humidity', async () => {
+		const mockApiResponse = {
+			temperaturaExterior: '30,0',
+			humedad: undefined,
+			velocidadViento: '15 km/h',
+			indiceUV: '2.1',
+			sensacionTermicaSol: '28.5'
+		}
+
+		fetch.mockResolvedValueOnce({
+			ok: true,
+			json: jest.fn().mockResolvedValue(mockApiResponse)
+		})
+
+		formatTemp.mockReturnValue('30')
+		formatUVIndex.mockReturnValue({ index: '2.1', state: 'Bajo' })
+		formatSpeedWind.mockReturnValue({ speed: '15', unit: 'km/h' })
+		formatSensation.mockReturnValue('28')
+
+		const result = await getWeatherData()
+
+		expect(result.humidity).toBe(FALLBACK_WEATHER_DATA.humidity)
+	})
 })
