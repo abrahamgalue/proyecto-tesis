@@ -3,7 +3,7 @@
 		"name": "Paredes Verdes",
 		"slug": "paredes-verdes-app",
 		"scheme": "paredes-verdes",
-		"version": "1.0.2",
+		"version": "1.0.3",
 		"orientation": "portrait",
 		"icon": "./assets/images/icon.png",
 		"userInterfaceStyle": "automatic",

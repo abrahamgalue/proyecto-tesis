@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
+import { useUserActions } from '@/store/accountStore'
 import { useRouter, SplashScreen } from 'expo-router'
 
 import { supabase } from '@/config/supabase'
@@ -18,6 +19,7 @@ export const SupabaseProvider = ({ children }) => {
 	const [initialized, setInitialized] = useState(false)
 	const [session, setSession] = useState(null)
 	const router = useRouter()
+	const { resetAccount } = useUserActions()
 
 	const signIn = async (email, password) => {
 		const { data, error } = await supabase.auth.signInWithPassword({
@@ -46,6 +48,7 @@ export const SupabaseProvider = ({ children }) => {
 			throw new Error('No se pudo cerrar sesión')
 		} else {
 			console.log('Usuario ha cerrado sesión')
+			resetAccount()
 		}
 	}
 

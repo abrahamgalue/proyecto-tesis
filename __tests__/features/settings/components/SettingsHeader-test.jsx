@@ -4,7 +4,6 @@ import { Text } from '@/components/ui/text'
 
 const mockGetUsername = jest.fn()
 const mockUseUsername = jest.fn()
-const mockUseAccountHydrated = jest.fn()
 
 jest.mock('@/context/supabase-provider', () => ({
 	useSupabase: () => ({
@@ -18,7 +17,6 @@ jest.mock('@/context/supabase-provider', () => ({
 
 jest.mock('@/store/accountStore', () => ({
 	useUsername: () => mockUseUsername(),
-	useAccountHydrated: () => mockUseAccountHydrated(),
 	useUserActions: () => ({
 		getUsername: mockGetUsername
 	})
@@ -39,29 +37,23 @@ describe('<SettingsHeader />', () => {
 		jest.clearAllMocks()
 	})
 
-	test('shows skeleton if not hydrated or username is empty', () => {
-		mockUseUsername.mockReturnValue('')
-		mockUseAccountHydrated.mockReturnValue(false)
-
+	test('shows skeleton if username is empty', () => {
 		render(<SettingsHeader />)
 
 		expect(screen.getByText('Loading...')).toBeTruthy()
 		expect(screen.queryByText('Julian')).toBeNull()
-		expect(mockGetUsername).not.toHaveBeenCalled()
 	})
 
 	test('calls getUsername when hydrated and username is empty', () => {
 		mockUseUsername.mockReturnValue('')
-		mockUseAccountHydrated.mockReturnValue(true)
 
 		render(<SettingsHeader />)
 
 		expect(mockGetUsername).toHaveBeenCalledWith('user-123')
 	})
 
-	test('shows username if hydrated and username exists', () => {
+	test('shows username if username exists', () => {
 		mockUseUsername.mockReturnValue('Julian')
-		mockUseAccountHydrated.mockReturnValue(true)
 
 		render(<SettingsHeader />)
 

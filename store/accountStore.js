@@ -1,24 +1,9 @@
 import { create } from 'zustand'
-import { persist, createJSONStorage } from 'zustand/middleware'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import { supabase } from '@/config/supabase'
 
-const useAccountStore = create(
-	persist(
-		(set) => ({
-			username: '',
-			_hasHydrated: false,
-			setHasHydrated: (state) => set({ _hasHydrated: state })
-		}),
-		{
-			name: 'account-storage',
-			storage: createJSONStorage(() => AsyncStorage),
-			onRehydrateStorage: (state) => {
-				return () => state.setHasHydrated(true)
-			}
-		}
-	)
-)
+const useAccountStore = create(() => ({
+	username: ''
+}))
 
 const getUsername = async (userId) => {
 	console.log(
@@ -65,12 +50,12 @@ const changeUsername = async (userId, newUsername) => {
 	)
 }
 
-export const useAccountHydrated = () =>
-	useAccountStore((state) => state._hasHydrated)
+const resetAccount = () => useAccountStore.setState({ username: '' })
 
 export const useUsername = () => useAccountStore((state) => state.username)
 
 export const useUserActions = () => ({
 	getUsername,
-	changeUsername
+	changeUsername,
+	resetAccount
 })
