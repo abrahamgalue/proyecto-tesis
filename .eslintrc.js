@@ -1,30 +1,25 @@
-// https://docs.expo.dev/guides/using-eslint/
 module.exports = {
+	root: true,
 	env: {
-		browser: true,
+		browser: false,
 		node: true
 	},
-	extends: ['expo', 'prettier', 'plugin:@tanstack/query/recommended'],
-	plugins: ['prettier', 'testing-library'],
+	extends: ['prettier'],
+	plugins: ['prettier'],
 	rules: {
-		'prettier/prettier': [
-			'error',
-			{
-				endOfLine: 'auto'
-			}
-		],
-		'react-hooks/exhaustive-deps': 'off'
+		'prettier/prettier': ['error', { endOfLine: 'auto' }]
 	},
-	overrides: [
-		{
-			files: ['tests/**/*', '**/__tests__/**/*.[jt]s?(x)'],
-			env: {
-				jest: true
-			}
+	settings: {
+		'import/parsers': {
+			'@typescript-eslint/parser': ['.ts', '.tsx', '.js', '.jsx']
 		},
-		{
-			files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-			extends: ['plugin:testing-library/react']
+		'import/resolver': {
+			typescript: {
+				project: ['./tsconfig.json', './apps/*/tsconfig.json']
+			},
+			node: {
+				project: ['./tsconfig.json', './apps/*/tsconfig.json']
+			}
 		}
-	]
+	}
 }

@@ -1,0 +1,11 @@
+# Dependencies
+node_modules
+
+# Green Wall
+/.expo
+/assets
+dist
+expo-env.d.ts
+
+# Jest
+coverage

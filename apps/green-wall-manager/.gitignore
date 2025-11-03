@@ -1,23 +1,9 @@
 # dependencies
 node_modules/
-.vscode
-
-# Github Repository
-CODE_OF_CONDUCT.md
-LICENSE
-README.md
-SECURITY.md
-
-# GitHub Actions
-.github
-
-# Git Hooks
-commitlint.config.mjs
 
 # local env files
 .env
 .env*.local
-.env.*
 
 # Expo
 .expo/
@@ -52,25 +38,3 @@ expo-env.d.ts
 
 # Jest
 coverage/
-__tests__/
-__mocks__/
-
-# Scripts
-scripts/
-
-# Esp32 Script
-greenwall_esp32_example/
-
-# Infrastructure
-infra/
-
-# External Apps
-apps/esp32
-
-# Preview images
-assets/preview/
-
-# Linter
-.eslintrc.js
-.eslintignore
-.prettierrc
