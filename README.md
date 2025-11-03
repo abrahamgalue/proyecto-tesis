@@ -5,14 +5,14 @@
 </div>
 
 <p align="center">
-  <img src="assets/preview/icon.png" alt="App Icon" width="128"/>
+  <img src="https://github.com/user-attachments/assets/e020cc76-7635-448b-b2eb-88c7b091e6c9" alt="App Icon" width="128"/>
 </p>
 
 <p align="center">
-  <img src="assets/preview/app-preview-01.jpg" alt="Screenshot 1" width="200"/>
-  <img src="assets/preview/app-preview-02.jpg" alt="Screenshot 2" width="200"/>
-  <img src="assets/preview/app-preview-03.jpg" alt="Screenshot 3" width="200"/>
-  <img src="assets/preview/app-preview-04.jpg" alt="Screenshot 4" width="200"/>
+  <img src="https://github.com/user-attachments/assets/70696279-6ecb-4e38-98bb-672f784202f6" alt="Screenshot 1" width="200"/>
+  <img src="https://github.com/user-attachments/assets/d5074e0f-2eb3-48fa-8a02-0d52719fc19c" alt="Screenshot 2" width="200"/>
+  <img src="https://github.com/user-attachments/assets/16db1582-136a-4192-af3b-28ff702c8544" alt="Screenshot 3" width="200"/>
+  <img src="https://github.com/user-attachments/assets/e9b76873-e98f-4d6d-a23f-fc1f2e8c963e" alt="Screenshot 4" width="200"/>
 </p>
 
 <p align="center">
@@ -93,7 +93,7 @@ To get a local copy up and running, follow these simple steps.
    ```sh
    bunx expo start
    # or
-   bun start
+   bun run start
    ```
 
    Web:
