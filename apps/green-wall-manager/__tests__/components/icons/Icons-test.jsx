@@ -27,6 +27,7 @@ import Trash from '@/components/icons/Trash'
 import Sun from '@/components/icons/Sun'
 import ThermalSensation from '@/components/icons/ThermalSensation'
 import Wind from '@/components/icons/Wind'
+import Rainy from '@/components/icons/Rainy'
 
 describe('Icons', () => {
 	const commonProps = {
@@ -148,6 +149,10 @@ describe('Icons', () => {
 		{
 			name: 'Wind',
 			Component: Wind
+		},
+		{
+			name: 'Rainy',
+			Component: Rainy
 		}
 	]
 
