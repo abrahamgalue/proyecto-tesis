@@ -1,27 +1,34 @@
 import { clsx, type ClassValue } from 'clsx'
+import { type DimensionValue } from 'react-native'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs))
 }
 
-const isPercentage = (value: string | number) =>
-	typeof value === 'string' && value.endsWith('%')
-
 export const LINE_ERR_MSG =
 	"Invalid dimensions: Only one of 'width' or 'height' can be greater than 1 or a percentage to render a line."
 
 export const isValidLine = ({
-	height,
-	width
+	width,
+	height
 }: {
-	height: number | string
-	width: number | string
+	width?: DimensionValue
+	height?: DimensionValue
 }) => {
-	if (
-		(typeof width === 'number' ? width > 1 : isPercentage(width)) &&
-		(typeof height === 'number' ? height > 1 : isPercentage(height))
-	) {
+	const isWidthNumber = typeof width === 'number'
+	const isHeightNumber = typeof height === 'number'
+	const isWidthString = typeof width === 'string'
+	const isHeightString = typeof height === 'string'
+
+	const widthGreaterThan1 = isWidthNumber && width > 1
+	const heightGreaterThan1 = isHeightNumber && height > 1
+
+	if (widthGreaterThan1 && heightGreaterThan1) {
+		throw new Error(LINE_ERR_MSG)
+	}
+
+	if (isWidthString && isHeightString) {
 		throw new Error(LINE_ERR_MSG)
 	}
 }

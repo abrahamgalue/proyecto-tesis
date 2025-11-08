@@ -1,8 +1,13 @@
 import { memo } from 'react'
-import { View } from 'react-native'
+import { type DimensionValue, View } from 'react-native'
 import { isValidLine } from '@/lib/utils'
 
-function Line({ width = 1, height = 1 }) {
+interface Props {
+	width?: DimensionValue
+	height?: DimensionValue
+}
+
+function Line({ width = 1, height = 1 }: Props) {
 	isValidLine({ width, height })
 
 	const styles = {
