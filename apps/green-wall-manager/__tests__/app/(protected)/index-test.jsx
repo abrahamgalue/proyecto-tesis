@@ -1,6 +1,7 @@
 import { render, screen, userEvent } from '@testing-library/react-native'
 import * as useWeatherDataHook from '@/features/weather/hooks/useWeatherData'
 import * as useSensorDataHook from '@/features/weather/hooks/useSensorData'
+import * as useForecastDataHook from '@/features/weather/hooks/useForecastData'
 import App from '@/app/(protected)/index'
 
 jest.mock('expo-font')
@@ -31,6 +32,31 @@ jest.spyOn(useSensorDataHook, 'default').mockReturnValue({
 	}
 })
 
+jest.spyOn(useForecastDataHook, 'default').mockReturnValue({
+	data: {
+		forecastDays: [
+			{
+				day: 'Viernes',
+				type: 'cloudy',
+				temp: '20°/26°',
+				detail: '74% Nub'
+			},
+			{
+				day: 'Sábado',
+				type: 'sunny',
+				temp: '26°/29°',
+				detail: '83% Sol'
+			},
+			{
+				day: 'Domingo',
+				type: 'sunny',
+				temp: '30°/34°',
+				detail: '88% Sol'
+			}
+		]
+	}
+})
+
 describe('App Component', () => {
 	/**
 	 * TO-DO
@@ -55,7 +81,6 @@ describe('App Component', () => {
 		expect(screen.getByText('25°')).toBeTruthy()
 		expect(screen.getAllByText('68%').length).toBeGreaterThan(0)
 		expect(screen.getByText('Nublado')).toBeTruthy()
-		expect(screen.getByText('Martes')).toBeTruthy()
 		expect(screen.getByText('GREENWALL')).toBeTruthy()
 	})
 
@@ -100,6 +125,22 @@ describe('App Component', () => {
 		expect(screen.getByText('26°C')).toBeOnTheScreen()
 		expect(screen.getByText('2,83')).toBeOnTheScreen()
 		expect(screen.getByText('08%')).toBeOnTheScreen()
+	})
+
+	test('should render forecast data correctly', () => {
+		render(<App />)
+
+		expect(screen.getByText('Viernes')).toBeOnTheScreen()
+		expect(screen.getByText('20°/26°')).toBeOnTheScreen()
+		expect(screen.getByText('74% Nub')).toBeOnTheScreen()
+
+		expect(screen.getByText('Sábado')).toBeOnTheScreen()
+		expect(screen.getByText('26°/29°')).toBeOnTheScreen()
+		expect(screen.getByText('83% Sol')).toBeOnTheScreen()
+
+		expect(screen.getByText('Domingo')).toBeOnTheScreen()
+		expect(screen.getByText('30°/34°')).toBeOnTheScreen()
+		expect(screen.getByText('88% Sol')).toBeOnTheScreen()
 	})
 
 	test('should navigate to settings screen', async () => {
