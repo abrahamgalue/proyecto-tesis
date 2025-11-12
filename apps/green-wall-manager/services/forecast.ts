@@ -9,7 +9,7 @@ interface ForecastDay {
 	detail: string
 }
 
-export const FALLBACK_FORECAST_DATA = {
+export const FALLBACK_FORECAST_DATA: ForecastDays = {
 	forecastDays: [
 		{
 			day: 'Viernes',
@@ -35,15 +35,26 @@ export const FALLBACK_FORECAST_DATA = {
 const FORECAST_API_URL =
 	'https://greenwall-forecast-api.vercel.app/api/forecast'
 
+const EXPECTED_FORECAST_DAYS = 3
+
 export async function getForecastDays(): Promise<ForecastDays> {
 	try {
 		const res = await fetch(FORECAST_API_URL)
 		if (!res.ok)
 			throw new Error('No se pudieron obtener los datos del pronóstico')
 
-		const data = await res.json()
+		const data: ForecastDays = await res.json()
 
-		return data.length > 0 ? data : FALLBACK_FORECAST_DATA
+		if (
+			!data?.forecastDays ||
+			data.forecastDays.length < EXPECTED_FORECAST_DAYS
+		) {
+			return FALLBACK_FORECAST_DATA
+		}
+
+		return {
+			forecastDays: data.forecastDays.slice(0, EXPECTED_FORECAST_DAYS)
+		}
 	} catch (error) {
 		console.error('Failed to get forecast data', error)
 		return FALLBACK_FORECAST_DATA
