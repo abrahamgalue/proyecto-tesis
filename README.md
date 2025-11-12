@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/70696279-6ecb-4e38-98bb-672f784202f6" alt="Screenshot 1" width="200"/>
+  <img src="https://github.com/user-attachments/assets/7d06363a-e13e-4cee-ab18-6a679ba26f27" alt="Screenshot 1" width="200"/>
   <img src="https://github.com/user-attachments/assets/d5074e0f-2eb3-48fa-8a02-0d52719fc19c" alt="Screenshot 2" width="200"/>
   <img src="https://github.com/user-attachments/assets/16db1582-136a-4192-af3b-28ff702c8544" alt="Screenshot 3" width="200"/>
   <img src="https://github.com/user-attachments/assets/e9b76873-e98f-4d6d-a23f-fc1f2e8c963e" alt="Screenshot 4" width="200"/>
