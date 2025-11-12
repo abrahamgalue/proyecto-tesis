@@ -17,10 +17,10 @@
 
 <p align="center">
     <a href="https://github.com/abrahamgalue/proyecto-tesis/releases/latest">
-        <img src="https://img.shields.io/github/v/release/abrahamgalue/proyecto-tesis?include_prereleases&logo=github&style=for-the-badge&label=Latest%20Release" alt="Latest Release">
+        <img src="https://img.shields.io/github/v/release/abrahamgalue/proyecto-tesis?include_prereleases&logo=github&style=for-the-badge&label=Latest%20Release&labelColor=072b31" alt="Latest Release">
     </a>
     <a href="https://github.com/abrahamgalue/proyecto-tesis/releases">
-        <img src="https://img.shields.io/github/downloads/abrahamgalue/proyecto-tesis/total?logo=github&style=for-the-badge" alt="Total Downloads">
+        <img src="https://img.shields.io/github/downloads/abrahamgalue/proyecto-tesis/total?style=for-the-badge&labelColor=072b31" alt="Total Downloads">
     </a>
 </p>
 
@@ -49,6 +49,10 @@
 - **Animations**: [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) for smooth, native‑driven animations and gestures.
 - **Testing**: [Jest](https://jestjs.io/) + [Testing Library for React Native](https://callstack.github.io/react-native-testing-library/index) for unit and UI tests.
 - **Bundler**: [Metro](https://metrobundler.dev/) for fast development builds and transforms.
+- **Runtime**: [Docker Compose](https://docs.docker.com/compose/) for backend orchestration.
+- **Database**: [PostgreSQL](https://www.postgresql.org/) managed by Supabase.
+- **API**: [Supabase RESTful & Realtime APIs](https://supabase.com/docs/guides/api) for data access and synchronization.
+- **Studio**: [Supabase Studio](https://supabase.com/docs/guides/self-hosting/docker#accessing-supabase-studio) available locally on port 8000.
 
 ## 🚀 Getting Started
 
@@ -60,136 +64,162 @@ To get a local copy up and running, follow these simple steps.
 - Node package manager installed: npm, pnpm, yarn or bun (I use bun for the examples).
 - For device/simulator:
   - Android Studio (SDK 34+) or Xcode (for iOS simulators).
-  - Expo Go or a custom dev client.
+  - Expo Go or a [custom dev client](https://github.com/abrahamgalue/proyecto-tesis/releases).
+- Git
+- Docker (Windows, macOS, or Linux)
 
-### Installation
+### 📱 Frontend Setup
 
-1. Clone the repo
+1. **Clone the repository**
 
-   ```sh
+   ```bash
    git clone https://github.com/abrahamgalue/proyecto-tesis.git
    cd proyecto-tesis
    ```
 
-2. Install dependencies
+2. **Install dependencies**
 
-   ```sh
+   ```bash
    bun install
    ```
 
-3. Configure environment variables
+3. **Environment variables**
+   Inside `apps/green-wall-manager`, copy `.env.example` to `.env` and edit it:
 
-   - Copy `.env.example` to `.env` and set Supabase vars, or edit [data/env/client.ts](data/env/client.ts) defaults.
-
-   ```sh
+   ```bash
+   cd apps/green-wall-manager
    cp .env.example .env
-   # then edit .env
    ```
 
-4. Start the app
+   Inside, set your Supabase connection details:
 
-   Dev menu:
-
-   ```sh
-   bunx expo start
-   # or
-   bun run start
+   ```bash
+   EXPO_PUBLIC_API_URL=YOUR_REACT_NATIVE_SUPABASE_URL
+   EXPO_PUBLIC_API_KEY=YOUR_REACT_NATIVE_SUPABASE_ANON_KEY
    ```
 
-   Web:
+   - The URL should point to your local or emulator Supabase API (e.g. `http://10.0.2.2:8000` for Android Emulator).
+   - These keys match those from the backend `.env` (`ANON_KEY`).
 
-   ```sh
-   bun run web
+4. **Start the app**
+   - From the project root:
+     ```bash
+     bun run start
+     ```
+   - Or navigate to the app folder for more scripts:
+     ```bash
+     cd apps/green-wall-manager
+     bun run ios
+     bun run android
+     ```
+
+### 🗄️ Backend Setup
+
+1. **Environment variables**
+   Inside `infra/supabase`, copy `.env.example` to `.env` and edit it:
+
+   ```bash
+   cd infra/supabase
+   cp .env.example .env
    ```
 
-   Android:
+   Adjust any variables as needed (e.g., passwords, ports).
 
-   ```sh
-   bun run android
+1. **Start Supabase locally** From the project root:
+
+   ```bash
+   bun run db:start
    ```
 
-   iOS:
+1. **Stop Supabase**
 
-   ```sh
-   bun run ios
+   ```bash
+   bun run db:stop
    ```
 
-## 📦 Environment
+1. **Access Supabase Studio**
+   - URL: [http://localhost:8000](http://localhost:8000)
+   - Default credentials:
+     ```
+     Username: supabase
+     Password: this_password_is_insecure_and_should_be_updated
+     ```
+   - Change these immediately as documented here:
+     - [Dashboard authentication](https://supabase.com/docs/guides/self-hosting/docker#dashboard-authentication)
+     - [Securing your services](https://supabase.com/docs/guides/self-hosting/docker#securing-your-services)
 
-Set your environment variables (Supabase) using [data/env/client.ts](data/env/client.ts). You can start from `.env.example`:
+1. **Generate API keys**
+   Follow these guides to generate new anon and service keys:
+   - [Generate and update keys](https://supabase.com/docs/guides/self-hosting/docker#update-api-keys)
 
-```sh
-# .env
-EXPO_PUBLIC_API_URL=YOUR_REACT_NATIVE_SUPABASE_URL
-EXPO_PUBLIC_API_KEY=YOUR_REACT_NATIVE_SUPABASE_ANON_KEY
-```
+   Replace `ANON_KEY` and `SERVICE_ROLE_KEY` in `infra/supabase/docker/.env`.
 
-The app consumes these via [config/supabase.ts](config/supabase.ts).
+1. **Create your first user**
+   Once the dashboard is running, create a user in the **Authentication** section — this user’s credentials will be used to log in to the mobile app.
 
 ## 🧪 Testing
 
-Run all tests (watch mode):
+- Run all frontend tests from the root:
 
-```sh
-bun test
-```
+  ```bash
+  bun run test
+  ```
 
-Debug tests (failed/changed only):
+- You can also run test scripts directly inside `apps/green-wall-manager` for more granular control:
+  ```bash
+  cd apps/green-wall-manager
+  bun run test
+  bun run testDebug
+  bun run testFinal
+  ```
 
-```sh
-bun run testDebug
-```
-
-Final CI-like run:
-
-```sh
-bun run testFinal
-```
-
-Notes:
-
-- Jest configuration lives in [package.json](package.json) (`jest` key).
-- Tests are under [**tests**/](__tests__/).
-- React Native Testing Library is used for component tests.
-- Mocks exist in [**mocks**/](__mocks__/).
+In the future, the test setup can be extended to support multiple apps in the monorepo.
 
 ## 🎨 Linting, Formatting & Colors
 
-Lint:
+- Run lint:
 
-```sh
-bun run lint
-```
+  ```bash
+  bun run lint
+  ```
 
-Lint and fix:
+- Auto-fix lint issues:
+  ```bash
+  bun run lint:fix
+  ```
 
-```sh
-bun run lint:fix
-```
+Currently, this only applies to `apps/green-wall-manager`, but it can be expanded to include other workspaces in the future.
 
-Generate design tokens (colors) and auto-fix generated file:
+- Generate design tokens (colors) and auto-fix generated file:
+  ```bash
+  bun run generate-colors
+  ```
 
-```sh
-bun run generate-colors
-```
-
-Output is written to [constants/generatedColors.ts](constants/generatedColors.ts). Tailwind tokens are configured in [tailwind.config.js](tailwind.config.js).
+Output is written to [`apps/green-wall-manager/constants/generatedColors.ts`](apps/green-wall-manager/constants/generatedColors.ts). Tailwind tokens are configured in [`apps/green-wall-manager/tailwind.config.js`](apps/green-wall-manager/tailwind.config.js).
 
 ## 📂 Project Structure
 
-```
-app/                       # Routes and layouts
-components/                # Shared UI and primitives (buttons, icons, card, images)
-features/                  # Feature modules (weather, devices, settings, account, auth)
-services/                  # API/service logic (e.g., weather)
-store/                     # Zustand stores (devices, account, notifications, etc.)
-config/                    # App configs (e.g., Supabase)
-constants/                 # Color tokens and generated colors
-lib/                       # Utilities and formatters
-__tests__/                 # Jest tests
-assets/                    # Images and fonts (see assets/preview/*)
+```bash
+greenwall-monorepo/
+├── apps
+│   ├── esp32                  # ESP32 firmware
+│   └── green-wall-manager     # Expo mobile app
+├── bun.lock                   # Bun lockfile
+├── bunfig.toml                # Bun configuration
+├── infra
+│   └── supabase               # Supabase infrastructure
+├── package.json               # Root workspace setup
+└── tsconfig.json              # TS configuration
 ```
 
-## 📝 License
+## License
 
 See [LICENSE](LICENSE).
+
+## Contributing Guidelines
+
+See [CONTRIBUTING](CONTRIBUTING.md).
+
+## Code of Conduct
+
+See [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md).

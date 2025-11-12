@@ -10,6 +10,8 @@
 		"start": "bun run --cwd apps/green-wall-manager start",
 		"lint": "bun run --cwd apps/green-wall-manager lint",
 		"test": "bun run --cwd apps/green-wall-manager testFinal",
+		"db:start": "cd infra/supabase && docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up -d",
+		"db:stop": "cd infra/supabase && docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml stop",
 		"prepare": "node .husky/install.mjs"
 	},
 	"devDependencies": {
