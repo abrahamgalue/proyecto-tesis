@@ -19,6 +19,10 @@ jest.mock('@/hooks/useColorScheme', () => ({
 	})
 }))
 
+jest.mock('@/components/ui/icon-symbol', () => ({
+	IconSymbol: () => 'IconSymbol'
+}))
+
 jest.mock('expo-font')
 
 function setupMocks({
@@ -40,24 +44,13 @@ function setupMocks({
 	return { handleNotificationPress, clearNotifications }
 }
 
+jest.useFakeTimers()
+
 describe('<Notifications />', () => {
 	const mockNotifications = [
 		{ id: '1', content: 'Test 1' },
 		{ id: '2', content: 'Test 2' }
 	]
-
-	/**
-	 * TO-DO
-	 *
-	 * Warning: An update to Animated(View) inside a test was not wrapped in act(...).
-	 */
-	beforeAll(() => {
-		jest.spyOn(console, 'error').mockImplementation(() => {})
-	})
-
-	afterAll(() => {
-		jest.restoreAllMocks()
-	})
 
 	beforeEach(() => {
 		jest.clearAllMocks()

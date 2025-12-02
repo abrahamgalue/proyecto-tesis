@@ -12,6 +12,10 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 	require('@react-native-async-storage/async-storage/jest/async-storage-mock')
 )
 
+jest.mock('@/components/ui/icon-symbol', () => ({
+	IconSymbol: () => 'IconSymbol'
+}))
+
 jest.spyOn(useWeatherDataHook, 'default').mockReturnValue({
 	data: {
 		tempOutside: 25,
@@ -57,20 +61,9 @@ jest.spyOn(useForecastDataHook, 'default').mockReturnValue({
 	}
 })
 
+jest.useFakeTimers()
+
 describe('App Component', () => {
-	/**
-	 * TO-DO
-	 *
-	 * Warning: An update to Animated(View) inside a test was not wrapped in act(...).
-	 */
-	beforeAll(() => {
-		jest.spyOn(console, 'error').mockImplementation(() => {})
-	})
-
-	afterAll(() => {
-		jest.restoreAllMocks()
-	})
-
 	beforeEach(() => {
 		jest.clearAllMocks()
 	})

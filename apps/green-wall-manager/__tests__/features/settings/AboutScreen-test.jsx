@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react-native'
+import { userEvent, render, screen } from '@testing-library/react-native'
 import { Text, View } from 'react-native'
 import AboutScreen from '@/features/settings/AboutScreen'
 
@@ -26,8 +26,10 @@ jest.mock('expo-router', () => ({
 
 const mockBack = jest.fn()
 
+jest.useFakeTimers()
+
 describe('<AboutScreen />', () => {
-	afterEach(() => jest.clearAllMocks())
+	beforeEach(() => jest.clearAllMocks())
 
 	test('renders all main elements and text', () => {
 		render(<AboutScreen />)
@@ -44,11 +46,13 @@ describe('<AboutScreen />', () => {
 		expect(screen.getAllByText(new RegExp(`${year}`))).toHaveLength(2)
 	})
 
-	test('calls router.back() when back button is triggered', () => {
+	test('calls router.back() when back button is triggered', async () => {
+		const user = userEvent.setup()
+
 		render(<AboutScreen />)
 
 		const backBtn = screen.getByText('Go Back')
-		fireEvent.press(backBtn)
+		await user.press(backBtn)
 
 		expect(mockBack).toHaveBeenCalled()
 	})

@@ -1,4 +1,4 @@
-import { render, fireEvent, screen } from '@testing-library/react-native'
+import { render, userEvent, screen } from '@testing-library/react-native'
 import ScreenWithBackButton from '@/components/ScreenWithBackButton'
 import { Text } from '@/components/ui/text'
 
@@ -8,25 +8,20 @@ jest.mock('@/hooks/useColorScheme', () => ({
 	useColorScheme: () => mockUseColorScheme()
 }))
 
-const mockBackBtn = <Text>BackBtn</Text>
-
-jest.mock('@/components/ui/back-btn', () => ({
-	__esModule: true,
-	default: () => mockBackBtn
-}))
-
 jest.mock('@/lib/utils', () => ({
 	cn: (...args) => args.filter(Boolean).join(' ')
 }))
 
 const mockOnBack = jest.fn()
 
+jest.useFakeTimers()
+
 describe('<ScreenWithBackButton />', () => {
 	afterEach(() => {
 		jest.clearAllMocks()
 	})
 
-	test('renders title, children and uses default className', () => {
+	test('renders title, children, back button and uses default className', () => {
 		mockUseColorScheme.mockReturnValue({ isDarkColorScheme: false })
 
 		render(
@@ -37,11 +32,13 @@ describe('<ScreenWithBackButton />', () => {
 
 		expect(screen.getByText('Settings')).toBeOnTheScreen()
 		expect(screen.getByText('Content')).toBeOnTheScreen()
-		expect(screen.getByText('BackBtn')).toBeOnTheScreen()
+		expect(screen.getByLabelText('Go Back')).toBeOnTheScreen()
 	})
 
-	test('calls onHandleBack when back button is pressed', () => {
+	test('calls onHandleBack when back button is pressed', async () => {
 		mockUseColorScheme.mockReturnValue({ isDarkColorScheme: true })
+
+		const user = userEvent.setup()
 
 		render(
 			<ScreenWithBackButton title='Go Back' onHandleBack={mockOnBack}>
@@ -49,7 +46,7 @@ describe('<ScreenWithBackButton />', () => {
 			</ScreenWithBackButton>
 		)
 
-		fireEvent.press(screen.getByText('BackBtn'))
+		await user.press(screen.getByLabelText('Go Back'))
 
 		expect(mockOnBack).toHaveBeenCalled()
 	})

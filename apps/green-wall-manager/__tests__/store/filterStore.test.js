@@ -1,15 +1,10 @@
-import { render, screen, fireEvent } from '@testing-library/react-native'
+import { render, screen, userEvent } from '@testing-library/react-native'
 import { useFilterStore } from '@/store/filterStore'
 import FiltersBtn from '@/features/devices/components/filters'
 
-describe('filterStore', () => {
-	beforeAll(() => {
-		jest.spyOn(console, 'log').mockImplementation(() => {})
-	})
-	afterAll(() => {
-		console.log.mockRestore()
-	})
+jest.useFakeTimers()
 
+describe('filterStore', () => {
 	test('should render with initial state of "all"', () => {
 		renderFiltersBtn()
 
@@ -17,11 +12,13 @@ describe('filterStore', () => {
 	})
 
 	test('should update filter value by pressing a button', async () => {
+		const user = userEvent.setup()
+
 		renderFiltersBtn()
 
 		expect(useFilterStore.getState().filter).toBe('all')
 
-		fireEvent.press(screen.getByText('Bombas'))
+		await user.press(screen.getByText('Bombas'))
 
 		expect(useFilterStore.getState().filter).toBe('bomb')
 	})

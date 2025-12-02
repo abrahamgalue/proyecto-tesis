@@ -25,20 +25,9 @@ const defaultProps = {
 	hitSlop: { top: 10, bottom: 10, left: 10, right: 10 }
 }
 
+jest.useFakeTimers()
+
 describe('BackBtn />', () => {
-	/**
-	 * TO-DO
-	 *
-	 * Warning: An update to Animated(View) inside a test was not wrapped in act(...).
-	 */
-	beforeAll(() => {
-		jest.spyOn(console, 'error').mockImplementation(() => {})
-	})
-
-	afterAll(() => {
-		jest.restoreAllMocks()
-	})
-
 	beforeEach(() => {
 		jest.clearAllMocks()
 	})
@@ -56,10 +45,10 @@ describe('BackBtn />', () => {
 	})
 
 	test('calls onPress when button is pressed', async () => {
+		const user = userEvent.setup()
+
 		render(<BackBtn {...defaultProps} />)
 		const button = screen.root
-
-		const user = userEvent.setup()
 
 		await user.press(button)
 

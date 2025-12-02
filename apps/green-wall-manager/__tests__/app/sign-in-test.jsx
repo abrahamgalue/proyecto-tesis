@@ -30,20 +30,9 @@ jest.mock('@/context/supabase-provider', () => ({
 
 const mockSignInWithPassword = jest.fn()
 
+jest.useFakeTimers()
+
 describe('<SignIn />', () => {
-	/**
-	 * TO-DO
-	 *
-	 * Warning: An update to Animated(View) inside a test was not wrapped in act(...).
-	 */
-	beforeAll(() => {
-		jest.spyOn(console, 'error').mockImplementation(() => {})
-	})
-
-	afterAll(() => {
-		jest.restoreAllMocks()
-	})
-
 	beforeEach(() => {
 		jest.clearAllMocks()
 	})
@@ -67,9 +56,9 @@ describe('<SignIn />', () => {
 	})
 
 	test('sign in button should be enabled when fields are provided', async () => {
-		render(<SignIn />)
-
 		const user = userEvent.setup()
+
+		render(<SignIn />)
 
 		const emailInput = screen.getByPlaceholderText('Email')
 		const passwordInput = screen.getByPlaceholderText('Contraseña')
@@ -93,9 +82,9 @@ describe('<SignIn />', () => {
 	})
 
 	test('the password should be displayed when the show password btn is pressed', async () => {
-		render(<SignIn />)
-
 		const user = userEvent.setup()
+
+		render(<SignIn />)
 
 		const passwordInput = screen.getByPlaceholderText('Contraseña')
 
@@ -107,10 +96,10 @@ describe('<SignIn />', () => {
 	})
 
 	test('should sign in correctly', async () => {
+		const user = userEvent.setup()
+
 		render(<SignIn />)
 		mockSignInWithPassword.mockResolvedValue(undefined)
-
-		const user = userEvent.setup()
 
 		const emailInput = screen.getByPlaceholderText('Email')
 		const passwordInput = screen.getByPlaceholderText('Contraseña')
@@ -130,10 +119,10 @@ describe('<SignIn />', () => {
 	})
 
 	test('should show sign in error message when have invalid credentials', async () => {
+		const user = userEvent.setup()
+
 		render(<SignIn />)
 		mockSignInWithPassword.mockRejectedValue('Invalid credentials')
-
-		const user = userEvent.setup()
 
 		const emailInput = screen.getByPlaceholderText('Email')
 		const passwordInput = screen.getByPlaceholderText('Contraseña')

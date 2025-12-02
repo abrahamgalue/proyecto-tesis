@@ -49,18 +49,12 @@ const TestConsumer = () => {
 	)
 }
 
+jest.useFakeTimers()
+
 describe('supabase provider', () => {
 	const handleLogin = (children = <TestConsumer />) => {
 		return render(<SupabaseProvider>{children}</SupabaseProvider>)
 	}
-
-	beforeAll(() => {
-		jest.spyOn(console, 'log').mockImplementation(() => {})
-	})
-
-	afterAll(() => {
-		console.log.mockRestore()
-	})
 
 	test('should initialize the context correctly with null session', async () => {
 		handleLogin()
