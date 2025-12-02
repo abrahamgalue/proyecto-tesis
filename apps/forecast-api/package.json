@@ -1,0 +1,17 @@
+{
+	"name": "forecast-api",
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"start": "bun run ./src/index.ts",
+		"dev": "bun --hot run ./src/index.ts"
+	},
+	"dependencies": {
+		"express": "5.1.0"
+	},
+	"devDependencies": {
+		"@types/node": "20.11.17",
+		"@types/express": "5.0.0",
+		"typescript": "5.8.3"
+	}
+}

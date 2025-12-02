@@ -59,14 +59,13 @@ __mocks__/
 # Scripts
 scripts/
 
-# Esp32 Script
-greenwall_esp32_example/
-
 # Infrastructure
 infra/
 
 # External Apps
 apps/esp32
+apps/forecast-api
+apps/sensors-api
 
 # Preview images
 assets/preview/

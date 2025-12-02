@@ -7,11 +7,17 @@
 		"infra/*"
 	],
 	"scripts": {
-		"start": "bun run --cwd apps/green-wall-manager start",
-		"lint": "bun run --cwd apps/green-wall-manager lint",
-		"test": "bun run --cwd apps/green-wall-manager testFinal",
+		"start": "bun run --filter '*' start",
+		"start:mobile": "bun run --cwd apps/green-wall-manager start",
+		"start:api-forecast": "bun run --cwd apps/forecast-api start",
+		"start:api-sensors": "bun run --cwd apps/sensors-api start",
 		"db:start": "cd infra/supabase && docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml up -d",
 		"db:stop": "cd infra/supabase && docker compose -f docker-compose.yml -f ./dev/docker-compose.dev.yml stop",
+		"dev": "bun run --filter '*' dev",
+		"dev:api-forecast": "bun run --cwd apps/forecast-api dev",
+		"dev:api-sensors": "bun run --cwd apps/sensors-api dev",
+		"lint": "bun run --filter '*' lint",
+		"test": "bun run --cwd apps/green-wall-manager testFinal",
 		"prepare": "node .husky/install.mjs"
 	},
 	"devDependencies": {
