@@ -12,7 +12,7 @@
 		"test": "jest --watch --coverage=false --changedSince=origin/main",
 		"testDebug": "jest -o --watch --coverage=false",
 		"testFinal": "jest",
-		"generate-colors": "node ./scripts/generate-colors.js && eslint ./constants/generatedColors.ts --fix"
+		"generate-colors": "bun ./scripts/generate-colors.js && eslint ./constants/generatedColors.ts --fix"
 	},
 	"dependencies": {
 		"@expo/vector-icons": "14.0.4",
