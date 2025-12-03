@@ -1,5 +1,5 @@
 import express from 'express'
-import { randomInRange } from '../lib/utils.ts'
+import { randomInRange } from '../lib/utils.js'
 
 const app = express()
 

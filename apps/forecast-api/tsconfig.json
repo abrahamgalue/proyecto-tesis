@@ -4,8 +4,6 @@
 		"target": "ESNext",
 		"module": "NodeNext",
 		"skipLibCheck": true,
-		"allowImportingTsExtensions": true,
-		"noEmit": true,
 		"strict": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true,
