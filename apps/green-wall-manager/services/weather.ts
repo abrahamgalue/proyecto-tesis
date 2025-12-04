@@ -1,3 +1,5 @@
+import { env } from '@/data/env/client'
+
 import {
 	formatSensation,
 	formatSpeedWind,
@@ -13,7 +15,7 @@ export const FALLBACK_WEATHER_DATA = {
 	sensationThermal: '30'
 }
 
-const WEATHER_API_URL = 'https://cloud.urbe.edu/web/v1/core/weather'
+const WEATHER_API_URL = env.WEATHER_API_URL
 
 export async function getWeatherData() {
 	try {

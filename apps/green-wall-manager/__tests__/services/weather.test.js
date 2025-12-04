@@ -1,3 +1,4 @@
+import { env } from '@/data/env/client'
 import {
 	formatTemp,
 	formatSpeedWind,
@@ -5,6 +6,8 @@ import {
 	formatSensation
 } from '@/lib/formatters'
 import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/services/weather'
+
+const WEATHER_API_URL = env.WEATHER_API_URL
 
 jest.mock('@/lib/formatters', () => ({
 	formatTemp: jest.fn(),
@@ -40,9 +43,7 @@ describe('getWeatherData', () => {
 
 		const result = await getWeatherData()
 
-		expect(fetch).toHaveBeenCalledWith(
-			'https://cloud.urbe.edu/web/v1/core/weather'
-		)
+		expect(fetch).toHaveBeenCalledWith(WEATHER_API_URL)
 		expect(formatTemp).toHaveBeenCalledWith('32,5')
 		expect(formatUVIndex).toHaveBeenCalledWith('5,3')
 		expect(formatSpeedWind).toHaveBeenCalledWith('20 km/h')

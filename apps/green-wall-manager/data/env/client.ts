@@ -2,5 +2,11 @@ export const env = {
 	EXPO_PUBLIC_API_URL:
 		process.env.EXPO_PUBLIC_API_URL || 'YOUR_REACT_NATIVE_SUPABASE_URL',
 	EXPO_PUBLIC_API_KEY:
-		process.env.EXPO_PUBLIC_API_KEY || 'YOUR_REACT_NATIVE_SUPABASE_ANON_KEY'
+		process.env.EXPO_PUBLIC_API_KEY || 'YOUR_REACT_NATIVE_SUPABASE_ANON_KEY',
+	FORECAST_API_URL:
+		process.env.FORECAST_API_URL || 'http://localhost:3000/api/forecast',
+	SENSOR_API_URL:
+		process.env.SENSOR_API_URL || 'http://localhost:3001/api/sensors',
+	WEATHER_API_URL:
+		process.env.WEATHER_API_URL || 'https://cloud.urbe.edu/web/v1/core/weather'
 }

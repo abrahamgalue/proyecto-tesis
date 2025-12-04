@@ -1,4 +1,7 @@
+import { env } from '@/data/env/client'
 import { getSensorData, FALLBACK_SENSOR_DATA } from '@/services/sensor'
+
+const SENSOR_API_URL = env.SENSOR_API_URL
 
 describe('getSensorData', () => {
 	beforeEach(() => {
@@ -22,9 +25,7 @@ describe('getSensorData', () => {
 
 		const result = await getSensorData()
 
-		expect(fetch).toHaveBeenCalledWith(
-			'https://api-sensores-jc-b8.vercel.app/api/sensors'
-		)
+		expect(fetch).toHaveBeenCalledWith(SENSOR_API_URL)
 
 		expect(result).toEqual({
 			waterLevel: '60%',

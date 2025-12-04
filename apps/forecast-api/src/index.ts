@@ -1,13 +1,14 @@
 import express from 'express'
 import { daysOfWeek, FALLBACK_FORECAST } from '../constants/index.js'
+import { env } from '../config/index.js'
 
 const app = express()
 
 app.disable('x-powered-by')
 
-const port = process.env.PORT || 3000
+const PORT = env.PORT
 
-const API_URL = process.env.URL_FORECAST_API || ''
+const API_URL = env.FORECAST_API_URL
 
 app.get('/', (_req, res) => {
 	res.send('Green Wall Manager: Forecast API')
@@ -65,6 +66,6 @@ app.get('/api/forecast', async (_req, res) => {
 	}
 })
 
-app.listen(port, () => {
-	console.log(`Forecast API listening on http://localhost:${port}`)
+app.listen(PORT, () => {
+	console.log(`Forecast API listening on http://localhost:${PORT}`)
 })

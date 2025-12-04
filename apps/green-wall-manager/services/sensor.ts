@@ -1,3 +1,5 @@
+import { env } from '@/data/env/client'
+
 export const FALLBACK_SENSOR_DATA = {
 	waterLevel: '60%',
 	soilTemp: '25°C',
@@ -6,7 +8,7 @@ export const FALLBACK_SENSOR_DATA = {
 	waterFlowObstruction: '05%'
 }
 
-const SENSOR_API_URL = 'https://api-sensores-jc-b8.vercel.app/api/sensors'
+const SENSOR_API_URL = env.SENSOR_API_URL
 
 export async function getSensorData() {
 	try {

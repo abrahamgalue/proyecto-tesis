@@ -1,4 +1,7 @@
+import { env } from '@/data/env/client'
 import { getForecastDays, FALLBACK_FORECAST_DATA } from '@/services/forecast'
+
+const FORECAST_API_URL = env.FORECAST_API_URL
 
 describe('getForecastDays', () => {
 	beforeEach(() => {
@@ -22,9 +25,7 @@ describe('getForecastDays', () => {
 
 		const result = await getForecastDays()
 
-		expect(fetch).toHaveBeenCalledWith(
-			'https://greenwall-forecast-api.vercel.app/api/forecast'
-		)
+		expect(fetch).toHaveBeenCalledWith(FORECAST_API_URL)
 		expect(result).toEqual(mockApiResponse)
 	})
 

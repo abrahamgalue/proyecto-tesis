@@ -1,11 +1,12 @@
 import express from 'express'
 import { randomInRange } from '../lib/utils.js'
+import { env } from '../config/index.js'
 
 const app = express()
 
 app.disable('x-powered-by')
 
-const port = process.env.PORT || 3000
+const PORT = env.PORT
 
 app.get('/', (_req, res) => {
 	res.send('Green Wall Manager: Sensors API')
@@ -21,6 +22,6 @@ app.get('/api/sensors', (_req, res) => {
 	})
 })
 
-app.listen(port, () => {
-	console.log(`Sensors API listening on http://localhost:${port}`)
+app.listen(PORT, () => {
+	console.log(`Sensors API listening on http://localhost:${PORT}`)
 })

@@ -1,3 +1,5 @@
+import { env } from '@/data/env/client'
+
 interface ForecastDays {
 	forecastDays: ForecastDay[]
 }
@@ -32,8 +34,7 @@ export const FALLBACK_FORECAST_DATA: ForecastDays = {
 	]
 }
 
-const FORECAST_API_URL =
-	'https://greenwall-forecast-api.vercel.app/api/forecast'
+const FORECAST_API_URL = env.FORECAST_API_URL
 
 const EXPECTED_FORECAST_DAYS = 3
 
