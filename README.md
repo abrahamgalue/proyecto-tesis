@@ -51,24 +51,14 @@
 - **Bundler**: [Metro](https://metrobundler.dev/) for fast development builds and transforms.
 - **Runtime**: [Docker Compose](https://docs.docker.com/compose/) for backend orchestration.
 - **Database**: [PostgreSQL](https://www.postgresql.org/) managed by Supabase.
-- **API**: [Supabase RESTful & Realtime APIs](https://supabase.com/docs/guides/api) for data access and synchronization.
+- **APIs**: [Supabase RESTful & Realtime APIs](https://supabase.com/docs/guides/api) for data access and synchronization. [ExpressJS](https://expressjs.com/) APIs for sensors and weather forecasting.
 - **Studio**: [Supabase Studio](https://supabase.com/docs/guides/self-hosting/docker#accessing-supabase-studio) available locally on port 8000.
 
 ## 🚀 Getting Started
 
 To get a local copy up and running, follow these simple steps.
 
-### Prerequisites
-
-- Node.js LTS.
-- Node package manager installed: npm, pnpm, yarn or bun (I use bun for the examples).
-- For device/simulator:
-  - Android Studio (SDK 34+) or Xcode (for iOS simulators).
-  - Expo Go or a [custom dev client](https://github.com/abrahamgalue/proyecto-tesis/releases).
-- Git
-- Docker (Windows, macOS, or Linux)
-
-### 📱 Frontend Setup
+### 📦 Installation
 
 1. **Clone the repository**
 
@@ -83,7 +73,21 @@ To get a local copy up and running, follow these simple steps.
    bun install
    ```
 
-3. **Environment variables**
+   This will install all dependencies across the monorepo (mobile app and APIs).
+
+### Prerequisites
+
+- Node.js LTS.
+- Bun.
+- For device/simulator:
+  - Android Studio (SDK 34+) or Xcode (for iOS simulators).
+  - Expo Go or a [custom dev client](https://github.com/abrahamgalue/proyecto-tesis/releases).
+- Git
+- Docker (Windows, macOS, or Linux)
+
+### 📱 Frontend Setup
+
+1. **Environment variables**
    Inside `apps/green-wall-manager`, copy `.env.example` to `.env` and edit it:
 
    ```bash
@@ -91,29 +95,42 @@ To get a local copy up and running, follow these simple steps.
    cp .env.example .env
    ```
 
-   Inside, set your Supabase connection details:
+   Inside, set your Supabase connection details and API endpoint URLs:
 
    ```bash
    EXPO_PUBLIC_API_URL=YOUR_REACT_NATIVE_SUPABASE_URL
    EXPO_PUBLIC_API_KEY=YOUR_REACT_NATIVE_SUPABASE_ANON_KEY
+
+   FORECAST_API_URL=http://localhost:3000/api/forecast
+   SENSOR_API_URL=http://localhost:3001/api/sensors
+   WEATHER_API_URL=https://cloud.urbe.edu/web/v1/core/weather
    ```
 
-   - The URL should point to your local or emulator Supabase API (e.g. `http://10.0.2.2:8000` for Android Emulator).
-   - These keys match those from the backend `.env` (`ANON_KEY`).
+   - The Supabase URL should point to your local or emulator Supabase API (e.g. `http://10.0.2.2:8000` for Android Emulator).
+   - The Supabase keys match those from the backend `.env` (`ANON_KEY`).
+   - The example API endpoint URLs are provided for reference; adjust them based on your setup.
 
-4. **Start the app**
-   - From the project root:
+2. **Start the app**
+   - From the project root, start all apps (mobile + APIs):
      ```bash
      bun run start
      ```
-   - Or navigate to the app folder for more scripts:
+   - Or start only the mobile app:
+     ```bash
+     bun run start:mobile
+     ```
+   - Or navigate to the app folder for specific platform scripts:
+
      ```bash
      cd apps/green-wall-manager
+
      bun run ios
      bun run android
      ```
 
 ### 🗄️ Backend Setup
+
+#### Supabase (Database & Auth)
 
 1. **Environment variables**
    Inside `infra/supabase`, copy `.env.example` to `.env` and edit it:
@@ -125,19 +142,20 @@ To get a local copy up and running, follow these simple steps.
 
    Adjust any variables as needed (e.g., passwords, ports).
 
-1. **Start Supabase locally** From the project root:
+2. **Start Supabase locally**
+   From the project root:
 
    ```bash
    bun run db:start
    ```
 
-1. **Stop Supabase**
+3. **Stop Supabase**
 
    ```bash
    bun run db:stop
    ```
 
-1. **Access Supabase Studio**
+4. **Access Supabase Studio**
    - URL: [http://localhost:8000](http://localhost:8000)
    - Default credentials:
      ```
@@ -148,14 +166,78 @@ To get a local copy up and running, follow these simple steps.
      - [Dashboard authentication](https://supabase.com/docs/guides/self-hosting/docker#dashboard-authentication)
      - [Securing your services](https://supabase.com/docs/guides/self-hosting/docker#securing-your-services)
 
-1. **Generate API keys**
+5. **Generate API keys**
    Follow these guides to generate new anon and service keys:
    - [Generate and update keys](https://supabase.com/docs/guides/self-hosting/docker#update-api-keys)
 
    Replace `ANON_KEY` and `SERVICE_ROLE_KEY` in `infra/supabase/docker/.env`.
 
-1. **Create your first user**
-   Once the dashboard is running, create a user in the **Authentication** section — this user’s credentials will be used to log in to the mobile app.
+6. **Create your first user**
+   Once the dashboard is running, create a user in the **Authentication** section — this user's credentials will be used to log in to the mobile app.
+
+#### ExpressJS APIs (Forecast & Sensors)
+
+Both APIs use ExpressJS and follow the same setup pattern.
+
+1. **Environment variables**
+
+   For the **forecast-api**:
+
+   ```bash
+   cd apps/forecast-api
+   cp .env.example .env
+   ```
+
+   Edit `.env` and set:
+
+   ```bash
+   PORT=3000
+   FORECAST_API_URL=https://open-meteo.com/en/docs
+   ```
+
+   For the **sensors-api**:
+
+   ```bash
+   cd apps/sensors-api
+   cp .env.example .env
+   ```
+
+   Edit `.env` and set:
+
+   ```bash
+   PORT=3001
+   ```
+
+   The example values are provided for reference; adjust them based on your needs.
+
+2. **Start the APIs**
+
+   From the project root:
+
+   ```bash
+   # Start all apps (mobile + APIs):
+   bun run start
+
+   # Start forecast API
+   bun run start:api-forecast
+
+   # Start sensors API
+   bun run start:api-sensors
+
+   # Or use dev mode with hot reload
+   bun run dev:api-forecast
+   bun run dev:api-sensors
+   ```
+
+   Or navigate to each API folder to run scripts directly:
+
+   ```bash
+   cd apps/forecast-api
+   bun run start  # or bun run dev
+
+   cd apps/sensors-api
+   bun run start  # or bun run dev
+   ```
 
 ## 🧪 Testing
 
@@ -202,8 +284,10 @@ Output is written to [`apps/green-wall-manager/constants/generatedColors.ts`](ap
 ```bash
 greenwall-monorepo/
 ├── apps
-│   ├── esp32                  # ESP32 firmware
-│   └── green-wall-manager     # Expo mobile app
+│   ├── esp32                  # ESP32 firmware
+│   ├── forecast-api           # ExpressJS weather forecast API
+│   ├── green-wall-manager     # Expo mobile app
+│   └── sensors-api            # ExpressJS sensors data API
 ├── bun.lock                   # Bun lockfile
 ├── bunfig.toml                # Bun configuration
 ├── infra
