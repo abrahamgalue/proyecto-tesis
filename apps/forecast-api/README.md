@@ -6,7 +6,10 @@
 
 ### API for weather forecasting data used by the Green Wall Manager mobile app.
 
-> 🧩 Here you can see its [**Live Demo.**](https://proyecto-tesis-forecast-api.vercel.app/)
+> 🧩 Here you can see its [**Live Demo**](https://proyecto-tesis-forecast-api.vercel.app/)
+
+![01-forecast-page-preview](https://github.com/user-attachments/assets/cbe453ee-d6ff-4e18-bff9-51b93ed078b9)
+
 
 ## 🚀 Description
 
