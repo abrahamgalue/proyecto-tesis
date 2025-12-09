@@ -6,7 +6,10 @@
 
 ### API for sensor data monitoring used by the Green Wall Manager mobile app.
 
-> 🧩 Here you can see its [**Live Demo.**](https://proyecto-tesis-sensors-api.vercel.app/)
+> 🧩 Here you can see its [**Live Demo**](https://proyecto-tesis-sensors-api.vercel.app/)
+
+![01-sensors-page-preview](https://github.com/user-attachments/assets/f923700a-a348-4b92-965e-b88021a7ebd9)
+
 
 ## 🚀 Description
 
