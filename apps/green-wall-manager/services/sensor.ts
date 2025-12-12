@@ -8,7 +8,7 @@ export const FALLBACK_SENSOR_DATA = {
 	waterFlowObstruction: '05%'
 }
 
-const SENSOR_API_URL = env.SENSOR_API_URL
+const SENSOR_API_URL = env.EXPO_PUBLIC_SENSOR_API_URL
 
 export async function getSensorData() {
 	try {

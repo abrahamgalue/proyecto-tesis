@@ -7,7 +7,7 @@ import {
 } from '@/lib/formatters'
 import { getWeatherData, FALLBACK_WEATHER_DATA } from '@/services/weather'
 
-const WEATHER_API_URL = env.WEATHER_API_URL
+const WEATHER_API_URL = env.EXPO_PUBLIC_WEATHER_API_URL
 
 jest.mock('@/lib/formatters', () => ({
 	formatTemp: jest.fn(),

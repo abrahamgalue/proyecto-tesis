@@ -98,17 +98,28 @@ To get a local copy up and running, follow these simple steps.
    Inside, set your Supabase connection details and API endpoint URLs:
 
    ```bash
-   EXPO_PUBLIC_API_URL=YOUR_REACT_NATIVE_SUPABASE_URL
-   EXPO_PUBLIC_API_KEY=YOUR_REACT_NATIVE_SUPABASE_ANON_KEY
+   EXPO_PUBLIC_SUPABASE_URL=YOUR_REACT_NATIVE_SUPABASE_URL
+   EXPO_PUBLIC_SUPABASE_KEY=YOUR_REACT_NATIVE_SUPABASE_PUBLISHABLE_KEY
 
-   FORECAST_API_URL=http://localhost:3000/api/forecast
-   SENSOR_API_URL=http://localhost:3001/api/sensors
-   WEATHER_API_URL=https://cloud.urbe.edu/web/v1/core/weather
+   EXPO_PUBLIC_FORECAST_API_URL=http://localhost:3000/api/forecast
+   EXPO_PUBLIC_SENSOR_API_URL=http://localhost:3001/api/sensors
+   EXPO_PUBLIC_WEATHER_API_URL=https://cloud.urbe.edu/web/v1/core/weather
    ```
 
-   - The Supabase URL should point to your local or emulator Supabase API (e.g. `http://10.0.2.2:8000` for Android Emulator).
-   - The Supabase keys match those from the backend `.env` (`ANON_KEY`).
-   - The example API endpoint URLs are provided for reference; adjust them based on your setup.
+   **Supabase Configuration:**
+   - **Cloud Supabase**: Use your cloud project URL (e.g., `https://your-project.supabase.co`)
+   - **Local Supabase (Docker)**: Configure based on your environment:
+     - Android Emulator: `http://10.0.2.2:8000`
+     - Physical Android Device: `http://YOUR_IPV4:8000` (get IPv4 with `ipconfig` on Windows)
+     - iOS Simulator: `http://localhost:8000`
+
+   **API Endpoints Configuration:**
+   - The example URLs use `localhost`, which works for iOS Simulator and Expo Go
+   - For **Android Emulator**, replace `localhost` with `10.0.2.2`
+   - For **Physical Android Device** (development build), replace `localhost` with your computer's IPv4 address
+   - Your device must be on the same local network as your computer
+
+   See `apps/green-wall-manager/README.md` for detailed configuration instructions.
 
 2. **Start the app**
    - From the project root, start all apps (mobile + APIs):

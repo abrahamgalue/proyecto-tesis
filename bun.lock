@@ -35,7 +35,7 @@
     },
     "apps/green-wall-manager": {
       "name": "paredes-verdes-app",
-      "version": "1.0.4",
+      "version": "1.0.5",
       "dependencies": {
         "@expo/vector-icons": "14.0.4",
         "@hookform/resolvers": "3.9.1",

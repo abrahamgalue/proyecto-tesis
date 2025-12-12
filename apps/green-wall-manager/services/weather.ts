@@ -15,7 +15,7 @@ export const FALLBACK_WEATHER_DATA = {
 	sensationThermal: '30'
 }
 
-const WEATHER_API_URL = env.WEATHER_API_URL
+const WEATHER_API_URL = env.EXPO_PUBLIC_WEATHER_API_URL
 
 export async function getWeatherData() {
 	try {

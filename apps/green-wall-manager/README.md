@@ -71,19 +71,75 @@ cp .env.example .env
 Edit the `.env` file with your Supabase connection details and API endpoint URLs:
 
 ```bash
-EXPO_PUBLIC_API_URL=YOUR_REACT_NATIVE_SUPABASE_URL
-EXPO_PUBLIC_API_KEY=YOUR_REACT_NATIVE_SUPABASE_ANON_KEY
+EXPO_PUBLIC_SUPABASE_URL=YOUR_REACT_NATIVE_SUPABASE_URL
+EXPO_PUBLIC_SUPABASE_KEY=YOUR_REACT_NATIVE_SUPABASE_PUBLISHABLE_KEY
 
-FORECAST_API_URL=http://localhost:3000/api/forecast
-SENSOR_API_URL=http://localhost:3001/api/sensors
-WEATHER_API_URL=https://cloud.urbe.edu/web/v1/core/weather
+EXPO_PUBLIC_FORECAST_API_URL=http://localhost:3000/api/forecast
+EXPO_PUBLIC_SENSOR_API_URL=http://localhost:3001/api/sensors
+EXPO_PUBLIC_WEATHER_API_URL=https://cloud.urbe.edu/web/v1/core/weather
 ```
 
-**Important notes:**
+#### Supabase Configuration
 
-- The Supabase URL should point to your local or emulator Supabase API (e.g. `http://10.0.2.2:8000` for Android Emulator)
-- The Supabase keys match those from the backend `.env` (`ANON_KEY`)
-- The example API endpoint URLs are provided for reference; adjust them based on your setup
+**Option 1: Cloud Supabase (Recommended for production)**
+
+- Use your Supabase cloud project URL (e.g., `https://your-project.supabase.co`)
+- Get your publishable key from the Supabase dashboard
+
+**Option 2: Local Supabase (Docker)**
+
+- If running Supabase locally with Docker (see `infra/supabase`), you need to configure the URL based on your development environment:
+
+**For Android Emulator:**
+
+```bash
+EXPO_PUBLIC_SUPABASE_URL=http://10.0.2.2:8000
+```
+
+> The IP `10.0.2.2` is a special alias to your host machine's localhost in Android Emulator.
+
+**For Physical Android Device (Development Build):**
+
+```bash
+EXPO_PUBLIC_SUPABASE_URL=http://192.168.1.20:8000
+```
+
+> Replace `192.168.1.20` with your computer's local IPv4 address. On Windows, run `ipconfig` in a command prompt and look for the IPv4 address under your active network interface. Your device must be on the same local network as your computer.
+
+**For iOS Simulator:**
+
+```bash
+EXPO_PUBLIC_SUPABASE_URL=http://localhost:8000
+```
+
+#### API Endpoints Configuration
+
+The same localhost vs IP address rules apply to the API endpoints:
+
+**For Android Emulator:**
+
+```bash
+EXPO_PUBLIC_FORECAST_API_URL=http://10.0.2.2:3000/api/forecast
+EXPO_PUBLIC_SENSOR_API_URL=http://10.0.2.2:3001/api/sensors
+```
+
+**For Physical Android Device (Development Build):**
+
+```bash
+EXPO_PUBLIC_FORECAST_API_URL=http://192.168.1.20:3000/api/forecast
+EXPO_PUBLIC_SENSOR_API_URL=http://192.168.1.20:3001/api/sensors
+```
+
+> Replace `192.168.1.20` with your computer's IPv4 address.
+
+**For iOS Simulator or Expo Go:**
+
+```bash
+EXPO_PUBLIC_FORECAST_API_URL=http://localhost:3000/api/forecast
+EXPO_PUBLIC_SENSOR_API_URL=http://localhost:3001/api/sensors
+```
+
+> **Note:** The `EXPO_PUBLIC_WEATHER_API_URL` is an external API and doesn't require IP address changes.
 
 ### Local Execution
 

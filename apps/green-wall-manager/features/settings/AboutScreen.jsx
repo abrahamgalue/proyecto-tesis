@@ -25,7 +25,7 @@ function AboutScreen() {
 					style={{ contentFit: 'contain' }}
 				/>
 				<Text className='text-foreground-emphasis mb-3 text-sm'>
-					v1.0.4 {currentYear}
+					v1.0.5 {currentYear}
 				</Text>
 				<View className='border-primary w-full rounded-3xl border py-8'>
 					<Text className='text-foreground-primary mb-8 text-center text-sm'>

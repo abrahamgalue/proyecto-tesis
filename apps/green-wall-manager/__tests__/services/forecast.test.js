@@ -1,7 +1,7 @@
 import { env } from '@/data/env/client'
 import { getForecastDays, FALLBACK_FORECAST_DATA } from '@/services/forecast'
 
-const FORECAST_API_URL = env.FORECAST_API_URL
+const FORECAST_API_URL = env.EXPO_PUBLIC_FORECAST_API_URL
 
 describe('getForecastDays', () => {
 	beforeEach(() => {

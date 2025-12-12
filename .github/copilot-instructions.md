@@ -101,6 +101,50 @@ Access:
 
 See additional details in `infra/supabase/README.md`.
 
+## Environment Configuration (Mobile App)
+
+### Environment Variables
+
+The mobile app (`apps/green-wall-manager`) uses the following environment variables:
+
+```bash
+EXPO_PUBLIC_SUPABASE_URL=YOUR_REACT_NATIVE_SUPABASE_URL
+EXPO_PUBLIC_SUPABASE_KEY=YOUR_REACT_NATIVE_SUPABASE_PUBLISHABLE_KEY
+
+EXPO_PUBLIC_FORECAST_API_URL=http://localhost:3000/api/forecast
+EXPO_PUBLIC_SENSOR_API_URL=http://localhost:3001/api/sensors
+EXPO_PUBLIC_WEATHER_API_URL=https://cloud.urbe.edu/web/v1/core/weather
+```
+
+### Localhost vs IP Address Configuration
+
+**Important:** `localhost` URLs do NOT work in all development scenarios. Configure based on your environment:
+
+#### Supabase URL
+
+- **Cloud Supabase**: Use cloud project URL (e.g., `https://your-project.supabase.co`)
+- **Local Supabase (Docker)**:
+  - Android Emulator: `http://10.0.2.2:8000`
+  - Physical Android Device: `http://YOUR_IPV4:8000`
+  - iOS Simulator: `http://localhost:8000`
+
+#### API Endpoints (Forecast, Sensors)
+
+- **iOS Simulator / Expo Go**: `http://localhost:PORT`
+- **Android Emulator**: `http://10.0.2.2:PORT`
+- **Physical Android Device (Dev Build)**: `http://YOUR_IPV4:PORT`
+
+**Finding your IPv4 address (Windows):**
+
+```bash
+ipconfig
+```
+
+Look for the IPv4 address under your active network interface (e.g., `192.168.1.20`). Your device must be on the same local network.
+
+**Why 10.0.2.2 for Android Emulator:**
+The Android Emulator uses `10.0.2.2` as a special alias to the host machine's `localhost`. This is an Android Emulator-specific IP address.
+
 ## Developer Workflows
 
 Bun is the only supported package manager and script runner for app tasks.

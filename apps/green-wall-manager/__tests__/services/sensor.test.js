@@ -1,7 +1,7 @@
 import { env } from '@/data/env/client'
 import { getSensorData, FALLBACK_SENSOR_DATA } from '@/services/sensor'
 
-const SENSOR_API_URL = env.SENSOR_API_URL
+const SENSOR_API_URL = env.EXPO_PUBLIC_SENSOR_API_URL
 
 describe('getSensorData', () => {
 	beforeEach(() => {
